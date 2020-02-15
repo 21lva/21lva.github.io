@@ -10,4 +10,8 @@ This is Inhyuk Cho's blog. I am interested in Mathematics, Computer Science & En
 
 contact
 --------
-<a href="www.linkedin.com/in/inhyuk-cho"><img src="/images/linkedin.jpg"/></a>
+<img src = "/images/linkedin.png"/> : www.linkedin.com/in/inhyuk-cho
+<br>
+<img src = "/images/email.png"/> : ihc730@naver.com
+<br>
+<img src = "/images/phone.png"/> : +82 10-3259-3790
