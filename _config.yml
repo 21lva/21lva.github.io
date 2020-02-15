@@ -1,0 +1,11 @@
+name: 21lva's blog
+rooturl: https://21lva.github.io/
+url: https://21lva.github.io/
+description: Something I have studied.
+
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+gems: [jekyll-paginate]
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+markdown: kramdown

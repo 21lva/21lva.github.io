@@ -1,0 +1,159 @@
+I"{#<h1 id="객체화">객체화</h1>
+
+<p><img src="/post_img/2019-05-17-js6.md/sta.png" alt="계층" /></p>
+
+<ul>
+  <li>웹브라우저는 구성요소들이 객체화 되어 있음. 이 객체들을 이용하여 제어</li>
+  <li>전역객체(window) 밑으로(프로퍼티) DOM, BOM, javascript 객체 등이 존재</li>
+  <li>Browser Object Model(BOM) : 웹페이지의 내용을 제외한 브라우저의 각종 요소들을 객체화한 것</li>
+  <li>Document Object Mode(DOM) : 웹페이지의 내용을 제어하는 객체.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  //BOM
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">'Hello'</span> <span class="na">onclick=</span><span class="s">"alert(window.location)"</span> <span class="nt">/&gt;</span>
+  //DOM
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">'Hello'</span> <span class="na">onclick=</span><span class="s">"document.write('hi')"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>웹브라우저의 창, 프레임등을 제어할 수 있도록 한다</li>
+</ul>
+
+<h1 id="window">Window</h1>
+
+<ul>
+  <li>모든 객체가 소속된 객체</li>
+  <li>전역객체이면서 창을 뜻한다</li>
+  <li>모든 전역 객체와 전역 함수는 전역객체의 프로퍼티와 메소드이다</li>
+  <li>생략 가능하다</li>
+  <li><strong>ECMAScript</strong> 에서는 <em>Global</em> 객체라고 부른다</li>
+</ul>
+
+<hr />
+
+<h1 id="사용자와-상호작용">사용자와 상호작용</h1>
+
+<ul>
+  <li><em>alert</em> : 경고창. 정보 제공 및 디버깅에 사용</li>
+  <li><em>confirm</em> : 사용자에게서 확인을 받음. <em>true/false</em> 를 리턴</li>
+  <li><em>prompt</em> : 사용자로부터 값을 입력 받는 함수.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"alert"</span> <span class="na">onclick=</span><span class="s">"alert('hello world');"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"confirm"</span> <span class="na">onclick=</span><span class="s">"func_confirm()"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"prompt"</span> <span class="na">onclick=</span><span class="s">"func_prompt()"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="kd">function</span> <span class="nx">func_confirm</span><span class="p">(){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">'</span><span class="s1">ok?</span><span class="dl">'</span><span class="p">)){</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">cancel</span><span class="dl">'</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="kd">function</span> <span class="nx">func_prompt</span><span class="p">(){</span>
+          <span class="c1">// good? 을 출력하고 yes를 입력받으면 welcome, 다른 값을 입력 받으면 fail의 창을 띄움</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">prompt</span><span class="p">(</span><span class="dl">'</span><span class="s1">good?</span><span class="dl">'</span><span class="p">)</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">yes</span><span class="dl">'</span><span class="p">){</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">welcome</span><span class="dl">'</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">fail</span><span class="dl">'</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="location">Location</h1>
+
+<ul>
+  <li>문서의 주소와 관련된 객체.</li>
+  <li>현재의 url을 검색/수정 등을 할 수 있음.</li>
+</ul>
+
+<h4 id="현재의-url">현재의 URL</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>location.toString();
+location.href;//좀 더 선호됨
+</code></pre></div></div>
+
+<h4 id="url-파싱">URL 파싱</h4>
+<ul>
+  <li>의미에 따라 별도의 프로퍼티 제공</li>
+  <li>protocol, host, port, pathname, search, hash 등이 존대</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>location.protocol, location.host, location.port, location.pathname, location.search, location.hash
+</code></pre></div></div>
+
+<h4 id="주소-변경">주소 변경</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>location.href="https://www.google.com"//해당 url로 이동
+location="https://www.google.com"// 해당 url로 이동
+locaion.reload()//새로 고침
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="navigator">Navigator</h1>
+
+<ul>
+  <li>브라우저의 정보를 제공하는 객체</li>
+  <li>호환성 문제에 주로 사용</li>
+  <li>크로스브라우징 이슈 : 브라우저마다 다르게 동작하는 문제</li>
+  <li>웹표준 : 크로스브라우징 이슈를 해결하기 위하여 만든 규칙</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>console.dir(navigator) //navigator의 프로퍼티와 메소드들을 보여줌
+navigator.appName //웹브라우저 이름
+navigator.appVersion //브라우저의 버전
+navigator.userAgent //브라우저가 서버에 전송하는 USER-AGENT HTTP 헤더의 내용.
+navigator.platform // 브라우저가 작동하는 운영체제에 대한 정보
+</code></pre></div></div>
+
+<h2 id="기능-테스트">기능 테스트</h2>
+
+<ul>
+  <li>모든 브라우저에서 직접 테스트하는 것은 쉽지 않음</li>
+  <li>기능 테스트+navigator를 통해서 해당 기능을 브라우저가 제공하는지 확인해야 함.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (!Object.keys) {
+  Object.keys = //keys가 없을 시 동작할 기능 정의
+}
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="창-제어">창 제어</h1>
+
+<ul>
+  <li><em>window</em> 객체는 브라우저를 직접 다루는 기능을 제공</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open("https://www.google.com/"); //새로운 창에 해당 페이지 열기 + 그 창의 window 객체 리턴
+open("https://www.google.com/",_self); //현재 창에 해당 페이지 열기
+open("https://www.google.com/",_blank); //새로운 창에 해당 페이지 열기
+open("https://www.google.com/",'ot'); //새로운 창에 해당 페이지 열기, 한 번 열리고 나면 그 창에 계속 열기
+open("https://www.google.com/", '_blank', 'width=200, height=200, resizable=no'); //사이즈, 창크기 조절 가능 등을 조절할 수 있음
+</code></pre></div></div>
+
+<ul>
+  <li>사용자의 상호작용(버튼을 누르는 등)을 하는 경우가 아닌 팝업의 경우 브라우저가 보안/속도 문제 때문에 차단한다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">demo2.html</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+:ET

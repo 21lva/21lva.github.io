@@ -1,0 +1,344 @@
+I"K8<ul>
+  <li><strong>Javascript</strong> 는 웹에서 프로그래밍을 담당하는 언어이다.</li>
+  <li>웹에서 동적으로 어떤 행동을 하는 언어이다.</li>
+  <li><strong>php, java, python</strong> 가 해오던 웹서버 기능도 담당하게 되었다(node.js)</li>
+  <li>웹 전체에서 자바스크립트의 비중이 늘어나는 중</li>
+  <li>웹 뿐만 아니라 다양한 분야에서 사용 중</li>
+</ul>
+
+<p><strong>Atom</strong> 의 package를 다루고 빅스비좀 쓰려고 하니 Javascript가 필요한 것 같아서 이제부터 공부하려 한다.<br />
+참고한 책 또는 인터넷 서적은<br />
+<a href="https://www.opentutorials.org/course/743">생활코딩 자바스크립트 강의</a><br />
+<a href="http://www.yes24.com/Product/Goods/59461086">Do it! 자바스크립트 + 제이쿼리 입문</a><br />
+그 외에 중간중간에 찾은 정보는 각 페이지 하단에 참고자료로 적어놓았다.
+C언어 및 다른 언어를 알고 있다는 전제하에 정리하였다(그 만큼 생략이 많다는 뜻)</p>
+
+<hr />
+
+<h1 id="html과-함께-사용하기">HTML과 함께 사용하기</h1>
+
+<h2 id="1-inline-방식">1) inline 방식</h2>
+
+<ul>
+  <li>태그와 연관된 스크립트를 분명히 알 수 있음</li>
+  <li>길어지면 보기 힘듬</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">onclick=</span><span class="s">"alert('hello');"</span> <span class="na">value=</span><span class="s">'Hello'</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h2 id="2-script-방식">2) script 방식</h2>
+
+<ul>
+  <li>html과 자바스크립트 코드를 분리하여 보게 되어서 가독성이 좋다</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">'Hello'</span> <span class="na">id=</span><span class="s">"but"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">but</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">but</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">but</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">})</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아래처럼 외부 파일로 분리할 수도 있다.</li>
+  <li>script 파일은 head 태그가 아닌 body 태그 하단에 위치하는 것이 좋다. 혹은 <em>onload</em> 를 사용하면 가능</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">'Hello'</span> <span class="na">id=</span><span class="s">"but"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"script.js"</span><span class="nt">&gt;</span> <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>숫자, 문자, 조건문, 배열, 반복문을 다룬다.<br />
+내용은 계속 추가된다. 공부할 때 마다 ^^</p>
+
+<h1 id="자료형">자료형</h1>
+
+<h2 id="1-숫자">1) 숫자</h2>
+
+<ul>
+  <li>정수, 실수 등이 존재</li>
+  <li>html에서 수식을 적으면 수식 자체가 보이지만, js는 값이 계산됨</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;body&gt;
+  1+1&lt;br&gt;
+  &lt;script type="text/javascript"&gt;
+    document.write(1+1);
+  &lt;/script&gt;
+&lt;/body&gt;
+</code></pre></div></div>
+<h4 id="실행-결과">실행 결과</h4>
+<script type="text/javascript">
+  document.write(1+1);
+</script>
+
+<ul>
+  <li><em>Math</em> 를 이용하여 여러 개산 가능(pow, round, ceil, sqrt, random 등)</li>
+  <li><em>document.write</em> 는 document의 write 메소드를 불러와서 화면에 출력한다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;body&gt;
+  &lt;script type="text/javascript"&gt;
+    document.write(Math.pow(2,4)+"&lt;br&gt;");
+    document.write(Math.round(2.4)+"&lt;br&gt;");
+    document.write(Math.ceil(2.4)+"&lt;br&gt;");
+    document.write(Math.sqrt(7)+"&lt;br&gt;");
+    document.write(Math.random()+"&lt;br&gt;");
+  &lt;/script&gt;
+&lt;/body&gt;
+</code></pre></div></div>
+
+<h4 id="실행-결과-1">실행 결과</h4>
+<script type="text/javascript">
+  document.write(Math.pow(2,4)+"<br>");
+  document.write(Math.round(2.4)+"<br>");
+  document.write(Math.ceil(2.4)+"<br>");
+  document.write(Math.sqrt(7)+"<br>");
+  document.write(Math.random()+"<br>");
+</script>
+
+<h2 id="2-문자와-문자열">2) 문자와 문자열</h2>
+
+<ul>
+  <li>한 문장을 나타낼 때 ‘ ‘나 “ “로 감싸준다</li>
+  <li>문자열도 객체이다. 메소드가 존재한다는 뜻</li>
+  <li>당연히 ‘로 열리면 ‘로 닫혀야 하고, “로 열리면 “로 닫아야한다</li>
+  <li>’ ‘ 안에 ‘ ‘를 쓰고 싶으면 '를 사용한다. 큰 따옴표도 마찬가지(escape라고 한다)</li>
+  <li>문자열을 결합하고 싶으면 <em>+</em> 를 사용한다.</li>
+  <li>문자열과 숫자를 결합하려면 <em>문자열+(숫자)</em> 로 해준다.</li>
+  <li><em>indexOf</em> 메소드는 문자열의 해당 문자의 index를 알려준다. 해당 문자가 여러 개이면 처음을 알려준다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript"&gt;
+  document.write("hi"+"hello"+"&lt;br&gt;");
+  document.write("hi"+"1+2"+"&lt;br&gt;");
+  document.write("hi"+(1+2)+"&lt;br&gt;");
+  document.write("hiiiii".indexOf("i"));
+&lt;/script&gt;
+</code></pre></div></div>
+
+<h4 id="실행-결과-2">실행 결과</h4>
+<script type="text/javascript">
+  document.write("hi "+"hello"+"<br>");
+  document.write("hi "+"1+2"+"<br>");
+  document.write("hi "+(1+2)+"<br>");
+  document.write("hiiiii".indexOf("i"));
+</script>
+
+<hr />
+
+<h1 id="변수">변수</h1>
+
+<ul>
+  <li>다른 언어의 변수의 개념과 거의 비슷</li>
+  <li><em>var</em> 를 사용하면 동적으로 자료형 결정</li>
+  <li>영문자, _ , $(<em>jQuery에서 많이 사용</em>) 로 시작해야 한다</li>
+  <li>자료형에는 Number, String, Boolean, Null, Undefined, 객체가 존재</li>
+  <li>자바스크립트의 변수는 <strong>wrapper객체</strong> 로 만들어진다.</li>
+  <li><strong>var x = 1</strong> 는 1을 가지는 Number객체를 생성하고 그 객체를 x가 참조한다.</li>
+  <li>Undefined : 값을 할당하지 않은 변수(정의가 안됨)</li>
+  <li>Null : 값이 없음(값이 없다를 부여받음)</li>
+  <li>자바스크립트의 문자열은 immutable. 문자열에 수정을 가하면 새로운 문자열이 생성된다.</li>
+  <li>각 자료형은 <em>typeof(변수)</em> 로 확인 가능</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript"&gt;
+  var x;
+  document.write(typeof(1)+"&lt;br&gt;");
+  document.write(typeof(1.2)+"&lt;br&gt;");
+  document.write(typeof('hello')+"&lt;br&gt;");
+  document.write(typeof(1==1)+"&lt;br&gt;");
+  document.write(typeof(1=="1")+"&lt;br&gt;");
+  document.write(typeof(x)+"&lt;br&gt;");
+  document.write(typeof(1==="1")+"/ value "+(1==='1')+"&lt;br&gt;");
+&lt;/script&gt;
+</code></pre></div></div>
+<h4 id="실행결과">실행결과</h4>
+<script type="text/javascript">
+  var x;
+  document.write(typeof(1)+"/ value "+(1)+"<br>");
+  document.write(typeof(1.2)+"/ value "+(1.2)+"<br>");
+  document.write(typeof('hello')+"/ value "+('hello')+"<br>");
+  document.write(typeof(1==1)+"/ value "+(1==1)+"<br>");
+  document.write(typeof(1=="1")+"/ value "+(1=='1')+"<br>");
+  document.write(typeof(x)+"/ value "+(x)+"<br>");
+  document.write(typeof(1==="1")+"/ value "+(1==='1')+"<br>");
+</script>
+
+<ul>
+  <li><em>1==”1”</em> 을 <em>true</em> 라고 하는 것을 알 수 있다. 이는 자바스크립트의 두 동등비교 연산자 <em>==(equal operator)</em> 와 <em>===(strict equal operator)</em> 에 존재하는 차이이다. <em>===</em> 는 값 뿐만 아니라 타입과 형시도 같은지를 정확히 판단한다.</li>
+</ul>
+
+<hr />
+
+<h1 id="주석문">주석문</h1>
+
+<ul>
+  <li>html에서는 <em><!-- --></em> 를 사용하고, 자바스크립에서는 <em>//</em> 또는 <em>/* */</em> 를 사용한다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript"&gt;
+  document.write(Math.pow(2,4)+"&lt;br&gt;");
+  //주석1
+  /* 주석2
+  여러 줄 가능
+  */
+&lt;/script&gt;
+</code></pre></div></div>
+<h4 id="실행결과-1">실행결과</h4>
+<script type="text/javascript">
+  document.write(Math.pow(2,4)+"<br>");
+  //주석1
+  /* 주석2
+  여러 줄 가능*/
+</script>
+
+<hr />
+
+<h1 id="비교연산">비교연산</h1>
+
+<h2 id="-연산자">== 연산자</h2>
+
+<ul>
+  <li>== 는 값이 같은지를 확인하고 ===는 같은 값과 타입인지를 확인(값, 타입 등)</li>
+  <li>null과 undefined는 둘 다 값이 없기 때문에 ==에서는 같다고 나오지만, 값이 없음을 부여받았냐 아니냐의 차이에 의해 ===에서는 다르다고 구별함</li>
+  <li>==는 true와 1을 같다고 생각</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript"&gt;
+  var x=1,y=2,z="2";
+  document.write((x===y)+"&lt;br&gt;");
+  document.write((y==z)+"&lt;br&gt;");
+  document.write((y===z)+"&lt;br&gt;");
+  document.write((k===z)+"&lt;br&gt;");
+  document.write((null==undefined)+"&lt;br&gt;");
+  document.write((null===undefined)+"&lt;br&gt;");
+  document.write((1===true)+"&lt;br&gt;");
+  document.write((1==true)+"&lt;br&gt;");
+&lt;/script&gt;
+</code></pre></div></div>
+<h4 id="실행결과-2">실행결과</h4>
+<script type="text/javascript">
+  var x=1,y=2,z="2",k="2";
+  document.write((x===y)+"<br>");
+  document.write((y==z)+"<br>");
+  document.write((y===z)+"<br>");
+  document.write((k===z)+"<br>");
+  document.write((null==undefined)+"<br>");
+  document.write((null===undefined)+"<br>");
+  document.write((1===true)+"<br>");
+  document.write((1==true)+"<br>");
+</script>
+
+<h2 id="-연산자-1">!= 연산자</h2>
+
+<ul>
+  <li>!==는 ===의 연산자의 반대</li>
+  <li>!=는 == 연산자의 반대</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript"&gt;
+  var x=1,y=2,z="2";
+  document.write((x!==y)+"&lt;br&gt;");
+  document.write((y!=z)+"&lt;br&gt;");
+  document.write((y!==z)+"&lt;br&gt;");
+  document.write((k!==z)+"&lt;br&gt;");
+  document.write((null!=undefined)+"&lt;br&gt;");
+  document.write((null!==undefined)+"&lt;br&gt;");
+  document.write((1!==true)+"&lt;br&gt;");
+  document.write((1!=true)+"&lt;br&gt;");
+&lt;/script&gt;
+</code></pre></div></div>
+<h4 id="실행결과-3">실행결과</h4>
+<script type="text/javascript">
+  var x=1,y=2,z="2";
+  document.write((x!==y)+"<br>");
+  document.write((y!=z)+"<br>");
+  document.write((y!==z)+"<br>");
+  document.write((k!==z)+"<br>");
+  document.write((null!=undefined)+"<br>");
+  document.write((null!==undefined)+"<br>");
+  document.write((1!==true)+"<br>");
+  document.write((1!=true)+"<br>");
+</script>
+
+<p><br /><a href="https://dorey.github.io/JavaScript-Equality-Table/">== vs === </a>에서 확인</p>
+
+<hr />
+
+<h1 id="조건문">조건문</h1>
+
+<ul>
+  <li>c의 문법과 거의 비슷</li>
+  <li><em>0, ‘’, undefined, null, NaN</em> 등은 false로 간주</li>
+</ul>
+
+<hr />
+
+<h1 id="반복문">반복문</h1>
+
+<ul>
+  <li><em>while, do while, for</em> 는 c와 비슷하다.</li>
+  <li><em>break, continue</em></li>
+</ul>
+
+<h2 id="foreach">forEach</h2>
+
+<ul>
+  <li>Array, Map, Set 객체의 메소드</li>
+  <li>각 객체의 요소에 접근하여 동작 수행</li>
+</ul>
+
+<h2 id="for-in">for in</h2>
+
+<ul>
+  <li>객체의 속성들에 반복하여 작업 수행. 모든 객체에서 사용 가능</li>
+  <li>객체의 속성들의 key값을 얻어냄</li>
+</ul>
+
+<h2 id="for-of">for of</h2>
+
+<ul>
+  <li><em>for in</em> 과 비슷</li>
+  <li>객체가 [Symbol.iterator] 속성을 가지고 있어야만 사용 가능</li>
+  <li>이 부분은 추가 예정</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript"&gt;
+  var arr=[1,2,3];
+  arr.forEach(v=&gt;{document.write((v*v)+"&lt;br&gt;")});
+  for(const key in arr){
+    document.write((v*v)+"&lt;br&gt;");
+  }
+  for(const key of arr){
+    document.write((v*v)+"&lt;br&gt;");
+  }
+&lt;/script&gt;
+</code></pre></div></div>
+<h4 id="실행결과-4">실행결과</h4>
+<script type="text/javascript">
+  var arr=[1,2,3];
+  arr.forEach(v=>{document.write((v*v)+"<br>")});
+  for(const key in arr){
+    document.write((arr[key]* arr[key])+"<br>");
+  }
+  for(const key of arr){
+    document.write((arr[key]* arr[key])+"<br>");
+  }
+</script>
+
+:ET

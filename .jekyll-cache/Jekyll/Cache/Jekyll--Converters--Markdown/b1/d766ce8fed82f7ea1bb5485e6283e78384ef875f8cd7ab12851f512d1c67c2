@@ -1,0 +1,55 @@
+I"
+
+<p>포스트에 자주 쓰일 수식과 그래프를 그리는 방법을 알아보자.
+보통 사용하는 테마는 <a href="https://www.mathjax.org/" title="mathjax">Mathjax</a>를 제공하지 않는다.
+그러므로 <strong>_includes</strong> 폴더의 <strong>post.html</strong>의 <strong>&lt;article&gt;</strong> 태그 바로 밑에 다음들을 적어 놓자.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/x-mathjax-config"&gt;
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+&lt;/script&gt;
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script type="text/javascript" async
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"&gt;
+&lt;/script&gt;
+</code></pre></div></div>
+<p>위의 부분은 inline 코드를 쓸때 $를 사용할 수 있게 해주는 부분이고,
+아래 부분이 mathjax를 사용하겠다는 코드이다.
+위-&gt;아래 순으로 적으면 된다.</p>
+
+<h2 id="기본-사용법">기본 사용법</h2>
+<ol>
+  <li>인라인 수식
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>이것을 $a^2 + b^2 = c^2$ 이렇게
+$a^2 + b^2 = c^2$ 적을 수 있습니다.
+</code></pre></div>    </div>
+    <p>이것을
+$a^2 + b^2 = c^2$ 이렇게
+$a^2 + b^2 = c^2$ 적을 수 있습니다.</p>
+  </li>
+  <li>블록 수식
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$$a^2 + b^2 = c^2$$
+$$\int f(x)~dx$$
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<script type="math/tex; mode=display">a^2 + b^2 = c^2</script>
+
+<script type="math/tex; mode=display">\int f(x)~dx</script>
+
+<p>Latex로 바꾸는 것은 여러 사이트에 있다
+<a href="http://eclass.dongguk.edu/jsp/common/equation_editor.jsp">http://eclass.dongguk.edu/jsp/common/equation_editor.jsp</a>
+와 같은 사이트에서 그냥 바꿔서 사용하자.</p>
+
+<h2 id="참고-사이트">참고 사이트</h2>
+<p><a href="http://juliahwang.kr/%EC%A7%80%ED%82%AC%20%EB%B8%94%EB%A1%9C%EA%B7%B8/2017/09/30/mathjaxjekyllblog.html">http://juliahwang.kr/%EC%A7%80%ED%82%AC%20%EB%B8%94%EB%A1%9C%EA%B7%B8/2017/09/30/mathjaxjekyllblog.html</a></p>
+
+<p><a href="http://wani.kr/posts/2015/12/17/add-mathjax-to-jekyll/">http://wani.kr/posts/2015/12/17/add-mathjax-to-jekyll/</a></p>
+
+<p><a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm">Mathjax 문법</a></p>
+:ET

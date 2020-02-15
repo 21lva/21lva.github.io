@@ -1,0 +1,21 @@
+---
+layout: default
+title: Gitbooks
+---
+
+<div id="blog-archives">
+
+	{% for book in site.books %}
+		<article class="post">
+			{% if book.external-url %}
+				<h1>
+					<a href="{{ site.rooturl }}{{ book.external-url }}">{{ book.title }}</a> 
+					<a class="anchor" href="{{ book.url }}"><i class="icon-anchor"></i></a>
+				</h1>
+			{% else %}
+				<h1><a href="{{ book.url }}">{{ book.title }}</a></h1>
+			{% endif %}
+		</article>
+	{% endfor %}
+
+</div>

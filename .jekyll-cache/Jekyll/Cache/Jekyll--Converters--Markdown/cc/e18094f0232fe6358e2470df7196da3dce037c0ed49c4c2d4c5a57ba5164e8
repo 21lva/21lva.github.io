@@ -1,0 +1,252 @@
+I"2'<ul>
+  <li>6장에서는 <strong>Collection</strong> 중에서도 immutable collection들인 <strong>List, Set, Map</strong> 등을 알아보았다.</li>
+  <li>이 번 장에서는 mutable collection들과 monadic collection들에 대해 다룰 것이다.</li>
+</ul>
+
+<hr />
+
+<h1 id="가변적인-collection특히-버퍼">가변적인 collection(특히 버퍼)</h1>
+
+<ul>
+  <li><strong>List, Set, Map</strong> 의 collection들은 불변이다.</li>
+  <li>종종 데이터 자체를 변경하는 것이 좋을 때가 있다. 함수 내에서만 사용하다가 나중에 immutable collection으로 변경하는 경우에는 mutable collection을 사용하는 것이 좋다.</li>
+</ul>
+
+<h2 id="새로운-가변-collection-생성">새로운 가변 collection 생성</h2>
+
+<ul>
+  <li>가변 collection이 정의되어있는 패키지의 네임스페이스는 자동으로 추가되는 것이 아니다.</li>
+  <li><em>collection.mutable</em> 패키지를 추가하여야 한다.</li>
+  <li>Set과 Map은 가변과 불변의 이름이 같지만 List에 대응되는 가변 collection은 <strong>Buffer</strong> 이다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val a = collection.mutable.Buffer(1,2,3)
+a: scala.collection.mutable.Buffer[Int] = ArrayBuffer(1, 2, 3)
+
+scala&gt; val b = Buffer(1,2)
+&lt;console&gt;:11: error: not found: value Buffer
+       val b = Buffer(1,2)
+</code></pre></div></div>
+
+<ul>
+  <li>Buffer를 <em>collection.mutable</em> 추가 없이 사용하려 하면 2번처럼 문제가 발생한다.</li>
+  <li>위의 방식처럼 사용하거나 아래의 방식과 같이 전체를 <em>import</em> 하고 사용하는 방법도 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; import collection.mutable.Buffer
+import collection.mutable.Buffer
+
+scala&gt; val b= Buffer(1,2)
+b: scala.collection.mutable.Buffer[Int] = ArrayBuffer(1, 2)
+</code></pre></div></div>
+
+<h2 id="불변---가변">불변 &lt;-&gt; 가변</h2>
+
+<ul>
+  <li>불변의 collection과 가변의 collection 사이에 타입을 전환할 수 있다.</li>
+</ul>
+
+<h4 id="리스트---버퍼">리스트 &lt;-&gt; 버퍼</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val x = b.toList
+x: List[Int] = List(1, 2)
+
+scala&gt; val k =x.toBuffer
+k: scala.collection.mutable.Buffer[Int] = ArrayBuffer(1, 2)
+</code></pre></div></div>
+
+<h4 id="불변-map---버퍼">불변 Map -&gt; 버퍼</h4>
+
+<ul>
+  <li>불변 Map을 버퍼로 변경하면 List로 전환하는 것과 마찬가지로 <strong>(key,tuple)</strong> 로 이루어진 Buffer를 생성한다.</li>
+</ul>
+
+<h4 id="불변-set---버퍼">불변 Set &lt;-&gt; 버퍼</h4>
+
+<ul>
+  <li>Set의 특징은 각 요소가 겹치지 않는다는 것이다. Set에서 버퍼로 전환하는 것은 딱히 문제가 되지 않지만, 버퍼에서 Set으로 변경하는 경우에는 중복되는 값들이 문제가 된다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val x = Buffer(1,2,3,3)
+x: scala.collection.mutable.Buffer[Int] = ArrayBuffer(1, 2, 3, 3)
+
+scala&gt; x.toSet
+res0: scala.collection.immutable.Set[Int] = Set(1, 2, 3)
+</code></pre></div></div>
+
+<ul>
+  <li>리스트를 Set으로 전환할 때와 같이 중복을 제거해 준다.</li>
+  <li>버퍼와 리스트의 차이를 생각하면 위의 내용들은 당연하다. 리스트와 버퍼의 가장 큰 차이는 <strong>collection을 변경할 수 있냐 없냐</strong> 이다.</li>
+</ul>
+
+<h2 id="빌더">빌더</h2>
+
+<ul>
+  <li>버퍼의 가장 큰 문제는 너무 다양하게 쓰일 수 있다는 것이다</li>
+  <li><strong>Builder(빌더)</strong> : 버퍼를 단순화한 것, 해당 collection(꼭 버퍼일 필요는 없다)에 생성, 추가 연산만을 지원</li>
+  <li>빌더는 주로 후에 immutable collection으로 변경하는 연산을 위해서 단순 추가를 할 때 사용된다. 그 외의 경우에는 Buffer를 사용한다.</li>
+  <li>Collection의 빌더는 <em>newBuilder[타입]</em> 메소드를 통해서 생성된다. 결과를 보고 싶을 때는 <em>result</em> 메소드를 사용하면 된다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; x+=1
+res1: x.type = scala.collection.mutable.SetBuilder@52a3eef8
+
+scala&gt; x+=2
+res2: x.type = scala.collection.mutable.SetBuilder@52a3eef8
+
+scala&gt; x.result
+res4: scala.collection.immutable.Set[Int] = Set(1, 2)
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="배열">배열</h1>
+
+<ul>
+  <li><strong>Array(배열)</strong> : 고정된 크기를 가지고, 가변적(mutable)이며, 인덱스를 사용할 수 있는 collection(공식적으로는 collection이 아니고, 사용을 권유하지 않는다)</li>
+</ul>
+
+<h2 id="array-vs-arraybuffer">Array vs ArrayBuffer</h2>
+
+<ul>
+  <li>둘 다 mutable이다.</li>
+  <li>가장 큰 차이는 <strong>ArrayBuffer에 요소를 추가하면 크기가 늘어나지만 Array는 새로 만들어진다.</strong></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val a = collection.mutable.ArrayBuffer(1)
+a: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1)
+
+scala&gt; a+=2
+res13: a.type = ArrayBuffer(1, 2)
+
+scala&gt; a
+res14: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2)
+
+scala&gt; a+=(1,2,3)
+res15: a.type = ArrayBuffer(1, 2, 1, 2, 3)
+
+scala&gt; a.remove(1)
+res16: Int = 2
+
+scala&gt; a
+res17: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 1, 2, 3)
+</code></pre></div></div>
+
+<ul>
+  <li>ArrayBuffer는 크기가 변할 수 있기 때문에 위와 같이 사용할 수 있다.</li>
+  <li><em>remove</em> 메소드는 해당 index의 요소를 제거한다(0부터 시작)</li>
+  <li>Array를 만드는 방법은 다음과 같이 길이를 정해주거나, 길이를 알아서 판단하게 하거나 하는 두 가지이다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val a = Array(1,2)
+a: Array[Int] = Array(1, 2)
+
+scala&gt; val a = new Array[Int](10)
+a: Array[Int] = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+</code></pre></div></div>
+
+<ul>
+  <li>아래와 같이 타입 <em>Any</em>(부모 타입) 를 사용하여 다른 타입을 받을 수도 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val b = new Array[Any](2)
+b: Array[Any] = Array(null, null)
+
+scala&gt; b(0)=1
+
+scala&gt; b(1)="hi"
+
+scala&gt; b
+res23: Array[Any] = Array(1, hi)
+</code></pre></div></div>
+
+<ul>
+  <li>다차원 배열은 다음과 같이 만들 수 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val a = Array.ofDim[Int](2,3)
+a: Array[Array[Int]] = Array(Array(0, 0, 0), Array(0, 0, 0))
+
+scala&gt; a(0)(1)=3
+
+scala&gt; a
+res37: Array[Array[Int]] = Array(Array(0, 3, 0), Array(0, 0, 0))
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="시퀀스">시퀀스</h1>
+
+<ul>
+  <li><strong>Seq</strong> : 모든 시퀀스들의 루트 타입이다.</li>
+  <li><strong>Seq</strong> 밑에 <strong>IndexedSeq</strong> 와 <strong>LinearSeq</strong> 가 있다.</li>
+  <li><strong>IndexedSeq</strong> 밑에는 <strong>Vector</strong> 가 있다.</li>
+  <li><strong>LinearSeq</strong> 밑에는 <strong>List, Queue, Stack, Stream</strong> 등이 있다. 또한, 문자열을 나타내는 <strong>String</strong> 도 char로 이루어진 불변 collection이다.</li>
+</ul>
+
+<h2 id="vector">Vector</h2>
+
+<ul>
+  <li>벡터는 cpp의 vector와 비슷하다.</li>
+  <li>배열로 구현되어 있고 Random access가 가능하다(리스트는 i번째 요소에 접근하기 위해 처음부터 순회한다.).</li>
+  <li>Immutable 이다.</li>
+</ul>
+
+<h2 id="스트림">스트림</h2>
+
+<ul>
+  <li><strong>Stream</strong> 타입은 시작 요소들과 재귀 함수로 생성되는 lazy(지연) collection이다.</li>
+  <li>
+    <p>다른 collection들은 모든 데이터가 생성자 함수가 호출될 때 만들어지지만, 스트림은 각 요소에 처음 접근 할 때 생성된다.</p>
+  </li>
+  <li>스트림도 리스트와 같이 <em>head</em> 와 <em>tail</em> 로 구성된다. 리스트와의 차이점은 <em>tail</em> 자체가 collection이 아니라 가능성을 담아 놓는다.</li>
+  <li>스트림은 <em>Stream.cons</em> 를 이용하여 만들 수 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; def m(i : Int) : Stream[Int] = Stream.cons(i,m(i*2))
+m: (i: Int)Stream[Int]
+
+scala&gt; val s = m(2)
+s: Stream[Int] = Stream(2, ?)
+
+scala&gt; s.take(3).toList
+res3: List[Int] = List(2, 4, 8)
+
+scala&gt; s
+res4: Stream[Int] = Stream(2, 4, 8, ?)
+</code></pre></div></div>
+
+<ul>
+  <li>Stream에는 <strong>#::</strong> 라는 생성연산자가 존재한다. 리스트의 <strong>::</strong> 와 비슷하다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; def mul(head:Int) :Stream[Int] = head #:: mul(head*2)
+mul: (head: Int)Stream[Int]
+
+scala&gt; mul(1).take(3).toList
+res6: List[Int] = List(1, 2, 4)
+</code></pre></div></div>
+
+<ul>
+  <li>이를 이용하여 <strong>한정 스트림(bounded stream)</strong> 을 만들 수 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; def mulBelowSecond(head:Int,end:Int):Stream[Int] = head&lt;end match{
+     | case true =&gt; head #:: mulBelowSecond(head*2,end)
+     | case _ =&gt; Stream.empty
+     | }
+mulBelowSecond: (head: Int, end: Int)Stream[Int]
+
+scala&gt; mulBelowSecond(1,32).take(30).toList
+res8: List[Int] = List(1, 2, 4, 8, 16)
+
+</code></pre></div></div>
+
+<ul>
+  <li><em>Stream.emtpy</em> 는 이 collection의 종료를 나타낸다.</li>
+</ul>
+
+<h1 id="monadic-collection">Monadic collection</h1>
+
+<p>추후 추가 예정</p>
+:ET

@@ -1,0 +1,564 @@
+I"dI<ul>
+  <li>
+    <p>함수형 언어를 지향하는 스칼라에서도 <strong>클래스</strong> 는 존재한다.</p>
+  </li>
+  <li>
+    <p>클래스는 객체지향 언어의 핵심이다. <strong>상속</strong> 과 <strong>다형성</strong> 을 통해서 클래스를 확장하기도 하고, <strong>캡슐화</strong> 를 통해서 클래스의 정보를 숨기고, 한 곳에 필요한 것을 묶어 놓기도 한다. (<strong>추상화</strong> 는 여러 클래스를 묶는 것을 말한다. 소보로, 단팥빵을 빵이라는 추상클래스로 묶는 것을 말한다.)</p>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="클래스-기본">클래스 기본</h1>
+
+<ul>
+  <li>클래스는 기본적으로 <strong>멤버 필드</strong>(값, 변수), <strong>메소드</strong>(함수)를 가지고 있으며 다양한 방법으로 생성된다. 또한, 위에서 설명한 상속을 할 수도 있다.</li>
+</ul>
+
+<h2 id="클래스-생성">클래스 생성</h2>
+
+<p>클래스의 생성은 다음과 같이 사용할 수 있다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class food{
+     | val name : String = "pasta"
+     | def get_name():Unit = { println(s"it is ${name}")}
+     | }
+defined class food
+
+scala&gt; val pasta = new food
+pasta: food = food@70f148dc
+
+scala&gt; pasta.name
+res0: String = pasta
+
+scala&gt; pasta.get_name
+it is pasta
+
+scala&gt; val pasta2 = new food
+pasta2: food = food@fb5d334
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>각 인스턴스(클래스로 만들어진 객체)들은 <em>@</em> 뒤에 숫자가 오다. 이는 메모리 위치로 각 객체마다 다른 것을 알 수 있다.</p>
+  </li>
+  <li>
+    <p>cpp에서 생성자를 통해서 만들어 질 때 여러 멤버 필드를 정의했던 것을 기억할 것이다. 스칼라에서도 다음과 같이 사용할 수 있다.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class food(food_name : String){
+     | val name :String = food_name
+     | def get_name():Unit = { println(s"it is ${name}")}
+     | }
+defined class food
+
+scala&gt; val pizza = new food("pizza")
+pizza: food = food@33765d22
+
+scala&gt; val pasta = new food("pasta")
+pasta: food = food@7c9512c6
+
+scala&gt; pizza.get_name
+it is pizza
+
+scala&gt; pasta.get_name
+it is pasta
+</code></pre></div></div>
+
+<ul>
+  <li>모든 클래스는 <strong>AnyRef</strong> 의 자식 클래스이다. 그러므로 <strong>AnyRef</strong> 에 정의되어 있는 메소드들에 <strong>오버라이딩(덮어씌우기)</strong> 을 할 수 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class food(val food_name : String){
+     | def get_name():Unit = { println(s"it is ${name}")}
+     | override def toString = s"do you like ${name}"
+     | }
+defined class food
+
+scala&gt; val pasta = new food("pasta")
+pasta: food = do you like pasta
+
+scala&gt; println(pasta)
+do you like pasta
+</code></pre></div></div>
+
+<ul>
+  <li>생성할 때의 매개변수로 주어진 값은 그대로 멤버 변수로 사용된다.</li>
+</ul>
+
+<h2 id="여러-매개변수">여러 매개변수</h2>
+
+<ul>
+  <li>매개변수가 여러 가지 인 경우(val,var 둘 다 사용 가능)에는 다음과 같이 쓴다.</li>
+  <li>각 매개변수를 위치가 아닌 이름으로 입력할 수도 있고, 매개변수에 <em>default</em> 값을 저장할 수도 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class food(val name : String , var number : Int = 20){
+     | def use_one():Unit = {number-=1}
+     | }
+defined class food
+
+scala&gt; val chicken = new food(number=10,name="chicken")
+chicken: food = food@3e573440
+
+scala&gt; val pasta = new food("pasta")
+pasta: food = food@10bdcac9
+</code></pre></div></div>
+
+<ul>
+  <li>매개변수가 추가된 클래스를 상속 받는 과정은 다음과 같이 이루어진다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class pasta extends food(name="pasta"){
+     | override def toString() = s"this is ${name}"
+     | }
+defined class pasta
+
+scala&gt; val pas = new pasta
+pas: pasta = this is pasta
+
+scala&gt; println(pas)
+this is pasta
+</code></pre></div></div>
+
+<ul>
+  <li>클래스에도 타입 매개변수를 사용 할 수 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class myC[A](val info:A)
+defined class myC
+
+scala&gt; val x = new myC(10)
+x: myC[Int] = myC@5e0ef8db
+
+scala&gt; val y = new myC("hi")
+y: myC[String] = myC@1aebf638
+
+scala&gt; x.info
+res24: Int = 10
+
+scala&gt; y.info
+res25: String = hi
+</code></pre></div></div>
+
+<h2 id="collection에서-사용하기">Collection에서 사용하기</h2>
+
+<ul>
+  <li>스칼라를 사용하다보면 클래스를 collection에서 사용하는 경우가 많다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val foods = List(new food("pasta"),new food("ramen"),new food("meat ball pasta"))
+foods: List[food] = List(do you like pasta, do you like ramen, do you like meat ball pasta)
+
+scala&gt; foods(0)
+res7: food = do you like pasta
+
+scala&gt; foods(0).name
+res8: String = pasta
+
+scala&gt; foods map (_.name.size)
+res9: List[Int] = List(5, 5, 15)
+
+scala&gt; foods sortBy (_.name)
+res10: List[food] = List(do you like meat ball pasta, do you like pasta, do you like ramen)
+
+scala&gt; foods find (_.name contains "pasta")
+res11: Option[food] = Some(do you like pasta)
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="추상-클래스">추상 클래스</h1>
+
+<ul>
+  <li><strong>추상 클래스</strong> 는 인스턴스를 만드는 용도가 아닌 여러 다른 클래스를 묶기 위해 만들어졌다.</li>
+  <li>추상 클래스를 상속하여 다양한 클래스를 만들고, 각 클래스의 메소드를 부모 메소드 이름으로 사용하는 방식을 이용한다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; abstract class food{
+     | val name:String
+     | var number :Int
+     | def get_name():String
+     | }
+defined class food
+
+scala&gt; class pasta(val name:String="pasta",var number:Int=10) extends food{
+     | def get_name():String = name
+     | }
+defined class pasta
+
+scala&gt; val p = new pasta
+p: pasta = pasta@690ed13a
+
+scala&gt; p.get_name
+res0: String = pasta
+
+scala&gt; val tmp = new food()
+&lt;console&gt;:12: error: class food is abstract; cannot be instantiated
+       val tmp = new food()
+</code></pre></div></div>
+
+<ul>
+  <li>추상클래스는 당연하게도 혼자 인스턴스를 생성할 수 없다.</li>
+  <li>단지 자식클래스가 재정의할 수 있는 필드(변수와 값), 메소드들을 저장해 놓는 것이다.</li>
+</ul>
+
+<hr />
+
+<h1 id="익명-클래스">익명 클래스</h1>
+
+<ul>
+  <li>익명 함수는 이름이 없는 함수로, 일시적으로 만들어서 사용하고 버리는 것</li>
+  <li>익명 클래스도 비슷하다. 이름이 없는 클래스이며, 일시적으로 인스턴스를 만들기 위해 정의하고 버리는 것이다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val x = new{
+     | val x =12
+     | def printing():Unit = {println(x)}
+     | }
+
+scala&gt; x.printing
+12
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="그-외의-필드--메소드">그 외의 필드 &amp; 메소드</h1>
+
+<h2 id="오버로드">오버로드</h2>
+
+<ul>
+  <li><strong>오버로드(중복 정의, overload)</strong> : 같은 메소드를 여러 형태로 정의하는 것이다.(일종의 다형성)</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class x{
+     | def printing(y:Int)={println(y)}
+     | def printing(s:String)={println(s+" is string")}
+     | }
+defined class x
+
+scala&gt; val y = new x
+y: x = x@326706d
+
+scala&gt; y printing 12
+12
+
+scala&gt; y printing "hi"
+hi is string
+</code></pre></div></div>
+
+<h2 id="apply">apply</h2>
+
+<ul>
+  <li><em>apply</em> 메소드는 기본 메소드라고 불리우며 이름 없이 호출될 수 있다.</li>
+  <li>어떤 메소드 이름을 호출하지 않고 <em>인스턴스(값)</em> 의 형태로 호출된다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class x(val y : Int){
+     | def apply(k:Int)={y*k}
+     | }
+defined class x
+
+scala&gt; val m = new x(5)
+m: x = x@73e1ecd0
+
+scala&gt; m.apply(10)
+res0: Int = 50
+
+scala&gt; m(10)
+res1: Int = 50
+</code></pre></div></div>
+
+<ul>
+  <li>리스트를 공부할 때 이 <em>apply</em> 를 사용한 적이 있다. <em>apply</em> 를 통해서 해당 index의 값에 접근하였다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val x = List(4,5,1,7,8)
+x: List[Int] = List(4, 5, 1, 7, 8)
+
+scala&gt; x.apply(3)
+res2: Int = 7
+
+scala&gt; x(3)
+res3: Int = 7
+</code></pre></div></div>
+
+<h2 id="지연값">지연값</h2>
+
+<ul>
+  <li>지연값은 그 자체에 접근할 때 초기화 된다(다른 필드들은 인스턴스화 될 때 초기화 되었다)</li>
+  <li>변수 앞에 <em>lazy</em> 를 붙여서 정의한다</li>
+  <li>이 방법을 이용하면 속도와 메모리에 민감한 연산 수행시 불필요한 것들을 줄일 수 있다.</li>
+</ul>
+
+<hr />
+
+<h1 id="package">Package</h1>
+
+<ul>
+  <li><strong>패키지</strong> 는 스칼라 코드를 묶는 것이라고 보면 된다(cpp의 네임스페이스 같은 것이 아닐까?).</li>
+  <li>
+    <p>점으로 구분된 경로를 사용하여 디렉토리별로 정리를 할 수 있게 해주며 스칼라 소스 파일 맨 위에 <em>package</em> 키워들 사용하여 그 파일의 모든 클래스가 그 패키지에 포함됨을 알려준다.</p>
+  </li>
+  <li>스칼라 소스파일은 그 패키지와 일치하는 디렉토리에 저장되어야 한다.</li>
+  <li><strong>a.b.c</strong> 라는 패키지의 <strong>D</strong> 라는 클래스는 <strong>/a/b/c/D.scala</strong> 에 저장되어야 한다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\Users\ih730\Desktop\sca&gt;mkdir src/a/b
+
+&lt;--- 작성---&gt;
+
+C:\Users\ih730\Desktop\sca&gt;scalac src/a/b/c.scala
+
+C:\Users\ih730\Desktop\sca&gt;ls a/b/
+x.class
+
+C:\Users\ih730\Desktop\sca&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><em>scalac</em> 를 통해서 소스를 컴파일 하면 <em>클래스이름.class</em> 라는 파일이 생성되는 것을 볼 수 있다.</li>
+  <li><em>src</em> 디렉토리는 소스 파일과 다른 파일들을 구분하기 위해 만든 디렉토리이다. 우리가 <em>package a.b</em> 라고 하였기 때문에 <em>a/b/클래스이름.class</em> 라는 형태로 현재 위치에 생성을 한 것을 볼 수 있다.</li>
+</ul>
+
+<h2 id="접근">접근</h2>
+
+<ul>
+  <li>패키징된 클래스에 접근하는 방법은 두 가지이다.(우리가 익히 써온 방식이다)</li>
+</ul>
+
+<ol>
+  <li><em>패키지.클래스</em> 형태로 직접 사용</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val y = new a.b.x
+y: a.b.x = a.b.x@738a5848
+
+scala&gt; y.printing
+hi
+</code></pre></div></div>
+
+<ol>
+  <li><em>import 패키징.클래스</em> 형태로 현재 네임스페이스에 클래스를 임포트하고 사용</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; import a.b.x
+import a.b.x
+
+scala&gt; val y = new x
+y: a.b.x = a.b.x@61dd1c3d
+
+scala&gt; y.printing
+hi
+</code></pre></div></div>
+
+<ul>
+  <li>임포트 문장은 반환하는 값이 없는 표현식으로 어느 곳에서나 쉽게 사용할 수 있다. 이 방식을 사용하면 제한된 범위에서 클래스를 사용하고, 다른 범위에서는 같은 이름의 다른 클래스를 사용하면서 중복되면서 생기는 문제를 피할 수도 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; val y = {import a.b.x
+     | new x}
+y: a.b.x = a.b.x@45539bd8
+
+scala&gt; val k =new x
+&lt;console&gt;:11: error: not found: type x
+       val k =new x
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>위의 코드는 y를 만드는 표현식에서 임포트를 하는 것이다. 이렇게 되면 그 표현식이 끝나는 곳에서 임포트한 결과는 사라져서 아래의 <em>new x</em> 가 에러가 나게 된다.</p>
+  </li>
+  <li>
+    <p>만약 해당 패키지의 전체 클래스를 임포트하고 싶으면 <em>_</em> 를 사용하면 된다.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; import a.b._
+import a.b._
+</code></pre></div></div>
+
+<h5 id="참고">참고</h5>
+
+<ul>
+  <li>
+    <p>스칼라는 <em>scala._</em> 와 <em>java.lang._</em> 을 자동으로 임포트한다. 그래서 <em>scala.collection.mutable</em> 의 형태가 아닌 <em>collection.mutable</em> 의 형태로 접근 가능한 것이다.</p>
+  </li>
+  <li>
+    <p>파이썬에서 임포트를 할 때, 전체가 아닌 부분만 임포트하기도 하고 임포트한 것에 별명을 지정하기도 한다. 스칼라도 이를 지원한다.</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; import collection.mutable.{ArrayBuffer,Queue =&gt; q}
+import collection.mutable.{ArrayBuffer, Queue=&gt;q}
+
+scala&gt; val x = new q
+x: scala.collection.mutable.Queue[Nothing] = Queue()
+</code></pre></div></div>
+
+<ul>
+  <li>둘 이상의 클래스를 임포트 하고 싶으면 <em>{클래스1, 클래스2, …}</em> 와 같이 하면 되고, 별명을 지정하고 싶으면 <em>클래스 =&gt; 별명</em> 으로 지정하면 된다.</li>
+</ul>
+
+<hr />
+
+<h1 id="privacy-제어">Privacy 제어</h1>
+
+<ul>
+  <li>캡슐화(은닉화 포함)를 위해서 cpp에서는 클래스에 <em>private</em>, <em>public</em> 등을 붙여서 사용하였다</li>
+</ul>
+
+<h2 id="protected--private">protected &amp;&amp; private</h2>
+
+<ul>
+  <li><em>protected</em> 는 해당 필드와 메소드를 같은 클래스 혹은 그 클래스를 상속받은 자식 클래스들에서만 접근할 수 있도록 만드는 것이다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class a{protected val x = 12}
+defined class a
+
+scala&gt; class b extends a{ def printing()={println(x)}}
+defined class b
+
+scala&gt; val k = new b
+k: b = b@190cc39e
+
+scala&gt; val kk = new a
+kk: a = a@54b313d6
+
+scala&gt; k.printing
+12
+
+scala&gt; kk.x
+&lt;console&gt;:17: error: value x in class a cannot be accessed in a
+ Access to protected value x not permitted because
+ enclosing object $iw is not a subclass of
+ class a where target is defined
+       kk.x
+</code></pre></div></div>
+
+<ul>
+  <li><em>private</em> 은 해당 클래스에서만 접근 가능하다.</li>
+</ul>
+
+<!--
+접근 변경자
+-----------
+===================추후 추가 예졍=======
+final class & sealed class
+--------------------------
+-->
+
+<h2 id="다형성">다형성</h2>
+
+<ul>
+  <li>다형성은 객체가 다양한 형태를 가질 수 있는 성질을 나타낸다.</li>
+  <li>오버로딩을 통해서 메소드를 다양하게 만들 수도 있고, 자바에서처럼 자식 클래스의 인스턴스가 부모 클래스의 타입을 띌 수 있게 하기도 한다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class A
+defined class A
+
+scala&gt; class B extends A
+defined class B
+
+scala&gt; val a : A = new B
+a: A = B@3449a463
+
+scala&gt; val b : B =new A
+&lt;console&gt;:13: error: type mismatch;
+ found   : A
+ required: B
+       val b : B =new A
+</code></pre></div></div>
+
+<ul>
+  <li><em>A</em> 라는 부모 클래스의 타입을 가지는 값 <em>a</em> 에 자식 클래스 <em>B</em> 의 인스턴스를 넣는 것은 가능하지만, 그 반대는 불가능하다.</li>
+</ul>
+
+<h4 id="클래스-다형성을-쓰는-이유">클래스 다형성을 쓰는 이유</h4>
+
+<ul>
+  <li><em>오버로딩</em> 중 하나인 <strong>python</strong> 의 <em>print</em> 함수를 생각해보자. <em>print(1)</em> 을 하던 <em>print(“hi”)</em> 를 하던 둘 다 아무 문제 없이 출력을 한다. 하나의 함수 이름을 가지고 쉽게 다양한 타입에 사용할 수 있는 것이다.</li>
+  <li>스칼라에서도 비슷한 생각을 할 수 있다.</li>
+  <li>어떤 함수에 비슷한 클래스를 넣어서 사용하고 싶을 때가 있다. 그러나 아무 타입이나 받을 수는 없으니 하나의 클래스로 묶고 그 부모 클래스만 받도록 할 수 도 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class food{
+     | def s() ="hi"
+     | }
+defined class food
+
+scala&gt; class pasta extends food{
+     | override def s()="hello"
+     | def x()="good"
+     | }
+defined class pasta
+
+scala&gt; val inst : food = new pasta
+inst: food = pasta@2d8d2832
+
+scala&gt; class pizza extends food{
+     | override def s()="good to see you"
+     | }
+defined class pizza
+
+scala&gt; val piz= new pizza
+piz: pizza = pizza@2d5edbad
+
+scala&gt; def printing(y : food)={
+     | println(y.s)
+     | }
+printing: (y: food)Unit
+
+scala&gt; printing(piz)
+good to see you
+
+scala&gt; printing(inst)
+hello
+
+scala&gt; inst.x
+&lt;console&gt;:13: error: value x is not a member of food
+       inst.x
+</code></pre></div></div>
+
+<ul>
+  <li>어떤 함수에서 <em>food</em> 의 자식 클래스들을 동시에 쓰고 싶으면 위와 같이 하면 된다.</li>
+  <li>여기서 신경써야 할 것은 객체의 타입이 부모클래스이므로 자식 클래스에만 정의되어 있는 멤버에는 접근할 수 없다.</li>
+</ul>
+
+<h2 id="상속">상속</h2>
+
+<ul>
+  <li>상속은 <em>자식클래스 extends 부모클래스</em> 를 통해서 이루어지며, 상속받은 메소드 중 일부는 <em>override</em> 를 통해서 재정의 될 수 있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scala&gt; class A{
+     | val s = "this is A"
+     | def get_s():String = s
+     | }
+defined class A
+
+scala&gt; class B extends A{
+     | override def get_s():String = "this is B from "+super.get_s
+     | }
+defined class B
+
+scala&gt; val a = new A
+a: A = A@2d7c93e0
+
+scala&gt; println(a.get_s)
+this is A
+
+scala&gt; val b = new B
+b: B = B@7c698549
+
+scala&gt; println(b.get_s)
+this is B from this is A
+</code></pre></div></div>
+
+<ul>
+  <li><em>super</em> 는 부모 클래스를 의미한다.</li>
+</ul>
+:ET

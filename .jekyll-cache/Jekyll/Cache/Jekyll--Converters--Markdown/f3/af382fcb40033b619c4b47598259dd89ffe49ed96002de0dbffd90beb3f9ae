@@ -1,0 +1,56 @@
+I"U<p><a href="https://www.acmicpc.net/problem/1753">백준 1753번 문제</a></p>
+
+<p>방향 그래프가 주어진 경우에 주어진 정점에서 다른 모든점으로의 최단경로를 구하는 문제이다.</p>
+
+<p>간단하게 <em>dijkstra algorithm</em> 을 사용하면 된다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+#define INF 30000*20
+using namespace std;
+
+
+class edge {
+public:
+	int to;
+	int value;
+	edge(int t,int v):to(t),value(v){}
+};
+int key[20001];
+struct comp {
+	bool operator()(int a, int b) {
+		return key[a] &gt; key[b];
+	}
+};
+int v, e,start;
+vector&lt;vector&lt;edge&gt; &gt; edges;
+priority_queue&lt;int,vector&lt;int&gt;,comp&gt; pq;
+
+int main() {
+	cin &gt;&gt; v &gt;&gt; e;
+	cin &gt;&gt; start;
+	for (int i = 0; i &lt;= v; ++i) {
+		edges.push_back(vector&lt;edge&gt;());
+		key[i] = INF;
+	}
+
+	while (e-- &gt; 0) {
+		int from, to, weight;
+        scanf("%d %d %d",&amp;from,&amp;to,&amp;weight);
+		edges.at(from).push_back(edge(to, weight));
+	}
+	key[start] = 0;
+	pq.push(start);
+	while (!pq.empty()) {
+		int now = pq.top();
+		pq.pop();
+		for (edge adj : edges.at(now)) {
+			if (key[adj.to] &gt; key[now] + adj.value) {
+				key[adj.to] = key[now] + adj.value;
+				pq.push(adj.to);
+			}
+		}
+	}
+</code></pre></div></div>
+:ET
