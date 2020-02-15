@@ -1,7 +1,7 @@
 name: 21lva's blog
 rooturl: https://21lva.github.io/
 url: https://21lva.github.io/
-description: Something I have studied.
+description: Something I have studied. Almost Every book is written in Korean.
 
 permalink: /:year/:month/:day/:title/
 paginate: 10
