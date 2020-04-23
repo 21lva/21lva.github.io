@@ -1,0 +1,136 @@
+I"I!<h1 id="프로그램-오류">프로그램 오류</h1>
+
+<ol>
+  <li>컴파일 에러 : 컴파일 시에 발생하는 에러</li>
+  <li>런타임 에러 : 실행 시에 발생하는 에러
+    <ul>
+      <li>에러(error) : 프로그램 코드에서 수습될 수 없은 오류. ex) StackOverflowError, OutOfMemoryError</li>
+      <li>예외(exception) : 프로그램 코드에서 수습될 수 있는 오류. ex) NullPointerException</li>
+    </ul>
+  </li>
+  <li>논리적 에러 : 실행은 되지만, 의도와 다르게 동작하는 것</li>
+</ol>
+
+<hr />
+
+<h1 id="계층-구조">계층 구조</h1>
+
+<ul>
+  <li>자바에서는 실행 시 발생할 수 있는 오류를 클래스로 정의</li>
+</ul>
+
+<p><img src="/post_img/java_exception.md/exception_hierachy" alt="예외 계층도" /></p>
+
+<ul>
+  <li><strong>Exception</strong> 클래스는 크게 <strong>RuntimeException</strong> 와 아닌 것들로 나뉜다</li>
+  <li><strong>RuntimeException</strong> : 프로그래머의 실수에 의해서 발생할 수 있는 예외들</li>
+  <li><strong>Exception</strong> : 외부 영향으로 발생할 수 있는 오류. 사용자의 실수 등</li>
+</ul>
+
+<hr />
+
+<h1 id="예외-처리하기">예외 처리하기</h1>
+
+<ul>
+  <li>예외 처리 : 프로그램 실행시 발생할 수 있는 예외에 대비한 코드를 작성. 비정상적 종료를 막고 정상적인 실행을 보장. <strong>try-catch</strong> 사용</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="o">{</span>
+  <span class="c1">//예외가 발생할 수 있는 코드</span>
+<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception1</span> <span class="n">e1</span><span class="o">){</span>
+  <span class="c1">//Exception1에 대한 처리 코드</span>
+<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception2</span> <span class="n">e2</span><span class="o">){</span>
+  <span class="c1">//Exception2에 대한 처리 코드</span>
+<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception3</span> <span class="n">e3</span><span class="o">|</span> <span class="nc">Exception4</span> <span class="n">e4</span><span class="o">){</span>
+  <span class="c1">//Exception3과 Exception4에 대한 처리 코드</span>
+<span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+  <span class="c1">//예외 발생 여부와 상관없이 실행되어야 하는 코드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="예외-발생시키기">예외 발생시키기</h1>
+
+<h2 id="throw">throw</h2>
+
+<ul>
+  <li>예외를 발생시키려면 다음의 과정을 거친다
+    <ol>
+      <li>new를 이용하여 해당하는 예외 클래스를 생성한다</li>
+      <li><strong>throw</strong> 를 통해서 예외를 발생시킨다</li>
+    </ol>
+  </li>
+  <li>물론, 1과 2를 동시에 할 수도 있다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span><span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">b</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArithmeticException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">func</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">);</span>
+      <span class="n">func</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>자기만의 예외 클래스를 생성하고자 하면 <strong>Exception</strong> 클래스를 상속 받는다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">myException</span> <span class="kd">extends</span> <span class="nc">Exception</span><span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="throws">throws</h2>
+
+<ul>
+  <li>메서드에서 발생하는 예외를 다루려면 선언부에 <strong>throws</strong> 를 이용</li>
+  <li>보통 <strong>RuntimeException</strong> 이 아닌 예외들을 선언한다.</li>
+  <li>예외를 위로 메서드 내부에서 처리하지 않고 상위 메서드에서 처리하도록 미루는 방법</li>
+  <li>상위로 올라가다가 <strong>main</strong> 에서도 예외를 처리하지 않으면 프로그램이 종료됨</li>
+  <li>상속후 오버라이딩할 때에는 부모 메서드의 예외보다 많은 예외를 적용할 수 없다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">fun</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception1</span><span class="o">,</span> <span class="nc">Exception2</span><span class="o">{</span>
+  <span class="c1">//메서드 구현부</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>  
+  <span class="k">try</span><span class="o">{</span>
+    <span class="n">fun</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span><span class="c1">//1번 fun</span>
+    <span class="n">fun</span><span class="o">(</span><span class="mi">12</span><span class="o">);</span><span class="c1">//2번 fun</span>
+  <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception1</span> <span class="n">e1</span><span class="o">|</span><span class="nc">Exception2</span> <span class="n">e2</span><span class="o">){</span>
+    <span class="c1">//예외 처리  </span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>상위 메서드인 main에서 예외를 처리하면 1번 함수에서 예외가 발생한 경우에는 2번은 동작하지 않는다.</li>
+  <li>fun메서드에서 예외를 처리하게 하면 1번에서 오류가 나도 2번이 진행된다</li>
+</ul>
+
+<h2 id="예외-되던지기re-throwing">예외 되던지기(re-throwing)</h2>
+
+<ul>
+  <li>일부 예외는 메서드 자체에서 처리하고, 일부는 그 메서드를 호출한 메서드에서 처리하도록 하는 방법</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+  <span class="k">try</span><span class="o">{</span>
+    <span class="c1">//코드</span>
+  <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+    <span class="c1">//일부 처리</span>
+    <span class="k">throw</span> <span class="n">e</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<!--
+연결된 예외 처리
+-->
+:ET

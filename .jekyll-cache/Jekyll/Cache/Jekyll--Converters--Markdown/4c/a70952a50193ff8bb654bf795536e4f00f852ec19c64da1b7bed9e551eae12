@@ -1,0 +1,142 @@
+I"�%<h1 id="annotation을-이용한-설정">Annotation을 이용한 설정</h1>
+
+<ul>
+  <li>XML 대신 java파일로 설정파일을 만든다</li>
+</ul>
+
+<h2 id="작성">작성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
+
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanConfig</span><span class="o">{</span>
+
+  <span class="c1">//&lt;bean id="apple" class="pkg1.Apple"/&gt;</span>
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="nc">Apple</span> <span class="nf">apple</span><span class="o">(){</span>
+    <span class="c1">//return type : class</span>
+    <span class="c1">//method name : id</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Apple</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="c1">//init-method 사용의 경우</span>
+  <span class="nd">@Bean</span><span class="o">(</span><span class="n">initMethod</span><span class="o">=</span><span class="s">"init"</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="nc">Apple</span> <span class="nf">apple</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Apple</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="c1">//특정 생성자를 사용하는 경우</span>
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="nc">Apple</span> <span class="nf">apple</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Apple</span><span class="o">(</span><span class="n">color</span><span class="o">());</span>
+  <span class="o">}</span>
+
+  <span class="c1">//property 있는 bean</span>
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="nc">Apple</span> <span class="nf">apple</span><span class="o">(){</span>
+    <span class="nc">Apple</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Apple</span><span class="o">();</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="s">"Blue"</span><span class="o">);</span>
+    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">makers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+    <span class="n">makes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Harry"</span><span class="o">);</span>
+    <span class="n">makes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Bob"</span><span class="o">);</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">setMakers</span><span class="o">(</span><span class="n">makers</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="사용">사용</h2>
+
+<ul>
+  <li>xml 설정파일을 사용하는 부분에 다음과 같이 적는다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml")</span>
+
+<span class="nc">AnnotationConfigApplicationContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AnnotationConfigApplicationContext</span><span class="o">(</span><span class="nc">BeanConfig</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="설정-파일-분리">설정 파일 분리</h2>
+
+<ul>
+  <li>다음의 파일을 분리해보자</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
+
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanConfig</span><span class="o">{</span>
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="nc">Color</span> <span class="nf">color</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Color</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="nc">Apple</span> <span class="nf">apple</span><span class="o">(){</span>
+    <span class="nc">Apple</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Apple</span><span class="o">();</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">setMakers</span><span class="o">(</span><span class="n">color</span><span class="o">());</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>1번 파일</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
+
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ColorConfig</span><span class="o">{</span>
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="nc">Color</span> <span class="nf">color</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Color</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>2번 파일
+    <ul>
+      <li>하나의 컨테이너에 모든 객체를 자동으로 주입하기 때문에 <strong>@Autowired</strong> 를 통해서 import 하지 않은 Bean을 사용할 수 있다</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
+
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppleConfig</span><span class="o">{</span>
+  <span class="nd">@Autowired</span>
+  <span class="nc">Color</span> <span class="n">color</span><span class="o">;</span>
+
+  <span class="nd">@Bean</span>
+  <span class="kd">public</span> <span class="nc">Apple</span> <span class="nf">apple</span><span class="o">(){</span>
+    <span class="nc">Apple</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Apple</span><span class="o">();</span>
+    <span class="n">ret</span><span class="o">.</span><span class="na">setMakers</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사용</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">AnnotationConfigApplicationContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AnnotationConfigApplicationContext</span><span class="o">(</span><span class="nc">AppleConfig</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="nc">ColorConfig</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="import">@Import</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
+
+<span class="nd">@Configuration</span>
+<span class="nd">@Import</span><span class="o">({</span><span class="nc">AppleConfig</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="nc">ColorConfig</span><span class="o">.</span><span class="na">class</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberConfig</span><span class="o">{</span>
+  <span class="c1">//생략</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">AnnotationConfigApplicationContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AnnotationConfigApplicationContext</span><span class="o">(</span><span class="nc">MemberConfig</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+:ET

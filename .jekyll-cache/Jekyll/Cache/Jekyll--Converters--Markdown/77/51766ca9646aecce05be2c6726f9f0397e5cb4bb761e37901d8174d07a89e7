@@ -1,0 +1,344 @@
+I"��<h1 id="jdbc">JDBC</h1>
+
+<ul>
+  <li>JAVA에서 DB를 사용하기 위한 인터페이스. RDBMS에 접근하고 SQL문을 실행하는 방법을 제공</li>
+  <li><strong>java.sql</strong> 에 구현되어 있음. 여러 DB에 이 API를 사용하여 접근</li>
+  <li>
+    <p>이클립스를 사용한다면 등록해야 함</p>
+  </li>
+  <li>JDBC 사용순서
+    <ol>
+      <li>import java.sql.* ;</li>
+      <li>드라이버 load</li>
+      <li><strong>Connection</strong> 객체를 이용하여 DB와 연결</li>
+      <li><strong>Statement</strong> 객체를 이용하여 query 수행(;는 빼고 쓴다)</li>
+      <li><strong>ResultSet</strong> 객체를 생성하여 query 결과 저장</li>
+      <li>후 처리하고 JDBC연결을 끊기 위하여 <strong>close()</strong> 메서드 실행</li>
+    </ol>
+  </li>
+</ul>
+
+<h4 id="select">SELECT</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SelectTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">try</span><span class="o">{</span>
+            <span class="c1">//드라이버 로드</span>
+            <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.jdbc.Driver"</span><span class="o">);</span>
+
+            <span class="c1">//연결</span>
+            <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost/dev"</span><span class="o">;</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="s">"id"</span><span class="o">,</span> <span class="s">"passwd"</span><span class="o">);</span>
+
+            <span class="c1">// Statement 객체 생성</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+
+            <span class="c1">//쿼리 수행</span>
+            <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"SELECT name, owner, date_format(birth, '%Y년%m월%d일' date FROM pet"</span><span class="o">;</span>
+            <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+            <span class="c1">//실행결과 출력하기</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+                <span class="c1">// 레코드의 칼럼은 배열과 달리 0부터 시작하지 않고 1부터 시작</span>
+                <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">owner</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">owner</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">date</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span> <span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Fail : loading a driver"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span> <span class="nc">SQLException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Error : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">finally</span><span class="o">{</span>
+            <span class="k">try</span><span class="o">{</span>
+              <span class="c1">//역순으로</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">stmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">stmt</span><span class="o">.</span><span class="na">isClosed</span><span class="o">()){</span>
+                    <span class="n">stmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">conn</span><span class="o">.</span><span class="na">isClosed</span><span class="o">()){</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">rs</span><span class="o">.</span><span class="na">isClosed</span><span class="o">()){</span>
+                    <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">catch</span><span class="o">(</span> <span class="nc">SQLException</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="insert">INSERT</h4>
+
+<ul>
+  <li>동적으로 할당하는 값이 있는 query(insert, update ,delete)등은 <strong>prepareStatement()</strong> 를 이용한다
+    <ul>
+      <li>prepareStatement는 <strong>PreparedStatement</strong> 객체를 반환하고, 이 객체의 <strong>setString()</strong>, <strong>setInt()</strong> 등의 메서드를 이용하여 동적으로 값을 할당</li>
+      <li>할당 후 <strong>executeUpdate()</strong> 메서드를 호출하여 query 수행. 반환 값은 영향을 받은 row의 수</li>
+      <li>결과를 얻고자 하면(select에 사용한 경우), <strong>executeQuery()</strong> 를 수행한다. 반환 값은 해당 row들</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InsertTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// pet 테이블에는 이름/소유자/종/성별/출생일 칼럼이 있습니다.</span>
+        <span class="n">insert</span><span class="o">(</span><span class="s">"봄이"</span><span class="o">,</span> <span class="s">"victolee"</span><span class="o">,</span> <span class="s">"페르시안"</span><span class="o">,</span> <span class="s">"m"</span><span class="o">,</span> <span class="s">"2010-08-21"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">owner</span><span class="o">,</span> <span class="nc">String</span> <span class="n">species</span><span class="o">,</span>
+                              <span class="nc">String</span> <span class="n">gender</span><span class="o">,</span> <span class="nc">String</span> <span class="n">birth</span><span class="o">,</span> <span class="nc">String</span> <span class="n">death</span><span class="o">){</span>
+        <span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">try</span><span class="o">{</span>
+            <span class="c1">//드라이버 로드</span>
+            <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.jdbc.Driver"</span><span class="o">);</span>
+
+            <span class="c1">//연결하기</span>
+            <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost/dev"</span><span class="o">;</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="s">"dev"</span><span class="o">,</span> <span class="s">"dev"</span><span class="o">);</span>
+
+
+            <span class="c1">//SQL</span>
+            <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"INSERT INTO pet VALUES (?,?,?,?,?,?)"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+            <span class="c1">//?에 순서대로 들어간다 0이 아닌 1부터 시작</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">owner</span><span class="o">);</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">species</span><span class="o">);</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">gender</span><span class="o">);</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">birth</span><span class="o">);</span>
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="n">death</span><span class="o">);</span>
+
+
+            <span class="c1">//쿼리 수행</span>
+            <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span> <span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Fail : loading a driver"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span> <span class="nc">SQLException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Error : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">finally</span><span class="o">{</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">pstmt</span><span class="o">.</span><span class="na">isClosed</span><span class="o">()){</span>
+                    <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">conn</span><span class="o">.</span><span class="na">isClosed</span><span class="o">()){</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">catch</span><span class="o">(</span> <span class="nc">SQLException</span> <span class="n">e</span><span class="o">){</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="dao--dto">DAO &amp; DTO</h1>
+
+<h2 id="dao">DAO</h2>
+<ul>
+  <li>DAO(Data Access Object)</li>
+  <li>DB질의를 통해 데이터에 접근하는 객체.</li>
+  <li>DB한 테이블에 하나의 <strong>DAO 클래스</strong> 를 만들어 두면 유지보수가 편해짐</li>
+  <li>CRUD 지원(inset, select, update, delete)</li>
+  <li>MVC의 Model</li>
+</ul>
+
+<h2 id="dto">DTO</h2>
+<ul>
+  <li>DTO(Data Transfer Object)</li>
+  <li>계층(layer)간 데이터 교환을 위한 javaBeans</li>
+  <li>DB의 한 테이블에 존재하는 column들을 멤버 변수로 작성하여 레코드를 java객체로 다룸</li>
+  <li>순수한 데이터 객체로 메서드는 <strong>getter, setter</strong> 만을 가진다</li>
+  <li>VO : DTO와 같은 개념이지만 READ-ONLY이다</li>
+</ul>
+
+<h2 id="예제">예제</h2>
+
+<ul>
+  <li>UserDTO 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDTO</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">UserDTO</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">){</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">=</span><span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>UserDAO 클래스</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDAO</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Connection</span> <span class="nf">getConnection</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.mysql.jdbc.Driver"</span><span class="o">);</span>
+            <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"jdbc:mysql://localhost/test"</span><span class="o">;</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="s">"id"</span><span class="o">,</span> <span class="s">"passwd"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Fail : loading a driver"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">conn</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">insert</span><span class="o">(</span><span class="nc">UserDTO</span> <span class="n">dto</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="n">getConnection</span><span class="o">();</span>
+
+            <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"INSERT INTO user VALUES (null, ?, ?, ?);"</span><span class="o">;</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+            <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+            <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">finally</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span><span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">catch</span><span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">UserDTO</span><span class="o">&gt;</span> <span class="nf">select</span><span class="o">(</span><span class="nc">UserDTO</span> <span class="n">dto</span><span class="o">){</span>
+      <span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+      <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+      <span class="nc">ResultSet</span> <span class="n">rSet</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+      <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">UserDTO</span><span class="o">&gt;</span> <span class="n">retList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">UserDTO</span><span class="o">&gt;();</span>  
+
+      <span class="k">try</span> <span class="o">{</span>
+          <span class="n">conn</span> <span class="o">=</span> <span class="n">getConnection</span><span class="o">();</span>
+
+          <span class="nc">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">"SELECT * from user where name=?"</span><span class="o">;</span>
+          <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">sql</span><span class="o">);</span>
+
+          <span class="n">pstmt</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">dto</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+          <span class="n">rSet</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+          <span class="k">while</span><span class="o">(</span><span class="n">rSet</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+            <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span><span class="n">rSet</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+            <span class="nc">UserDTO</span> <span class="n">record</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UserDTO</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+            <span class="n">retList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">record</span><span class="o">);</span>
+          <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="k">finally</span> <span class="o">{</span>
+          <span class="k">try</span> <span class="o">{</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">rSet</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span><span class="n">rSEt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">pstmt</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span><span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">conn</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span><span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+          <span class="o">}</span>
+          <span class="k">catch</span><span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+          <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="k">return</span> <span class="n">retList</span><span class="o">.</span><span class="na">isEmtpy</span><span class="o">()?</span><span class="kc">null</span><span class="o">:</span><span class="n">retList</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>servlet</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/add"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+
+        <span class="nc">UserDTO</span> <span class="n">dto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UserDTO</span><span class="o">();</span>
+        <span class="n">vo</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+
+        <span class="nc">UserDAO</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UserDAO</span><span class="o">();</span>
+        <span class="n">dao</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">UserDTO</span><span class="o">&gt;</span> <span class="n">recordList</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">select</span><span class="o">(</span><span class="n">dto</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"recordList"</span><span class="o">,</span><span class="n">recordList</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="s">"newUrl"</span><span class="o">).</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="n">doGet</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/51608047/sending-data-from-servlet-to-jsp">How to pass data from a Servelt to a jsp</a>
+    <ol>
+      <li>getRequestDispatcher 사용</li>
+      <li>session 사용</li>
+    </ol>
+  </li>
+  <li>response.sendRedirect vs request.getRequestDispatcher
+    <ul>
+      <li>sendRedirect : HTTP 헤더에 리다이렉트 정보를 담아 보냄. 브라우저가 URL로 리다이렉트. sendRedirect 이후에도 서버는 동작함(그러므로 return 시켜주자). 경로는 절대 경로를 사용함. request, response 객체가 새로 생긴다</li>
+      <li>getRequestDispather: web container가 페이지 이동을 시키기 때문에 브라우저는 알 수 없음(브라우저의 URL 변화 없음). 이후의 코드가 무시. request, response 객체 재사용 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="참고자료">참고자료</h1>
+
+<ul>
+  <li><a href="https://victorydntmd.tistory.com/145">https://victorydntmd.tistory.com/145</a></li>
+  <li><a href="https://rwd337.tistory.com/21">https://rwd337.tistory.com/21</a></li>
+  <li><a href="https://victorydntmd.tistory.com/149">https://victorydntmd.tistory.com/149</a></li>
+</ul>
+:ET

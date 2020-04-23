@@ -1,0 +1,840 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Nodejs · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="nodejs_http.html" />
+    
+    
+    <link rel="prev" href="../js/jquery_async.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../js/js_basic.html">
+            
+                <a href="../js/js_basic.html">
+            
+                    
+                    Javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../js/js_object.html">
+            
+                <a href="../js/js_object.html">
+            
+                    
+                    객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../js/js_array.html">
+            
+                <a href="../js/js_array.html">
+            
+                    
+                    배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../js/js_event.html">
+            
+                <a href="../js/js_event.html">
+            
+                    
+                    이벤트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../js/js_promise.html">
+            
+                <a href="../js/js_promise.html">
+            
+                    
+                    Promise, async & await
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../js/js_module.html">
+            
+                <a href="../js/js_module.html">
+            
+                    
+                    모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../js/js_wd.html">
+            
+                <a href="../js/js_wd.html">
+            
+                    
+                    Window & BOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../js/js_dom.html">
+            
+                <a href="../js/js_dom.html">
+            
+                    
+                    DOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../js/jquery_select.html">
+            
+                <a href="../js/jquery_select.html">
+            
+                    
+                    JQuery : 선택 & 객체 & 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../js/jquery_event.html">
+            
+                <a href="../js/jquery_event.html">
+            
+                    
+                    JQuery : 이벤트 & 애니메이션
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../js/jquery_async.html">
+            
+                <a href="../js/jquery_async.html">
+            
+                    
+                    JQuery : 비동기 처리 & 플러그인
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="nodejs_basic.html">
+            
+                <a href="nodejs_basic.html">
+            
+                    
+                    Nodejs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="nodejs_http.html">
+            
+                <a href="nodejs_http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="nodejs_external.html">
+            
+                <a href="nodejs_external.html">
+            
+                    
+                    외부 모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="nodejs_express.html">
+            
+                <a href="nodejs_express.html">
+            
+                    
+                    ExpressJS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="nodejs_mysql.html">
+            
+                <a href="nodejs_mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="nodejs_socket.html">
+            
+                <a href="nodejs_socket.html">
+            
+                    
+                    Socket.io
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="nodejs_restful.html">
+            
+                <a href="nodejs_restful.html">
+            
+                    
+                    RESTful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="nodejs_redis.html">
+            
+                <a href="nodejs_redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="nodejs_auth.html">
+            
+                <a href="nodejs_auth.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Nodejs</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><a href="https://book.naver.com/bookdb/book_detail.nhn?bid=11738465" target="_blank">Do it! Node.js &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D;</a>&#xB97C; &#xACF5;&#xBD80;&#xD55C; &#xAC83;&#xC744; &#xC815;&#xB9AC;&#xD558;&#xC600;&#xB2E4;.</p>
+<ul>
+<li><strong>Node.js</strong> : &#xC790;&#xBC14;&#xC2A4;&#xD06C;&#xB9BD;&#xD2B8;&#xB97C; &#xAE30;&#xBC18;&#xC73C;&#xB85C;&#xD558;&#xC5EC; &#xC11C;&#xBC84;&#xB97C; &#xB3D9;&#xC791;&#xD558;&#xAC8C; &#xD574;&#xC8FC;&#xB294; &#xC5D4;&#xC9C4;. &#xBE44;&#xB3D9;&#xAE30; &#xBC29;&#xC2DD; + &#xC774;&#xBCA4;&#xD2B8; &#xAE30;&#xBC18;&#xC758; &#xC785;&#xCD9C;&#xB825; &#xBAA8;&#xB378;&#xC758; &#xBC29;&#xC2DD; &#xC0AC;&#xC6A9;. &#xD06C;&#xB86C; V8&#xC5D4;&#xC9C4; &#xC704;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xB41C;&#xB2E4;.</li>
+<li>&#xC774;&#xBCA4;&#xD2B8; &#xAE30;&#xBC18; : &#xD2B9;&#xC815; &#xC774;&#xBCA4;&#xD2B8;&#xAC00; &#xBC1C;&#xC0DD;&#xD560; &#xB54C; &#xBB34;&#xC5C7;&#xC744; &#xD560;&#xC9C0;(callback)&#xB97C; &#xB4F1;&#xB85D;.</li>
+</ul>
+<hr>
+<h1 id="&#xC804;&#xC5ED;&#xAC1D;&#xCCB4;&#xC640;-&#xBAA8;&#xB4C8;">&#xC804;&#xC5ED;&#xAC1D;&#xCCB4;&#xC640; &#xBAA8;&#xB4C8;</h1>
+<ul>
+<li>console : &#xCF58;&#xC194; &#xCC3D;&#xC5D0; &#xACB0;&#xACFC;&#xB97C; &#xBCF4;&#xC5EC;&#xC8FC;&#xB294; &#xAC1D;&#xCCB4;</li>
+<li>process : &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC758; &#xC2E4;&#xD589;&#xC5D0; &#xB300;&#xD55C; &#xC815;&#xBCF4;&#xB97C; &#xB2E4;&#xB8E8;&#xB294; &#xAC1D;&#xCCB4;</li>
+<li>exports : &#xBAA8;&#xB4C8;&#xC744; &#xB2E4;&#xB8E8;&#xB294; &#xAC1D;&#xCCB4;</li>
+</ul>
+<h2 id="1-console">1) console</h2>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#xC22B;&#xC790; : %d / &#xBB38;&#xC790;&#xC5F4; : %s / &#xAC1D;&#xCCB4; : %j&quot;</span>,<span class="hljs-number">10</span>,<span class="hljs-string">&quot;hi&quot;</span>,{name:<span class="hljs-string">&quot;hello&quot;</span>});
+<span class="hljs-built_in">console</span>.dir(object) <span class="hljs-comment">//&#xAC1D;&#xCCB4;&#xC758; &#xC18D;&#xC131; &#xCD9C;&#xB825;</span>
+<span class="hljs-built_in">console</span>.time(id) <span class="hljs-comment">// &#xC2E4;&#xD589;&#xC2DC;&#xAC04; &#xCE21;&#xC815;&#xC744; &#xC704;&#xD55C; &#xC2DC;&#xC791; &#xC2DC;&#xAC04; &#xCD9C;&#xB825;</span>
+<span class="hljs-built_in">console</span>.timeEnd(id) <span class="hljs-comment">// &#xC2E4;&#xD589;&#xC2DC;&#xAC04; &#xCE21;&#xC815;&#xC744; &#xC704;&#xD55C; &#xB05D;&#xB098;&#xB294; &#xC2DC;&#xAC04; &#xCD9C;&#xB825;</span>
+</code></pre>
+<h2 id="2-process">2) process</h2>
+<ul>
+<li>&#xD504;&#xB85C;&#xADF8;&#xB7A8;&#xC744; &#xC2E4;&#xD589;&#xD588;&#xC744; &#xB54C;&#xC758; &#xD504;&#xB85C;&#xC138;&#xC2A4; &#xC815;&#xBCF4;&#xB97C; &#xB2E4;&#xB8EC;&#xB2E4;</li>
+<li>argv : &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC5D0; &#xC804;&#xB2EC;&#xB418;&#xB294; &#xB9E4;&#xAC1C;&#xBCC0;&#xC218; &#xC815;&#xBCF4;</li>
+<li>env : &#xD658;&#xACBD; &#xBCC0;&#xC218;</li>
+<li>exit() : &#xD504;&#xB85C;&#xC138;&#xC2A4; &#xC885;&#xB8CC;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(process.env);
+<span class="hljs-built_in">console</span>.dir(process.argv);
+</code></pre>
+<h2 id="3-exports">3) exports</h2>
+<ul>
+<li>&#xBAA8;&#xB4C8;&#xC744; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xD574;&#xC8FC;&#xB294; &#xC804;&#xC5ED;&#xAC1D;&#xCCB4;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">//module.js</span>
+exports.mul = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a,b</span>)</span>{
+  <span class="hljs-keyword">return</span> a*b;
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">var</span> mod1 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;module&quot;</span>);
+mod1.mul(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
+</code></pre>
+<h2 id="4-&#xB0B4;&#xC7A5;-&#xBAA8;&#xB4C8;">4) &#xB0B4;&#xC7A5; &#xBAA8;&#xB4C8;</h2>
+<ul>
+<li><p>os : &#xC2DC;&#xC2A4;&#xD15C; &#xC815;&#xBCF4;&#xB97C; &#xC54C;&#xB824;&#xC8FC;&#xB294; &#xBAA8;&#xB4C8;.</p>
+<ul>
+<li>hostname() : &#xC6B4;&#xC601;&#xCCB4;&#xC81C;&#xC758; &#xD638;&#xC2A4;&#xD2B8; &#xC774;&#xB984;</li>
+<li>totalmem() : &#xC2DC;&#xC2A4;&#xD15C; &#xC804;&#xCCB4;&#xC758; &#xBA54;&#xBAA8;&#xB9AC; &#xC6A9;&#xB7C9;</li>
+<li>freemem() : &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;&#xD55C; &#xBA54;&#xBAA8;&#xB9AC; &#xC6A9;&#xB7C9;</li>
+<li>cpus() : cpu &#xC815;&#xBCF4;</li>
+<li>networkInterfaces() : &#xB124;&#xD2B8;&#xC6CC;&#xD06C; &#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;&#xB97C; &#xB2F4;&#xC740; &#xBC30;&#xC5F4;</li>
+</ul>
+</li>
+<li><p>path : &#xD30C;&#xC77C; &#xACBD;&#xB85C;&#xB97C; &#xB2E4;&#xB8E8;&#xB294; &#xBAA8;&#xB4C8;</p>
+<ul>
+<li>join() : &#xC5EC;&#xB7EC;&#xAC1C;&#xC758; &#xC774;&#xB984;&#xC744; &#xD569;&#xCCD0;&#xC11C; &#xD558;&#xB098;&#xC758; &#xD30C;&#xC77C; &#xACBD;&#xB85C;&#xB97C; &#xB9CC;&#xB4E0;&#xB2E4;</li>
+<li>dirname() :&#xB514;&#xB809;&#xD1A0;&#xB9AC; &#xC774;&#xB984; &#xBC18;&#xD658;</li>
+<li>basename() : &#xD655;&#xC7A5;&#xC790; &#xC774;&#xB984;&#xC744; &#xC81C;&#xC678;&#xD55C; &#xD30C;&#xC77C; &#xACBD;&#xB85C; &#xBC18;&#xD658;</li>
+<li>extname() : &#xD30C;&#xC77C; &#xD655;&#xC7A5;&#xC790;&#xB97C; &#xBC18;&#xD658;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>);
+<span class="hljs-keyword">var</span> docsDir = path.join(<span class="hljs-string">&quot;/Users&quot;</span>,<span class="hljs-string">&quot;a.exe&quot;</span>);
+<span class="hljs-keyword">var</span> filename = <span class="hljs-string">&quot;C:\\Users\\fo\\a.exe&quot;</span>;
+<span class="hljs-keyword">var</span> basename = path.basename(filename);
+<span class="hljs-keyword">var</span> extname = path.extname(filename);
+</code></pre>
+<hr>
+<h1 id="&#xAE30;&#xBCF8;-&#xAE30;&#xB2A5;">&#xAE30;&#xBCF8; &#xAE30;&#xB2A5;</h1>
+<h2 id="1-&#xC8FC;&#xC18C;-&#xBB38;&#xC790;&#xC5F4;">1) &#xC8FC;&#xC18C; &#xBB38;&#xC790;&#xC5F4;</h2>
+<ul>
+<li><p>url &#xBAA8;&#xB4C8; : &#xC6F9;&#xD398;&#xC774;&#xC9C0;&#xC758; url&#xC744; &#xB2E4;&#xB8E8;&#xB294; &#xBAA8;&#xB4C8;</p>
+<ul>
+<li>parse() : &#xC8FC;&#xC18C;&#xBB38;&#xC790;&#xC5F4;&#xC744; &#xD30C;&#xC2F1;&#xD558;&#xC5EC; url &#xAC1D;&#xCCB4; &#xC0DD;&#xC131;</li>
+<li>format() : URL &#xAC1D;&#xCCB4;&#xB97C; &#xC8FC;&#xC18C; &#xBB38;&#xC790;&#xC5F4;&#xB85C; &#xD30C;&#xC2F1;</li>
+</ul>
+</li>
+<li><p>querystring &#xBAA8;&#xB4C8; : &#xC694;&#xCCAD; parameter&#xB97C; &#xBD84;&#xB958;&#xD558;&#xB294; &#xB370;&#xC5D0; &#xC0AC;&#xC6A9;</p>
+<ul>
+<li>parse() : &#xC694;&#xCCAD; parameter&#xB97C; &#xD30C;&#xC2F1;&#xD558;&#xC5EC; &#xAC1D;&#xCCB4;&#xB85C; &#xC0DD;&#xC131;</li>
+<li>stringify() : &#xAC1D;&#xCCB4;&#xB97C; &#xBB38;&#xC790;&#xC5F4;&#xB85C; &#xBCC0;&#xD658;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;url&quot;</span>);
+<span class="hljs-keyword">var</span> qS = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;querystring&quot;</span>);
+
+<span class="hljs-comment">//url &#xAC1D;&#xCCB4; &#xB9CC;&#xB4E4;&#xAE30;</span>
+<span class="hljs-keyword">var</span> curURL = url.parse(<span class="hljs-string">&quot;https://www.google.com/search?q=%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4&quot;</span>);
+
+<span class="hljs-comment">// url &#xAC1D;&#xCCB4;&#xB97C; &#xC8FC;&#xC18C; &#xBB38;&#xC790;&#xC5F4;&#xB85C; &#xD30C;&#xC2F1;</span>
+<span class="hljs-keyword">var</span> curStr = url.format(curURL);
+
+<span class="hljs-comment">//&#xC694;&#xCCAD; parameter &#xAD6C;&#xBD84;</span>
+<span class="hljs-keyword">var</span> parameters = qS.parse(curURL.query);
+
+<span class="hljs-built_in">console</span>.dir(curURL);
+<span class="hljs-built_in">console</span>.log(parameters.query);
+<span class="hljs-built_in">console</span>.log(qS.stringify(parameters));
+</code></pre>
+<h2 id="2-&#xC774;&#xBCA4;&#xD2B8;">2) &#xC774;&#xBCA4;&#xD2B8;</h2>
+<ul>
+<li>&#xB178;&#xB4DC;&#xB294; &#xC774;&#xBCA4;&#xD2B8; + &#xBE44;&#xB3D9;&#xAE30; &#xAE30;&#xBC18;.</li>
+<li>&#xD55C;&#xCABD;&#xC5D0;&#xC11C; &#xC774;&#xBCA4;&#xD2B8;&#xB97C; &#xBC1C;&#xC0DD;&#xC2DC;&#xD0A4;&#xBA74; &#xC774;&#xBCA4;&#xD2B8; &#xB9AC;&#xC2A4;&#xB108;&#xAC00; &#xC774;&#xB97C; &#xD655;&#xC778;&#xD558;&#xC5EC; &#xC808;&#xCC28;&#xB97C; &#xC218;&#xD589;.</li>
+<li>EventEmitter : &#xC774;&#xBCA4;&#xD2B8;&#xB97C; &#xBCF4;&#xB0B4;&#xACE0; &#xBC1B;&#xB3C4;&#xB85D; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;.</li>
+<li>on(event,listener) : &#xC774;&#xBCA4;&#xD2B8; &#xB9AC;&#xC2A4;&#xB108;&#xB97C; &#xCD94;&#xAC00;</li>
+<li>once(event,lisnter) : &#xC774;&#xBCA4;&#xD2B8; &#xB9AC;&#xC2A4;&#xB108;&#xB97C; &#xCD94;&#xAC00;. But &#xD55C;&#xBC88; &#xC774;&#xBCA4;&#xD2B8; &#xBC1C;&#xC0DD;&#xC2DC; &#xC774;&#xBCA4;&#xD2B8; &#xB9AC;&#xC2A4;&#xB108; &#xC81C;&#xAC70;.</li>
+<li>removeListener(event,listener) : &#xC774;&#xBCA4;&#xD2B8; &#xB9AC;&#xC2A4;&#xB108; &#xC81C;&#xAC70;.</li>
+<li><p>emit(event,parameters) : &#xC774;&#xBCA4;&#xD2B8;&#xB97C; &#xB2E4;&#xB978; &#xCABD;&#xC73C;&#xB85C; &#xC804;&#xB2EC;</p>
+</li>
+<li><p>process&#xAC1D;&#xCCB4;&#xB294; EventEmitter&#xB97C; &#xC0C1;&#xC18D; &#xBC1B;&#xACE0; &#xC788;&#xB2E4;.</p>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">//&#xAE30;&#xC874; &#xC774;&#xBCA4;&#xD2B8;&#xC5D0; &#xB9AC;&#xC2A4;&#xB108; &#xB4F1;&#xB85D;</span>
+process.on(<span class="hljs-string">&quot;exit&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;EXIT&quot;</span>);
+  });
+
+<span class="hljs-comment">//emit&#xC744; &#xC774;&#xC6A9;&#xD55C; &#xB2E4;&#xB978; &#xC774;&#xBCA4;&#xD2B8; &#xB9AC;&#xC2A4;&#xB108; &#xB4F1;&#xB85D;</span>
+process.on(<span class="hljs-string">&quot;myEvent&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a,b</span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;This is my custom event. Parameters : %d %d&quot;</span>,a,b);
+  });
+
+<span class="hljs-comment">//&#xC774;&#xBCA4;&#xD2B8; &#xBC1C;&#xC0DD;</span>
+process.emit(<span class="hljs-string">&quot;myEvent&quot;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
+
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;2&#xCD08;&#xD6C4; &#xC885;&#xB8CC;&quot;</span>);
+  },<span class="hljs-number">2000</span>);
+process.exit();
+</code></pre>
+<ul>
+<li>EventEmitter&#xB97C; &#xC9C1;&#xC811; &#xC0C1;&#xC18D; &#xBC1B;&#xC544; &#xC774;&#xBCA4;&#xD2B8; &#xB4F1;&#xB85D;&#xC744; &#xD558;&#xAE30;&#xB97C; &#xC6D0;&#xD55C;&#xB2E4;&#xBA74; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xD55C;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;util&quot;</span>);
+<span class="hljs-keyword">var</span> EE = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;events&quot;</span>).EventEmitter;
+
+<span class="hljs-keyword">var</span> Obj = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">var</span> a =<span class="hljs-number">1</span>;
+  <span class="hljs-keyword">this</span>.on(<span class="hljs-string">&quot;eventOccur&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;A : %d&quot;</span>,a);
+    });
+}
+
+util.inherits(Obj,EE);
+<span class="hljs-keyword">var</span> OB = <span class="hljs-keyword">new</span> Obj;
+
+OB.emit(<span class="hljs-string">&quot;eventOccur&quot;</span>);
+</code></pre>
+<h2 id="3-&#xD30C;&#xC77C;-&#xB2E4;&#xB8E8;&#xAE30;">3) &#xD30C;&#xC77C; &#xB2E4;&#xB8E8;&#xAE30;</h2>
+<ul>
+<li>&#xB3D9;&#xAE30;&#xC2DD; IO : &#xD30C;&#xC77C; &#xC791;&#xC5C5;&#xC774; &#xB05D;&#xB0A0; &#xB54C; &#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9B0;&#xB2E4;. Sync&#xB77C;&#xB294; &#xB2E8;&#xC5B4;&#xAC00; &#xBD99;&#xB294;&#xB2E4;.</li>
+<li>&#xBE44;&#xB3D9;&#xAE30;&#xC2DD; IO : &#xD30C;&#xC77C; &#xC791;&#xC5C5;&#xC744; &#xC694;&#xCCAD;&#xD558;&#xACE0; &#xB2E4;&#xC74C; &#xC791;&#xC5C5;&#xC744; &#xC218;&#xD589;&#xD560; &#xC218; &#xC788;&#xB2E4;.</li>
+<li>fs &#xBAA8;&#xB4C8; : &#xD30C;&#xC77C; IO&#xC5D0; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xBAA8;&#xB4C8;</li>
+<li>readFile(filename,[encoding],[callback]) : &#xBE44;&#xB3D9;&#xAE30;&#xC2DD;&#xC73C;&#xB85C; &#xD30C;&#xC77C;&#xC744; &#xC77D;&#xB294;&#xB2E4;.</li>
+<li>readFileSync(filename,[encoding]) : &#xB3D9;&#xAE30;&#xC2DD;&#xC73C;&#xB85C; &#xD30C;&#xC77C;&#xC744; &#xC77D;&#xB294;&#xB2E4;.</li>
+<li>writeFile(filename,data,encoding=&quot;utf8&quot;,[callback]) : &#xBE44;&#xB3D9;&#xAE30;&#xC2DD;&#xC73C;&#xB85C; &#xD30C;&#xC77C;&#xC744; &#xC4F4;&#xB2E4;. &#xC5D0;&#xB7EC; &#xBC1C;&#xC0DD;&#xC2DC; callback&#xC73C;&#xB85C; &#xC5D0;&#xB7EC;(null&#xC774; &#xC544;&#xB2CC; &#xAC12;)&#xC744; &#xC804;&#xB2EC;&#xD55C;&#xB2E4;.</li>
+<li><p>writeFileSync(filename,data,encoding=&quot;utf8&quot;) : &#xBE44;&#xB3D9;&#xAE30;&#xC2DD;&#xC73C;&#xB85C; &#xD30C;&#xC77C;&#xC744; &#xC4F4;&#xB2E4;.</p>
+</li>
+<li><p>&#xD30C;&#xC77C;&#xC744; &#xC804;&#xCCB4;&#xB97C; &#xC5F4;&#xACE0; &#xC77D;&#xAC70;&#xB098; &#xC4F0;&#xB294;&#xAC83;&#xC774; &#xC544;&#xB2C8;&#xB77C; &#xB2E4;&#xC591;&#xD55C; &#xBC29;&#xBC95;&#xC774; &#xD544;&#xC694;&#xD560; &#xB54C;&#xB3C4; &#xC788;&#xB2E4;.</p>
+</li>
+<li>open(path,flags,[mode],[callback]) : &#xD30C;&#xC77C;&#xC744; &#xC5F0;&#xB2E4;.</li>
+<li>read(fd,buffer,offset,length,position,[callback]) : &#xC9C0;&#xC815;&#xB41C; &#xBD80;&#xBD84;&#xC758; &#xD30C;&#xC77C;&#xC744; &#xC77D;&#xB294;&#xB2E4;. buffer&#xC5D0; &#xC800;&#xC7A5;&#xD55C;&#xB2E4;.</li>
+<li>write(fd,buffer,offset,length,position,[callback]) : &#xC9C0;&#xC815;&#xB41C; &#xBD80;&#xBD84;&#xC758; &#xD30C;&#xC77C;&#xC5D0; buffer&#xB97C; &#xC4F4;&#xB2E4;.</li>
+<li>close(fd,[callback]) : &#xD30C;&#xC77C;&#xC744; &#xB2EB;&#xB294;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs=<span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-comment">//Read</span>
+fs.open(<span class="hljs-string">&quot;./output.txt&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err,fd</span>)</span>{
+  <span class="hljs-keyword">if</span>(err){
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Error Occured&quot;</span>);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">&quot;hi&quot;</span>);
+  fs.write(fd,buf,<span class="hljs-number">0</span>,buf.length,<span class="hljs-literal">null</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err,written,buffer</span>)</span>{
+    <span class="hljs-keyword">if</span>(err)<span class="hljs-keyword">throw</span> err;
+    <span class="hljs-built_in">console</span>.log(err,written,buffer);  
+
+    fs.close(fd,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;File closed&quot;</span>);
+      });
+    });
+  });
+
+<span class="hljs-comment">//Write</span>
+fs.open(<span class="hljs-string">&quot;./output.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err,fd</span>)</span>{
+  <span class="hljs-keyword">if</span>(err){
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Error Occured&quot;</span>);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer(<span class="hljs-number">15</span>);
+  fs.read(fd,buf,<span class="hljs-number">0</span>,buf.length,<span class="hljs-literal">null</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err,byteRead,buffer</span>)</span>{
+    <span class="hljs-keyword">if</span>(err)<span class="hljs-keyword">throw</span> err;
+    <span class="hljs-keyword">var</span> bufStr = buffer.toString(<span class="hljs-string">&quot;utf8&quot;</span>,<span class="hljs-number">0</span>,byteRead);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Read : %s&quot;</span>,bufStr);  
+    <span class="hljs-built_in">console</span>.log(err,byteRead);  
+
+    fs.close(fd,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;File closed&quot;</span>);
+    });
+  });
+});
+</code></pre>
+<ul>
+<li>&#xD30C;&#xC77C;&#xC758; &#xD06C;&#xAE30;&#xAC00; &#xD06C;&#xBA74; &#xC2A4;&#xD2B8;&#xB9BC;&#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xB370;&#xC774;&#xD130;&#xB97C; &#xCC98;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xB2E4;.</li>
+<li>createReadStream(path,[options]) : &#xD30C;&#xC77C;&#xC744; &#xC77D;&#xAE30; &#xC704;&#xD55C; stream &#xAC1D;&#xCCB4; &#xC0DD;&#xC131;</li>
+<li>createWriteStream(path,[options]) : &#xD30C;&#xC77C;&#xC744; &#xC4F0;&#xAE30; &#xC704;&#xD55C; stream &#xAC1D;&#xCCB4; &#xC0DD;&#xC131;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-keyword">var</span> rFile = fs.createReadStream(<span class="hljs-string">&quot;output.txt&quot;</span>,{flgas:<span class="hljs-string">&quot;r&quot;</span>});
+<span class="hljs-keyword">var</span> oFile = fs.createWriteStream(<span class="hljs-string">&quot;output2.txt&quot;</span>,{flgas:<span class="hljs-string">&quot;a&quot;</span>});
+
+rFile.on(<span class="hljs-string">&quot;data&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Read : &quot;</span>,data);
+  ofile.write(data);
+  });
+
+rFile.on(<span class="hljs-string">&quot;end&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Read completed&quot;</span>);
+  oFile.end(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Write completed&quot;</span>);
+    });
+  });
+</code></pre>
+<ul>
+<li>&#xB610;&#xB294; &#xAC04;&#xB2E8;&#xD558;&#xAC8C; pipe()&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xB458;&#xC744; &#xC5F0;&#xACB0;&#xD560; &#xC218;&#xB3C4; &#xC788;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-keyword">var</span> rFile = fs.createReadStream(<span class="hljs-string">&quot;output.txt&quot;</span>,{flgas:<span class="hljs-string">&quot;r&quot;</span>});
+<span class="hljs-keyword">var</span> oFile = fs.createWriteStream(<span class="hljs-string">&quot;output2.txt&quot;</span>,{flgas:<span class="hljs-string">&quot;a&quot;</span>});
+
+rFile.pipe(oFile);
+</code></pre>
+<ul>
+<li>&#xC2A4;&#xD2B8;&#xB9BC; &#xBC29;&#xBC95;&#xC740; &#xC6F9;&#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xC694;&#xCCAD;&#xC744; &#xCC98;&#xB9AC;&#xD560; &#xB54C;&#xC5D0; &#xC0AC;&#xC6A9;&#xB420; &#xC218;&#xB3C4; &#xC788;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;http&quot;</span>);
+
+<span class="hljs-keyword">var</span> server = http.createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res</span>)</span>{
+  <span class="hljs-keyword">var</span> inStream = fs.createReadStream(<span class="hljs-string">&quot;output.txt&quot;</span>);  
+  inStream.pipe(res);
+  });
+server.listen(<span class="hljs-number">7001</span>,<span class="hljs-string">&quot;127.0.0.1&quot;</span>);
+</code></pre>
+<ul>
+<li>fs&#xBAA8;&#xB4C8;&#xB85C; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xB97C; &#xC0DD;&#xC131;&#xD558;&#xACE0; &#xC0AD;&#xC81C;&#xD560; &#xC218;&#xB3C4; &#xC788;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-js">fs.mkdir(&#xB514;&#xB809;&#xD1A0;&#xB9AC; &#xC774;&#xB984;, &#xAD8C;&#xD55C;,[callback]);
+fs.rmdir(&#xB514;&#xB809;&#xD1A0;&#xB9AC; &#xC774;&#xB984;,[callback]);
+</code></pre>
+<h2 id="4-&#xB85C;&#xADF8;">4) &#xB85C;&#xADF8;</h2>
+<ul>
+<li>winston &#xBAA8;&#xB4C8; : &#xB85C;&#xADF8;&#xB97C; &#xB0A8;&#xAE30;&#xB294; &#xBAA8;&#xB4C8;.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> winston = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;winston&apos;</span>);
+<span class="hljs-keyword">var</span> winstonDaily = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;winston-daily-rotate-file&apos;</span>);
+<span class="hljs-keyword">var</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;moment&apos;</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeStampFormat</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> moment().format(<span class="hljs-string">&apos;YYYY-MM-DD HH:mm:ss.SSS ZZ&apos;</span>);                            
+};
+<span class="hljs-comment">//logger &#xC124;&#xC815;</span>
+<span class="hljs-keyword">var</span> logger = <span class="hljs-keyword">new</span> (winston.Logger)({
+    transports: [
+        <span class="hljs-keyword">new</span> (winstonDaily)({
+            name: <span class="hljs-string">&apos;info-file&apos;</span>,
+            filename: <span class="hljs-string">&apos;./log/server&apos;</span>,
+            datePattern: <span class="hljs-string">&apos;_yyyy-MM-dd.log&apos;</span>,
+            colorize: <span class="hljs-literal">false</span>,
+            maxsize: <span class="hljs-number">50000000</span>,
+            maxFiles: <span class="hljs-number">1000</span>,
+            level: <span class="hljs-string">&apos;info&apos;</span>,
+            showLevel: <span class="hljs-literal">true</span>,
+            json: <span class="hljs-literal">false</span>,
+            timestamp: timeStampFormat
+        }),
+        <span class="hljs-keyword">new</span> (winston.transports.Console)({
+            name: <span class="hljs-string">&apos;debug-console&apos;</span>,
+            colorize: <span class="hljs-literal">true</span>,
+            level: <span class="hljs-string">&apos;debug&apos;</span>,
+            showLevel: <span class="hljs-literal">true</span>,
+            json: <span class="hljs-literal">false</span>,
+            timestamp: timeStampFormat
+        })
+    ],
+    exceptionHandlers: [
+        <span class="hljs-keyword">new</span> (winstonDaily)({
+            name: <span class="hljs-string">&apos;exception-file&apos;</span>,
+            filename: <span class="hljs-string">&apos;./log/exception&apos;</span>,
+            datePattern: <span class="hljs-string">&apos;_yyyy-MM-dd.log&apos;</span>,
+            colorize: <span class="hljs-literal">false</span>,
+            maxsize: <span class="hljs-number">50000000</span>,
+            maxFiles: <span class="hljs-number">1000</span>,
+            level: <span class="hljs-string">&apos;error&apos;</span>,
+            showLevel: <span class="hljs-literal">true</span>,
+            json: <span class="hljs-literal">false</span>,
+            timestamp: timeStampFormat
+        }),
+        <span class="hljs-keyword">new</span> (winston.transports.Console)({
+            name: <span class="hljs-string">&apos;exception-console&apos;</span>,
+            colorize: <span class="hljs-literal">true</span>,
+            level: <span class="hljs-string">&apos;debug&apos;</span>,
+            showLevel: <span class="hljs-literal">true</span>,
+            json: <span class="hljs-literal">false</span>,
+            timestamp: timeStampFormat
+        })
+    ]
+});
+
+<span class="hljs-comment">//logger&#xB97C; &#xD1B5;&#xD55C; &#xB85C;&#xADF8; &#xCD9C;&#xB825;</span>
+logger.info(<span class="hljs-string">&quot;infolevel &#xB85C;&#xAE45;&quot;</span>);
+</code></pre>
+<ul>
+<li>winston-daily-rotate-file : &#xB9E4;&#xC77C;&#xB9E4;&#xC77C; &#xB0A0;&#xC9DC;&#xBCC4;&#xB85C; &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E4;&#xC5B4; &#xC800;&#xC7A5;&#xC744; &#xD558;&#xAC8C; &#xD574;&#xC8FC;&#xB294; &#xBAA8;&#xB4C8;</li>
+<li>moment :</li>
+<li>&#xB85C;&#xADF8;&#xC758; &#xD30C;&#xC77C;&#xC740; filename+dataPattern&#xC73C;&#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4;&#xB2E4;. &#xC5EC;&#xAE30;&#xC11C;&#xB294; &#xC2E4;&#xD589;&#xD55C; &#xD30C;&#xC77C;&#xC758; &#xACBD;&#xB85C;&#xC5D0; log &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xB97C; &#xB9CC;&#xB4E4;&#xACE0; &quot;server_2019_09_29.log&quot; &#xC640; &#xAC19;&#xC774; &#xB85C;&#xADF8;&#xB97C; &#xC791;&#xC131;&#xD55C;&#xB2E4;.</li>
+<li>&#xD55C; &#xD30C;&#xC77C;&#xC758; &#xCD5C;&#xB300; &#xD06C;&#xAE30;&#xB294; maxsize, &#xD30C;&#xC77C;&#xC758; &#xCD5C;&#xB300; &#xAC2F;&#xC218;&#xB294; maxFiles&#xC774;&#xB2E4;.</li>
+<li>level : &#xB85C;&#xADF8;&#xB97C; &#xC791;&#xC131;&#xD558;&#xB294; &#xACBD;&#xC6B0;&#xC774;&#xB2E4;. debug(0) &gt; info(1) &gt; notice(2) &gt; warning(3) &gt; error(4) &gt; crit(5) &gt; alert(6) &gt; emerg(6) &#xC21C;&#xC73C;&#xB85C; &#xB9CE;&#xC740; &#xB0B4;&#xC6A9;&#xC744; &#xD3EC;&#xD568;&#xD55C;&#xB2E4;.</li>
+<li>showLevel : &#xB85C;&#xADF8;&#xB97C; &#xC801;&#xC740; level&#xC744; &#xBCF4;&#xC5EC;&#xC900;&#xB2E4;.</li>
+<li>timestamp : &#xCF5C;&#xBC31;&#xD568;&#xC218;&#xB97C; &#xC801;&#xB294;&#xB2E4;. &#xB85C;&#xADF8;&#xB97C; &#xCD9C;&#xB825;&#xD558;&#xB294; &#xB370;&#xC5D0; &#xD544;&#xC694;&#xD55C; &#xC2DC;&#xAC04; &#xD3EC;&#xB9F7;&#xC744; &#xC804;&#xB2EC;&#xD558;&#xB294; &#xD568;&#xC218;&#xC774;&#xB2E4;.</li>
+</ul>
+<hr>
+<h1 id="&#xCC38;&#xACE0;&#xC790;&#xB8CC;">&#xCC38;&#xACE0;&#xC790;&#xB8CC;</h1>
+<ul>
+<li><a href="https://dololak.tistory.com/89" target="_blank">EventEmitter</a></li>
+<li><a href="https://dololak.tistory.com/126?category=642882" target="_blank">Logging</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../js/jquery_async.html" class="navigation navigation-prev " aria-label="Previous page: JQuery : 비동기 처리 & 플러그인">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="nodejs_http.html" class="navigation navigation-next " aria-label="Next page: http">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Nodejs","date":"2019-07-28T02:02:59.000Z","author":"Inhyuk","categories":"NodeJS","tags":"NodeJS","cover":"/assets/instacode.png","name":"nodejs_basic.md","level":"1.3","depth":1,"next":{"title":"http","level":"1.3.1","depth":2,"path":"posts/nodejs/nodejs_http.md","ref":"posts/nodejs/nodejs_http.md","articles":[]},"previous":{"title":"JQuery : 비동기 처리 & 플러그인","level":"1.2.10","depth":2,"path":"posts/js/jquery_async.md","ref":"posts/js/jquery_async.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/nodejs/nodejs_basic.md","mtime":"2020-04-20T13:50:57.570Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T11:56:43.597Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

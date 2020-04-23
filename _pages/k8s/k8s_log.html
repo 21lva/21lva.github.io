@@ -1,0 +1,572 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Logging : ElasticSearch, Kibana, fluentd · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="k8s_cdtt.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../docker/docker0.html">
+            
+                <a href="../docker/docker0.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../docker/docker1.html">
+            
+                <a href="../docker/docker1.html">
+            
+                    
+                    Docker1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="k8s_basic.html">
+            
+                <a href="k8s_basic.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="k8s_pod.html">
+            
+                <a href="k8s_pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="k8s_controller.html">
+            
+                <a href="k8s_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="k8s_service.html">
+            
+                <a href="k8s_service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="k8s_ingress.html">
+            
+                <a href="k8s_ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="k8s_configMap.html">
+            
+                <a href="k8s_configMap.html">
+            
+                    
+                    configMap, secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="k8s_cdtt.html">
+            
+                <a href="k8s_cdtt.html">
+            
+                    
+                    cordon, drain, taint, toleration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.7" data-path="k8s_log.html">
+            
+                <a href="k8s_log.html">
+            
+                    
+                    Logging : ElasticSearch, Kibana, fluentd
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Logging : ElasticSearch, Kibana, fluentd</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ul>
+<li>k8s&#xAC19;&#xC740; &#xC624;&#xCF00;&#xC2A4;&#xD2B8;&#xB808;&#xC774;&#xC158; &#xD658;&#xACBD;&#xC5D0;&#xC11C; &#xB85C;&#xADF8;&#xB97C; &#xC218;&#xC9D1;&#xD560; &#xB54C;&#xB294; &#xB85C;&#xADF8;&#xAC00; &#xB85C;&#xCEEC; &#xB514;&#xC2A4;&#xD06C;&#xC5D0; &#xC313;&#xC774;&#xC9C0; &#xC54A;&#xB3C4;&#xB85D; &#xD574;&#xC57C;&#xD55C;&#xB2E4;(&#xC9C0;&#xC815;&#xB41C; node&#xB85C; &#xB4E4;&#xC5B4;&#xAC00;&#xC11C; &#xB85C;&#xADF8;&#xB97C; &#xD655;&#xC778;&#xD558;&#xAE30; &#xD798;&#xB4E4;&#xB2E4;)</li>
+<li>&#xC2E4;&#xC81C;&#xB85C; &#xAC04;&#xB2E8;&#xD558;&#xAC8C; log&#xB97C; &#xD655;&#xC778;&#xD558;&#xB824;&#xBA74; <strong>kubectl logs <pod이름></pod이름></strong></li>
+<li>aws &#xAC19;&#xC740; cloud&#xB85C; k8s&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xC81C;&#xACF5;&#xD574;&#xC900; &#xB85C;&#xADF8; &#xC218;&#xC9D1;&#xAE30;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB41C;&#xB2E4;</li>
+</ul>
+<h1 id="elasticsearch">ElasticSearch</h1>
+<ul>
+<li>Apache&#xC758; Java &#xC624;&#xD508;&#xC18C;&#xC2A4; &#xBD84;&#xC0B0; &#xAC80;&#xC0C9; &#xC5D4;&#xC9C4;</li>
+<li>&#xB9CE;&#xC740; &#xC591;&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC800;&#xC7A5;, &#xAC80;&#xC0C9;, &#xBD84;&#xC11D;&#xD560; &#xC218; &#xC788;&#xC74C;</li>
+<li><p>&#xC8FC;&#xB85C; ELK(ElasticSearch, Logstash, Kibana)&#xC2A4;&#xD0DD;&#xC73C;&#xB85C; &#xC0AC;&#xC6A9;</p>
+<ul>
+<li>Logstash : &#xB2E4;&#xC591;&#xD55C; &#xB85C;&#xADF8;&#xB97C; &#xC218;&#xC9D1;, &#xD30C;&#xC2F1;&#xD558;&#xC5EC; ElasticSearch&#xB85C; &#xC804;&#xB2EC;</li>
+<li>ElasticSearch : &#xB370;&#xC774;&#xD130;&#xB97C; &#xAC80;&#xC0C9;, &#xC9D1;&#xACC4;&#xD558;&#xC5EC; &#xD544;&#xC694;&#xD55C; &#xC815;&#xBCF4;&#xB97C; &#xC5BB;&#xB294;&#xB2E4;. &#xC5EC;&#xB7EC;&#xB300;&#xC758; node&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xB418;&#xB3C4;&#xB85D; &#xAC1C;&#xBC1C;&#xB428;</li>
+<li>Kibana : &#xB370;&#xC774;&#xD130; &#xC2DC;&#xAC01;&#xD654; &#xBC0F; &#xBAA8;&#xB2C8;&#xD130;&#xB9C1; &#xC81C;&#xACF5;</li>
+</ul>
+</li>
+<li><p>ES&#xC744; &#xC0AC;&#xC6A9;&#xD560; Deployment&#xC640; &#xC774;&#xB97C; &#xB2E4;&#xB8F0; service&#xB97C; &#xC0DD;&#xC131;&#xD574;&#xBCF4;&#xC790;</p>
+</li>
+</ul>
+<pre><code class="lang-yaml"><span class="hljs-attr">apiVersion:</span> apps/v1
+<span class="hljs-attr">kind:</span> Deployment
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> elasticsearch
+<span class="hljs-attr">  labels:</span>
+<span class="hljs-attr">    app:</span> elasticsearch
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+<span class="hljs-attr">      app:</span> elasticsearch
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        app:</span> elasticsearch
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> elasticsearch
+<span class="hljs-attr">        image:</span> elastic/elasticsearch:<span class="hljs-number">6.4</span><span class="hljs-number">.0</span>
+<span class="hljs-attr">        env:</span>
+<span class="hljs-attr">        - name:</span> discovery.type
+<span class="hljs-attr">          value:</span> <span class="hljs-string">&quot;single-node&quot;</span>
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">9200</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">9300</span>
+
+<span class="hljs-meta">---</span>
+
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  labels:</span>
+<span class="hljs-attr">    app:</span> elasticsearch
+<span class="hljs-attr">  name:</span> elasticsearch-svc
+<span class="hljs-attr">  namespace:</span> default
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">  - name:</span> elasticsearch-rest
+<span class="hljs-attr">    nodePort:</span> <span class="hljs-number">30920</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">9200</span>
+<span class="hljs-attr">    protocol:</span> TCP
+<span class="hljs-attr">    targetPort:</span> <span class="hljs-number">9200</span>
+<span class="hljs-attr">  - name:</span> elasticsearch-nodecom
+<span class="hljs-attr">    nodePort:</span> <span class="hljs-number">30930</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">9300</span>
+<span class="hljs-attr">    protocol:</span> TCP
+<span class="hljs-attr">    targetPort:</span> <span class="hljs-number">9300</span>  
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> elasticsearch
+<span class="hljs-attr">  type:</span> NodePort
+</code></pre>
+<ul>
+<li>crashloopBackoff &#xAC00; &#xB72C; &#xACBD;&#xC6B0; <a href="https://managedkube.com/kubernetes/pod/failure/crashloopbackoff/k8sbot/troubleshooting/2019/02/12/pod-failure-crashloopbackoff.html" target="_blank">&#xC5EC;&#xAE30;</a>&#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC790;</li>
+</ul>
+<hr>
+<h1 id="kibana">kibana</h1>
+<ul>
+<li>kibana&#xB97C; elasticsearch&#xB791; &#xC5F0;&#xB3D9;&#xD558;&#xC790;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> apps/v1
+<span class="hljs-attr">kind:</span> Deployment
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> kibana
+<span class="hljs-attr">  labels:</span>
+<span class="hljs-attr">    app:</span> kibana
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">1</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+<span class="hljs-attr">      app:</span> kibana
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        app:</span> kibana
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> kibana
+<span class="hljs-attr">        image:</span> elastic/kibana:<span class="hljs-number">6.4</span><span class="hljs-number">.0</span>
+<span class="hljs-attr">        env:</span>
+<span class="hljs-attr">        - name:</span> SERVER_NAME
+<span class="hljs-attr">          value:</span> <span class="hljs-string">&quot;kibana.kubenetes.example.com&quot;</span>
+<span class="hljs-attr">        - name:</span> ELASTICSEARCH_URL
+<span class="hljs-attr">          value:</span> <span class="hljs-string">&quot;http://elasticsearch-svc.default.svc.cluster.local:9200&quot;</span>
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">5601</span>
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  labels:</span>
+<span class="hljs-attr">    app:</span> kibana
+<span class="hljs-attr">  name:</span> kibana-svc
+<span class="hljs-attr">  namespace:</span> default
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">  - nodePort:</span> <span class="hljs-number">30561</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">5601</span>
+<span class="hljs-attr">    protocol:</span> TCP
+<span class="hljs-attr">    targetPort:</span> <span class="hljs-number">5601</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> kibana
+<span class="hljs-attr">  type:</span> NodePort
+</code></pre>
+<ul>
+<li>ElasticSearch&#xC758; IP&#xB294; <strong>ELASTICSEARCH_URL</strong> &#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC804;&#xB2EC;&#xB41C;&#xB2E4;(k8s&#xC758; DNS&#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC774;&#xC6A9;&#xD55C;&#xB2E4;)</li>
+<li>&lt;&#xC678;&#xBD80;&#xC8FC;&#xC18C;&gt;:30561&#xC744; &#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xC5D0; &#xB744;&#xC5B4;&#xBCF4;&#xC790;</li>
+</ul>
+<hr>
+<h1 id="fluentd">fluentd</h1>
+<ul>
+<li>&#xB85C;&#xADF8; &#xC218;&#xC9D1;&#xC6A9; &#xC624;&#xD508;&#xC18C;&#xC2A4; &#xD504;&#xB85C;&#xC81D;&#xD2B8;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> apps/v1
+<span class="hljs-attr">kind:</span> DaemonSet
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> fluentd
+<span class="hljs-attr">  namespace:</span> kube-system
+<span class="hljs-attr">  labels:</span>
+<span class="hljs-attr">    k8s-app:</span> fluentd-logging
+<span class="hljs-attr">    version:</span> v1
+    kubernetes.io/cluster-service: <span class="hljs-string">&quot;true&quot;</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+<span class="hljs-attr">      name:</span> fluentd-elasticsearch
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        name:</span> fluentd-elasticsearch
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      tolerations:</span>
+<span class="hljs-attr">      - key:</span> node-role.kubernetes.io/master
+<span class="hljs-attr">        effect:</span> NoSchedule
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> fluentd
+<span class="hljs-attr">        image:</span> fluent/fluentd-kubernetes-daemonset:elasticsearch
+<span class="hljs-attr">        env:</span>
+<span class="hljs-attr">          - name:</span>  FLUENT_ELASTICSEARCH_HOST
+<span class="hljs-attr">            value:</span> <span class="hljs-string">&quot;elasticsearch-svc.default.svc.cluster.local&quot;</span>
+<span class="hljs-attr">          - name:</span>  FLUENT_ELASTICSEARCH_PORT
+<span class="hljs-attr">            value:</span> <span class="hljs-string">&quot;9200&quot;</span>
+<span class="hljs-attr">          - name:</span> FLUENT_ELASTICSEARCH_SCHEME
+<span class="hljs-attr">            value:</span> <span class="hljs-string">&quot;http&quot;</span>
+<span class="hljs-attr">          - name:</span> FLUENT_UID
+<span class="hljs-attr">            value:</span> <span class="hljs-string">&quot;0&quot;</span>
+<span class="hljs-attr">        resources:</span>
+<span class="hljs-attr">          limits:</span>
+<span class="hljs-attr">            memory:</span> <span class="hljs-number">200</span>Mi
+<span class="hljs-attr">          requests:</span>
+<span class="hljs-attr">            cpu:</span> <span class="hljs-number">100</span>m
+<span class="hljs-attr">            memory:</span> <span class="hljs-number">200</span>Mi
+<span class="hljs-attr">        volumeMounts:</span>
+<span class="hljs-attr">        - name:</span> varlog
+<span class="hljs-attr">          mountPath:</span> /var/log
+<span class="hljs-attr">        - name:</span> varlibdockercontainers
+<span class="hljs-attr">          mountPath:</span> /var/lib/docker/containers
+<span class="hljs-attr">          readOnly:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      terminationGracePeriodSeconds:</span> <span class="hljs-number">30</span>
+<span class="hljs-attr">      volumes:</span>
+<span class="hljs-attr">      - name:</span> varlog
+<span class="hljs-attr">        hostPath:</span>
+<span class="hljs-attr">          path:</span> /var/log
+<span class="hljs-attr">      - name:</span> varlibdockercontainers
+<span class="hljs-attr">        hostPath:</span>
+<span class="hljs-attr">          path:</span> /var/lib/docker/containers
+</code></pre>
+<ul>
+<li>DeamonSet&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC600;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xB178;&#xB4DC;&#xC5D0; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xD558;&#xB098;&#xC529; pod&#xB4E4;&#xC774; &#xC0DD;&#xC131;&#xB41C;&#xB2E4;</li>
+<li>/var/log &#xC5D0;&#xB294; &#xC2DC;&#xC2A4;&#xD15C;&#xC6A9; &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC758; &#xB85C;&#xADF8;&#xAC00; &#xC313;&#xC778;&#xB2E4;.</li>
+<li>/var/lib/docker/containers&#xC5D0;&#xB294; pod&#xC5D0;&#xC11C; &#xCD9C;&#xB825;&#xD558;&#xB294; &#xB85C;&#xADF8;&#xAC00; &#xC313;&#xC784;</li>
+<li>FLUENT_UID=0 : &#xC774; pod&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xB294; &#xC720;&#xC800;&#xC5D0;&#xAC8C; &#xC704;&#xC758; &#xB450; &#xB85C;&#xADF8;&#xAC00; &#xC313;&#xC774;&#xB294; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xC5D0; &#xC811;&#xADFC;&#xAC00;&#xB2A5;&#xD558;&#xAC8C; &#xD55C;&#xB2E4;</li>
+<li><p>&#xC790;&#xC138;&#xD55C; &#xB0B4;&#xC6A9;&#xC740; <a href="https://kubernetes.io/ko/docs/concepts/workloads/controllers/daemonset/" target="_blank">&#xC5EC;&#xAE30;</a>&#xC5D0;&#xC11C; &#xD655;&#xC778;&#xD558;&#xC790;</p>
+</li>
+<li><p>&#xD0A4;&#xBC14;&#xB098; &#xC0AC;&#xC6A9;&#xBC95;&#xC740; <a href="https://www.elastic.co/guide/kr/kibana/current/getting-started.html" target="_blank">&#xC5EC;&#xAE30;</a>&#xB97C; &#xCC38;&#xACE0;&#xD574;&#xC11C; &#xC5EC;&#xB7EC;&#xAC00;&#xC9C0; &#xB85C;&#xADF8;&#xB97C; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="k8s_cdtt.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: cordon, drain, taint, toleration">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Logging : ElasticSearch, Kibana, fluentd","date":"2019-12-18T01:02:59.000Z","name":"k8s_log.md","level":"1.3.7","depth":2,"previous":{"title":"cordon, drain, taint, toleration","level":"1.3.6","depth":2,"path":"posts/k8s/k8s_cdtt.md","ref":"posts/k8s/k8s_cdtt.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex-plus","toggle-chapters"],"pluginsConfig":{"katex-plus":{},"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/k8s/k8s_log.md","mtime":"2020-03-17T15:03:09.562Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T15:05:57.250Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

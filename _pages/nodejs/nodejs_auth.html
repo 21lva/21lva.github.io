@@ -1,0 +1,683 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>JWT · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="nodejs_redis.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../js/js_basic.html">
+            
+                <a href="../js/js_basic.html">
+            
+                    
+                    Javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../js/js_object.html">
+            
+                <a href="../js/js_object.html">
+            
+                    
+                    객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../js/js_array.html">
+            
+                <a href="../js/js_array.html">
+            
+                    
+                    배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../js/js_event.html">
+            
+                <a href="../js/js_event.html">
+            
+                    
+                    이벤트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../js/js_promise.html">
+            
+                <a href="../js/js_promise.html">
+            
+                    
+                    Promise, async & await
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../js/js_module.html">
+            
+                <a href="../js/js_module.html">
+            
+                    
+                    모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../js/js_wd.html">
+            
+                <a href="../js/js_wd.html">
+            
+                    
+                    Window & BOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../js/js_dom.html">
+            
+                <a href="../js/js_dom.html">
+            
+                    
+                    DOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../js/jquery_select.html">
+            
+                <a href="../js/jquery_select.html">
+            
+                    
+                    JQuery : 선택 & 객체 & 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../js/jquery_event.html">
+            
+                <a href="../js/jquery_event.html">
+            
+                    
+                    JQuery : 이벤트 & 애니메이션
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../js/jquery_async.html">
+            
+                <a href="../js/jquery_async.html">
+            
+                    
+                    JQuery : 비동기 처리 & 플러그인
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="nodejs_basic.html">
+            
+                <a href="nodejs_basic.html">
+            
+                    
+                    Nodejs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="nodejs_http.html">
+            
+                <a href="nodejs_http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="nodejs_external.html">
+            
+                <a href="nodejs_external.html">
+            
+                    
+                    외부 모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="nodejs_express.html">
+            
+                <a href="nodejs_express.html">
+            
+                    
+                    ExpressJS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="nodejs_mysql.html">
+            
+                <a href="nodejs_mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="nodejs_socket.html">
+            
+                <a href="nodejs_socket.html">
+            
+                    
+                    Socket.io
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="nodejs_restful.html">
+            
+                <a href="nodejs_restful.html">
+            
+                    
+                    RESTful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="nodejs_redis.html">
+            
+                <a href="nodejs_redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.8" data-path="nodejs_auth.html">
+            
+                <a href="nodejs_auth.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >JWT</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#xC778;&#xC99D;">&#xC778;&#xC99D;</h1>
+<ul>
+<li>&#xBAA8;&#xB4E0; API &#xC694;&#xCCAD;&#xC5D0; &#xB300;&#xD55C; &#xC0AC;&#xC6A9;&#xC790;&#xB97C; &#xD655;&#xC778;&#xD558;&#xB294; &#xC791;&#xC5C5;</li>
+<li>HTTP&#xC694;&#xCCAD;&#xC5D0; &#xB300;&#xD558;&#xC5EC; &#xC0AC;&#xC6A9;&#xC790;&#xC5D0; &#xB9DE;&#xAC8C; &#xC751;&#xB2F5;&#xC744; &#xD574;&#xC57C; &#xD568;</li>
+<li>&#xAC01;&#xAC01;&#xC758; HTTP&#xC758; &#xD5E4;&#xB354;&#xC5D0; &#xC778;&#xC99D;&#xC218;&#xB2E8;&#xC744; &#xBCF4;&#xB0B4;&#xC11C; &#xC694;&#xCCAD;&#xC744; &#xC9C4;&#xD589;</li>
+</ul>
+<hr>
+<h1 id="session-cookie-&#xBC29;&#xC2DD;">Session, Cookie &#xBC29;&#xC2DD;</h1>
+<ul>
+<li><strong>Session</strong> &#xC740; &#xC11C;&#xBC84;&#xC5D0; &#xC800;&#xC7A5;&#xD558;&#xB294; &#xB370;&#xC774;&#xD130;&#xC774;&#xB2E4;</li>
+<li><strong>Cookie</strong> &#xB294; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC5D0; &#xC800;&#xC7A5;&#xD558;&#xB294; &#xB370;&#xC774;&#xD130;&#xC774;&#xB2E4;</li>
+<li><p>&#xB450; &#xBC29;&#xC2DD;&#xC744; &#xC774;&#xC6A9;&#xD558;&#xB294; &#xC778;&#xC99D;&#xC740; &#xB2E4;&#xC74C;&#xC758; &#xC21C;&#xC11C;&#xB85C; &#xC9C4;&#xD589;&#xB41C;&#xB2E4;</p>
+<ol>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xC778;&#xC99D;&#xC694;&#xCCAD;&#xC744; &#xC11C;&#xBC84;&#xC5D0; &#xBCF4;&#xB0C4;</li>
+<li>DB&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xC790;&#xB97C; &#xD655;&#xC778;</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xACE0;&#xC720;&#xD55C; ID&#xAC12;&#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xC138;&#xC158;&#xC800;&#xC7A5;&#xC18C;(redis)&#xC5D0; &#xC800;&#xC7A5;</li>
+<li>&#xC138;&#xC158;ID&#xB97C; &#xC11C;&#xBC84;&#xC5D0; &#xBD80;&#xC5EC;</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xB294; &#xC138;&#xC158; ID&#xB97C; &#xCFE0;&#xD0A4;&#xC5D0; &#xC800;&#xC7A5;. &#xD544;&#xC694;&#xD560; &#xB54C;&#xB9C8;&#xB2E4; &#xC0AC;&#xC6A9;</li>
+<li>&#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xBCF4;&#xB0B8; &#xCFE0;&#xD0A4;&#xC640; &#xC138;&#xC158;&#xC744; &#xBE44;&#xAD50;&#xD558;&#xC5EC; &#xC778;&#xC99D; &#xC9C4;&#xD589;</li>
+</ol>
+</li>
+<li><p>&#xCFE0;&#xD0A4;&#xC5D0;&#xB294; &#xC138;&#xC158;ID&#xAC00; &#xC800;&#xC7A5;&#xB418;&#xC9C0;&#xB9CC;, &#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xC911;&#xC694; &#xC815;&#xBCF4;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC9C0;&#xB294; &#xC54A;&#xC74C;. &#xC989;, &#xC774; &#xCFE0;&#xD0A4;&#xAC00; &#xD0C8;&#xCDE8;&#xB418;&#xC5B4;&#xB3C4; &#xC2DC;&#xAC04;&#xC774; &#xD750;&#xB974;&#xBA74; &#xB2E4;&#xC2DC; &#xC774; &#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xC815;&#xBCF4;&#xB97C; &#xC774;&#xC6A9;&#xD560; &#xC218; &#xC5C6;&#xB2E4;</p>
+</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xB85C;&#xBD80;&#xD130; &#xCFE0;&#xD0A4;&#xB97C; &#xD655;&#xC778;&#xD558;&#xBBC0;&#xB85C; &#xC0AC;&#xC6A9;&#xC790;&#xB97C; &#xC778;&#xC99D;&#xD558;&#xAE30; &#xC704;&#xD558;&#xC5EC; DB&#xC5D0; &#xC811;&#xADFC;&#xD560; &#xD544;&#xC694; &#xC5C6;&#xC74C;</li>
+</ul>
+<!--
+예제
+-->
+<hr>
+<h1 id="jwtjson-web-token">JWT(JSON Web Token)</h1>
+<ul>
+<li><a href="https://velopert.com/2350" target="_blank">JWT&#xC5D0; &#xAD00;&#xD55C; &#xAE00;</a></li>
+<li>&#xC778;&#xC99D;&#xC5D0; &#xD544;&#xC694;&#xD55C; &#xC815;&#xBCF4;&#xB97C; &#xC554;&#xD638;&#xD654; &#xC2DC;&#xD0A8; &#xD1A0;&#xD070;&#xC744; &#xC758;&#xBBF8;</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xB294; Access Token&#xC744; HTTP header&#xC5D0; &#xB123;&#xC5B4;&#xC11C; &#xC804;&#xC1A1;</li>
+<li>Token &#xAD6C;&#xC870; : <strong>Encoded_header.Encoded_payload.Verify_signature</strong><ol>
+<li>Header : &#xC554;&#xD638;&#xD654; &#xBC29;&#xC2DD;, &#xD0C0;&#xC785; &#xB4F1;</li>
+<li>Payload : &#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xBCF4;&#xB0BC; &#xB370;&#xC774;&#xD130;. &#xC0AC;&#xC6A9;&#xC790; id, &#xC720;&#xD6A8;&#xAE30;&#xAC04; &#xB4F1;&#xC774; &#xB4E4;&#xC5B4;&#xAC10;</li>
+<li>Verify_signature :  base64 &#xBC29;&#xC2DD;&#xC73C;&#xB85C; &#xC778;&#xCF54;&#xB529;&#xD55C; Header, Payload, Secret key&#xB97C; &#xB354;&#xD55C; &#xD6C4; &#xC11C;&#xBA85;</li>
+</ol>
+</li>
+<li>Verify_signature&#xB294; Secret key&#xB97C; &#xC54C;&#xC9C0; &#xBABB;&#xD558;&#xBA74; &#xBCF5;&#xD638;&#xD654; &#xBD88;&#xAC00;&#xB2A5;</li>
+<li>x&#xAC00; y&#xC758; &#xB370;&#xC774;&#xD130;&#xB97C; &#xBCF4;&#xAE30; &#xC704;&#xD574; &#xC790;&#xAE30; token&#xC758; payload &#xBD80;&#xBD84;&#xC744; y&#xC758; &#xAC83;&#xC73C;&#xB85C; &#xBC14;&#xAFBC;&#xB2E4;&#xACE0; &#xD558;&#xB354;&#xB77C;&#xB3C4;, &#xC11C;&#xBC84;&#xC5D0;&#xC11C; Verify_signature&#xB97C; &#xBCF5;&#xD638;&#xD654;&#xD558;&#xBA74; x&#xC5D0; &#xB300;&#xD55C; &#xC815;&#xBCF4;&#xAC00; token&#xC5D0; &#xB098;&#xC624;&#xBBC0;&#xB85C; &#xC870;&#xC791;&#xB41C; token&#xC774;&#xB77C;&#xACE0; &#xC778;&#xC2DD; &#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;crypto&apos;</span>);
+<span class="hljs-keyword">const</span> verifySignature = crypto.createHmac(<span class="hljs-string">&apos;sha256&apos;</span>,<span class="hljs-string">&apos;secret&apos;</span>)
+                          .update(encodedHeader+<span class="hljs-string">&quot;.&quot;</span>+encodedPayload)
+                          .diges(<span class="hljs-string">&apos;base64&apos;</span>)
+                          .replace(<span class="hljs-string">&apos;=&apos;</span>,<span class="hljs-string">&apos;&apos;</span>);
+</code></pre>
+<ul>
+<li><p>&#xC778;&#xC99D; &#xC808;&#xCC28;</p>
+<ol>
+<li>&#xC0AC;&#xC6A9;&#xC790; &#xB85C;&#xADF8;&#xC778;</li>
+<li>&#xC11C;&#xBC84;&#xC5D0;&#xC11C; DB&#xD655;&#xC778; &#xD6C4; &#xC0AC;&#xC6A9;&#xC790;id + &#xB9CC;&#xB8CC;&#xAE30;&#xAC04;&#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; payload &#xC0DD;&#xC131;</li>
+<li>secret key&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; access token &#xC0DD;&#xC131;</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xB294; access token&#xC744; &#xBC1B;&#xC544; &#xC800;&#xC7A5;&#xD55C; &#xD6C4; &#xC778;&#xC99D;&#xC774; &#xD544;&#xC694;&#xD560; &#xB54C;&#xB9C8;&#xB2E4; &#xC804;&#xC1A1;</li>
+<li>&#xC11C;&#xBC84;&#xC5D0;&#xC11C;&#xB294; &#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xBCF4;&#xB0B8; access token&#xC744; verify signature&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xBCF5;&#xD638;&#xD654; &#xD55C; &#xD6C4;&#xC5D0; &#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xB9DE;&#xB294;&#xC9C0; or &#xB9CC;&#xB8CC;&#xAE30;&#xAC04;&#xC774; &#xC9C0;&#xB0AC;&#xB294;&#xC9C0; &#xD655;&#xC778;</li>
+<li>&#xC778;&#xC99D; &#xD6C4;&#xC5D0; payload&#xB97C; &#xB514;&#xCF54;&#xB529;&#xD558;&#xC5EC; &#xC0AC;&#xC6A9;&#xC790;&#xC758; id&#xC5D0; &#xB9DE;&#xB294; &#xC808;&#xCC28; &#xC9C4;&#xD589;</li>
+</ol>
+</li>
+<li><p>&#xC7A5;&#xC810;</p>
+<ul>
+<li>&#xBCC4;&#xB3C4;&#xC758; &#xC800;&#xC7A5;&#xC18C; &#xD544;&#xC694; &#xC5C6;&#xC74C;(stateless)</li>
+<li>Token &#xAE30;&#xBC18;&#xC758; &#xB2E4;&#xB978; &#xC778;&#xC99D; &#xC2DC;&#xC2A4;&#xD15C;&#xACFC; &#xC27D;&#xAC8C; &#xC5F0;&#xB3D9; &#xAC00;&#xB2A5;</li>
+</ul>
+</li>
+<li>&#xB2E8;&#xC810;<ul>
+<li>&#xC774;&#xBBF8; &#xBC1C;&#xAE09;&#xB41C; JWT&#xB97C; &#xCDE8;&#xC18C; &#xC2DC;&#xD0A4;&#xB294; &#xBC29;&#xBC95;&#xC774; &#xC5C6;&#xC74C;(Refresh token&#xC73C;&#xB85C; &#xC5B4;&#xB290; &#xC815;&#xB3C4; &#xD574;&#xACB0;)</li>
+<li>payload&#xC5D0; &#xB123;&#xC744; &#xC815;&#xBCF4;&#xAC00; &#xC81C;&#xD55C;&#xC801;</li>
+<li>JWT&#xC758; &#xAE38;&#xC774;&#xAC00; &#xAE38;&#xC5B4;&#xC9C0;&#xBA74; &#xC790;&#xC6D0;&#xB0AD;&#xBE44;&#xAC00; &#xBC1C;&#xC0DD;&#xD568;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#xC608;&#xC81C;">&#xC608;&#xC81C;</h2>
+<ul>
+<li>&#xAC04;&#xB2E8;&#xD55C; jwt&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC744; &#xD574;&#xBCF4;&#xB3C4;&#xB85D; &#xD558;&#xC790;</li>
+</ul>
+<h4 id="1-&#xD544;&#xC694;&#xD55C;-&#xBAA8;&#xB4C8;-&#xC124;&#xCE58;">(1) &#xD544;&#xC694;&#xD55C; &#xBAA8;&#xB4C8; &#xC124;&#xCE58;</h4>
+<pre><code>npm install --save jsonwebtoken
+npm install --save mysql
+</code></pre><h4 id="2-indexjs">(2) index.js</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;express&apos;</span>);
+<span class="hljs-keyword">var</span> router = express.Router();
+
+<span class="hljs-keyword">var</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;crypto&apos;</span>);
+<span class="hljs-keyword">var</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;jsonwebtoken&apos;</span>);
+
+<span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;mysql&apos;</span>).createConnection({
+  host:<span class="hljs-string">&apos;localhost&apos;</span>,
+  user:<span class="hljs-string">&apos;root&apos;</span>,
+  password:<span class="hljs-string">&apos;1234&apos;</span>,
+  database:<span class="hljs-string">&apos;toyDB&apos;</span>
+});
+
+<span class="hljs-keyword">const</span> cryptoConfig ={
+  <span class="hljs-string">&quot;iteration&quot;</span>:<span class="hljs-number">100000</span>,
+  <span class="hljs-string">&quot;keylen&quot;</span>:<span class="hljs-number">8</span>,
+  <span class="hljs-string">&quot;digest&quot;</span>:<span class="hljs-string">&apos;sha512&apos;</span>
+}
+
+<span class="hljs-keyword">const</span> secret = <span class="hljs-string">&apos;!#@$@F@#!@&apos;</span>;
+
+<span class="hljs-comment">/* GET home page. */</span>
+router.get(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{
+  res.render(<span class="hljs-string">&apos;index&apos;</span>);
+});
+
+router.post(<span class="hljs-string">&apos;/signup&apos;</span>,(req,res,next)=&gt;{
+  <span class="hljs-keyword">const</span> uid = req.body.id;
+  <span class="hljs-keyword">const</span> password = req.body.password;
+  client.query(<span class="hljs-string">&apos;select * from Usr where uid=?&apos;</span>,[uid],(err,rows)=&gt;{
+    <span class="hljs-keyword">if</span>(err)<span class="hljs-keyword">throw</span> err;
+    <span class="hljs-keyword">if</span>(rows[<span class="hljs-number">0</span>])<span class="hljs-keyword">return</span> res.send(<span class="hljs-string">&quot;NEW ID PLEASE&quot;</span>);
+
+    <span class="hljs-comment">//make encoded password</span>
+    <span class="hljs-keyword">const</span> salt= crypto.randomBytes(<span class="hljs-number">8</span>).toString(<span class="hljs-string">&apos;hex&apos;</span>);
+    <span class="hljs-keyword">const</span> key = crypto.pbkdf2Sync(password,salt,cryptoConfig.iteration,cryptoConfig.keylen,cryptoConfig.digest).toString(<span class="hljs-string">&apos;hex&apos;</span>);
+
+    <span class="hljs-comment">//save id, encoded password with salt</span>
+    client.query(<span class="hljs-string">&apos;insert into Usr(uid,password,salt) values(?,?,?)&apos;</span>,[uid,key,salt],(err,result)=&gt;{
+      <span class="hljs-keyword">if</span>(err)<span class="hljs-keyword">throw</span> err;
+      <span class="hljs-keyword">return</span> res.redirect(<span class="hljs-string">&apos;/&apos;</span>);
+    });
+  });
+});
+
+router.post(<span class="hljs-string">&apos;/login&apos;</span>,(req,res,next)=&gt;{
+  <span class="hljs-keyword">const</span> uid = req.body.id;
+  <span class="hljs-keyword">const</span> password = req.body.password;
+
+  <span class="hljs-comment">//jwt is saved as a cookie</span>
+  <span class="hljs-keyword">const</span> userToken = req.cookies.userToken;
+  <span class="hljs-keyword">try</span>{
+    <span class="hljs-comment">//if verify is failed because of some reasons like expiration, then it returns an error</span>
+    <span class="hljs-keyword">let</span> dcd = jwt.verify(userToken,secret);
+    <span class="hljs-keyword">return</span> res.send(<span class="hljs-string">&quot;login success with a token&quot;</span>);
+  }<span class="hljs-keyword">catch</span>(err){
+    <span class="hljs-comment">//make new token.</span>
+    <span class="hljs-keyword">const</span> newToken = jwt.sign({<span class="hljs-string">&quot;id&quot;</span>:uid},secret,{expiresIn:<span class="hljs-number">30</span>});
+    client.query(<span class="hljs-string">&quot;select * from Usr where uid=?&quot;</span>,[uid],(err,rows)=&gt;{
+      <span class="hljs-keyword">if</span>(err)<span class="hljs-built_in">console</span>.log(err);
+      <span class="hljs-keyword">if</span>(!rows[<span class="hljs-number">0</span>])<span class="hljs-keyword">return</span> res.send(<span class="hljs-string">&quot;NO MATCHED USER&quot;</span>);<span class="hljs-comment">//no matched user</span>
+      <span class="hljs-keyword">const</span> derivedKey= crypto.pbkdf2Sync(password,rows[<span class="hljs-number">0</span>].salt,cryptoConfig.iteration,cryptoConfig.keylen,cryptoConfig.digest).toString(<span class="hljs-string">&apos;hex&apos;</span>);
+      <span class="hljs-keyword">if</span>(derivedKey===rows[<span class="hljs-number">0</span>].password){
+        <span class="hljs-comment">//save new token as a cookie</span>
+        res.cookie(<span class="hljs-string">&apos;userToken&apos;</span>,newToken);
+        <span class="hljs-keyword">return</span> res.send(<span class="hljs-string">&quot;login success with new token&quot;</span>);
+      }
+      res.send(<span class="hljs-string">&quot;Wrong Password&quot;</span>);
+    });
+  }
+});
+<span class="hljs-built_in">module</span>.exports = router;
+</code></pre>
+<h2 id="refresh-token">Refresh Token</h2>
+<ul>
+<li>Access token&#xB9CC; &#xC774;&#xC6A9;&#xD558;&#xB294; &#xBC29;&#xC2DD;&#xC758; &#xBB38;&#xC81C;&#xC810;&#xC740; &#xC720;&#xD6A8;&#xAE30;&#xAC04;&#xC774; &#xAE38;&#xBA74; &#xC774; token&#xC774; &#xD0C8;&#xCDE8; &#xB418;&#xC5C8;&#xC744; &#xB54C; &#xBCF4;&#xC548;&#xC774; &#xCDE8;&#xC57D;&#xD574;&#xC9C0;&#xACE0;, &#xC720;&#xD6A8;&#xAE30;&#xAC04;&#xC774; &#xC9E7;&#xC73C;&#xBA74; &#xBE48;&#xBC88;&#xD55C; &#xB85C;&#xADF8;&#xC778;&#xC744; &#xD574;&#xC57C;&#xD55C;&#xB2E4;&#xB294; &#xAC83;</li>
+<li>&#xC774;&#xB97C; <strong>&#xC720;&#xD6A8;&#xAE30;&#xAC04;&#xC774; &#xC9E7;&#xC740; Access Token + &#xC720;&#xD6A8;&#xAE30;&#xAC04;&#xC774; &#xAE34; Refresh Token</strong> &#xC73C;&#xB85C; &#xC5B4;&#xB290; &#xC815;&#xB3C4; &#xD574;&#xC18C;</li>
+<li>access token&#xC774; &#xB9CC;&#xB8CC;&#xB418;&#xBA74; refresh token&#xC744; &#xD655;&#xC778;&#xD558;&#xACE0;, &#xC778;&#xC99D;&#xC774; &#xB418;&#xBA74; access token&#xC744; &#xC7AC;&#xBC1C;&#xAE09;(&#xB85C;&#xADF8;&#xC778; &#xBD88;&#xD544;&#xC694;)</li>
+<li><p>refresh token&#xC774; &#xB9CC;&#xB8CC;&#xB418;&#xBA74; &#xC7AC; &#xB85C;&#xADF8;&#xC778; &#xD574;&#xC57C;&#xD568;(refresh token&#xC774; &#xD0C8;&#xCDE8;&#xB418;&#xC5C8;&#xC744; &#xB54C;&#xC758; &#xBB38;&#xC81C;&#xC810; &#xBCF4;&#xC644;)</p>
+</li>
+<li><p>&#xC778;&#xC99D;&#xACFC;&#xC815;</p>
+<ol>
+<li>&#xC0AC;&#xC6A9;&#xC790; &#xCCAB; &#xB85C;&#xADF8;&#xC778;</li>
+<li>&#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xC790; &#xC778;&#xC99D; &#xD6C4; Access token, Refresh token &#xBC1C;&#xAE09;</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xB294; Access token&#xC758; &#xB9CC;&#xB8CC;&#xC804;&#xAE4C;&#xC9C0; Access token&#xB9CC; &#xC694;&#xCCAD;&#xC5D0; &#xC0AC;&#xC6A9;</li>
+<li>Access token&#xC774; &#xB9CC;&#xB8CC;&#xB418;&#xBA74;, &#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xC790;&#xC5D0;&#xAC8C; &#xB9CC;&#xB8CC; &#xC2E0;&#xD638; &#xC804;&#xC1A1;</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xB294; Refresh token &#xC804;&#xC1A1;.</li>
+<li>&#xD655;&#xC778; &#xD6C4; &#xC778;&#xC99D;&#xB418;&#xBA74;, Access token &#xC7AC;&#xBC1C;&#xAE09;</li>
+<li>&#xB9CC;&#xC57D; Refresh token&#xC774; &#xB9CC;&#xB8CC;&#xB41C; &#xACBD;&#xC6B0; &#xC7AC; &#xB85C;&#xADF8;&#xC778;&#xD574;&#xC57C;&#xD568;</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h1 id="&#xCC38;&#xACE0;&#xC790;&#xB8CC;">&#xCC38;&#xACE0;&#xC790;&#xB8CC;</h1>
+<ul>
+<li><a href="https://lazyhoneyant.tistory.com/7" target="_blank">&#xD1A0;&#xD070;&#xC744; &#xC800;&#xC7A5;&#xD558;&#xBA74; &#xC88B;&#xC740; &#xACF3;: Web Storage vs Cookies</a></li>
+<li><a href="https://tansfil.tistory.com/58?category=255594" target="_blank">https://tansfil.tistory.com/58?category=255594</a></li>
+<li><a href="https://strongstar.tistory.com/40" target="_blank">https://strongstar.tistory.com/40</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="nodejs_redis.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Redis">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"JWT","date":"2019-08-10T02:02:59.000Z","author":"Inhyuk","categories":"NodeJS","tags":"NodeJS","cover":"/assets/instacode.png","name":"nodejs_auth.md","level":"1.3.8","depth":2,"previous":{"title":"Redis","level":"1.3.7","depth":2,"path":"posts/nodejs/nodejs_redis.md","ref":"posts/nodejs/nodejs_redis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/nodejs/nodejs_auth.md","mtime":"2020-04-20T13:50:57.798Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T11:56:43.597Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

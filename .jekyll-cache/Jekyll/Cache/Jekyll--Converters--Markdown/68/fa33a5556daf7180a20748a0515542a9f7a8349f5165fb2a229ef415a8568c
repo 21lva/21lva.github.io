@@ -1,0 +1,161 @@
+I"\,<h1 id="추상-클래스">추상 클래스</h1>
+
+<ul>
+  <li>자체로서는 클래스의 역할을 다 하지 못하지만 다른 클래스의 바탕이 되는 클래스</li>
+  <li>클래스 앞에 <strong>abstract</strong> 키워드를 붙인다</li>
+  <li>특정 메서드에 <strong>abstract</strong> 를 붙여서 미완성 상태로 두고 자식 클래스가 구현하도록 한다</li>
+  <li>객체를 생성할 수 없다. 모든 메서드는 구현되어 있지만 클래스에만 abstract를 붙여서 객체 생성을 막을 수 있다</li>
+</ul>
+
+<h2 id="추상메서드">추상메서드</h2>
+
+<ul>
+  <li>메서드 앞에 <strong>abstract</strong> 를 붙이고 구현은 하지 않은 메서드</li>
+  <li>추상클래스를 상속 받은 자식 클래스는 모두 구현하거나 자신도 추상 클래스가 된다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Parent</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+  <span class="kt">void</span> <span class="nf">notStatic</span><span class="o">(){</span>
+    <span class="c1">//구현</span>
+    <span class="c1">//추상 클래스에도 추상 메서드가 아닌 메서드를 만들 수 있다</span>
+  <span class="o">}</span>
+  <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">);</span>
+  <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Child1</span> <span class="kd">extends</span> <span class="nc">Parent</span><span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">){</span>
+    <span class="c1">//구현부</span>
+  <span class="o">}</span>
+  <span class="kt">void</span> <span class="nf">stop</span><span class="o">(){</span>
+    <span class="c1">//구현부</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Child2</span> <span class="kd">extends</span> <span class="nc">Parent</span><span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">){</span>
+    <span class="c1">//구현부</span>
+  <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="인터페이스">인터페이스</h1>
+
+<ul>
+  <li>추상 클래스처럼 구현을 하지 않은 상태의 메서드를 가진 것</li>
+  <li>추상 클래스 : 미완성 설계도 vs 인터페이스 : 밑그림</li>
+  <li>추상 메서드(<strong>public abstrac</strong> )와 상수(<strong>public final</strong> )만을 가진다.</li>
+  <li>객체 생성 불가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Readable</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>인터페이스는 추상 클래스와 달리 다중 상속이 가능하다</li>
+  <li>자식 클래스에서 인터페이스의 모든 메서드를 구현하지 않은 경우에는 추상 클래스가 된다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Readable</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">play2</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Read</span> <span class="kd">implements</span> <span class="nc">Readable</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">){</span>
+    <span class="c1">//구현</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">play2</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">){</span>
+    <span class="c1">//구현</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Read</span> <span class="kd">implements</span> <span class="nc">Readable</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">pos</span><span class="o">){</span>
+    <span class="c1">//구현</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="장점">장점</h2>
+
+<ul>
+  <li>개발시간을 단축</li>
+  <li>표준화가 가능</li>
+  <li>서로 관계 없는 클래스들을 묶을 수 있음</li>
+  <li>독립적인 프로그래밍 가능. 구현부와 선언부가 다르기 때문에 구현부가 바뀌어도 선언부를 가져다 쓰는 다른 코드에서는 신경안써도 됨</li>
+</ul>
+
+<h2 id="default-method">default method</h2>
+
+<ul>
+  <li>Java8 에서 추가된 기능</li>
+  <li>기존에는 인터페이스에 새로운 메서드가 추가되면 이를 구현한 모든 클래스에서 메서드를 구현해야 함</li>
+  <li>메서드 앞에 <strong>default</strong> 키워드를 붙여서 메서드를 만들고 구현을 한다</li>
+  <li>접근제어자는 <strong>public</strong> 이고 생략가능</li>
+  <li>원하면 오버라이딩 생략가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">iii</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Lion</span> <span class="n">l</span><span class="o">=</span> <span class="k">new</span> <span class="nc">Lion</span><span class="o">();</span>
+        <span class="nc">Monkey</span> <span class="n">m</span><span class="o">=</span> <span class="k">new</span> <span class="nc">Monkey</span><span class="o">();</span>
+        <span class="n">feed</span><span class="o">(</span><span class="n">l</span><span class="o">);</span>
+        <span class="n">feed</span><span class="o">(</span><span class="n">m</span><span class="o">);</span>
+        <span class="n">l</span><span class="o">.</span><span class="na">fun</span><span class="o">();</span>
+        <span class="n">m</span><span class="o">.</span><span class="na">fun</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">feed</span><span class="o">(</span><span class="n">animal</span> <span class="n">a</span><span class="o">){</span>
+        <span class="n">a</span><span class="o">.</span><span class="na">getFood</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">animal</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">getFood</span><span class="o">();</span>
+    <span class="k">default</span> <span class="kt">void</span> <span class="nf">fun</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"default method"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Lion</span> <span class="kd">implements</span> <span class="n">animal</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getFood</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Get chickens"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Monkey</span> <span class="kd">implements</span> <span class="n">animal</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getFood</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Get bananas"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fun</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Monkey overrided it"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="추상클래스-vs-인터페이스">추상클래스 vs 인터페이스</h1>
+
+<h2 id="인터페이스-1">인터페이스</h2>
+
+<ul>
+  <li>특정 기능이 존재함을 보장해준다. 하나의 규약이다.</li>
+  <li>다중 상속이 가능</li>
+</ul>
+
+<h2 id="추상-클래스-1">추상 클래스</h2>
+
+<ul>
+  <li>인터페이스랑 달리 일반 메서드가 존재한다</li>
+  <li>변수를 가지면서 클래스 상태가 존재한다</li>
+  <li>추상클래스는 비슷한 행동을 하는 클래스끼리 묶는 것이다. (<strong>is-a</strong>)</li>
+</ul>
+:ET

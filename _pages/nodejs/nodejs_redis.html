@@ -1,0 +1,721 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redis · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="nodejs_auth.html" />
+    
+    
+    <link rel="prev" href="nodejs_restful.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../js/js_basic.html">
+            
+                <a href="../js/js_basic.html">
+            
+                    
+                    Javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../js/js_object.html">
+            
+                <a href="../js/js_object.html">
+            
+                    
+                    객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../js/js_array.html">
+            
+                <a href="../js/js_array.html">
+            
+                    
+                    배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../js/js_event.html">
+            
+                <a href="../js/js_event.html">
+            
+                    
+                    이벤트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../js/js_promise.html">
+            
+                <a href="../js/js_promise.html">
+            
+                    
+                    Promise, async & await
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../js/js_module.html">
+            
+                <a href="../js/js_module.html">
+            
+                    
+                    모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../js/js_wd.html">
+            
+                <a href="../js/js_wd.html">
+            
+                    
+                    Window & BOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../js/js_dom.html">
+            
+                <a href="../js/js_dom.html">
+            
+                    
+                    DOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../js/jquery_select.html">
+            
+                <a href="../js/jquery_select.html">
+            
+                    
+                    JQuery : 선택 & 객체 & 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../js/jquery_event.html">
+            
+                <a href="../js/jquery_event.html">
+            
+                    
+                    JQuery : 이벤트 & 애니메이션
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../js/jquery_async.html">
+            
+                <a href="../js/jquery_async.html">
+            
+                    
+                    JQuery : 비동기 처리 & 플러그인
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="nodejs_basic.html">
+            
+                <a href="nodejs_basic.html">
+            
+                    
+                    Nodejs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="nodejs_http.html">
+            
+                <a href="nodejs_http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="nodejs_external.html">
+            
+                <a href="nodejs_external.html">
+            
+                    
+                    외부 모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="nodejs_express.html">
+            
+                <a href="nodejs_express.html">
+            
+                    
+                    ExpressJS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="nodejs_mysql.html">
+            
+                <a href="nodejs_mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="nodejs_socket.html">
+            
+                <a href="nodejs_socket.html">
+            
+                    
+                    Socket.io
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="nodejs_restful.html">
+            
+                <a href="nodejs_restful.html">
+            
+                    
+                    RESTful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.7" data-path="nodejs_redis.html">
+            
+                <a href="nodejs_redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="nodejs_auth.html">
+            
+                <a href="nodejs_auth.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Redis</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="redis">redis</h1>
+<ul>
+<li>&#xBA54;&#xBAA8;&#xB9AC;&#xC5D0; &#xC800;&#xC7A5;&#xD558;&#xB294; key-value &#xD615;&#xD0DC;&#xC758; NoSQL</li>
+<li><p>nodejs&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; redis &#xBAA8;&#xB4C8; <a href="https://www.npmjs.com/package/redis" target="_blank">&#xAD00;&#xB828;&#xBB38;&#xC11C;</a></p>
+</li>
+<li><p>&#xC124;&#xCE58;</p>
+<pre><code>sudo npm install JSON redis -g
+</code></pre></li>
+<li><p>&#xAE30;&#xB2A5;</p>
+<ul>
+<li>set key value: key-value &#xC800;&#xC7A5;</li>
+<li>get key : key-value&#xC758; value &#xC77D;&#xAE30;</li>
+<li>publish : &#xD2B9;&#xC815; &#xC0AC;&#xC548;&#xC744; subscribe&#xD558;&#xB294; client&#xC5D0;&#xAC8C; &#xBA54;&#xC2DC;&#xC9C0; &#xC804;&#xB2EC;</li>
+<li>subscribe : &#xD2B9;&#xC815; &#xC0AC;&#xC548;&#xC744; &#xAD6C;&#xB3C5;</li>
+</ul>
+</li>
+<li><p>&#xC790;&#xC8FC; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xAD6C;&#xC870;</p>
+<ul>
+<li>String : key&#xC5D0; &#xB300;&#xD574;&#xC11C; &#xBB38;&#xC790;&#xC5F4;&#xC744; &#xC800;&#xC7A5;. &#xCD5C;&#xB300; 512MB&#xC758; &#xBC14;&#xC774;&#xB108;&#xB9AC;&#xB3C4; &#xC800;&#xC7A5;&#xAC00;&#xB2A5;</li>
+<li>List : key&#xC5D0;&#xB300;&#xD574;&#xC11C; linked list &#xC790;&#xB8CC; &#xAD6C;&#xC870;&#xB97C; &#xB9E4;&#xCE6D;. lpush(&#xCC98;&#xC74C;&#xC5D0; &#xC800;&#xC7A5;), rpush(&#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0; &#xC800;&#xC7A5;), lpop(&#xCC98;&#xC74C; &#xBF51;&#xAE30;), rpop(&#xB9C8;&#xC9C0;&#xB9C9; &#xBF51;&#xAE30;) &#xAC00;&#xB2A5;</li>
+<li>Set : List&#xC640; &#xB2EC;&#xB9AC; value&#xC758; &#xC911;&#xBCF5; &#xBD88;&#xAC00;&#xB2A5;</li>
+<li>Sorted Set : set&#xACFC; &#xBE44;&#xC2B7;. value&#xC640; &#xD568;&#xAED8; score &#xC800;&#xC7A5;. score&#xB97C; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xC815;&#xB82C;</li>
+<li>Hash : value&#xC5D0; &#xAC1D;&#xCCB4; &#xD615;&#xC2DD;&#xC744; &#xC800;&#xC7A5;(field-value&#xC758; &#xC5EC;&#xB7EC;&#xC30D;&#xC774; value&#xC5D0; &#xB4E4;&#xC5B4;&#xAC04;&#xB2E4;)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">//client &#xC0DD;&#xC131;</span>
+<span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;redis&apos;</span>).createClient();
+
+<span class="hljs-comment">//String</span>
+client.set(<span class="hljs-string">&apos;key1&apos;</span>,<span class="hljs-string">&apos;value1&apos;</span>);
+client.get(<span class="hljs-string">&apos;key1&apos;</span>,(err,value)=&gt;{
+  <span class="hljs-built_in">console</span>.log(value);
+});
+
+<span class="hljs-comment">//List</span>
+client.rpush(<span class="hljs-string">&apos;key&apos;</span>,<span class="hljs-string">&apos;value1&apos;</span>,<span class="hljs-string">&apos;value2&apos;</span>,<span class="hljs-string">&apos;value3&apos;</span>);
+client.lpush(<span class="hljs-string">&apos;key&apos;</span>,<span class="hljs-string">&apos;value1&apos;</span>,<span class="hljs-string">&apos;value2&apos;</span>,<span class="hljs-string">&apos;value3&apos;</span>);
+client.lrange(<span class="hljs-string">&apos;key&apos;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,(err,arr)=&gt;{
+  <span class="hljs-built_in">console</span>.log(arr)  
+});
+
+<span class="hljs-comment">//Set</span>
+client.sadd(<span class="hljs-string">&apos;key&apos;</span>,<span class="hljs-string">&apos;value1&apos;</span>,<span class="hljs-string">&apos;value2&apos;</span>,<span class="hljs-string">&apos;value3&apos;</span>);
+client.srange(<span class="hljs-string">&apos;key&apos;</span>,(err,s)=&gt;{
+  <span class="hljs-built_in">console</span>.log(s);
+});
+
+<span class="hljs-comment">//Sorted Set</span>
+client.zadd(<span class="hljs-string">&apos;key&apos;</span>,score1,<span class="hljs-string">&apos;value1&apos;</span>,score2,<span class="hljs-string">&apos;value2&apos;</span>,score3,<span class="hljs-string">&apos;value3&apos;</span>);
+client.zrange(<span class="hljs-string">&apos;key&apos;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,(err,s)=&gt;{
+  <span class="hljs-built_in">console</span>.log(s);
+});
+
+<span class="hljs-comment">//Hash</span>
+client.hmset(<span class="hljs-string">&apos;key&apos;</span>,<span class="hljs-string">&apos;field1&apos;</span>,<span class="hljs-string">&apos;value1&apos;</span>,<span class="hljs-string">&apos;field2&apos;</span>,<span class="hljs-string">&apos;value2&apos;</span>);
+client.hgetall(<span class="hljs-string">&apos;key&apos;</span>,(err,obj)=&gt;{
+  <span class="hljs-built_in">console</span>.log(obj);
+});
+
+<span class="hljs-comment">//Delete</span>
+client.del(<span class="hljs-string">&apos;key&apos;</span>);
+
+<span class="hljs-comment">//exist</span>
+client.exists(<span class="hljs-string">&apos;key&apos;</span>);
+
+<span class="hljs-comment">//rename</span>
+client.rename(<span class="hljs-string">&apos;old_key&apos;</span>,<span class="hljs-string">&apos;new_key&apos;</span>);
+</code></pre>
+<hr>
+<h1 id="socketio--redis-&#xB85C;-&#xCC44;&#xD305;&#xC11C;&#xBC84;-&#xAD6C;&#xD604;">Socket.io + Redis &#xB85C; &#xCC44;&#xD305;&#xC11C;&#xBC84; &#xAD6C;&#xD604;</h1>
+<ul>
+<li>&#xC774;&#xC804; &#xC7A5;&#xC778; Socket.io&#xB97C; &#xBC14;&#xD0D5;&#xC73C;&#xB85C; &#xC9C4;&#xD589;</li>
+</ul>
+<h4 id="chatjs">chat.js</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;express&apos;</span>);
+<span class="hljs-keyword">var</span> redis = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;redis&apos;</span>);
+<span class="hljs-keyword">var</span> <span class="hljs-built_in">JSON</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;JSON&apos;</span>);
+<span class="hljs-keyword">var</span> router = express.Router();
+
+<span class="hljs-comment">//create socket.io</span>
+<span class="hljs-keyword">var</span> io=<span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;socket.io&quot;</span>)();
+
+<span class="hljs-comment">//create redis client</span>
+<span class="hljs-keyword">var</span> rclient = redis.createClient(<span class="hljs-number">6379</span>,<span class="hljs-string">&apos;127.0.0.1&apos;</span>);
+
+
+io.on(<span class="hljs-string">&quot;connection&quot;</span>,(socket)=&gt;{
+  <span class="hljs-comment">//login handler</span>
+  socket.on(<span class="hljs-string">&apos;login&apos;</span>,(data)=&gt;{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Client logged in. name:&apos;</span>+data.name);
+    socket.name=data.name;
+    io.emit(<span class="hljs-string">&apos;login&apos;</span>,data.name);
+  });
+
+  <span class="hljs-comment">//chat handler</span>
+  socket.on(<span class="hljs-string">&apos;chat&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Message from %s: %s&apos;</span>, socket.name, data.msg);
+
+    <span class="hljs-keyword">var</span> msg = {
+      <span class="hljs-keyword">from</span>: {
+        name: socket.name,
+      },
+      msg: data.msg
+    };
+
+    <span class="hljs-comment">//push msg to list</span>
+    rclient.rpush(<span class="hljs-string">&apos;chatLogs&apos;</span>,<span class="hljs-built_in">JSON</span>.stringify(msg));
+
+    io.emit(<span class="hljs-string">&apos;chat&apos;</span>, msg);
+
+  });
+});
+
+<span class="hljs-built_in">module</span>.exports = io;
+</code></pre>
+<h4 id="indexjs">index.js</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;express&apos;</span>);
+<span class="hljs-keyword">var</span> router = express.Router();
+<span class="hljs-keyword">var</span> redis = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;redis&apos;</span>);
+
+
+<span class="hljs-keyword">var</span> rclient = redis.createClient(<span class="hljs-number">6379</span>,<span class="hljs-string">&apos;127.0.0.1&apos;</span>);
+
+<span class="hljs-comment">/* GET home page. */</span>
+router.get(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{
+  <span class="hljs-comment">//load chat logs</span>
+  rclient.lrange(<span class="hljs-string">&apos;chatLogs&apos;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,(err,charArr)=&gt;{<span class="hljs-comment">//0 ~ -1(last element)</span>
+    <span class="hljs-keyword">let</span> chatLogs=charArr.map(char=&gt;<span class="hljs-built_in">JSON</span>.parse(char));
+    res.render(<span class="hljs-string">&apos;index&apos;</span>, {
+     title: <span class="hljs-string">&apos;Express&apos;</span>,
+     chatLogs:<span class="hljs-built_in">JSON</span>.stringify(chatLogs)
+    });
+  });
+});
+
+<span class="hljs-built_in">module</span>.exports = router;
+</code></pre>
+<h4 id="indexejs">index.ejs</h4>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Socket.io Chat Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Socket.io Chat Example<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-inline&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-group&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;msgForm&quot;</span>&gt;</span>Message: <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;msgForm&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>&gt;</span>Send<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;chatLogs&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/socket.io/socket.io.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-comment">// socket.io &#xC11C;&#xBC84;&#xC5D0; &#xC811;&#xC18D;&#xD55C;&#xB2E4;</span>
+    <span class="hljs-keyword">var</span> socket = io();
+
+    <span class="hljs-comment">// &#xC11C;&#xBC84;&#xB85C; &#xC790;&#xC2E0;&#xC758; &#xC815;&#xBCF4;&#xB97C; &#xC804;&#xC1A1;&#xD55C;&#xB2E4;.</span>
+    socket.emit(<span class="hljs-string">&quot;login&quot;</span>, {
+      <span class="hljs-comment">// name: &quot;ungmo2&quot;,</span>
+      name: <span class="hljs-string">&apos;abc&apos;</span>,
+    });
+
+    <span class="hljs-comment">// &#xC11C;&#xBC84;&#xB85C;&#xBD80;&#xD130;&#xC758; &#xBA54;&#xC2DC;&#xC9C0;&#xAC00; &#xC218;&#xC2E0;&#xB418;&#xBA74;</span>
+    socket.on(<span class="hljs-string">&quot;login&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+      $(<span class="hljs-string">&quot;#chatLogs&quot;</span>).append(<span class="hljs-string">&quot;&lt;div&gt;&lt;strong&gt;&quot;</span> + data + <span class="hljs-string">&quot;&lt;/strong&gt; has joined&lt;/div&gt;&quot;</span>);
+    });
+
+    <span class="hljs-comment">// &#xC11C;&#xBC84;&#xB85C;&#xBD80;&#xD130;&#xC758; &#xBA54;&#xC2DC;&#xC9C0;&#xAC00; &#xC218;&#xC2E0;&#xB418;&#xBA74;</span>
+    socket.on(<span class="hljs-string">&quot;chat&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+      $(<span class="hljs-string">&quot;#chatLogs&quot;</span>).append(<span class="hljs-string">&quot;&lt;div&gt;&quot;</span> + data.msg + <span class="hljs-string">&quot; : from &lt;strong&gt;&quot;</span> + data.from.name + <span class="hljs-string">&quot;&lt;/strong&gt;&lt;/div&gt;&quot;</span>);
+    });
+
+    <span class="hljs-comment">// Send &#xBC84;&#xD2BC;&#xC774; &#xD074;&#xB9AD;&#xB418;&#xBA74;</span>
+    $(<span class="hljs-string">&quot;form&quot;</span>).submit(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+      e.preventDefault();
+      <span class="hljs-keyword">var</span> $msgForm = $(<span class="hljs-string">&quot;#msgForm&quot;</span>);
+
+      <span class="hljs-comment">// &#xC11C;&#xBC84;&#xB85C; &#xBA54;&#xC2DC;&#xC9C0;&#xB97C; &#xC804;&#xC1A1;&#xD55C;&#xB2E4;.</span>
+      socket.emit(<span class="hljs-string">&quot;chat&quot;</span>, { msg: $msgForm.val() });
+      $msgForm.val(<span class="hljs-string">&quot;&quot;</span>);
+    });
+    <span class="hljs-keyword">var</span> chatLogs = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">chatLogs</span> %&gt;</span>;
+    chatLogs.forEach((chatLog)=&gt;{
+      $(&quot;#chatLogs&quot;).append(&quot;<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&quot; + chatLog.msg + &quot; : from <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>&quot; + chatLog.from.name + &quot;<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>&quot;);
+    });
+  });
+  </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<ul>
+<li>view &#xD398;&#xC774;&#xC9C0;&#xC5D0; JSON&#xC744; &#xB118;&#xAE38; &#xB54C; &#xC870;&#xC2EC;&#xD560; &#xC810;<ul>
+<li>&#xC11C;&#xBC84;&#xC5D0;&#xC11C; JSON&#xC744; &#xB118;&#xAE38;&#xB54C;&#xB294; stringify&#xB85C; &#xBB38;&#xC790;&#xC5F4;&#xD654; &#xD558;&#xC790;</li>
+<li>ejs&#xC758; &#xACBD;&#xC6B0; view &#xD398;&#xC774;&#xC9C0;&#xC5D0;&#xC11C; <strong>&lt;%=</strong> &#xB300;&#xC2E0; <strong>&lt;%-</strong> &#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC790;</li>
+</ul>
+</li>
+</ul>
+<h1 id="&#xCC38;&#xACE0;&#xC790;&#xB8CC;">&#xCC38;&#xACE0;&#xC790;&#xB8CC;</h1>
+<ul>
+<li><a href="https://bcho.tistory.com/1098" target="_blank">https://bcho.tistory.com/1098</a></li>
+<li><a href="http://library.gabia.com/contents/infrahosting/8018" target="_blank">http://library.gabia.com/contents/infrahosting/8018</a></li>
+<li><a href="https://wi-fi.tistory.com/entry/%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85%EB%B0%A9-%EB%A7%8C%EB%93%A4%EA%B8%B0-NodeJS-Express-Redis-Socketio-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0" target="_blank">https://wi-fi.tistory.com/entry/%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85%EB%B0%A9-%EB%A7%8C%EB%93%A4%EA%B8%B0-NodeJS-Express-Redis-Socketio-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0</a></li>
+<li><a href="https://www.zerocho.com/category/NodeJS/post/5a3238b714c5f9001b16c430" target="_blank">https://www.zerocho.com/category/NodeJS/post/5a3238b714c5f9001b16c430</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="nodejs_restful.html" class="navigation navigation-prev " aria-label="Previous page: RESTful">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="nodejs_auth.html" class="navigation navigation-next " aria-label="Next page: JWT">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Redis","date":"2019-08-10T02:02:59.000Z","author":"Inhyuk","categories":"NodeJS","tags":"NodeJS","cover":"/assets/instacode.png","name":"nodejs_redis.md","level":"1.3.7","depth":2,"next":{"title":"JWT","level":"1.3.8","depth":2,"path":"posts/nodejs/nodejs_auth.md","ref":"posts/nodejs/nodejs_auth.md","articles":[]},"previous":{"title":"RESTful","level":"1.3.6","depth":2,"path":"posts/nodejs/nodejs_restful.md","ref":"posts/nodejs/nodejs_restful.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/nodejs/nodejs_redis.md","mtime":"2020-04-20T13:50:57.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T11:56:43.597Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

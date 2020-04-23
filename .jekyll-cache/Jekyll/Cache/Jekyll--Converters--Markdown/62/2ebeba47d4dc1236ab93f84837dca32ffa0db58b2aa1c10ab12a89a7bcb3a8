@@ -1,0 +1,60 @@
+I"V	<h1 id="자바-실행-과정">자바 실행 과정</h1>
+
+<p><img src="/post_img/java_jvm.md/java-program-execution.png" alt="execution process" /></p>
+<ol>
+  <li>개발자는 .java 파일을 작성한다</li>
+  <li>javac(컴파일러)가 .java를 .class라는 바이트코드 파일로 변환시킨다</li>
+  <li>JVM이 클래스파일을 읽어서 메모리 로드, 기계어 번역 등을 수행해서 실행한다</li>
+</ol>
+
+<h2 id="자바-바이트-코드">자바 바이트 코드</h2>
+
+<ul>
+  <li>JVM이 이해할 수 있는 언어로 작성된 파일</li>
+  <li>자바 컴파일러에 의해 생성된다</li>
+</ul>
+
+<hr />
+
+<h1 id="jvm">JVM</h1>
+
+<ul>
+  <li><a href="https://helloworld-88.tistory.com/16">참고자료</a></li>
+  <li>java virtual machine</li>
+  <li>자바프로그램을 컴파일하여 만들어진 바이트코드(클래스 파일) 실행해주는 파일</li>
+  <li>다른 운영체제, 환경에서도 프로그램이 독장할 수 있도록 해준다</li>
+  <li>class loader : .class파일들을 runtime data area에 load한다</li>
+  <li>execution engine : load된 클래스의 bytecode를 해석해서 binary code화 한다</li>
+  <li>runtime data area : JVM이 OS로부터 할당 받은 메모리 영역
+    <ul>
+      <li>Method area : 모든 thread가 사용. 클래스 정보, 변수 정보, static 변수 정보, 상수 정보 등이 위치</li>
+      <li>Heap area : 모든 thread가 사용. 동적으로 생성된 인스턴스 객체가 생성되는 영역. 공간이 부족하면 garbage collection이 동작</li>
+      <li>stack area : 각 스레드마다 하나씩 생성. 메서드의 지역변수, 매개변수, 반환값 등이 저장. LIFO 구조</li>
+      <li>PC register : 각 스레드마다 하나씩 생성. CPU의 register 역할. 현재 수행중인 명령의 주소값이 저장</li>
+      <li>Native Method stack : 각 스레드마다 형성. 다른 언어의 메서드를 사용하기 위한 구역</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="jre">JRE</h1>
+
+<ul>
+  <li>Java runtime environment. 자바 실행 환경</li>
+  <li>JVM + 여러 라이브러리</li>
+</ul>
+
+<hr />
+
+<h1 id="jdk">JDK</h1>
+
+<ul>
+  <li>java development kit</li>
+  <li>JRE + 컴파일러 + 디버거 등</li>
+  <li>oracleJDK, openJDK</li>
+</ul>
+
+<p><img src="/post_img/java_jvm.md/jdk.jpg" alt="JDK" />
+<a href="https://wikidocs.net/257">그림 출처</a></p>
+:ET

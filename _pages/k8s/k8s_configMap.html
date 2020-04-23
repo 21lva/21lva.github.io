@@ -1,0 +1,539 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>configMap, secret · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="k8s_cdtt.html" />
+    
+    
+    <link rel="prev" href="k8s_ingress.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../docker/docker0.html">
+            
+                <a href="../docker/docker0.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../docker/docker1.html">
+            
+                <a href="../docker/docker1.html">
+            
+                    
+                    Docker1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="k8s_basic.html">
+            
+                <a href="k8s_basic.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="k8s_pod.html">
+            
+                <a href="k8s_pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="k8s_controller.html">
+            
+                <a href="k8s_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="k8s_service.html">
+            
+                <a href="k8s_service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="k8s_ingress.html">
+            
+                <a href="k8s_ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.5" data-path="k8s_configMap.html">
+            
+                <a href="k8s_configMap.html">
+            
+                    
+                    configMap, secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="k8s_cdtt.html">
+            
+                <a href="k8s_cdtt.html">
+            
+                    
+                    cordon, drain, taint, toleration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="k8s_log.html">
+            
+                <a href="k8s_log.html">
+            
+                    
+                    Logging : ElasticSearch, Kibana, fluentd
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >configMap, secret</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="configmap">ConfigMap</h1>
+<ul>
+<li>&#xD658;&#xACBD;&#xBCC0;&#xC218;, &#xC124;&#xC815;&#xAC12;&#xB4F1;&#xC744; &#xBCC0;&#xC218;&#xB85C; &#xAD00;&#xB9AC;&#xD574;&#xC11C; Pod &#xC0DD;&#xC131;&#xC2DC; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+<li>&#xC0C8;&#xB85C;&#xC6B4; pod&#xC744; &#xB9CC;&#xB4E4;&#xB54C;, configMap&#xC744; &#xC774;&#xC6A9;&#xD558;&#xBA74; &#xC27D;&#xAC8C; &#xAD00;&#xB9AC;&#xB418;&#xB294; &#xBCC0;&#xC218;&#xB4E4;&#xC744; key-value&#xB85C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<h2 id="literal-&#xBC29;&#xC2DD;">Literal &#xBC29;&#xC2DD;</h2>
+<ul>
+<li>&#xAC04;&#xB2E8;&#xD558;&#xAC8C; &#xBB38;&#xC790;&#xB85C; &#xC0DD;&#xC131;&#xD558;&#xB294; &#xBC29;&#xBC95;</li>
+<li><p><strong>kubectl create configmap newCM --from-literal=language=java</strong> &#xB85C; &#xAC04;&#xB2E8;&#xD558;&#xAC8C; key(language), value(java)&#xC778; configMap&#xC744; newCM&#xC758; &#xC774;&#xB984;&#xC744; &#xAC16;&#xB3C4;&#xB85D; &#xB9CC;&#xB4E4; &#xC218; &#xC788;&#xB2E4;</p>
+</li>
+<li><p>&#xB610;&#xB294; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC774; yml&#xD30C;&#xC77C;&#xB85C; &#xC791;&#xC131;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> ConfigMap
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> newCM
+<span class="hljs-attr">data:</span>
+<span class="hljs-attr">  language:</span> java
+</code></pre>
+<ul>
+<li>&#xC704;&#xC758; &#xC124;&#xC815;&#xC744; Deployment&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xC608;&#xC2DC;&#xAC00; &#xC544;&#xB798;&#xC758; yml&#xD30C;&#xC77C;&#xC774;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Deployment
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> test-deploy
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+<span class="hljs-attr">      app:</span> test-app
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      name:</span> test-app
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        app:</span> test-app
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> test-container
+<span class="hljs-attr">        image:</span> test-image
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">        env:</span>
+<span class="hljs-attr">        - name:</span> LANGUAGE
+<span class="hljs-attr">          valueFrom:</span>
+<span class="hljs-attr">            configMapKeyRef:</span>
+<span class="hljs-attr">               name:</span> newCM
+<span class="hljs-attr">               key:</span> language
+</code></pre>
+<p>test-container&#xC5D0;&#xC11C;&#xB294; process.env.LANGUAGE &#xB85C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+<h2 id="file-&#xBC29;&#xC2DD;">File &#xBC29;&#xC2DD;</h2>
+<ul>
+<li><p>&#xC704;&#xC758; &#xBC29;&#xC2DD;&#xB9D0;&#xACE0;&#xB3C4; file&#xB85C; &#xC81C;&#xACF5;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+</li>
+<li><p>&#xC544;&#xB798;&#xB294; profile.properties&#xB77C;&#xB294; &#xD30C;&#xC77C;&#xC758; &#xB0B4;&#xC6A9;&#xC774;&#xB2E4;</p>
+</li>
+</ul>
+<pre><code class="lang-txt">github=21lva
+age=27
+</code></pre>
+<ul>
+<li>&#xC704;&#xC758; deploy.yaml&#xC758; key: &#xB2E4;&#xC74C; &#xBD80;&#xBD84;&#xC744; <strong>profile.properties</strong> &#xB77C;&#xACE0; &#xD558;&#xBA74; &#xB41C;&#xB2E4;.</li>
+<li>&#xC870;&#xC2EC;&#xD574;&#xC57C;&#xD560; &#xBD80;&#xBD84;&#xC740; &#xD30C;&#xC77C; &#xB0B4;&#xC6A9; &#xC790;&#xCCB4;&#xAC00; &#xD558;&#xB098;&#xC758; &#xBB38;&#xC790;&#xC5F4;&#xB85C; &#xC778;&#xC2DD;&#xB418;&#xAE30;&#xB54C;&#xBB38;&#xC5D0; github&#xC774; key&#xAC00; &#xB418;&#xACE0; 21lva&#xAC00; value&#xAC00; &#xB418;&#xC9C0;&#xB294; &#xC54A;&#xB294;&#xB2E4;</li>
+</ul>
+<h2 id="volume&#xC5D0;-mount&#xD574;&#xC11C;-&#xC0AC;&#xC6A9;&#xD558;&#xAE30;">volume&#xC5D0; mount&#xD574;&#xC11C; &#xC0AC;&#xC6A9;&#xD558;&#xAE30;</h2>
+<ul>
+<li>&#xC704;&#xC758; configMap&#xC744; /tmp/config/ &#xC5D0; mount&#xD574;&#xC11C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-comment">#&#xC704;&#xB294; &#xC0DD;&#xB7B5;</span>
+<span class="hljs-attr">ports:</span>
+<span class="hljs-attr">- containerPort:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">volumeMounts:</span>
+<span class="hljs-attr">  - name:</span> config-profile
+<span class="hljs-attr">    mountPath:</span> /tmp/config
+<span class="hljs-attr">volumes:</span>
+<span class="hljs-attr">- name:</span> config-profile
+<span class="hljs-attr">  configMap:</span>
+<span class="hljs-attr">    name:</span> cm-file
+</code></pre>
+<ul>
+<li>&#xC774;&#xB807;&#xAC8C; &#xD558;&#xBA74; mount&#xB41C; volume&#xC774; configMap&#xC774; &#xB41C;&#xB2E4;</li>
+<li>&#xB0B4;&#xBD80;&#xC758; &#xD30C;&#xC77C;&#xB4E4;&#xC758; &#xC774;&#xB984;&#xC774; key&#xAC00; &#xB41C;&#xB2E4;</li>
+</ul>
+<hr>
+<h2 id="secret">secret</h2>
+<ul>
+<li>configMap&#xC5D0; &#xBBFC;&#xAC10;&#xD55C; &#xC815;&#xBCF4;&#xB97C; &#xB123;&#xB294; &#xAC83;&#xC740; &#xC704;&#xD5D8;</li>
+<li>&#xBE44;&#xBC00;&#xBC88;&#xD638;, ssh&#xD0A4; &#xAC19;&#xC740; &#xC815;&#xBCF4;&#xB294; <strong>secret</strong> &#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xC800;&#xC7A5;&#xD558;&#xACE0; &#xAD00;&#xB9AC;, &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;</li>
+<li>built-in secret : &#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xB0B4;&#xBD80;&#xC5D0;&#xC11C; API&#xC5D0; &#xC811;&#xADFC;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;. ServiceAccount&#xB97C; &#xC0DD;&#xC131;&#xD558;&#xBA74; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xAD00;&#xB828; secret &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C0;&#xACE0; &#xC0AC;&#xC6A9;</li>
+<li><p>&#xC0AC;&#xC6A9;&#xC790; &#xC2DC;&#xD06C;&#xB9BF; : <strong>kubectl create secret</strong> &#xB610;&#xB294; yml&#xC744; &#xD1B5;&#xD574;&#xC11C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; secret. &#xBA54;&#xBAA8;&#xB9AC;&#xC5D0; &#xC800;&#xC7A5;&#xB41C;&#xB2E4;. &#xB9CE;&#xC774; &#xB9CC;&#xB4E4;&#xBA74; &#xBA54;&#xBAA8;&#xB9AC; &#xC774;&#xC288;&#xB97C; &#xC57C;&#xAE30;&#xD560; &#xC218; &#xC788;&#xC74C;</p>
+</li>
+<li><p>secret&#xC744; &#xB9CC;&#xB4E4;&#xAE30; &#xC704;&#xD574;&#xC11C;&#xB294; <strong>base64</strong> &#xB85C; &#xC778;&#xCF54;&#xB529;&#xD574;&#xC11C; &#xC0AC;&#xC6A9;&#xD574;&#xC57C; &#xD55C;&#xB2E4;(&#xC2E4;&#xC81C;&#xB85C; &#xC0AC;&#xC6A9;&#xD560;&#xB54C; &#xB514;&#xCF54;&#xB529; &#xD55C;&#xB2E4;). &#xC774;&#xB294; SSL&#xC778;&#xC99D;&#xC11C; &#xAC19;&#xC740; &#xBC14;&#xC774;&#xB108;&#xB9AC; &#xD30C;&#xC77C;&#xC744; &#xC800;&#xC7A5;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C; &#xC774;&#xB2E4;(&#xC774; &#xD30C;&#xC77C;&#xC744; &#xBB38;&#xC790;&#xC5F4;&#xB85C; &#xC800;&#xC7A5;&#xD560; &#xC218; &#xC5C6;&#xB2E4;)</p>
+</li>
+</ul>
+<pre><code>//&#xB9AC;&#xB205;&#xC2A4;&#xC5D0;&#xC11C; &#xC778;&#xCF54;&#xB529;&#xD558;&#xB294; &#xBC29;&#xBC95;
+echo &lt;&#xC6D0;&#xD558;&#xB294;&#xAC12;&gt; | base64
+</code></pre><ul>
+<li>&#xC544;&#xB798;&#xB294; &#xBA85;&#xB839;&#xC5B4;&#xB85C; &#xB9CC;&#xB4E0; secret</li>
+</ul>
+<pre><code>//&#xD30C;&#xC77C; &#xC0DD;&#xC131;
+echo -n &quot;username&quot; &gt; ./username.txt
+
+//secret &#xC0DD;&#xC131;
+kubectl create secret generic user-secret --from-file=./username.txt
+
+//secret &#xD655;&#xC778;
+kubectl get secret -o yaml
+</code></pre><p><img src="../../post_img/k8s_configMap.md/secret.png" alt="secret"></p>
+<p>&#xC778;&#xCF54;&#xB529;&#xB41C; &#xAC12;&#xC744; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+<pre><code>//decoding
+echo dXNlcm5hbWU= | base64 --decod
+</code></pre><ul>
+<li>&#xB610;&#xB294; &#xB2E4;&#xC74C;&#xC758; yaml &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E4;&#xC5B4;&#xC11C; secret&#xC744; &#xC815;&#xC758;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-yaml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Secret
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> user-secret
+<span class="hljs-attr">data:</span>
+<span class="hljs-attr">  language:</span> dXNlcm5hbWU=
+</code></pre>
+<ul>
+<li>secret&#xC740; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xC0AC;&#xC6A9;&#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Deployment
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> test-deploy
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+<span class="hljs-attr">      app:</span> test-app
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      name:</span> test-app
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        app:</span> test-app
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> test-container
+<span class="hljs-attr">        image:</span> test-image
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">        env:</span>
+<span class="hljs-attr">        - name:</span> LANGUAGE
+<span class="hljs-attr">          valueFrom:</span>
+<span class="hljs-attr">            secretKeyRef:</span>
+<span class="hljs-attr">               name:</span> newCM
+<span class="hljs-attr">               key:</span> language
+</code></pre>
+<p>&#xC0AC;&#xC6A9;&#xBC95;&#xC740; configMap&#xACFC; &#xAC70;&#xC758; &#xBE44;&#xC2B7;&#xD558;&#xB2E4;. &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xB0B4;&#xBD80;&#xC5D0;&#xC11C;&#xB3C4; <strong>process.env.<name></name></strong> &#xC73C;&#xB85C; &#xC0AC;&#xC6A9;&#xAC00;&#xB2A5;&#xD558;&#xB2E4;</p>
+<ul>
+<li>volume&#xC73C;&#xB85C; &#xB9C8;&#xC6B4;&#xD2B8; &#xD558;&#xB294; &#xAC83;&#xB3C4; configMap&#xACFC; &#xAC70;&#xC758; &#xBE44;&#xC2B7;(&#xC0DD;&#xB7B5;!)</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="k8s_ingress.html" class="navigation navigation-prev " aria-label="Previous page: Ingress">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="k8s_cdtt.html" class="navigation navigation-next " aria-label="Next page: cordon, drain, taint, toleration">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"configMap, secret","date":"2019-12-18T01:02:59.000Z","name":"k8s_configMap.md","level":"1.3.5","depth":2,"next":{"title":"cordon, drain, taint, toleration","level":"1.3.6","depth":2,"path":"posts/k8s/k8s_cdtt.md","ref":"posts/k8s/k8s_cdtt.md","articles":[]},"previous":{"title":"Ingress","level":"1.3.4","depth":2,"path":"posts/k8s/k8s_ingress.md","ref":"posts/k8s/k8s_ingress.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex-plus","toggle-chapters"],"pluginsConfig":{"katex-plus":{},"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/k8s/k8s_configMap.md","mtime":"2020-03-17T15:05:38.216Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T15:05:57.250Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

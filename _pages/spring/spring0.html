@@ -1,0 +1,764 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Spring MVC · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="spring_ioc.html" />
+    
+    
+    <link rel="prev" href="../jsp/jsp_db.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../book/java0.html">
+            
+                <a href="../book/java0.html">
+            
+                    
+                    JAVA 요약
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../book/java_jvm.html">
+            
+                <a href="../book/java_jvm.html">
+            
+                    
+                    JVM,JDK,JRE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../book/java_variable.html">
+            
+                <a href="../book/java_variable.html">
+            
+                    
+                    변수, 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../book/java_class0.html">
+            
+                <a href="../book/java_class0.html">
+            
+                    
+                    클래스, 상속
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../book/java_abstract.html">
+            
+                <a href="../book/java_abstract.html">
+            
+                    
+                    추상클래스, 인터페이스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../book/java_package.html">
+            
+                <a href="../book/java_package.html">
+            
+                    
+                    패키지
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../book/java_exception.html">
+            
+                <a href="../book/java_exception.html">
+            
+                    
+                    예외 처리
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../book/java_lang.html">
+            
+                <a href="../book/java_lang.html">
+            
+                    
+                    java.lang, 여러 클래스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../book/java_collection.html">
+            
+                <a href="../book/java_collection.html">
+            
+                    
+                    Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../book/java_generics.html">
+            
+                <a href="../book/java_generics.html">
+            
+                    
+                    Generics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../book/java_lambda.html">
+            
+                <a href="../book/java_lambda.html">
+            
+                    
+                    Lambda expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../book/java_stream.html">
+            
+                <a href="../book/java_stream.html">
+            
+                    
+                    Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../book/java_io.html">
+            
+                <a href="../book/java_io.html">
+            
+                    
+                    입출력
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../book/java_serialization.html">
+            
+                <a href="../book/java_serialization.html">
+            
+                    
+                    Serialization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../jsp/java_server0.html">
+            
+                <a href="../jsp/java_server0.html">
+            
+                    
+                    JSP,Servlet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../jsp/java_servlet.html">
+            
+                <a href="../jsp/java_servlet.html">
+            
+                    
+                    Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../jsp/jsp_object.html">
+            
+                <a href="../jsp/jsp_object.html">
+            
+                    
+                    JSP 객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../jsp/jsp_actionTag.html">
+            
+                <a href="../jsp/jsp_actionTag.html">
+            
+                    
+                    action tag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../jsp/jsp_cs.html">
+            
+                <a href="../jsp/jsp_cs.html">
+            
+                    
+                    cookie, session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../jsp/jsp_db.html">
+            
+                <a href="../jsp/jsp_db.html">
+            
+                    
+                    JDBC, DAO, DTO
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="spring0.html">
+            
+                <a href="spring0.html">
+            
+                    
+                    Spring MVC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="spring_ioc.html">
+            
+                <a href="spring_ioc.html">
+            
+                    
+                    IoC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="spring_di.html">
+            
+                <a href="spring_di.html">
+            
+                    
+                    DI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="spring_lifecycle.html">
+            
+                <a href="spring_lifecycle.html">
+            
+                    
+                    Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="spring_annotation.html">
+            
+                <a href="spring_annotation.html">
+            
+                    
+                    Annotation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="spring_structure.html">
+            
+                <a href="spring_structure.html">
+            
+                    
+                    디렉토리 구조, 동작과정
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="spring_sc.html">
+            
+                <a href="spring_sc.html">
+            
+                    
+                    Session, Cookie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="spring_ri.html">
+            
+                <a href="spring_ri.html">
+            
+                    
+                    Redirect, Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="spring_db.html">
+            
+                <a href="spring_db.html">
+            
+                    
+                    JDBC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../spring-boot/sb_structure.html">
+            
+                <a href="../spring-boot/sb_structure.html">
+            
+                    
+                    Spring Boot
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../spring-boot/sb_cs.html">
+            
+                <a href="../spring-boot/sb_cs.html">
+            
+                    
+                    @SpringBootApplication, @Component
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../spring-boot/sb_property.html">
+            
+                <a href="../spring-boot/sb_property.html">
+            
+                    
+                    환경설정, @Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../spring-boot/sb_controller.html">
+            
+                <a href="../spring-boot/sb_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../spring-boot/sb_interceptor.html">
+            
+                <a href="../spring-boot/sb_interceptor.html">
+            
+                    
+                    Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../spring-boot/sb_lombok.html">
+            
+                <a href="../spring-boot/sb_lombok.html">
+            
+                    
+                    Lombok
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../spring-boot/sb_test.html">
+            
+                <a href="../spring-boot/sb_test.html">
+            
+                    
+                    Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Spring MVC</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="spring-framework">Spring framework</h1>
+<ul>
+<li>DI, AOP, MVC, JDBC &#xC81C;&#xACF5;</li>
+<li>&#xBAA8;&#xB4C8;(&#xD544;&#xC694;&#xD55C; &#xBAA8;&#xB4C8;&#xC740; XML&#xD30C;&#xC77C;&#xB85C; &#xC791;&#xC131;&#xD574;&#xC11C; &#xC0AC;&#xC6A9;)<ol>
+<li>spring-core : DI,IoC &#xC81C;&#xACF5;</li>
+<li>spring-aop : AOP &#xC81C;&#xACF5;</li>
+<li>spring-jdbc : DB&#xB97C; &#xC27D;&#xAC8C; &#xB2E4;&#xB8F0; &#xC218; &#xC788;&#xB294; &#xAE30;&#xB2A5; &#xC81C;&#xACF5;</li>
+<li>spring-tx : transaction &#xAE30;&#xB2A5; &#xC81C;&#xACF5;</li>
+<li>spring-webmvc : MVC &#xAE30;&#xB2A5; &#xC81C;&#xACF5;</li>
+</ol>
+</li>
+<li>&#xCEE8;&#xD14C;&#xC774;&#xB108; : &#xC2A4;&#xD504;&#xB9C1;&#xC5D0;&#xC11C; &#xC5EC;&#xB7EC; &#xAC1D;&#xCCB4;&#xB97C; &#xC0DD;&#xC131;&#xD558;&#xACE0; &#xC774;&#xC6A9;.</li>
+<li>Bean : &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xC5D0; &#xC758;&#xD574; &#xC0DD;&#xC131;&#xB41C; &#xAC1D;&#xCCB4;<ul>
+<li>Java Bean : &#xB370;&#xC774;&#xD130;&#xB97C; &#xD45C;&#xD604;&#xD558;&#xB294; &#xAC83;&#xC744; &#xBAA9;&#xC801;&#xC73C;&#xB85C; &#xD558;&#xB294; &#xD074;&#xB798;&#xC2A4;. getter, setter &#xB4F1;&#xC744; &#xD3EC;&#xD568;</li>
+</ul>
+</li>
+<li>Bean&#xC758; scope<ul>
+<li>singleton : &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xD558;&#xB098;&#xC5D0; &#xB9CC;&#xB4E0; bean&#xC740; &#xC885;&#xB958;&#xB9C8;&#xB2E4; &#xD558;&#xB098;&#xC529; &#xC0DD;&#xC131;. &#xAE30;&#xBCF8; &#xAC12;</li>
+<li>prototype : &#xD558;&#xB098;&#xC758; Bean &#xC815;&#xC758;&#xC5D0; &#xB2E4;&#xC218;&#xC758; &#xAC1D;&#xCCB4; &#xC0DD;&#xC131;</li>
+<li>request : &#xD558;&#xB098;&#xC758; bean &#xC815;&#xC758;&#xB85C; &#xD558;&#xB098;&#xC758; HTTP request&#xC758; lifecycle&#xC548;&#xC5D0; &#xAC1D;&#xCCB4;&#xB97C; 1&#xAC1C; &#xC0DD;&#xC131;.</li>
+<li>session : &#xD558;&#xB098;&#xC758; Bean &#xC815;&#xC758;&#xB85C; &#xD558;&#xB098;&#xC758; HTTP session&#xC758; lifecycle&#xC548;&#xC5D0; &#xAC1D;&#xCCB4;&#xB97C; 1&#xAC1C; &#xC0DD;&#xC131;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="pojoplain-old-java-object">POJO(plain old java object)</h1>
+<ul>
+<li>&#xD2B9;&#xC815; &#xAE30;&#xC220;(&#xD658;&#xACBD;, &#xADDC;&#xC57D; &#xB4F1;)&#xC5D0; &#xC885;&#xC18D;&#xB418;&#xC9C0; &#xC54A;&#xACE0; &#xB3D9;&#xC791;&#xD558;&#xB294; &#xC21C;&#xC218;&#xD55C; &#xC790;&#xBC14; &#xAC1D;&#xCCB4;<ul>
+<li>&#xD2B9;&#xC815; &#xAE30;&#xC220;&#xC5D0; &#xC885;&#xC18D;&#xB418;&#xBA74; &#xAC00;&#xB3C5;&#xC131;, &#xC720;&#xC9C0;&#xBCF4;&#xC218;, &#xD655;&#xC7A5;&#xC131; &#xB4F1;&#xC774; &#xB5A8;&#xC5B4;&#xC9D0;.</li>
+</ul>
+</li>
+<li>&#xAC1D;&#xCCB4;&#xC9C0;&#xD5A5;&#xC5D0; &#xCDA9;&#xC2E4;&#xD574;&#xC57C;&#xD568;</li>
+<li>&#xB85C;&#xC6B0;&#xB808;&#xBCA8; &#xCF54;&#xB4DC;(transaction, thread &#xB4F1;)&#xC640; &#xBE44;&#xC988;&#xB2C8;&#xC2A4; &#xCF54;&#xB4DC;&#xAC00; &#xBD84;&#xB9AC;&#xB418;&#xC5B4;&#xC11C; &#xAC00;&#xB3C5;&#xC131; &#xC99D;&#xAC00;</li>
+<li><strong>extends, implements</strong> &#xB4F1;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xC544;&#xB2CC; <strong>annotation</strong> &#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xC758;&#xC874;&#xC131; &#xC81C;&#xAC70;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../jsp/jsp_db.html" class="navigation navigation-prev " aria-label="Previous page: JDBC, DAO, DTO">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="spring_ioc.html" class="navigation navigation-next " aria-label="Next page: IoC">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Spring MVC","name":"spring0.md","level":"1.4","depth":1,"next":{"title":"IoC","level":"1.4.1","depth":2,"path":"posts/spring/spring_ioc.md","ref":"posts/spring/spring_ioc.md","articles":[]},"previous":{"title":"JDBC, DAO, DTO","level":"1.3.5","depth":2,"path":"posts/jsp/jsp_db.md","ref":"posts/jsp/jsp_db.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/spring/spring0.md","mtime":"2020-04-22T12:10:22.038Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T13:07:30.938Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

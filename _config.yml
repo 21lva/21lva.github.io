@@ -3,9 +3,14 @@ rooturl: https://21lva.github.io/
 url: https://21lva.github.io/
 description: Something I have studied. Almost Every book is written in Korean.
 
-permalink: /:year/:month/:day/:title/
+#permalink: /:year/:month/:day/:title/
+permalink: /:categories/:title/
 paginate: 10
 
 gems: [jekyll-paginate]
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 markdown: kramdown
+Categories: [spring-boot,spring,java,jsp]
+collections:
+  pages:
+    output: true

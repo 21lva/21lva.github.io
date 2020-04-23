@@ -1,0 +1,979 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Generics · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="java_lambda.html" />
+    
+    
+    <link rel="prev" href="java_collection.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="java0.html">
+            
+                <a href="java0.html">
+            
+                    
+                    JAVA 요약
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="java_jvm.html">
+            
+                <a href="java_jvm.html">
+            
+                    
+                    JVM,JDK,JRE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="java_variable.html">
+            
+                <a href="java_variable.html">
+            
+                    
+                    변수, 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="java_class0.html">
+            
+                <a href="java_class0.html">
+            
+                    
+                    클래스, 상속
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="java_abstract.html">
+            
+                <a href="java_abstract.html">
+            
+                    
+                    추상클래스, 인터페이스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="java_package.html">
+            
+                <a href="java_package.html">
+            
+                    
+                    패키지
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="java_exception.html">
+            
+                <a href="java_exception.html">
+            
+                    
+                    예외 처리
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="java_lang.html">
+            
+                <a href="java_lang.html">
+            
+                    
+                    java.lang, 여러 클래스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="java_collection.html">
+            
+                <a href="java_collection.html">
+            
+                    
+                    Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.9" data-path="java_generics.html">
+            
+                <a href="java_generics.html">
+            
+                    
+                    Generics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="java_lambda.html">
+            
+                <a href="java_lambda.html">
+            
+                    
+                    Lambda expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="java_stream.html">
+            
+                <a href="java_stream.html">
+            
+                    
+                    Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="java_io.html">
+            
+                <a href="java_io.html">
+            
+                    
+                    입출력
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="java_serialization.html">
+            
+                <a href="java_serialization.html">
+            
+                    
+                    Serialization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../jsp/java_server0.html">
+            
+                <a href="../jsp/java_server0.html">
+            
+                    
+                    JSP,Servlet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../jsp/java_servlet.html">
+            
+                <a href="../jsp/java_servlet.html">
+            
+                    
+                    Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../jsp/jsp_object.html">
+            
+                <a href="../jsp/jsp_object.html">
+            
+                    
+                    JSP 객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../jsp/jsp_actionTag.html">
+            
+                <a href="../jsp/jsp_actionTag.html">
+            
+                    
+                    action tag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../jsp/jsp_cs.html">
+            
+                <a href="../jsp/jsp_cs.html">
+            
+                    
+                    cookie, session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../jsp/jsp_db.html">
+            
+                <a href="../jsp/jsp_db.html">
+            
+                    
+                    JDBC, DAO, DTO
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../spring/spring0.html">
+            
+                <a href="../spring/spring0.html">
+            
+                    
+                    Spring MVC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../spring/spring_ioc.html">
+            
+                <a href="../spring/spring_ioc.html">
+            
+                    
+                    IoC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../spring/spring_di.html">
+            
+                <a href="../spring/spring_di.html">
+            
+                    
+                    DI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../spring/spring_lifecycle.html">
+            
+                <a href="../spring/spring_lifecycle.html">
+            
+                    
+                    Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../spring/spring_annotation.html">
+            
+                <a href="../spring/spring_annotation.html">
+            
+                    
+                    Annotation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../spring/spring_structure.html">
+            
+                <a href="../spring/spring_structure.html">
+            
+                    
+                    디렉토리 구조, 동작과정
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../spring/spring_sc.html">
+            
+                <a href="../spring/spring_sc.html">
+            
+                    
+                    Session, Cookie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../spring/spring_ri.html">
+            
+                <a href="../spring/spring_ri.html">
+            
+                    
+                    Redirect, Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../spring/spring_db.html">
+            
+                <a href="../spring/spring_db.html">
+            
+                    
+                    JDBC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../spring-boot/sb_structure.html">
+            
+                <a href="../spring-boot/sb_structure.html">
+            
+                    
+                    Spring Boot
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../spring-boot/sb_cs.html">
+            
+                <a href="../spring-boot/sb_cs.html">
+            
+                    
+                    @SpringBootApplication, @Component
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../spring-boot/sb_property.html">
+            
+                <a href="../spring-boot/sb_property.html">
+            
+                    
+                    환경설정, @Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../spring-boot/sb_controller.html">
+            
+                <a href="../spring-boot/sb_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../spring-boot/sb_interceptor.html">
+            
+                <a href="../spring-boot/sb_interceptor.html">
+            
+                    
+                    Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../spring-boot/sb_lombok.html">
+            
+                <a href="../spring-boot/sb_lombok.html">
+            
+                    
+                    Lombok
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../spring-boot/sb_test.html">
+            
+                <a href="../spring-boot/sb_test.html">
+            
+                    
+                    Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Generics</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="generics">Generics</h1>
+<ul>
+<li>&#xBA54;&#xC11C;&#xB4DC;&#xB098; collection &#xD074;&#xB798;&#xC2A4; &#xB4F1;&#xC5D0; <strong>&#xCEF4;&#xD30C;&#xC77C; &#xC2DC;&#xC758; &#xD0C0;&#xC785; &#xCCB4;&#xD06C;</strong> (compile-time type check) &#xB97C; &#xD574;&#xC8FC;&#xB294; &#xAE30;&#xB2A5;</li>
+<li>&#xAC1D;&#xCCB4;&#xC758; &#xD0C0;&#xC785; &#xC548;&#xC815;&#xC131;&#xC744; &#xB192;&#xC774;&#xACE0; &#xD615;&#xBCC0;&#xD658;&#xC758; &#xBC88;&#xAC70;&#xB85C;&#xC6C0;&#xC744; &#xC81C;&#xAC70;&#xD568;</li>
+</ul>
+<h2 id="&#xC120;&#xC5B8;">&#xC120;&#xC5B8;</h2>
+<ul>
+<li>&#xD074;&#xB798;&#xC2A4; &#xC606;&#xC5D0; <strong><t></t></strong> (type variable) &#xB97C; &#xBD99;&#xC774;&#xBA74; &#xB41C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gen</span>&lt;<span class="hljs-title">T</span>&gt;</span>{
+  T x;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setX</span><span class="hljs-params">(T x)</span></span>{
+    <span class="hljs-keyword">this</span>.x=x;
+  }
+  <span class="hljs-function">T <span class="hljs-title">getX</span><span class="hljs-params">()</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x;}
+}
+
+Gen&lt;String&gt; b = <span class="hljs-keyword">new</span> Gen&lt;T&gt;();
+Gen b = <span class="hljs-keyword">new</span> Gen();<span class="hljs-comment">//&#xAC00;&#xB2A5;&#xC740; &#xD558;&#xC9C0;&#xB9CC; &#xC774;&#xB807;&#xAC8C; &#xD558;&#xC9C0; &#xC54A;&#xB3C4;&#xB85D; &#xD558;&#xC790;. Object &#xD0C0;&#xC785;&#xC774; &#xC9C0;&#xC815;&#xB41C;&#xB2E4;</span>
+</code></pre>
+<ul>
+<li>Gen<t> : &#xC9C0;&#xB124;&#xB9AD; &#xD074;&#xB798;&#xC2A4;</t></li>
+<li>Gen : &#xC6D0;&#xC2DC;&#xD0C0;&#xC785;(raw type)</li>
+<li><p>T : type variable. &#xCC38;&#xC870;&#xD615; &#xD0C0;&#xC785;&#xB9CC; &#xC62C; &#xC218; &#xC788;&#xB2E4;(&#xC6D0;&#xC2DC; &#xD0C0;&#xC785;&#xC740; <strong>Wrapper class</strong> &#xB85C; &#xC0AC;&#xC6A9;&#xD558;&#xC790;)</p>
+</li>
+<li><p>static &#xBA64;&#xBC84;&#xC5D0;&#xB294; T&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC5C6;&#xC74C;</p>
+</li>
+<li>generic &#xBC30;&#xC5F4;&#xC758; &#xCC38;&#xC870;&#xBCC0;&#xC218;&#xB97C; &#xC120;&#xC5B8;&#xD558;&#xB294; &#xAC83;&#xC740; &#xAC00;&#xB2A5;. BUT &#xBC30;&#xC5F4;&#xC744; &#xC0DD;&#xC131;&#xD558;&#xB294; &#xAC83;&#xC740; &#xBD88;&#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-java">T[] itemArr;<span class="hljs-comment">//&#xCC38;&#xC870; &#xBCC0;&#xC218;&#xB294; &#xAC00;&#xB2A5;</span>
+
+T[] toArray(){
+  itemArr = <span class="hljs-keyword">new</span> T[<span class="hljs-number">10</span>];<span class="hljs-comment">//&#xBD88;&#xAC00;&#xB2A5;</span>
+}
+</code></pre>
+<h2 id="&#xAC1D;&#xCCB4;-&#xC0DD;&#xC131;&#xACFC;-&#xC0AC;&#xC6A9;">&#xAC1D;&#xCCB4; &#xC0DD;&#xC131;&#xACFC; &#xC0AC;&#xC6A9;</h2>
+<ul>
+<li>&#xB450; T&#xAC00; &#xC0C1;&#xC18D; &#xAD00;&#xACC4;&#xC5D0; &#xC788;&#xC5B4;&#xB3C4; &#xB2E4;&#xD615;&#xC131;&#xC744; &#xC801;&#xC6A9;&#xD560; &#xC218; &#xC5C6;&#xB2E4;</li>
+<li>BUT T&#xB294; &#xAC19;&#xACE0; &#xC6D0;&#xC2DC;&#xD074;&#xB798;&#xC2A4;&#xAC00; &#xC0C1;&#xC18D; &#xAD00;&#xACC4;&#xC5D0; &#xC788;&#xC73C;&#xBA74; &#xAC00;&#xB2A5;</li>
+<li>&#xCD94;&#xB860;&#xC774; &#xAC00;&#xB2A5;&#xD55C; T&#xB294; &#xC0DD;&#xB7B5; &#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-java">Box&lt;Apple&gt; x = <span class="hljs-keyword">new</span> Box&lt;Apple&gt;;
+Box&lt;Apple&gt; x = <span class="hljs-keyword">new</span> Box&lt;BlueApple&gt;;<span class="hljs-comment">//Apple&#xACFC; BlueApple&#xC774; &#xC0C1;&#xC18D; &#xAD00;&#xACC4;&#xC5EC;&#xB3C4; &#xBD88;&#xAC00;&#xB2A5;</span>
+
+Box&lt;Apple&gt; y = <span class="hljs-keyword">new</span> FruitBox&lt;Apple&gt;;<span class="hljs-comment">//&#xAC00;&#xB2A5;</span>
+
+Box&lt;Apple&gt; z = <span class="hljs-keyword">new</span> FruitBox&lt;&gt;(); <span class="hljs-comment">//&#xC0DD;&#xB7B5; &#xAC00;&#xB2A5;</span>
+</code></pre>
+<h2 id="&#xC81C;&#xD55C;&#xB41C;-generic-class">&#xC81C;&#xD55C;&#xB41C; generic class</h2>
+<ul>
+<li>generic type&#xC5D0; <strong>extends</strong> &#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xD2B9;&#xC815; &#xD0C0;&#xC785;&#xC758; &#xC790;&#xC190;&#xD0C0;&#xC785;&#xB4E4;&#xB9CC; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;</li>
+<li>interface&#xB97C; &#xC870;&#xC0C1;&#xC73C;&#xB85C; &#xAC00;&#xC9C0;&#xB294; generic type&#xB3C4; <strong>implements</strong> &#xB300;&#xC2E0; <strong>extends</strong> &#xC0AC;&#xC6A9;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Box</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Fruit</span> &amp; <span class="hljs-title">Eatable</span>&gt;</span>{
+  <span class="hljs-comment">//Fruit&#xD074;&#xB798;&#xC2A4;&#xC758; &#xC790;&#xC190;&#xC774;&#xACE0; Eatable &#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;&#xB97C; &#xAD6C;&#xD604;&#xD558;&#xB294; T</span>
+}
+</code></pre>
+<h2 id="&#xC640;&#xC77C;&#xB4DC;-&#xCE74;&#xB4DC;">&#xC640;&#xC77C;&#xB4DC; &#xCE74;&#xB4DC;</h2>
+<ul>
+<li>generic type&#xC774; &#xB2E4;&#xB978; &#xAC83;&#xB9CC;&#xC73C;&#xB85C;&#xB294; &#xC624;&#xBC84;&#xB85C;&#xB529; &#xBD88;&#xAC00;&#xB2A5;(&#xCEF4;&#xD30C;&#xC77C;&#xB7EC;&#xAC00; &#xCEF4;&#xD30C;&#xC77C; &#xD560;&#xB54C;&#xB9CC; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC81C;&#xAC70;&#xD558;&#xAE30; &#xB54C;&#xBB38;)</li>
+<li><strong>?</strong> : &#xC640;&#xC77C;&#xB4DC; &#xCE74;&#xB4DC;. &#xC5B4;&#xB5A0;&#xD55C; &#xD0C0;&#xC785;&#xB3C4; &#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-java">&lt;? extends T&gt; <span class="hljs-comment">// T&#xC640; &#xADF8; &#xC790;&#xC190;&#xB4E4;&#xB9CC; &#xAC00;&#xB2A5;</span>
+&lt;? <span class="hljs-keyword">super</span> T &gt; <span class="hljs-comment">// T&#xC640; &#xADF8; &#xC870;&#xC0C1;&#xB4E4;&#xB9CC; &#xAC00;&#xB2A5;</span>
+&lt;?&gt; <span class="hljs-comment">//&#xBAA8;&#xB4E0; &#xD0C0;&#xC785;&#xC774; &#xAC00;&#xB2A5;</span>
+</code></pre>
+<h2 id="&#xBA54;&#xC11C;&#xB4DC;">&#xBA54;&#xC11C;&#xB4DC;</h2>
+<ul>
+<li>generic method : &#xBA54;&#xC11C;&#xB4DC;&#xC758; &#xC120;&#xC5B8;&#xBD80;&#xC5D0; generic type&#xC774; &#xC120;&#xC5B8;&#xB41C; &#xBA54;&#xC11C;&#xB4DC;. &#xBC18;&#xD658; &#xD0C0;&#xC785; &#xBC14;&#xB85C; &#xC55E;&#xC5D0; generic type&#xC120;&#xC5B8;</li>
+<li>&#xB9E4;&#xAC1C;&#xBCC0;&#xC218;&#xAC00; &#xAC19;&#xC740; T&#xB97C; &#xC0AC;&#xC6A9;&#xD574;&#xB3C4; &#xAC19;&#xC740; type&#xC744; &#xB123;&#xC5B4;&#xC904; &#xD544;&#xC694;&#xB294; &#xC5C6;&#xC74C;</li>
+<li>&#xD0C0;&#xC785; &#xB9E4;&#xAC1C;&#xBCC0;&#xC218;&#xB294; &#xBA54;&#xC11C;&#xB4DC; &#xB0B4;&#xC5D0;&#xC11C;&#xB9CC; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xBC84;&#xB9B4; &#xAC83;&#xC774;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;(&#xC9C0;&#xC5ED;&#xBCC0;&#xC218;&#xCC98;&#xB7FC;) static &#xBA54;&#xC11C;&#xB4DC;&#xB3C4; generic &#xAC00;&#xB2A5;(static &#xBA64;&#xBC84; &#xBCC0;&#xC218;&#xB294; &#xBD88;&#xAC00;&#xB2A5;)</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">()</span></span>{
+
+}
+</code></pre>
+<hr>
+<h1 id="enums&#xC5F4;&#xAC70;&#xD615;">enums(&#xC5F4;&#xAC70;&#xD615;)</h1>
+<ul>
+<li>&#xAD00;&#xB828;&#xB41C; &#xC0C1;&#xC218;&#xB97C; &#xD3B8;&#xB9AC;&#xD558;&#xAC8C; &#xC120;&#xC5B8;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xAC83;. &#xC5EC;&#xB7EC; &#xC0C1;&#xC218;&#xB97C; &#xC815;&#xC758;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;</li>
+<li>&#xC5F4;&#xAC70;&#xD615;&#xC740; <strong>==</strong> &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;(&#xD0C0;&#xC785;&#xAE4C;&#xC9C0; &#xCCB4;&#xD06C;)</li>
+<li><strong>&gt;, &lt;</strong> &#xB294; &#xC0AC;&#xC6A9; &#xBD88;&#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Card</span></span>{
+  <span class="hljs-keyword">enum</span> Kind{CLOVER,HEART};
+  <span class="hljs-keyword">enum</span> Value{TWO,THREE,FOUR};
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">move</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">switch</span>(dir){
+      <span class="hljs-keyword">case</span> clover :<span class="hljs-comment">//&#xC5F4;&#xAC70;&#xD615;&#xC758; &#xC774;&#xB984;&#xC740; &#xBE7C;&#xACE0; &#xC0C1;&#xC218; &#xC774;&#xB984;&#xB9CC; &#xC801;&#xC5B4;&#xC57C; &#xD568;</span>
+        x++;
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> heart:
+        x--;
+        <span class="hljs-keyword">break</span>;
+    }
+  }
+}
+</code></pre>
+<ul>
+<li>Enum &#xD074;&#xB798;&#xC2A4;&#xC774; &#xBA54;&#xC11C;&#xB4DC;<ul>
+<li>String name() : &#xC0C1;&#xC218;&#xC758; &#xC774;&#xB984;&#xC744; &#xBB38;&#xC790;&#xC5F4;&#xB85C; &#xBC18;&#xD658;</li>
+<li>int ordinal() : &#xC0C1;&#xC218;&#xAC00; &#xC815;&#xC758;&#xB41C; &#xC21C;&#xC11C;&#xB97C; &#xBC18;&#xD658;</li>
+<li>T valueOf(String name) : name&#xACFC; &#xC77C;&#xCE58;&#xD558;&#xB294; &#xC5F4;&#xAC70;&#xD615; &#xC0C1;&#xC218; &#xBC18;&#xD654;</li>
+<li>values() : &#xBAA8;&#xB4E0; &#xC0C1;&#xC218;&#xB97C; &#xBC30;&#xC5F4;&#xC5D0; &#xB2F4;&#xC544; &#xBC18;&#xD658;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">for</span>(Kind k : Kind.values()){
+  <span class="hljs-comment">//code</span>
+}
+System.out.println(Kind.CLOVER == Kind.valueOf(<span class="hljs-string">&quot;CLOVER&quot;</span>));<span class="hljs-comment">//true</span>
+</code></pre>
+<h2 id="&#xBA64;&#xBC84;-&#xCD94;&#xAC00;">&#xBA64;&#xBC84; &#xCD94;&#xAC00;</h2>
+<ul>
+<li>&#xC5F4;&#xAC70;&#xD615; &#xC0C1;&#xC218;&#xB97C; &#xB2E4;&#xB978; &#xAC12;&#xACFC; &#xC5F0;&#xAD00;&#xC2DC;&#xCF1C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC74C;(&#xAE30;&#xBCF8;&#xC740; 0&#xBD80;&#xD130; &#xC21C;&#xC11C;&#xB300;&#xB85C; &#xBD80;&#xC5EC;)</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">enum</span> Direction{
+  EAST(<span class="hljs-number">1</span>),SOUTH(<span class="hljs-number">5</span>),WEST(-<span class="hljs-number">1</span>),NORTH(<span class="hljs-number">3</span>);
+
+  <span class="hljs-keyword">final</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> val;
+  Direction(<span class="hljs-keyword">int</span> val){
+    <span class="hljs-keyword">this</span>.val= val;
+  }  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getVal</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.val;
+  }
+}
+
+System.out.println(Direction.WEST.getVal());<span class="hljs-comment">//result :-1;</span>
+</code></pre>
+<hr>
+<h1 id="annotation">annotation</h1>
+<ul>
+<li>&#xD504;&#xB85C;&#xADF8;&#xB7A8;&#xC5D0; &#xC601;&#xD5A5;&#xC740; &#xBBF8;&#xCE58;&#xC9C0; &#xC54A;&#xC9C0;&#xB9CC; &#xB2E4;&#xB978; &#xD504;&#xB85C;&#xADF8;&#xB7A8;&#xC5D0;&#xAC8C; &#xC720;&#xC6A9;&#xD55C; &#xC815;&#xBCF4;&#xB97C; &#xC81C;&#xACF5;</li>
+<li>&#xC18D;&#xC131;&#xC744; &#xBD80;&#xC5EC;&#xD560; &#xC218; &#xC788;&#xC74C;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@annotation</span>
+<span class="hljs-comment">//&#xBC11;&#xC5D0;&#xB294; &#xBCC0;&#xC218;, &#xD074;&#xB798;&#xC2A4;, &#xBA54;&#xC11C;&#xB4DC; &#xB4F1;&#xC774; &#xC704;&#xCE58;</span>
+
+<span class="hljs-meta">@annotation</span>(&#xC18D;&#xC131;<span class="hljs-number">1</span>=&#xAC12;,&#xC18D;&#xC131;<span class="hljs-number">2</span>=&#xAC12;)
+<span class="hljs-meta">@annotation</span>(&#xAC12;)<span class="hljs-comment">//&#xD558;&#xB098;&#xC758; &#xC18D;&#xC131;&#xB9CC; &#xAC00;&#xC9C8;&#xB54C;&#xB294; &#xC904;&#xC5EC;&#xC4F0;&#xAE30; &#xAC00;&#xB2A5;</span>
+</code></pre>
+<h2 id="&#xD45C;&#xC900;-annotation">&#xD45C;&#xC900; annotation</h2>
+<ul>
+<li>&#xC790;&#xBC14;&#xC5D0;&#xC11C; &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xC81C;&#xACF5;&#xD558;&#xB294; annotation</li>
+<li>meta annotation : annotation&#xC744; &#xC815;&#xC758;&#xD558;&#xB294;&#xB370;&#xC5D0; &#xC0AC;&#xC6A9;&#xD558;&#xB294; annotation</li>
+</ul>
+<h4 id="1-override">1. @Override</h4>
+<ul>
+<li>&#xBD80;&#xBAA8; &#xD074;&#xB798;&#xC2A4;&#xC758; &#xBA54;&#xC11C;&#xB4DC;&#xAC00; &#xC624;&#xBC84;&#xB77C;&#xC774;&#xB4DC; &#xB418;&#xC5C8;&#xB2E4;&#xB294; &#xAC83;&#xC744; &#xCEF4;&#xD30C;&#xC77C;&#xB7EC;&#xC5D0;&#xAC8C; &#xC54C;&#xB824;&#xC90C;</li>
+<li>&#xC624;&#xD0C0;&#xB4F1;&#xC73C;&#xB85C; &#xC778;&#xD574; &#xB9E4;&#xCE6D;&#xB418;&#xB294; &#xBA54;&#xC11C;&#xB4DC;&#xAC00; &#xC5C6;&#xC73C;&#xBA74; &#xC5D0;&#xB7EC; &#xBC1C;&#xC0DD;</li>
+</ul>
+<h4 id="2-deprecated">2. @Deprecated</h4>
+<ul>
+<li>&#xD574;&#xB2F9; &#xD074;&#xB798;&#xC2A4; &#xD639;&#xC740; &#xBA54;&#xC11C;&#xB4DC;&#xAC00; &#xB354;&#xC774;&#xC0C1; &#xC9C0;&#xC6D0;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xB294; &#xAC83;&#xC744; &#xC54C;&#xB824;&#xC90C;</li>
+<li>&#xCEF4;&#xD30C;&#xC77C;&#xC2DC; &#xACBD;&#xACE0; &#xBA54;&#xC2DC;&#xC9C0;&#xB97C; &#xB0A0;&#xB824;&#xC900;&#xB2E4;</li>
+</ul>
+<h4 id="3-functionalinterface">3. @FunctionalInterface</h4>
+<ul>
+<li>&#xD568;&#xC218;&#xD615; &#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;&#xB77C;&#xB294; &#xAC83;&#xC744; &#xC54C;&#xB824;&#xC90C;</li>
+<li>&#xCEF4;&#xD30C;&#xC77C;&#xB7EC;&#xAC00; &#xD655;&#xC778;&#xD558;&#xC5EC; &#xD568;&#xC218;&#xD615; &#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;&#xB85C; &#xC120;&#xC5B8;&#xB418;&#xC5C8;&#xB294;&#xC9C0;&#xB97C; &#xD655;&#xC778;</li>
+</ul>
+<h4 id="4-suppresswarnings">4. @SuppressWarnings</h4>
+<ul>
+<li>&#xCEF4;&#xD30C;&#xC77C;&#xB7EC;&#xC758; &#xACBD;&#xACE0; &#xBA54;&#xC2DC;&#xC9C0;&#xB97C; &#xBCF4;&#xC5EC;&#xC8FC;&#xC9C0; &#xC54A;&#xB3C4;&#xB85D; &#xD568;</li>
+<li>&#xD2B9;&#xC815; &#xBA54;&#xC2DC;&#xC9C0;&#xB97C; &#xACE8;&#xB77C;&#xC11C; &#xC548;&#xBCF4;&#xC774;&#xAC8C; &#xD560; &#xC218;&#xB3C4; &#xC788;&#xC74C;<ul>
+<li>deprecation : deprecated&#xAC00; &#xBD99;&#xC740; &#xB300;&#xC0C1;&#xC758; &#xBA54;&#xC2DC;&#xC9C0; &#xC548;&#xBCF4;&#xC774;&#xAC8C; &#xD568;</li>
+<li>unchecked : &#xC9C0;&#xB124;&#xB9AD;&#xC2A4;&#xC758; &#xD0C0;&#xC785;&#xC744; &#xC815;&#xD558;&#xC9C0; &#xC54A;&#xC558;&#xB2E4;&#xB294; &#xACBD;&#xACE0; &#xBA54;&#xC2DC;&#xC9C0;&#xB97C; &#xC548;&#xBCF4;&#xC774;&#xAC8C; &#xD568;</li>
+<li>rawtypes : &#xC9C0;&#xB124;&#xB9AD;&#xC2A4;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xC544;&#xC11C; &#xBC1C;&#xC0DD;&#xD558;&#xB294; &#xACBD;&#xACE0;&#xB97C; &#xC548;&#xBCF4;&#xC774;&#xAC8C; &#xD568;</li>
+<li>varargs : &#xAC00;&#xBCC0;&#xC778;&#xC790; &#xD0C0;&#xC785;&#xC774; &#xC9C0;&#xB124;&#xB9AD;&#xC2A4; &#xD0C0;&#xC785;&#xC77C; &#xB54C; &#xBC1C;&#xC0DD;&#xD558;&#xB294; &#xACBD;&#xACE0;&#xB97C; &#xC548;&#xBCF4;&#xC774;&#xAC8C; &#xD568;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">&quot;unchecked&quot;</span>)<span class="hljs-comment">//&#xC9C0;&#xB124;&#xB9AD;&#xC2A4; &#xAD00;&#xB828; &#xACBD;&#xACE0; &#xC5B5;&#xC81C;</span>
+ArrayList list = <span class="hljs-keyword">new</span> ArrayList();
+</code></pre>
+<h2 id="meta-annotation">meta annotation</h2>
+<ul>
+<li>annotation&#xC744; &#xC704;&#xD55C; annotation</li>
+<li>annotation&#xC758; &#xC720;&#xC9C0;&#xAE30;&#xAC04;, &#xC801;&#xC6A9;&#xB300;&#xC0C1; &#xB4F1;&#xC744; &#xC815;&#xC758;</li>
+</ul>
+<h4 id="1-target">1. @Target</h4>
+<ul>
+<li>annotation&#xC774; &#xC801;&#xC6A9;&#xAC00;&#xB2A5;&#xD55C; &#xB300;&#xC0C1;&#xC744; &#xC9C0;&#xC815;</li>
+<li>&#xC801;&#xC6A9; &#xB300;&#xC0C1; &#xC885;&#xB958;<ul>
+<li>ElementType.ANNOTATION_TYPE : annotation</li>
+<li>ElementType.CONSTRUCTOR : &#xC0DD;&#xC131;&#xC790;</li>
+<li>ElementType.FIELD : &#xD544;&#xB4DC;(&#xBA64;&#xBC84;&#xBCC0;&#xC218;, enum&#xC0C1;&#xC218;)</li>
+<li>ElementType.LOCAL_VARIABLE : &#xC9C0;&#xC5ED;&#xBCC0;&#xC218;</li>
+<li>ElementType.METHOD : &#xBA54;&#xC11C;&#xB4DC;</li>
+<li>ElementType.PACKAGE : &#xD328;&#xD0A4;&#xC9C0;</li>
+<li>ElementType.PARAMETER : &#xB9E4;&#xAC1C;&#xBCC0;&#xC218;</li>
+<li>ElementType.TYPE : &#xD0C0;&#xC785;(&#xD074;&#xB798;&#xC2A4;, &#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;, enum)</li>
+<li>ElementType.TYPE_PARAMETER : &#xD0C0;&#xC785; &#xB9E4;&#xAC1C;&#xBCC0;&#xC218;</li>
+<li>ElementType.TYPE_USE : &#xD0C0;&#xC785;&#xC774; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xBAA8;&#xB4E0; &#xACF3;</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-retention">2. @Retention</h4>
+<ul>
+<li>&#xC720;&#xC9C0;&#xB418;&#xB294; &#xAE30;&#xAC04;&#xC744; &#xC9C0;&#xC815;</li>
+<li>RetentionPolicy.SOURCE : &#xCEF4;&#xD30C;&#xC77C;&#xC804;&#xAE4C;&#xC9C0; &#xC720;&#xD6A8;. &#xC18C;&#xC2A4;&#xD30C;&#xC77C;&#xC5D0;&#xB9CC; &#xC874;&#xC7AC;</li>
+<li>RetentionPolicy.CLASS : &#xD074;&#xB798;&#xC2A4; &#xD30C;&#xC77C;&#xC5D0; &#xC874;&#xC7AC;. &#xC2E4;&#xD589;&#xC2DC; &#xC0AC;&#xC6A9; &#xBD88;&#xAC00;. &#xAE30;&#xBCF8; &#xAC12;</li>
+<li>RetentionPolicy.RUNTIME : &#xD074;&#xB798;&#xC2A4; &#xD30C;&#xC77C;&#xC5D0; &#xC874;&#xC7AC;. &#xC2E4;&#xD589;&#xC2DC; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4; &#xB9CC;&#xB4E4;&#xAE30;</span>
+<span class="hljs-meta">@Target</span>({ElementType.METHOD,ElementType.FIELD})<span class="hljs-comment">//&#xB300;&#xC0C1; &#xC815;&#xC758;</span>
+<span class="hljs-meta">@Retention</span>(RetentionPolicy.SOURCE)<span class="hljs-comment">//&#xC801;&#xC6A9; &#xAE30;&#xAC04;</span>
+<span class="hljs-meta">@interface</span> MyAnnotation{
+
+}
+</code></pre>
+<h4 id="3-documented">3. @Documented</h4>
+<ul>
+<li>javadoc&#xC73C;&#xB85C; &#xC791;&#xC131;&#xD55C; &#xBB38;&#xC11C;&#xC5D0; &#xD3EC;&#xD568;&#xB418;&#xB3C4;&#xB85D; &#xD568;</li>
+<li>@Override, @SuppressWarnings &#xB97C; &#xC81C;&#xC678;&#xD558;&#xACE0; &#xBAA8;&#xB450; &#xBD99;&#xC5B4; &#xC788;&#xC74C;</li>
+</ul>
+<h4 id="4-inherited">4. @Inherited</h4>
+<ul>
+<li>annotation&#xC774; &#xC790;&#xC190; &#xD074;&#xB798;&#xC2A4;&#xC5D0; &#xC0C1;&#xC18D;&#xB418;&#xB3C4;&#xB85D; &#xD568;</li>
+</ul>
+<h4 id="5-repeatable">5. @Repeatable</h4>
+<ul>
+<li>java8&#xBD80;&#xD130; &#xC9C0;&#xC6D0;</li>
+<li>&#xC5EC;&#xB7EC; &#xAC1C;&#xC758; annotation&#xC801;&#xC6A9; &#xAC00;&#xB2A5;&#xD558;&#xAC8C; &#xD568;(&#xBCF4;&#xD1B5;&#xC740; &#xD558;&#xB098;&#xC758; &#xB300;&#xC0C1;&#xC5D0; &#xD558;&#xB098;&#xC758; annotation)</li>
+</ul>
+<h2 id="&#xC9C1;&#xC811;-&#xB9CC;&#xB4E4;&#xAE30;">&#xC9C1;&#xC811; &#xB9CC;&#xB4E4;&#xAE30;</h2>
+<pre><code class="lang-java"><span class="hljs-meta">@interface</span> annotation_name{
+  <span class="hljs-function">type <span class="hljs-title">element</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<ul>
+<li>element : annotation &#xB0B4;&#xC5D0; &#xC120;&#xC5B8;&#xB41C; method. &#xBC18;&#xD658;&#xAC12;&#xC740; &#xC788;&#xACE0; &#xB9E4;&#xAC1C;&#xBCC0;&#xC218;&#xB294; &#xC5C6;&#xC74C;. annotation &#xC801;&#xC6A9;&#xC2DC; &#xBAA8;&#xB4E0; &#xAC12;&#xC744; &#xC9C0;&#xC815;&#xD574;&#xC8FC;&#xC5B4;&#xC57C; &#xD568;</li>
+<li>element&#xC5D0; &#xAE30;&#xBCF8;&#xAC12;&#xC744; &#xC801;&#xC6A9;&#xAC00;&#xB2A5;. &#xAE30;&#xBCF8;&#xAC12; &#xC9C0;&#xC815;&#xC2DC; &#xC0DD;&#xB7B5; &#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-meta">@interface</span> MyAnnotation{
+  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">count</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> 3</span>;
+  <span class="hljs-function">String <span class="hljs-title">name</span><span class="hljs-params">()</span></span>;
+  String[] tools();
+}
+
+<span class="hljs-meta">@MyAnnotation</span>(
+  count=<span class="hljs-number">4</span>,
+  name=<span class="hljs-string">&quot;JiSun&quot;</span>,
+  tools={<span class="hljs-string">&quot;java&quot;</span>,<span class="hljs-string">&quot;python&quot;</span>}
+)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewClass</span></span>{
+
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="java_collection.html" class="navigation navigation-prev " aria-label="Previous page: Collection">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="java_lambda.html" class="navigation navigation-next " aria-label="Next page: Lambda expression">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Generics","date":"2019-12-18T01:02:59.000Z","author":"Inhyuk","name":"java_generics.md","level":"1.2.9","depth":2,"next":{"title":"Lambda expression","level":"1.2.10","depth":2,"path":"posts/book/java_lambda.md","ref":"posts/book/java_lambda.md","articles":[]},"previous":{"title":"Collection","level":"1.2.8","depth":2,"path":"posts/book/java_collection.md","ref":"posts/book/java_collection.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/book/java_generics.md","mtime":"2020-04-22T12:10:22.157Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T13:07:30.938Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

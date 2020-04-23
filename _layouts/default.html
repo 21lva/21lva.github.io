@@ -37,7 +37,10 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About me</a></li>
-          <li><a href="/archives">GitBooks</a></li>
+          <!--<li><a href="/archives">GitBooks</a></li>-->
+          {% for category in site.Categories %}
+          <li><a href="/archives/{{category}}">{{category}}</a></li>
+          {% endfor %}
         </ul>
       </nav>
     </div>

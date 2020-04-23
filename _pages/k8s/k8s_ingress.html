@@ -1,0 +1,467 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Ingress · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="k8s_configMap.html" />
+    
+    
+    <link rel="prev" href="k8s_service.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../docker/docker0.html">
+            
+                <a href="../docker/docker0.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../docker/docker1.html">
+            
+                <a href="../docker/docker1.html">
+            
+                    
+                    Docker1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="k8s_basic.html">
+            
+                <a href="k8s_basic.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="k8s_pod.html">
+            
+                <a href="k8s_pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="k8s_controller.html">
+            
+                <a href="k8s_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="k8s_service.html">
+            
+                <a href="k8s_service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="k8s_ingress.html">
+            
+                <a href="k8s_ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="k8s_configMap.html">
+            
+                <a href="k8s_configMap.html">
+            
+                    
+                    configMap, secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="k8s_cdtt.html">
+            
+                <a href="k8s_cdtt.html">
+            
+                    
+                    cordon, drain, taint, toleration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="k8s_log.html">
+            
+                <a href="k8s_log.html">
+            
+                    
+                    Logging : ElasticSearch, Kibana, fluentd
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Ingress</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ingress">Ingress</h1>
+<ul>
+<li>&#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xC678;&#xBD80;&#xC5D0;&#xC11C; &#xB0B4;&#xBD80;&#xB85C; &#xC811;&#xADFC;&#xD558;&#xB294; &#xC694;&#xCCAD;&#xB4E4;&#xC744; &#xCC98;&#xB9AC;&#xD558;&#xB294; &#xADDC;&#xCE59;. HTTPs &#xAE30;&#xBC18;&#xC758; L7 &#xB85C;&#xB4DC; &#xBC38;&#xB7F0;&#xC2F1; &#xAE30;&#xB2A5; &#xC81C;&#xACF5;</li>
+<li>URL &#xC0AC;&#xC6A9;&#xD558;&#xAC8C; &#xD574;&#xC90C;, traffic &#xB85C;&#xB4DC; &#xBC38;&#xB7F0;&#xC2F1;, ssl&#xC778;&#xC99D;&#xC11C; &#xCC98;&#xB9AC;, &#xB3C4;&#xBA54;&#xC778; &#xAE30;&#xBC18;&#xC73C;&#xB85C; &#xAC00;&#xC0C1; &#xD638;&#xC2A4;&#xD305; &#xC81C;&#xACF5;</li>
+<li>Ingress controller : ingress &#xADDC;&#xCE59;&#xC744; &#xAE30;&#xBC18;&#xC73C;&#xB85C; &#xB3D9;&#xC791;&#xD558;&#xAC8C; &#xD558;&#xB294; controller</li>
+<li><p>URL &#xAE30;&#xBC18;&#xC758; &#xB77C;&#xC6B0;&#xD305;&#xC740; API &#xAC8C;&#xC774;&#xD2B8;&#xC6E8;&#xC774;&#xAC00; &#xC544;&#xB2CC; Ingress&#xB85C; &#xD558;&#xB294; &#xAC83;&#xC774; &#xC88B;&#xB2E4;</p>
+</li>
+<li><p>aws&#xAC19;&#xC740; cloud &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xBA74; &#xC790;&#xCCB4; &#xB85C;&#xB4DC;&#xBC38;&#xB7F0;&#xC11C; &#xC11C;&#xBE44;&#xC2A4;&#xB4E4;&#xACFC; &#xC5F0;&#xB3D9;&#xD574;&#xC11C; &#xC27D;&#xAC8C; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;</p>
+</li>
+<li>&#xC790;&#xCCB4;&#xC801;&#xC73C;&#xB85C; &#xC6B4;&#xC601;&#xD560; &#xACBD;&#xC6B0;&#xC5D0;&#xB294; ingress&#xC640; ingress controller&#xB97C; &#xC5F0;&#xB3D9;&#xD574;&#xC57C; &#xD568;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> extensions/v1beta1
+<span class="hljs-attr">kind:</span> Ingress
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> test
+<span class="hljs-attr">  annotations:</span>
+    nginx.ingress.kubernetes.io/rewrite-target: /
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  rules:</span>
+<span class="hljs-attr">  - host:</span> a.b.com
+<span class="hljs-attr">    http:</span>
+<span class="hljs-attr">      paths:</span>
+<span class="hljs-attr">      - path:</span> /svc1
+<span class="hljs-attr">        backend:</span>
+<span class="hljs-attr">          serviceName:</span> s1
+<span class="hljs-attr">          servicePort:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">      - path:</span> /svc2
+<span class="hljs-attr">        backend:</span>
+<span class="hljs-attr">          serviceName:</span> s2
+<span class="hljs-attr">          servicePort:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">  - host:</span> c.d.com
+<span class="hljs-attr">    http:</span>
+<span class="hljs-attr">      paths:</span>
+<span class="hljs-attr">      - backend:</span>
+<span class="hljs-attr">          serviceName:</span> s2
+<span class="hljs-attr">          servicePort:</span> <span class="hljs-number">80</span>
+</code></pre>
+<p>&#xC704;&#xB294; ingress &#xC124;&#xC815;&#xC774;&#xB2E4;</p>
+<ul>
+<li><strong>a.b.com</strong> &#xC5D0; &#xC694;&#xCCAD;&#xC774; &#xB4E4;&#xC624;&#xACE0; <strong>a.b.com/svc1</strong> &#xC73C;&#xB85C; &#xC694;&#xCCAD;&#xC774; &#xB4E4;&#xC5B4;&#xC624;&#xBA74; s1 &#xC11C;&#xBE44;&#xC2A4;&#xB85C; &#xB77C;&#xC6B0;&#xD305;&#xD574;&#xC8FC;&#xACE0; <strong>a.b.com/svc2</strong> &#xC5D0; &#xC694;&#xCCAD;&#xC774; &#xB4E4;&#xC5B4;&#xC624;&#xBA74; s2 &#xC11C;&#xBE44;&#xC2A4;&#xB85C; &#xB77C;&#xC6B0;&#xD305;&#xD574;&#xC900;&#xB2E4;.</li>
+<li><strong>c.d.com</strong> &#xC5D0; &#xC694;&#xCCAD;&#xC774; &#xB4E4;&#xC5B4;&#xC624;&#xBA74; s2 &#xC11C;&#xBE44;&#xC2A4;&#xB85C; &#xB77C;&#xC6B0;&#xD305; &#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<hr>
+<h1 id="ingress-controller-with-nginx">Ingress controller with nginx</h1>
+<ul>
+<li><a href="https://arisu1000.tistory.com/27840?category=787056" target="_blank">&#xC5EC;&#xAE30;</a>&#xC5D0; &#xB098;&#xC628; &#xAC83;&#xC740; minikube&#xC640; &#xB9DE;&#xC9C0; &#xC54A;&#xC544;&#xC11C; <a href="https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/" target="_blank">minikube&#xC6A9; ingress</a>&#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC600;&#xB2E4;.</li>
+<li>minikube&#xAC00; &#xC544;&#xB2CC; &#xB2E4;&#xB978; driver&#xC744; &#xC704;&#xD55C; ingress controller &#xC124;&#xC815;&#xBC95;&#xC740; <a href="https://kubernetes.github.io/ingress-nginx/deploy/" target="_blank">&#xC5EC;&#xAE30;</a>&#xB97C; &#xCC38;&#xACE0;&#xD558;&#xC790;</li>
+</ul>
+<p>&#xBA3C;&#xC800; minikube&#xC758; addon&#xC744; &#xC2E4;&#xD589;&#xD558;&#xC790;</p>
+<pre><code>minikube addons enable ingress
+</code></pre><pre><code>kubectl get pods --all-namespaces
+</code></pre><p>&#xB97C; &#xD1B5;&#xD574;&#xC11C; <strong>nginx-ingress-controller</strong> &#xAC00; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xAC83;&#xC744; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+<p><img src="../../post_img/k8s_ingress.md/getIngress.png" alt="getIngress"></p>
+<p>Deployment&#xB97C; &#xC11C;&#xBE44;&#xC2A4;&#xD574;&#xBCF4;&#xC790;. Ingress&#xB85C; &#xAD00;&#xB9AC;&#xD558;&#xACE0;&#xC790; &#xD558;&#xB294; &#xC11C;&#xBE44;&#xC2A4;&#xB294; &#xAF2D; <strong>NodePort</strong> &#xD0C0;&#xC785;&#xC73C;&#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC57C;&#xD55C;&#xB2E4;</p>
+<pre><code>kubectl run web --image=gcr.io/google-samples/hello-app:1.0 --port=8080
+kubectl expose deploy web --target-port=8080 --type=NodePort
+</code></pre><p>&#xC544;&#xB798;&#xC758; &#xBA85;&#xB839;&#xC5B4;&#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; &#xC11C;&#xBE44;&#xC2A4;&#xC758; ip&#xB97C; &#xC54C; &#xC218; &#xC788;&#xB2E4;</p>
+<pre><code>minikube service web --url
+</code></pre><p>ingress &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E4;&#xC5B4;&#xBCF4;&#xC790;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">apiVersion:</span> networking.k8s.io/v1beta1 <span class="hljs-comment"># for versions before 1.14 use extensions/v1beta1</span>
+<span class="hljs-attr">kind:</span> Ingress
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> example-ingress
+<span class="hljs-attr">  annotations:</span>
+    nginx.ingress.kubernetes.io/rewrite-target: /$<span class="hljs-number">1</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  rules:</span>
+<span class="hljs-attr">  - host:</span> hello-world.info
+<span class="hljs-attr">    http:</span>
+<span class="hljs-attr">      paths:</span>
+<span class="hljs-attr">      - path:</span> /
+<span class="hljs-attr">        backend:</span>
+<span class="hljs-attr">          serviceName:</span> web
+<span class="hljs-attr">          servicePort:</span> <span class="hljs-number">8080</span>
+</code></pre>
+<p>&#xB2E4;&#xC74C;&#xC758; &#xBA85;&#xB839;&#xC5B4;&#xB85C; ingress&#xB97C; &#xB9CC;&#xB4E4;&#xC790;</p>
+<pre><code>kubectl apply -f example-ingress.yaml
+</code></pre><p>kubectl get ingree&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC8FC;&#xC18C;&#xAC12;(address)&#xC744; &#xC5BB;&#xC790;. &#xB85C;&#xCEEC;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xD558;&#xB294; &#xACBD;&#xC6B0;&#xC5D0;&#xB294; <strong>minikube ip</strong> &#xB97C; &#xC2E4;&#xD589;&#xD574;&#xC11C; &#xC678;&#xBD80; &#xC8FC;&#xC18C;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC790;(&#xC704;&#xC758; &#xC8FC;&#xC18C;&#xB294; &#xB0B4;&#xBD80; ip)</p>
+<p>/etc/hosts &#xD30C;&#xC77C;&#xC744; &#xC5F4;&#xACE0;(&#xB9AC;&#xB205;&#xC2A4; &#xAE30;&#xC900;) &#xC544;&#xB798;&#xC758; &#xB0B4;&#xC6A9;&#xC744; &#xC801;&#xB294;&#xB2E4;</p>
+<pre><code>&lt;ip &#xC8FC;&#xC18C;&gt; hello-world.info
+</code></pre><p>&#xC6F9;&#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xB97C; &#xC5F4;&#xACE0; <strong>hello-world</strong> &#xB97C; &#xC785;&#xB825;&#xD558;&#xBA74; &#xACB0;&#xACFC; &#xD654;&#xBA74;&#xC744; &#xBCFC; &#xC218; &#xC788;&#xB2E4;</p>
+<hr>
+<h1 id="ingress-with-tls">Ingress with TLS</h1>
+<p>&#xCD94;&#xAC00; &#xC608;&#xC815;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="k8s_service.html" class="navigation navigation-prev " aria-label="Previous page: Service">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="k8s_configMap.html" class="navigation navigation-next " aria-label="Next page: configMap, secret">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Ingress","date":"2019-12-18T01:02:59.000Z","name":"k8s_ingress.md","level":"1.3.4","depth":2,"next":{"title":"configMap, secret","level":"1.3.5","depth":2,"path":"posts/k8s/k8s_configMap.md","ref":"posts/k8s/k8s_configMap.md","articles":[]},"previous":{"title":"Service","level":"1.3.3","depth":2,"path":"posts/k8s/k8s_service.md","ref":"posts/k8s/k8s_service.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex-plus","toggle-chapters"],"pluginsConfig":{"katex-plus":{},"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/k8s/k8s_ingress.md","mtime":"2020-03-17T15:05:03.267Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T15:05:57.250Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

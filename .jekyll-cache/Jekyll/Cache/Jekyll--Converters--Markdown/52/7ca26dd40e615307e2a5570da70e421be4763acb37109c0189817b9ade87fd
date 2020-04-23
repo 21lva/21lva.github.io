@@ -1,0 +1,70 @@
+I"{<h1 id="session--cookie">Session &amp; Cookie</h1>
+
+<ul>
+  <li>JSP,Servlet에서 다루던 것과 비슷하게 사용</li>
+  <li>client와 server의 연결을 유지해주는 데에 사용</li>
+</ul>
+
+<h1 id="session">Session</h1>
+
+<ul>
+  <li>spring에서 <strong>HttpServletRequest</strong> 를 이용해서 session을 사용하고자 하면 Controller에 <strong>HttpServletRequest</strong> 를 매개변수로 받아야 한다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/login"</span><span class="o">,</span><span class="n">method</span><span class="o">=</span><span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">userLogin</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">,</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span>
+  <span class="c1">//생략</span>
+  <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+  <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"isLogined"</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+  <span class="c1">//생략</span>
+  <span class="c1">//수정</span>
+  <span class="kt">boolean</span> <span class="n">newS</span> <span class="o">=</span> <span class="o">!</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"isLogined"</span><span class="o">);</span>
+  <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"isLogined"</span><span class="o">,</span><span class="n">newS</span><span class="o">);</span>
+  <span class="c1">//삭제</span>
+  <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>HttpServletRequest가 아닌 매개변수로 <strong>HttpSession</strong> 을 받아서 사용 가능</li>
+  <li>차이는 객체를 얻는 방법일 뿐. 다른 부분에서는 거의 차이가 없다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/login"</span><span class="o">,</span><span class="n">method</span><span class="o">=</span><span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">userLogin</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">,</span><span class="nc">HttpSession</span> <span class="n">session</span><span class="o">)</span>
+  <span class="c1">//생략</span>
+  <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"isLogined"</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+  <span class="c1">//생략</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>todo : 메서드 자세히 from jsp</p>
+<ul>
+  <li>메서드
+    <ul>
+      <li>getId() : session id 반환</li>
+      <li>setAttribute(“이름”,value) : 속성 지정</li>
+      <li>getAttribute() : 속성 반환</li>
+      <li>removeAttribute() : 속성 제거</li>
+      <li>setMaxInactiveInterval() : 객체의 유지 시간 설정</li>
+      <li>getMaxInactiveInterval() : 객체의 유지 시간 반환</li>
+      <li>invalidate() : 세션 객체 제거</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cookie">Cookie</h2>
+
+<ul>
+  <li><strong>HttpServletResponse</strong> 객체에 저장해서 클라이언트에 보냄</li>
+  <li>todo : cookie</li>
+</ul>
+
+<h4 id="cookievalue">@CookieValue</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public string f1(Model model,@CookieValue(value="id",required=false) Cookie idCookie, HttpServletRequest request){
+  if(idCookie)model.setAttribute("id",idCookie.getValue());
+  //생략
+}
+</code></pre></div></div>
+:ET

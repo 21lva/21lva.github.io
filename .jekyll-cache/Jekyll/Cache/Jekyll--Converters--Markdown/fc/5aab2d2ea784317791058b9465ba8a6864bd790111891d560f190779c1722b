@@ -1,0 +1,235 @@
+I"uJ<h1 id="javalang-패키지">java.lang 패키지</h1>
+
+<ul>
+  <li>가장 기본이 되는 클래스</li>
+  <li>import 없이 사용가능</li>
+  <li><strong>Object, String, System</strong> 클래스 등을 포함</li>
+</ul>
+
+<hr />
+
+<h1 id="object-클래스">Object 클래스</h1>
+<ul>
+  <li>모든 클래스의 조상 클래스</li>
+</ul>
+
+<h4 id="public-boolean-equalsobject-obj">public boolean equals(Object obj)</h4>
+
+<ul>
+  <li>매개변수로 객체의 참조변수를 받아서 비교 후 같은지를 확인.</li>
+  <li>참조변수로만 확인을 하기 때문에 실제 값이 같더라도 주소가 다름 false를 반환</li>
+  <li>값을 비교하기 원하면 다음과 같이 오버라이딩 한다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">){</span>
+  <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">val</span> <span class="o">==</span> <span class="n">obj</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="public-int-hashcode">public int hashCode()</h4>
+
+<ul>
+  <li>객체의 주소값을 이용해서 해시 코드를 반환</li>
+  <li>객체의 주소값이 아닌 특정 멤버 변수로 해쉬 코드를 반환하기 원하면 오버라이딩하면 된다</li>
+</ul>
+
+<h4 id="public-string-tostring">public String toString()</h4>
+
+<ul>
+  <li>정보를 문자열로 제공</li>
+  <li>보통은 인스턴스 변수에 저장된 값들을 문자열로 표현</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//기본적인 toString()</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>
+  <span class="k">return</span> <span class="nf">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">()+</span><span class="s">"@"</span><span class="o">+</span><span class="nc">Integer</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hashCode</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 기본적으로 제공되는 메서드를 오버라이딩 하면 원하는 값을 얻을 수 있다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">iii</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="no">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">A</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">s</span><span class="o">=</span><span class="mi">12</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>
+       <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="protected-object-clone">protected Object clone()</h4>
+
+<ul>
+  <li>자신을 복사해서 새로운 객체를 생성한다</li>
+  <li>원래 객체는 보존하고 복사본에 특정 작업을 처리하는 데에 사용</li>
+  <li>변수의 갑만을 복사하기 때문에 얕은 복사(참조 변수는 복사되지 않음)된다</li>
+  <li>깊은 복사를 원하면 오버라이딩 하자</li>
+</ul>
+
+<h4 id="public-class-getclass">public Class getClass()</h4>
+
+<ul>
+  <li>자신이 속한 클래스의 Class 객체 반환</li>
+  <li>Class 객체에는 클래스의 멤버의 이름, 개수 등 클래스에 대한 정보를 가지고 있음. 각 클래스 당 1개만 존재</li>
+  <li>클래스 파일이 클래스 로더에 의해 메모리에 올라갈 때 자동으로 Class 객체 생성</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Class 객체를 얻는 방법</span>
+<span class="nc">Class</span> <span class="n">cObj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Card</span><span class="o">().</span><span class="na">getClass</span><span class="o">();</span><span class="c1">// 생성된 객체로부터 얻는다</span>
+<span class="nc">Class</span> <span class="n">cObj</span> <span class="o">=</span> <span class="nc">Card</span><span class="o">.</span><span class="na">class</span><span class="o">;</span><span class="c1">//클래스 리터럴로부터 얻음</span>
+<span class="nc">Class</span> <span class="n">cObj</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"Card"</span><span class="o">);</span><span class="c1">//클래스 이름으로부터 얻음</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="string-클래스">String 클래스</h1>
+
+<ul>
+  <li>c언어에서는 char배열로 문자열을 다뤘지만, 자바에서는 객체로 다룸</li>
+  <li>immutable 클래스. 객체에 값을 바꾸면 새로운 객체를 생성</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//String 클래스 객체를 만드는 방법</span>
+<span class="c1">//1.</span>
+<span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"ab"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"ab"</span><span class="o">;</span>
+
+<span class="c1">//2.</span>
+<span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"ab"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"ab"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>1번의 경우에는 “ab”라는 <strong>리터럴</strong> 을 str1과 str2이 동시에 가리킨다. 2번은 새로운 객체가 각각 생성된다.</p>
+
+<ul>
+  <li>String 클래스의 equals 메서드는 문자열을 비교할 수 있다(오버라이딩 되어 있음). <strong>==</strong> 연산자는 단순히 참조값(주소값)이 같은지만 확인</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"ab"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"ab"</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"ab"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">str4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"ab"</span><span class="o">);</span>
+
+<span class="n">str1</span><span class="o">==</span><span class="n">str2</span><span class="o">;</span><span class="c1">//result : true</span>
+<span class="n">str1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str2</span><span class="o">);</span><span class="c1">//result : true</span>
+<span class="n">str3</span><span class="o">==</span><span class="n">str4</span><span class="o">;</span><span class="c1">//result : false</span>
+<span class="n">str3</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str4</span><span class="o">);</span><span class="c1">//result : true</span>
+</code></pre></div></div>
+
+<h2 id="문자열-리터럴">문자열 리터럴</h2>
+
+<ul>
+  <li>자바 소스파일에 사용하는 모든 문자열은 컴파일시에 클래스 파일에 한번에 올라옴.</li>
+  <li>각 문자열 리터럴도 String 객체.</li>
+  <li>String이 immutable이기 때문에 한 번 생성된 문자열 리터럴은 그냥 공유하면 됨</li>
+</ul>
+
+<h2 id="join-stringjoiner">join(), StringJoiner</h2>
+
+<ul>
+  <li>join() : 여러 문자열 사이에 구분자를 넣어서 결합. split()과 정반대</li>
+  <li>java.util.StringJoiner 클래스 : 문자열 결합.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">StringJoiner</span> <span class="n">sj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringJoiner</span><span class="o">(</span><span class="s">","</span><span class="o">,</span><span class="s">"["</span><span class="o">,</span><span class="s">"]"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="o">[]</span> <span class="n">strArr</span> <span class="o">=</span> <span class="o">{</span><span class="s">"a"</span><span class="o">,</span><span class="s">"b"</span><span class="o">,</span><span class="s">"c"</span><span class="o">};</span>
+
+<span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="nl">s:</span> <span class="n">strArr</span><span class="o">)</span>
+  <span class="n">sj</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sj</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span><span class="c1">//result : [a,b,c]</span>
+</code></pre></div></div>
+
+<h2 id="format">format()</h2>
+
+<ul>
+  <li>형식화된 문자열을 만드는 바업</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">str</span> <span class="o">=</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%d 나누기 %d 는?"</span><span class="o">,</span><span class="mi">12</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다음과 같은 방식으로 숫자를 문자로 변환가능하다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//숫자를 String으로</span>
+<span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="mf">10.4</span><span class="o">+</span><span class="s">""</span><span class="o">;</span>
+<span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mf">10.4</span><span class="o">);</span>
+
+<span class="c1">//String을 숫자로</span>
+<span class="nc">Float</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">str1</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="stringbuffer-클래스">StringBuffer 클래스</h1>
+
+<ul>
+  <li>내부적으로 buffer를 가지고 있어서 mutable String 클래스이다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">(</span><span class="s">"ab"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sb</span><span class="o">);</span><span class="c1">//result : ab</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="mi">34</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sb</span><span class="o">);</span><span class="c1">//result : ab34</span>
+</code></pre></div></div>
+
+<ul>
+  <li>String 클래스와 달리 equals 메서드가 오버라이딩 되어 있지 않아서 ==와 같은 결과를 보여줌</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//대등비교</span>
+<span class="nc">StringBuffer</span> <span class="n">sb1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">(</span><span class="s">"ab"</span><span class="o">);</span>
+<span class="nc">StringBuffer</span> <span class="n">sb2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">(</span><span class="s">"ab"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span><span class="n">sb1</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span><span class="n">sb2</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s2</span><span class="o">));</span><span class="c1">//result : true</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="javautilstringtokenizer-클래스">java.util.StringTokenizer 클래스</h1>
+
+<ul>
+  <li>긴 문자열을 지정된 구분자(delimiter)를 기준으로 토큰이라는 여러개의 문자열로 잘라냄</li>
+  <li>String의 split(정규표현식)이랑 비슷하지만, StringTokenizer는 정규표현식을 쓰지않고도 사용할 수 있다</li>
+  <li>구분자로 하나의 문자열만 사요</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">src</span> <span class="o">=</span><span class="s">"12,345,341"</span><span class="o">;</span>
+<span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">src</span><span class="o">,</span><span class="s">","</span><span class="o">);</span>
+<span class="k">while</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">hasMoreTokens</span><span class="o">()){</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="javamathbiginteger-클래스">java.math.BigInteger 클래스</h1>
+
+<ul>
+  <li>큰 정수를 다룬다</li>
+  <li>immutable</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//생성</span>
+<span class="nc">BigInteger</span> <span class="n">val1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="s">"2312314141414141421"</span><span class="o">);</span>
+<span class="nc">BigInteger</span> <span class="n">val2</span> <span class="o">=</span> <span class="nc">BigInteger</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">2312314141414141421</span><span class="o">);</span>
+
+<span class="c1">//연산</span>
+<span class="nc">BigInteger</span> <span class="n">val3</span> <span class="o">=</span> <span class="n">va1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">va2</span><span class="o">);</span>
+<span class="nc">BigInteger</span> <span class="n">val3</span> <span class="o">=</span> <span class="n">va1</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="n">va2</span><span class="o">);</span>
+<span class="nc">BigInteger</span> <span class="n">val3</span> <span class="o">=</span> <span class="n">va1</span><span class="o">.</span><span class="na">multiply</span><span class="o">(</span><span class="n">va2</span><span class="o">);</span>
+<span class="nc">BigInteger</span> <span class="n">val3</span> <span class="o">=</span> <span class="n">va1</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">va2</span><span class="o">);</span>
+<span class="nc">BigInteger</span> <span class="n">val3</span> <span class="o">=</span> <span class="n">va1</span><span class="o">.</span><span class="na">remainder</span><span class="o">(</span><span class="n">va2</span><span class="o">);</span>
+</code></pre></div></div>
+:ET

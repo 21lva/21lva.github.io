@@ -1,0 +1,305 @@
+I"=<h1 id="클래스의-변수">클래스의 변수</h1>
+
+<ul>
+  <li>클래스 변수, 인스턴스 변수, 지역변수로 나뉨</li>
+</ul>
+
+<ol>
+  <li>인스턴스 변수</li>
+</ol>
+
+<ul>
+  <li>객체가 생성시에 독립적인 공간에 만들어지는 변수</li>
+  <li>객체마다 변수가 다 다르게 부여</li>
+</ul>
+
+<ol>
+  <li>클래스 변수</li>
+</ol>
+
+<ul>
+  <li>클래스가 로딩시 생성되는 변수. 프로그램이 종료될 때 까지 유지</li>
+  <li>같은 클래스는 같은 변수를 공유한다</li>
+</ul>
+
+<ol>
+  <li>지역 변수</li>
+</ol>
+
+<ul>
+  <li>매서드 내부, 초기화 블럭 등에서 일시적으로 사용되는 변수</li>
+  <li>작업이 끝나면 사라진다</li>
+</ul>
+
+<hr />
+
+<h1 id="매개변수">매개변수</h1>
+
+<ol>
+  <li>기본형 매개변수</li>
+</ol>
+
+<ul>
+  <li>변수의 값을 읽기만 한다</li>
+</ul>
+
+<ol>
+  <li>참조형 매개변수</li>
+</ol>
+
+<ul>
+  <li>변수의 값을 읽고 변경 가능.</li>
+  <li>메모리의 주소 값을 가져온다</li>
+  <li>참조형 return값은 그 값의 주소를 반환한다</li>
+</ul>
+
+<hr />
+
+<h1 id="클래스-메서드--인스턴스-메서드">클래스 메서드 &amp; 인스턴스 메서드</h1>
+
+<ol>
+  <li>클래스 메서드</li>
+</ol>
+
+<ul>
+  <li>메서드 앞에 <strong>static</strong> 이 붙어 있는 메서드</li>
+  <li>객체를 생성하지 않고도 사용 가능</li>
+  <li>모든 객체에서 공통으로 사용하는 메서드는 클래스 메서드로 선언한다</li>
+  <li>인스턴스 변수를 사용할 수 없다</li>
+  <li>인스턴스 변수를 사용하지 않으면 클래스 메서드로 선언하는 것이 좋음</li>
+</ul>
+
+<ol>
+  <li>인스턴스 메서드</li>
+</ol>
+
+<ul>
+  <li>인스턴스 변수와 관련된 일을 하는 메서드</li>
+  <li>객체를 생성을 해야 사용할 수 있다</li>
+</ul>
+
+<hr />
+
+<h1 id="생성자">생성자</h1>
+
+<ul>
+  <li>생성자는 이름이 클래스 이름과 같아야 함</li>
+  <li>반환값이 없음</li>
+  <li>여러가지 생성자를 오버로딩 가능</li>
+  <li>다른 메서드 혹은 다른 생성자에서 생성자를 호출시 <strong>this()</strong> or <strong>this(args)</strong> 를 사용한다.</li>
+  <li>이 객체의 멤버변수는 <strong>this.변수</strong> 로 접근 가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//생성자를 이용한 다른 변수 복사</span>
+<span class="kd">class</span> <span class="nc">Car</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">price</span><span class="o">;</span>
+  <span class="nc">Car</span><span class="o">(){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">price</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="nc">Car</span><span class="o">(</span><span class="nc">Car</span> <span class="n">c</span><span class="o">){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">price</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="na">price</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="초기화">초기화</h1>
+
+<ul>
+  <li>변수의 초기화의 순서
+    <ol>
+      <li>기본값</li>
+      <li>명시적 초기화</li>
+      <li>초기화 블럭 : 복잡한 초기화에 주로 사용. 자식 클래스에 상속되지 않기를 바라는 초기화에도 사용</li>
+      <li>(인스턴스 변수이면) 생성자</li>
+    </ol>
+  </li>
+  <li>클래스 변수는 클래스가 로딩 시 한번 초기화 된다</li>
+  <li>인스턴스 변수는 객체가 생성될 때마다 각 객체에서 초기화된다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Car</span><span class="o">{</span>
+  <span class="kd">static</span> <span class="kt">int</span> <span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="o">;</span><span class="c1">//명시적 초기화</span>
+  <span class="kt">int</span> <span class="n">price</span><span class="o">=</span><span class="mi">4</span><span class="o">;</span><span class="c1">//명시적 초기화</span>
+
+  <span class="kd">static</span><span class="o">{</span><span class="c1">//static 초기화 블럭</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span>  
+  <span class="o">}</span>
+  <span class="o">{</span><span class="c1">//인스턴스 변수 초기화</span>
+    <span class="n">price</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="nc">Car</span><span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">price</span><span class="o">=</span><span class="mi">5</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="상속">상속</h1>
+
+<ul>
+  <li>다른 클래스(부모 클래스)의 변수, 메서드를 새로운 클래스(자식 클래스)에서 사용할 수 있게 하는 기능</li>
+  <li>생성자와 초기화 블럭은 상속되지 않음</li>
+  <li>[<strong>자식클래스</strong> is a <strong>부모클래스</strong>] 의 관계.</li>
+  <li><strong>Object 클래스</strong> : 모든 클래스의 조상 클래스. 명시적으로 상속을 지정하지 않으면, Object 클래스를 상속한다</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Parent{
+  int x=3;
+}
+
+class Child extends Parent{
+
+}
+</code></pre></div></div>
+
+<h2 id="오버라이딩">오버라이딩</h2>
+
+<ul>
+  <li>상속받은 클래스의 기존 메서드 대신하여 같은 이름의 다른 메서드를 만드는 것</li>
+  <li>메서드 이름, 리턴 타입, 매개변수가 같아야 한다.</li>
+  <li>부모 메서드의 접근 제어자보다 좁은 제어자를 지정할 수 없다.</li>
+  <li>부모 메서드의 예외보다 많은 수의 예외를 선언할 수 없음</li>
+</ul>
+
+<h2 id="super">super</h2>
+
+<ul>
+  <li>부모 클래스의 멤버들을 참조하는 방법</li>
+  <li>상속을 받게 되면 부모의 멤버를 사용할 수 있지만, 같은 이름의 변수를 다르게 사용하거나 오버라이딩 되기 전 메서드를 호출하고 싶으면 사용한다</li>
+  <li><strong>super()</strong> 를 통해서 부모 클래스의 생성자 호출 가능. 없을시 부모의 default 생성자를 자동으로 생성자 첫 줄에 삽입한다</li>
+</ul>
+
+<hr />
+
+<h1 id="제어자modifier">제어자(modifier)</h1>
+
+<ul>
+  <li>접근제어자 : 변수, 클래스, 객체, 메서드 등에 접근할 수 있는 범위 지정. public, protected, default, private</li>
+  <li>
+    <p>그외 : static, abstract, final 등</p>
+  </li>
+  <li>메서드에 static + abstract 불가능</li>
+  <li>클래스에 abstract + final 불가능</li>
+  <li>abstract은 private 불가능</li>
+  <li>메서드에서는 private와 final을 같이 쓸 필요 없음.</li>
+</ul>
+
+<h2 id="static">static</h2>
+
+<ul>
+  <li>공통으로 사용한다는 뜻</li>
+  <li>객체를 생성하지 않고 사용할 수 있음</li>
+</ul>
+
+<h2 id="final">final</h2>
+
+<ul>
+  <li>final 변수 : 값을 변경할 수 없는 상수. 초기화는 가능. 인스턴스 변수인 경우에는 생성자에서는 초기화 가능</li>
+  <li>final 클래스 : 변경될 수 없는 클래스. 확장될 수 없기 때문에 다른 클래스의 부모 클래스가 될 수 없음</li>
+  <li>final 메서드 : 오버라이딩 불가</li>
+</ul>
+
+<h2 id="abstract">abstract</h2>
+
+<ul>
+  <li>추상 클래스에 사용</li>
+  <li>선언은 하지만, 구현은 하지 않는다는 의미</li>
+</ul>
+
+<h2 id="접근-제어자">접근 제어자</h2>
+
+<ol>
+  <li>private : 같은 클래스 내에서만 접근 가능. private 메서드는 오버라이딩 불가</li>
+  <li>default : 같은 패키지 내에서만 접근 가능. 특정 접근제어자를 명시하지 않을 시에도 적용.</li>
+  <li>protected : 같은 패키지 내 혹은 다른 패키지에서의 상속한 클래스에서 접근 가능</li>
+  <li>public : 제한 없음</li>
+</ol>
+
+<hr />
+
+<h1 id="다형성">다형성</h1>
+
+<ul>
+  <li>여러가지 형태를 가질 수 있는 능력</li>
+  <li>자바에서는 한 타입의 참조변수로 다른 타입의 객체들을 참조&amp;사용할 수 있도록 하는 것을 의미</li>
+  <li>조상 클래스에서 명시적 형변환 없이 자식 클래스의 객체를 사용할 수 있도록 하는 것</li>
+  <li>오버라이딩이 된 경우에는 오직 <strong>인스턴스 메서드</strong> 만이  참조 변수의 타입에 관계 없이 호출된다. 나머지는 참조 변수의 타입에 따라 달라진다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">a</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="nc">Parent</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="o">();</span><span class="c1">//가능</span>
+        <span class="nc">Child</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Parent</span><span class="o">();</span><span class="c1">//불가능</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">childVar</span><span class="o">;</span><span class="c1">//불가능</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">x</span><span class="o">);</span><span class="c1">//result : 3</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">printing</span><span class="o">();</span><span class="c1">//result : This is a parent class</span>
+
+        <span class="c1">//명시적 형변환은 가능</span>
+        <span class="nc">Child</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Child</span><span class="o">)</span><span class="n">p</span><span class="o">;</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">x</span><span class="o">);</span><span class="c1">//result : 4</span>
+        <span class="n">c</span><span class="o">.</span><span class="na">printing</span><span class="o">();</span><span class="c1">//result : This is a child class</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Parent</span><span class="o">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="o">;</span>
+    <span class="kt">void</span> <span class="nf">printing</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This is a parent class"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="nc">Parent</span><span class="o">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="o">;</span>
+    <span class="kt">void</span> <span class="nf">printing</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This is a child class"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>(명시적이든 아니든) 형변환을 하게 되면 인스턴스 자체의 형을 변환하는 것이 아니기 때문에 인스턴스 자체에는 영향 X.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Parent</span><span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">Child1</span> <span class="kd">extends</span> <span class="nc">Parent</span><span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">Child2</span> <span class="kd">extends</span> <span class="nc">Parent</span><span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">check</span><span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">doSomething</span><span class="o">(</span><span class="nc">Car</span> <span class="n">c</span><span class="o">){</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">c</span> <span class="k">instanceof</span> <span class="nc">Child1</span><span class="o">){</span>
+      <span class="c1">//</span>
+    <span class="o">}</span>  
+    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">c</span> <span class="k">instanceof</span> <span class="nc">Child2</span><span class="o">){</span>
+        <span class="c1">//</span>
+    <span class="o">}</span>  
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><strong>instanceof</strong> 는 형변환이 가능한지를 알려준다.</p>
+  </li>
+  <li>
+    <p>다음과 같이 매개변수에도 사용할 수 있다.</p>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Product</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">price</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">TV</span> <span class="kd">extends</span> <span class="nc">Product</span><span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">PC</span> <span class="kd">extends</span> <span class="nc">Product</span><span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">Phone</span> <span class="kd">extends</span> <span class="nc">Product</span><span class="o">{}</span>
+
+<span class="kt">int</span> <span class="nf">discountPrice</span><span class="o">(</span><span class="nc">Product</span> <span class="n">p</span><span class="o">,</span> <span class="kt">int</span> <span class="n">dis</span><span class="o">){</span>
+  <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="na">price</span><span class="o">-</span> <span class="n">dis</span><span class="o">;</span><span class="c1">//각 클래스마다 메서드를 만들 필요 없게 된다.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

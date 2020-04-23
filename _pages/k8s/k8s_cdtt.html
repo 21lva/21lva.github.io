@@ -1,0 +1,469 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>cordon, drain, taint, toleration · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="k8s_log.html" />
+    
+    
+    <link rel="prev" href="k8s_configMap.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../docker/docker0.html">
+            
+                <a href="../docker/docker0.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../docker/docker1.html">
+            
+                <a href="../docker/docker1.html">
+            
+                    
+                    Docker1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="k8s_basic.html">
+            
+                <a href="k8s_basic.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="k8s_pod.html">
+            
+                <a href="k8s_pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="k8s_controller.html">
+            
+                <a href="k8s_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="k8s_service.html">
+            
+                <a href="k8s_service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="k8s_ingress.html">
+            
+                <a href="k8s_ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="k8s_configMap.html">
+            
+                <a href="k8s_configMap.html">
+            
+                    
+                    configMap, secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.6" data-path="k8s_cdtt.html">
+            
+                <a href="k8s_cdtt.html">
+            
+                    
+                    cordon, drain, taint, toleration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="k8s_log.html">
+            
+                <a href="k8s_log.html">
+            
+                    
+                    Logging : ElasticSearch, Kibana, fluentd
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >cordon, drain, taint, toleration</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="cordon">cordon</h1>
+<ul>
+<li>&#xC9C0;&#xC815;&#xB41C; <strong>node</strong> &#xC5D0; <strong>&#xB354; &#xC774;&#xC0C1;</strong> (&#xC774;&#xBBF8; &#xC788;&#xB358; &#xC560;&#xB4E4;&#xC740; &#xD574;&#xB2F9;&#xC0AC;&#xD56D; &#xC544;&#xB2D8;) pod&#xC774; &#xC2A4;&#xCF00;&#xC974;&#xB9C1; &#xB418;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;</li>
+</ul>
+<pre><code>//cordon
+kubectl cordon &lt;node&#xC774;&#xB984;&gt;
+
+//uncordon
+kubectl uncordon &lt;node&#xC774;&#xB984;&gt;
+</code></pre><p><img src="../../post_img/k8s_cdtt.md/cordon.png" alt="cordon"></p>
+<ul>
+<li>cordon&#xC744; &#xD558;&#xBA74; Ready,SchedulingDisabled &#xAC00; &#xB41C;&#xB2E4;</li>
+</ul>
+<hr>
+<h1 id="drain">drain</h1>
+<ul>
+<li>node&#xC758; pod&#xB97C; &#xB2E4;&#xB978; &#xACF3;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</li>
+<li>&#xC21C;&#xC11C;<ol>
+<li>&#xC0C8;&#xB85C;&#xC6B4; pod&#xC774; node&#xC5D0; &#xC2A4;&#xCF00;&#xC974;&#xB9C1; &#xB418;&#xC9C0; &#xC54A;&#xB3C4;&#xB85D; &#xC124;&#xC815;(cordon&#xC744; &#xD55C;&#xB2E4;&#xACE0; &#xBCF4;&#xBA74; &#xB428;)</li>
+<li>&#xC2E4;&#xD589;&#xC911;&#xC774;&#xB358; pod&#xC0AD;&#xC81C;. DaemonSet&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xC911;&#xC778; &#xACBD;&#xC6B0; &#xC2E4;&#xD328;, --ignore-daemonsets=true&#xB97C; &#xC124;&#xC815;&#xD574;&#xC11C; DeamonSet&#xC758; pod&#xB97C; &#xC81C;&#xC678;&#xD558;&#xACE0; drain &#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+<li>controller&#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; pod&#xB4E4;&#xC740; &#xB2E4;&#xB978; node&#xC5D0; &#xC54C;&#xC544;&#xC11C; &#xC124;&#xC815;&#xB418;&#xC9C0;&#xB9CC;, &#xC9C1;&#xC811; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; pod&#xB4E4;&#xC740; &#xADF8;&#xB0E5; &#xC0AD;&#xC81C;&#xB418;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xC2E4;&#xD328;&#xD55C;&#xB2E4;(&#xAC15;&#xC81C;&#xB85C; &#xD558;&#xACE0;&#xC790;&#xD558;&#xBA74; --force &#xC635;&#xC158; &#xC0AC;&#xC6A9;)</li>
+<li>kubelet&#xC774; &#xC9C1;&#xC811; &#xC2E4;&#xD589;&#xD55C; static pod&#xB4E4;&#xC740; &#xC0AD;&#xC81C; &#xB418;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;</li>
+<li>&#xD574;&#xB2F9; node&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACE0; &#xC2F6;&#xC73C;&#xBA74; uncordon&#xC744; &#xD558;&#xBA74; &#xB41C;&#xB2E4;</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h1 id="taint--toleration">taint &amp; toleration</h1>
+<ul>
+<li><strong>taint</strong> : cordon&#xACFC; &#xAC19;&#xC740; &#xC5ED;&#xD560;.</li>
+<li>But &#xBAA8;&#xB4E0; pod&#xB97C; &#xB9C9;&#xB294; &#xAC83;&#xC740; &#xC544;&#xB2C8;&#xACE0; <strong>toleration</strong> &#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xD2B9;&#xC815; pod&#xC758; &#xC2A4;&#xCF00;&#xC974;&#xB9C1;&#xC740; &#xD5C8;&#xC6A9;</li>
+<li><p>&#xC8FC;&#xB85C; node&#xAC00; &#xD2B9;&#xC815; &#xC5ED;&#xD560;(DB &#xB4F1;)&#xC744; &#xD558;&#xAC8C; &#xD560; &#xB54C; &#xC0AC;&#xC6A9;</p>
+</li>
+<li><p>tain&#xB294; key,value,effect&#xB85C; &#xAD6C;&#xC131;</p>
+</li>
+</ul>
+<pre><code>//kubectl taint nodes &lt;nodeName&gt; &lt;keyName&gt;=&lt;value&gt;:&lt;effect&gt;
+kubectl taint nodes ms1 key01=value01:NoSchedule
+</code></pre><ul>
+<li>taint&#xAC00; &#xAC78;&#xB824; &#xC788;&#xB294; node&#xC5D0;&#xB294; toleration&#xC758; key,value,effect&#xAC00; &#xBAA8;&#xB450; taint&#xC640; &#xAC19;&#xC740; pod&#xB4E4;&#xB9CC; &#xC2A4;&#xCF00;&#xC974;&#xB9C1; &#xB41C;&#xB2E4;(<strong>operator</strong> &#xAC00; <strong>Equal</strong> &#xC778; &#xACBD;&#xC6B0;&#xC5D0;&#xB9CC;..)</li>
+</ul>
+<pre><code class="lang-yaml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Deployment
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> test-deploy
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+<span class="hljs-attr">      app:</span> test-app
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      name:</span> test-app
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        app:</span> test-app
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> test-container
+<span class="hljs-attr">        image:</span> test-image
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">      tolerations:</span>
+<span class="hljs-attr">        - key:</span> <span class="hljs-string">&quot;key01&quot;</span>  
+<span class="hljs-attr">          operator:</span> <span class="hljs-string">&quot;Equal&quot;</span>
+<span class="hljs-attr">          value:</span> <span class="hljs-string">&quot;value01&quot;</span>
+<span class="hljs-attr">          effect:</span> <span class="hljs-string">&quot;NoSchedule&quot;</span>
+</code></pre>
+<ul>
+<li>taint &#xD574;&#xC81C;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBC29;&#xBC95;&#xC73C;&#xB85C; &#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code>kubectl tain nodes ms01 key:NoSchedule-
+</code></pre><h2 id="effect&#xC758;-&#xC885;&#xB958;">effect&#xC758; &#xC885;&#xB958;</h2>
+<ul>
+<li>NoSchedule : toleration&#xC774; &#xC5C6;&#xC73C;&#xBA74; pod&#xAC00; &#xC2A4;&#xCF00;&#xC974;&#xB9C1; &#xB418;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;. &#xC774;&#xBBF8; &#xC2E4;&#xD589;&#xB418;&#xB358; pod&#xC5D0;&#xB294; &#xC801;&#xC6A9;&#xB418;&#xC9C0; &#xC54A;&#xC74C;</li>
+<li>PreferNoSchedule : NoSchedule&#xACFC; &#xBE44;&#xC2B7;&#xD558;&#xC9C0;&#xB9CC;, &#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xB0B4;&#xC758; &#xB2E4;&#xB978; node&#xB4E4;&#xC5D0; &#xC790;&#xC6D0;&#xC774; &#xBD80;&#xC871;&#xD558;&#xBA74; pod&#xB4E4;&#xC774; &#xC2A4;&#xCF00;&#xC974;&#xB9C1; &#xB41C;&#xB2E4;</li>
+<li>NoExecute : NoSchedule&#xC5D0;&#xB2E4;&#xAC00; &#xAE30;&#xC874;&#xC758; pod&#xB4E4;&#xC5D0;&#xB3C4; tain&amp;toleration &#xADDC;&#xCE59;&#xC744; &#xC801;&#xC6A9;&#xD574;&#xC11C; &#xCAD3;&#xC544;&#xB0B4;&#xAC70;&#xB098; &#xB0A8;&#xAE30;&#xAC70;&#xB098;&#xB97C; &#xACB0;&#xC815;&#xD55C;&#xB2E4;</li>
+</ul>
+<h2 id="operator">operator</h2>
+<ul>
+<li>Equal : key, value, effect&#xAC00; &#xBAA8;&#xB450; &#xAC19;&#xC740;&#xC9C0; &#xD655;&#xC778;</li>
+<li>Exists : value&#xB97C; &#xD655;&#xC778;&#xD558;&#xC9C0; &#xC54A;&#xC74C;. key&#xC640; effect&#xB9CC; &#xD655;&#xC778;.<ul>
+<li>key, effect&#xB3C4; &#xC5C6;&#xB294; &#xACBD;&#xC6B0; : &#xBAA8;&#xB4E0; taint&#xB97C; &#xBB34;&#xC2DC;</li>
+<li>key&#xB9CC; &#xC788;&#xC74C; : &#xD6A8;&#xACFC;&#xB294; &#xC0C1;&#xAD00; &#xC5C6;&#xC774; &#xD574;&#xB2F9; key&#xB97C; &#xAC00;&#xC9C0;&#xB294; taint&#xC5D0; &#xC801;&#xC6A9;</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="k8s_configMap.html" class="navigation navigation-prev " aria-label="Previous page: configMap, secret">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="k8s_log.html" class="navigation navigation-next " aria-label="Next page: Logging : ElasticSearch, Kibana, fluentd">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"cordon, drain, taint, toleration","date":"2019-12-18T01:02:59.000Z","name":"k8s_cdtt.md","level":"1.3.6","depth":2,"next":{"title":"Logging : ElasticSearch, Kibana, fluentd","level":"1.3.7","depth":2,"path":"posts/k8s/k8s_log.md","ref":"posts/k8s/k8s_log.md","articles":[]},"previous":{"title":"configMap, secret","level":"1.3.5","depth":2,"path":"posts/k8s/k8s_configMap.md","ref":"posts/k8s/k8s_configMap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex-plus","toggle-chapters"],"pluginsConfig":{"katex-plus":{},"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/k8s/k8s_cdtt.md","mtime":"2020-03-17T15:05:47.246Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T15:05:57.250Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,28 @@
+I"e<h1 id="spring-boot와-spring-mvc의-구조-차이">spring boot와 spring MVC의 구조 차이</h1>
+
+<h4 id="spring-mvc">spring MVC</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app
+  - pom.xml
+  - src
+    - main
+      - resource
+      - webapp
+        - WEB-INF
+        - index.jsp
+</code></pre></div></div>
+
+<h4 id="spring-boot">spring boot</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app
+  - mvnw
+  - mvnw.cmd
+  - pom.xml
+  - src
+    - main
+      - java
+      - resources
+    - test
+      - java
+</code></pre></div></div>
+:ET

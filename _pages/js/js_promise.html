@@ -1,0 +1,737 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Promise, async & await · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="js_module.html" />
+    
+    
+    <link rel="prev" href="js_event.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="js_basic.html">
+            
+                <a href="js_basic.html">
+            
+                    
+                    Javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="js_object.html">
+            
+                <a href="js_object.html">
+            
+                    
+                    객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="js_array.html">
+            
+                <a href="js_array.html">
+            
+                    
+                    배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="js_event.html">
+            
+                <a href="js_event.html">
+            
+                    
+                    이벤트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="js_promise.html">
+            
+                <a href="js_promise.html">
+            
+                    
+                    Promise, async & await
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="js_module.html">
+            
+                <a href="js_module.html">
+            
+                    
+                    모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="js_wd.html">
+            
+                <a href="js_wd.html">
+            
+                    
+                    Window & BOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="js_dom.html">
+            
+                <a href="js_dom.html">
+            
+                    
+                    DOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="jquery_select.html">
+            
+                <a href="jquery_select.html">
+            
+                    
+                    JQuery : 선택 & 객체 & 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="jquery_event.html">
+            
+                <a href="jquery_event.html">
+            
+                    
+                    JQuery : 이벤트 & 애니메이션
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="jquery_async.html">
+            
+                <a href="jquery_async.html">
+            
+                    
+                    JQuery : 비동기 처리 & 플러그인
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../nodejs/nodejs_basic.html">
+            
+                <a href="../nodejs/nodejs_basic.html">
+            
+                    
+                    Nodejs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../nodejs/nodejs_http.html">
+            
+                <a href="../nodejs/nodejs_http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../nodejs/nodejs_external.html">
+            
+                <a href="../nodejs/nodejs_external.html">
+            
+                    
+                    외부 모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../nodejs/nodejs_express.html">
+            
+                <a href="../nodejs/nodejs_express.html">
+            
+                    
+                    ExpressJS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../nodejs/nodejs_mysql.html">
+            
+                <a href="../nodejs/nodejs_mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../nodejs/nodejs_socket.html">
+            
+                <a href="../nodejs/nodejs_socket.html">
+            
+                    
+                    Socket.io
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../nodejs/nodejs_restful.html">
+            
+                <a href="../nodejs/nodejs_restful.html">
+            
+                    
+                    RESTful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../nodejs/nodejs_redis.html">
+            
+                <a href="../nodejs/nodejs_redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../nodejs/nodejs_auth.html">
+            
+                <a href="../nodejs/nodejs_auth.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Promise, async & await</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="promise">Promise</h1>
+<h2 id="callback-hell">Callback Hell</h2>
+<ul>
+<li>&#xD568;&#xC218;&#xB97C; &#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xD558;&#xACE0;&#xC790; &#xD558;&#xBA74; callback&#xC744; &#xC9C0;&#xC18D;&#xC801;&#xC73C;&#xB85C; &#xC4F0;&#xAC8C; &#xB418;&#xACE0; <strong>Callback Hell</strong> &#xC5D0; &#xBE60;&#xC9C8; &#xC218; &#xC788;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-js">func1(
+  callback1(
+    callback2(
+      callback3(
+        callback4(
+          callback5();
+          );
+        );
+      );
+  );
+)
+</code></pre>
+<h2 id="promise">Promise</h2>
+<ul>
+<li><strong>Promise</strong> &#xB294; &#xBE44;&#xB3D9;&#xAE30;&#xC801; &#xC2E4;&#xD589;&#xC744; &#xBE44;&#xB3D9;&#xAE30; &#xCC98;&#xB9AC;&#xC5D0; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xAC1D;&#xCCB4;</li>
+<li><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank">Micro Task</a>&#xC758; &#xAE00;&#xC744; &#xC77D;&#xC5B4;&#xBCF4;&#xBA74; Promise&#xC758; &#xB3D9;&#xC791;&#xBC29;&#xC2DD;&#xC744; &#xC5B4;&#xB290;&#xC815;&#xB3C4; &#xC54C; &#xC218; &#xC788;&#xB2E4;.</li>
+</ul>
+<h2 id="&#xC120;&#xC5B8;&#xBD80;">&#xC120;&#xC5B8;&#xBD80;</h2>
+<pre><code class="lang-js"><span class="hljs-keyword">let</span> f2 = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">args</span>)</span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve,reject)=&gt;{
+    <span class="hljs-comment">//&#xC2E4;&#xD589;</span>
+    <span class="hljs-keyword">if</span>(fullfilled)resolve();
+    <span class="hljs-keyword">else</span> reject();
+  });
+}
+<span class="hljs-keyword">let</span> f1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+  <span class="hljs-comment">//&#xC2E4;&#xD589;&#xBD80;</span>
+  });
+</code></pre>
+<ul>
+<li>&#xD504;&#xB77C;&#xBBF8;&#xC2A4;&#xB294; 3&#xAC00;&#xC9C0; &#xC0C1;&#xD0DC;&#xAC00; &#xC874;&#xC7AC;. &#xAC1D;&#xCCB4;&#xAC00; &#xC0DD;&#xC131;&#xB418;&#xBA74;&#xC11C; &#xC791;&#xC5C5;&#xC744; &#xD55C;&#xB2E4;</li>
+<li>pending : &#xC544;&#xC9C1; &#xC218;&#xD589;&#xC744; &#xD558;&#xC9C0; &#xC54A;&#xC740; &#xC0C1;&#xD0DC;. &#xD504;&#xB77C;&#xBBF8;&#xC2A4; &#xAC1D;&#xCCB4;&#xB97C; &#xC0DD;&#xC131;&#xD560; &#xB54C;&#xC758; &#xC0C1;&#xD0DC;</li>
+<li>fullfilled : &#xB0B4;&#xBD80; &#xC791;&#xC5C5;&#xC774; &#xC131;&#xACF5;&#xD55C; &#xC0C1;&#xD0DC;. <strong>resolve</strong> &#xAC00; &#xC218;&#xD589;&#xB418;&#xACE0; &#xAC12;&#xC744; return &#xD55C;&#xB2E4;. <strong>then</strong> &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xC218;&#xD589;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+<li>rejected : &#xC791;&#xC5C5;&#xC774; &#xC2E4;&#xD328;&#xD55C; &#xC0C1;&#xD0DC;, <strong>reject</strong> &#xB97C; &#xC774;&#xD589;&#xB418;&#xACE0; &#xAC12;&#xC744; return &#xD55C;&#xB2E4;. &#xC804;&#xB2EC;&#xD574;&#xC900; &#xAC12;&#xC740; <strong>catch</strong> &#xBA54;&#xC11C;&#xB4DC;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> getData = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    $.get(<span class="hljs-string">&quot;/apc/1&quot;</span>,(response)=&gt;{
+      <span class="hljs-keyword">if</span>(response){
+        resolve();
+      }
+      <span class="hljs-keyword">else</span>{
+        reject();
+      }
+      })
+  });
+};
+
+<span class="hljs-comment">//&#xC0AC;&#xC6A9;</span>
+getData().then(res,rej);<span class="hljs-comment">//&#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xB123;&#xC5B4;&#xC8FC;&#xB3C4;&#xB85D; &#xD558;&#xC790;. &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xCF5C;&#xD55C; &#xAC83;&#xC744; &#xB123;&#xC5B4;&#xC8FC;&#xBA74; &#xC548;&#xB428;</span>
+
+<span class="hljs-comment">//catch&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xBC29;&#xBC95;</span>
+getData().then(res).catch(rej);
+</code></pre>
+<h2 id="&#xCCB4;&#xC774;&#xB2DD;">&#xCCB4;&#xC774;&#xB2DD;</h2>
+<ul>
+<li><em>then</em> &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xBA74; &#xC0C8;&#xB85C;&#xC6B4; <em>Promise</em> &#xAC1D;&#xCCB4;&#xB97C; &#xB9AC;&#xD134;&#xD55C;&#xB2E4;. return&#xC744; &#xD1B5;&#xD574;&#xC11C; &#xAC12;&#xC744; &#xC804;&#xB2EC;&#xD55C;&#xB2E4;(&#xB610; &#xB2E4;&#xB978; then &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;)</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(res,rej);
+
+promise.then(calback1(){
+
+  }).then(callback2(){
+
+    });
+
+<span class="hljs-comment">//&#xB610;&#xB294;</span>
+<span class="hljs-built_in">Promise</span>.resolve().then(callback1(){
+
+  }).then(callback2(){
+
+    });
+
+<span class="hljs-comment">//&#xC774;&#xC804; callback&#xC758; return &#xAC12;&#xC744; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;</span>
+<span class="hljs-built_in">Promise</span>.resolve().then(()=&gt;{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Let&apos;s return 2&quot;</span>);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+  }).then((data)=&gt;{
+    <span class="hljs-built_in">console</span>.log(data);
+    });
+</code></pre>
+<ul>
+<li>&#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; promise&#xB97C; &#xC5F0;&#xACB0;&#xD560; &#xC218;&#xB3C4; &#xC788;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">firstPromise</span>(<span class="hljs-params">data</span>)</span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve,reject)=&gt;{
+    <span class="hljs-built_in">console</span>.log(data);
+    resolve(data);
+  })
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">secondPromise</span>(<span class="hljs-params">data</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve,reject)=&gt;{
+    <span class="hljs-built_in">console</span>.log(data+<span class="hljs-number">1</span>);
+    resolve(data+<span class="hljs-number">1</span>);
+  });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">thirdPromise</span>(<span class="hljs-params">data</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve,reject)=&gt;{
+    <span class="hljs-built_in">console</span>.log(data+<span class="hljs-number">1</span>);
+    resolve(data+<span class="hljs-number">1</span>);
+  });
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lastPromise</span>(<span class="hljs-params">data</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve,reject)=&gt;{
+    <span class="hljs-built_in">console</span>.log(data+<span class="hljs-number">1</span>);
+    resolve(data+<span class="hljs-number">1</span>);
+  });
+}
+
+firstPromise(<span class="hljs-number">1</span>)
+  .then(secondPromise)
+  .then(thirdPromise)
+  .then(lastPromise);
+<span class="hljs-comment">//[result]</span>
+<span class="hljs-comment">//1</span>
+<span class="hljs-comment">//2</span>
+<span class="hljs-comment">//3</span>
+<span class="hljs-comment">//4</span>
+</code></pre>
+<ul>
+<li>Promise&#xAC00; &#xC774;&#xD589;&#xD558;&#xAC70;&#xB098; &#xAC70;&#xBD80;&#xD588;&#xC744; &#xB54C;, &#xAC01;&#xAC01;&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xD578;&#xB4E4;&#xB7EC; &#xD568;&#xC218;(onFulfilled&#xB098; onRejected)&#xAC00; &#xBE44;&#xB3D9;&#xAE30;&#xC801;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;. &#xD578;&#xB4E4;&#xB7EC; &#xD568;&#xC218;&#xB294; &#xB2E4;&#xC74C; &#xADDC;&#xCE59;&#xC744; &#xB530;&#xB77C; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/then" target="_blank">&#xCD9C;&#xCC98;</a><ol>
+<li>&#xD568;&#xC218;&#xAC00; &#xAC12;&#xC744; &#xBC18;&#xD658;&#xD560; &#xACBD;&#xC6B0;, then&#xC5D0;&#xC11C; &#xBC18;&#xD658;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB294; &#xADF8; &#xBC18;&#xD658;&#xAC12;&#xC744; &#xC790;&#xC2E0;&#xC758; &#xACB0;&#xACFC;&#xAC12;&#xC73C;&#xB85C; &#xD558;&#xC5EC; &#xC774;&#xD589;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xAC12;&#xC744; &#xBC18;&#xD658;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0;, then&#xC5D0;&#xC11C; &#xBC18;&#xD658;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB294; undefined&#xB97C; &#xACB0;&#xACFC;&#xAC12;&#xC73C;&#xB85C; &#xD558;&#xC5EC; &#xC774;&#xD589;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC624;&#xB958;&#xAC00; &#xBC1C;&#xC0DD;&#xD560; &#xACBD;&#xC6B0;, then&#xC5D0;&#xC11C; &#xBC18;&#xD658;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB294; &#xADF8; &#xC624;&#xB958;&#xB97C; &#xC790;&#xC2E0;&#xC758; &#xACB0;&#xACFC;&#xAC12;&#xC73C;&#xB85C; &#xD558;&#xC5EC; &#xAC70;&#xBD80;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC774;&#xBBF8; &#xC774;&#xD589;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD560; &#xACBD;&#xC6B0;, then&#xC5D0;&#xC11C; &#xBC18;&#xD658;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB294; &#xADF8; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xC758; &#xACB0;&#xACFC;&#xAC12;&#xC744; &#xC790;&#xC2E0;&#xC758; &#xACB0;&#xACFC;&#xAC12;&#xC73C;&#xB85C; &#xD558;&#xC5EC; &#xC774;&#xD589;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC774;&#xBBF8; &#xAC70;&#xBD80;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD560; &#xACBD;&#xC6B0;, then&#xC5D0;&#xC11C; &#xBC18;&#xD658;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB294; &#xADF8; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xC758; &#xACB0;&#xACFC;&#xAC12;&#xC744; &#xC790;&#xC2E0;&#xC758; &#xACB0;&#xACFC;&#xAC12;&#xC73C;&#xB85C; &#xD558;&#xC5EC; &#xAC70;&#xBD80;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xB300;&#xAE30; &#xC911;&#xC778; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD560; &#xACBD;&#xC6B0;, then&#xC5D0;&#xC11C; &#xBC18;&#xD658;&#xD55C; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xB294; &#xADF8; &#xD504;&#xB85C;&#xBBF8;&#xC2A4;&#xC758; &#xC774;&#xD589; &#xC5EC;&#xBD80;&#xC640; &#xACB0;&#xACFC;&#xAC12;&#xC744; &#xB530;&#xB985;&#xB2C8;&#xB2E4;.</li>
+</ol>
+</li>
+</ul>
+<h2 id="promiseall--promiserace">Promise.all &amp; Promise.race</h2>
+<ul>
+<li><strong>Promise.all</strong> : Promise &#xAC1D;&#xCCB4; &#xBC30;&#xC5F4;&#xC744; &#xC804;&#xB2EC; &#xBC1B;&#xACE0; &#xBAA8;&#xB4E0; &#xAC1D;&#xCCB4;&#xC758; &#xC0C1;&#xD0DC;&#xAC00; <strong>fullfiled</strong> &#xAC00; &#xB418;&#xBA74;(&#xBAA8;&#xB4E0; &#xAC1D;&#xCCB4; &#xB3D9;&#xC2DC;&#xC5D0; &#xC2E4;&#xD589;), <strong>then</strong> &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xD638;&#xCD9C;&#xD55C;&#xB2E4;.</li>
+<li><strong>Promise.race</strong> : Promise &#xAC1D;&#xCCB4; &#xBC30;&#xC5F4;&#xC744; &#xC804;&#xB2EC; &#xBC1B;&#xACE0; &#xC0C1;&#xD0DC;&#xAC00; <strong>fullfiled</strong> &#xAC00; &#xB418;&#xB294;(&#xBAA8;&#xB4E0; &#xAC1D;&#xCCB4; &#xB3D9;&#xC2DC;&#xC5D0; &#xC2E4;&#xD589;) &#xAC1D;&#xCCB4;&#xAC00; &#xC0DD;&#xAE30;&#xBA74;, <strong>then</strong> &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xD638;&#xCD9C;&#xD55C;&#xB2E4;.</li>
+</ul>
+<hr>
+<h1 id="async--await">async &amp; await</h1>
+<ul>
+<li>ES7&#xC5D0; &#xCD94;&#xAC00; &#xB428;</li>
+<li>&#xC544;&#xB798;&#xB294; &#xBCF4;&#xD1B5;&#xC758; async, await &#xD568;&#xC218; &#xBAA8;&#xC591;&#xC774;&#xB2E4;</li>
+<li>async &#xD568;&#xC218;&#xB294; Promise &#xAC1D;&#xCCB4;&#xB97C; &#xB9AC;&#xD134;&#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">await</span> asyncFunction();
+}
+</code></pre>
+<ul>
+<li>await&#xC758; &#xB300;&#xC0C1;&#xC774; &#xB418;&#xB294; &#xD568;&#xC218;&#xB294; Promise &#xAC1D;&#xCCB4;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xB294; &#xD568;&#xC218;&#xC774;&#xB2E4;.</li>
+<li>await&#xB294; Promise &#xAC1D;&#xCCB4;&#xAC00; <strong>fullfiled</strong> &#xAC00; &#xB420; &#xB54C;&#xAE4C;&#xC9C0; &#xAE30;&#xB2E4;&#xB9AC;&#xACE0;, <strong>resolve</strong> &#xB098; <strong>return</strong> &#xC73C;&#xB85C; &#xC804;&#xB2EC;&#xB418;&#xB294; &#xAC12;(&#xC774;&#xD589;&#xB41C; &#xACB0;&#xACFC; &#xAC12;)&#xC744; &#xC800;&#xC7A5;&#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">forAwait</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve)=&gt;{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Promise&quot;</span>);
+    resolve(<span class="hljs-number">11</span>);
+  });
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">var</span> resultVal = <span class="hljs-keyword">await</span> forAwait();
+  <span class="hljs-built_in">console</span>.log(resultVal);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Fetch</span>(<span class="hljs-params">url</span>) </span>{
+  <span class="hljs-keyword">return</span> fetch(url).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+    <span class="hljs-keyword">return</span> response.json();
+  });
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fff</span>(<span class="hljs-params"></span>) </span>{  
+  <span class="hljs-keyword">var</span> user = <span class="hljs-keyword">await</span> Fetch(<span class="hljs-string">&quot;www.naver.com&quot;</span>);
+  <span class="hljs-built_in">console</span>.log(user);
+}
+</code></pre>
+<ul>
+<li>&#xBE44;&#xB3D9;&#xAE30;&#xC801;&#xC778; &#xD568;&#xC218;&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xBC30;&#xC5F4;&#xC758; &#xCC98;&#xB9AC;&#xB97C; &#xD558;&#xACE0;&#xC790; &#xD558;&#xBA74; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xD55C;&#xB2E4;(<a href="https://mygumi.tistory.com/328" target="_blank">&#xCD9C;&#xCC98;</a>)</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delay</span>(<span class="hljs-params">item</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(resolve =&gt;
+    setTimeout(() =&gt; {
+      <span class="hljs-built_in">console</span>.log(item);
+      resolve();
+    }, <span class="hljs-number">500</span>)
+  );
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">serial</span>(<span class="hljs-params">array</span>) </span>{
+  <span class="hljs-comment">//&#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xD558;&#xB098;&#xC529; &#xC218;&#xD589;</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> item <span class="hljs-keyword">of</span> array) {
+    <span class="hljs-keyword">await</span> delay(item);
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Done!&quot;</span>);
+}
+
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parallel</span>(<span class="hljs-params">array</span>) </span>{
+  <span class="hljs-comment">//&#xBCD1;&#xB82C;&#xC801;&#xC73C;&#xB85C; &#xC218;&#xD589;</span>
+  <span class="hljs-keyword">const</span> promises = array.map(item =&gt; delay(item));
+  <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all(promises);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Done!&quot;</span>);
+}
+</code></pre>
+<ul>
+<li>&#xC608;&#xC678; &#xCC98;&#xB9AC;&#xB294; <strong>try-catch</strong> &#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xAC00;&#xB2A5;&#xD558;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fff</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">var</span> data = <span class="hljs-keyword">await</span> asyncFunction();
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-built_in">console</span>.log(error);
+  }
+}
+</code></pre>
+<hr>
+<h1 id="&#xCC38;&#xACE0;-&#xC790;&#xB8CC;">&#xCC38;&#xACE0; &#xC790;&#xB8CC;</h1>
+<ul>
+<li><a href="https://velog.io/@cyranocoding/2019-08-02-1808-%EC%9E%91%EC%84%B1%EB%90%A8-5hjytwqpqj" target="_blank">Promise1</a></li>
+<li><a href="https://joshua1988.github.io/web-development/javascript/promise-for-beginners/" target="_blank">Promise2</a></li>
+<li><a href="https://medium.com/sjk5766/%EB%92%A4%EB%8A%A6%EA%B2%8C-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-promise-9dc0592cdc34" target="_blank">Promise.all</a></li>
+<li><a href="https://mygumi.tistory.com/328" target="_blank">async,await</a></li>
+<li><a href="https://www.daleseo.com/js-async-async-await/" target="_blank">async,await</a></li>
+<li><a href="https://medium.com/@kiwanjung/%EB%B2%88%EC%97%AD-async-await-%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EC%A0%84%EC%97%90-promise%EB%A5%BC-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-955dbac2c4a4" target="_blank">promise, async,await&#xC758; &#xAD00;&#xACC4;</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="js_event.html" class="navigation navigation-prev " aria-label="Previous page: 이벤트">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="js_module.html" class="navigation navigation-next " aria-label="Next page: 모듈">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Promise, async & await","date":"2019-05-17T01:02:59.000Z","author":"Inhyuk","categories":"Javascript","tags":"js","cover":"/assets/instacode.png","name":"js_promise.md","level":"1.2.4","depth":2,"next":{"title":"모듈","level":"1.2.5","depth":2,"path":"posts/js/js_module.md","ref":"posts/js/js_module.md","articles":[]},"previous":{"title":"이벤트","level":"1.2.3","depth":2,"path":"posts/js/js_event.md","ref":"posts/js/js_event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/js/js_promise.md","mtime":"2020-04-20T13:50:57.151Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T11:56:43.597Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

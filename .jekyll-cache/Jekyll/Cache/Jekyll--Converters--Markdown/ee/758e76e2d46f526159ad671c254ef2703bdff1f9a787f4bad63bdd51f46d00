@@ -1,0 +1,130 @@
+I"`<h1 id="springbootapplication">SpringBootApplication</h1>
+
+<ul>
+  <li>Configuration + EnableAutoConfiguration + ComponentScan</li>
+</ul>
+
+<h2 id="componentscan-annotation">ComponentScan annotation</h2>
+
+<ul>
+  <li><strong>ComponentScan</strong> annoation : <strong>Component</strong>(Configuration도 해당) 와 <strong>stereotype(Service, Repository, Controller)</strong> annotation이 부여된 class를 자동으로 <strong>Bean</strong> 으로 등록해줌</li>
+  <li>이전에 xml파일에서 bean을 등록하거나, config class를 생성하여 등록하는 과정을 자동으로 해줌</li>
+</ul>
+
+<h4 id="범위">범위</h4>
+
+<ul>
+  <li>
+    <p>기본 : 현재 class가 존재하는 패키지와 그 하위 패키지를 전부 등록</p>
+  </li>
+  <li>
+    <p>또는 아래와 같이 <strong>basePackages</strong> 혹은 <strong>basePackageClasses</strong> 를 사용</p>
+    <ul>
+      <li>basePackages : 직접 패키지 경로를 작성.</li>
+      <li>basePackageClasses : 해당 클래스가 존재하는 패키지와 그 하위 패키지 등록</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//basePackages</span>
+<span class="nd">@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="n">basePackages</span> <span class="o">=</span> <span class="s">"com.demo.pkg1"</span><span class="o">)</span>
+
+<span class="c1">//basePcakgeClasses</span>
+<span class="nd">@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="n">basePackageClasses</span> <span class="o">=</span> <span class="n">userInput</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h2 id="enableautoconfiguration">EnableAutoConfiguration</h2>
+
+<ul>
+  <li>Spring boot의 중요한 부분.</li>
+  <li>
+    <p><strong>META-INF</strong> 의  <strong>spring.factories</strong> 에 정의 되어 있는 Bean들을 자동으로 등록해줌</p>
+  </li>
+  <li><a href="https://velog.io/@max9106/Spring-Boot-EnableAutoConfiguration">적용 방법</a>, <a href="https://engkimbs.tistory.com/753">적용 2</a>, <a href="http://dveamer.github.io/backend/SpringBootAutoConfiguration.html">참고자료</a> 를 읽어보자</li>
+</ul>
+
+<hr />
+
+<h1 id="bean-component">@Bean, @Component</h1>
+
+<h2 id="component">@Component</h2>
+
+<ul>
+  <li>stereotype : classpath scanning을 통해서 bean을 관리하기 쉽게 해준 annotatino들.
+    <ul>
+      <li>Repository, Service, Controller, Component 등이 존재</li>
+    </ul>
+  </li>
+  <li>클래스 상단에 적으며 <strong>클래스 이름</strong> 이 bean의 이름이 된다.</li>
+  <li>CompnentScan을 통해서 자동으로 찾고 관리해주는 bean이다.</li>
+</ul>
+
+<h2 id="bean">@Bean</h2>
+
+<ul>
+  <li>Configuration annotation 으로 선언된 class 내에 있는 메소드를 통해서 정의할때 사용.</li>
+  <li>메소드가 반환하는 객체가 bean이 되며, <strong>메소드 이름</strong> 이 bean의 이름이 된다.</li>
+  <li>제어가 힘든 외부 라이브러리등을 사용할 때 이용(config class 선언)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">myConfig</span><span class="o">{</span>
+  <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"newArray"</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">array</span><span class="o">(){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="객체-주입">객체 주입</h1>
+
+<h2 id="autowired">@Autowired</h2>
+
+<ul>
+  <li>bean을 자동으로 주입해주기 위해 사용</li>
+  <li>타입 -&gt; 이름 -&gt; Qualifier -&gt; 실패</li>
+</ul>
+
+<h2 id="resource">@Resource</h2>
+
+<ul>
+  <li>bean을 자동으로 주입해주기 위해 사용</li>
+  <li>이름 -&gt; 타입 -&gt; Qualifier -&gt; 실패</li>
+</ul>
+
+<h2 id="inject">@Inject</h2>
+
+<ul>
+  <li>bean을 자동으로 주입해주기 위해 사용</li>
+  <li>이름 -&gt; 타입 -&gt; Qualifier -&gt; 실패</li>
+</ul>
+
+<h2 id="primary">@Primary</h2>
+<ul>
+  <li>Bean, Component annotaion과 함께 사용</li>
+  <li>객체 생성의 우선권 보장</li>
+</ul>
+
+<h2 id="qualifier">@Qualifier</h2>
+
+<ul>
+  <li>Autowired annotation과 함께 사용</li>
+  <li>Autowired 사용시 Bean의 이름을 지정해주어서 사용하게 함</li>
+  <li>클래스 정의 위에 사용하여 Bean의 이름을 지정할 수도 있음</li>
+</ul>
+
+<hr />
+
+<h1 id="참고-자료">참고 자료</h1>
+
+<ul>
+  <li>[다양한 Annotation][https://jeong-pro.tistory.com/151]</li>
+  <li><a href="https://jhleed.tistory.com/126">https://jhleed.tistory.com/126</a></li>
+  <li><a href="https://cornswrold.tistory.com/314">https://cornswrold.tistory.com/314</a></li>
+  <li><a href="https://galid1.tistory.com/494">https://galid1.tistory.com/494</a></li>
+</ul>
+:ET

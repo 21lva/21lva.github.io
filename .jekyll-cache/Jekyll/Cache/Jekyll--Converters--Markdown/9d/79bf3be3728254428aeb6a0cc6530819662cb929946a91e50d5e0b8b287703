@@ -1,0 +1,63 @@
+I".<h1 id="redirect--interceptor">Redirect &amp; Interceptor</h1>
+
+<ul>
+  <li>redirect : controller 내에서 분기</li>
+  <li>intercept : controller 실행 전 or 후로 작업</li>
+</ul>
+
+<h2 id="redirect">Redirect</h2>
+
+<ul>
+  <li>특정 페이지로 전환하는 기능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//index 페이지로 redirect</span>
+<span class="k">return</span> <span class="s">"redirect:/"</span><span class="o">;</span>
+
+<span class="c1">//ModelAndView 사용</span>
+<span class="n">mav</span><span class="o">.</span><span class="na">setViewName</span><span class="o">(</span><span class="s">"redirect:/"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="interceptor">Interceptor</h2>
+
+<ul>
+  <li>redirect가 빈번하게 되는 경우 <strong>HandlerInterceptor</strong> 를 이용</li>
+  <li>Controller로 보내기 전에 <strong>HandlerInterceptor</strong> 가 먼저 호출됨</li>
+  <li>3가지 메서드 사용. 반환 값이 true이면 controller로 넘어간다
+    <ul>
+      <li>preHandle(): Controller가 작동하기 전. 자주 쓰임. redirect 대체 가능</li>
+      <li>postHandle(): Controller가 작동한 후</li>
+      <li>afterCompletion(): Controller와 View가 작동한 후</li>
+    </ul>
+  </li>
+  <li>HandlerInterceptor가 interface이기 때문에 <strong>HandlerInterceptorAdaptor</strong> 클래스를 상속받아서 사용</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">myInterceptor</span> <span class="kd">extends</span> <span class="nc">HandlerInterceptorAdaptor</span><span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">preHandle</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span><span class="nc">HttpServletResponse</span> <span class="n">reponse</span><span class="o">){</span>
+    <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(!</span><span class="n">session</span><span class="o">){</span>
+      <span class="c1">//생략</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"/"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>context.xml을 수정해서 만든 Interceptor가 적용될 controller들을 지정할 수 있다</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;interceptors&gt;</span>
+  <span class="nt">&lt;interceptor&gt;</span>
+    <span class="nt">&lt;mapping</span> <span class="na">path=</span><span class="s">"적용될 class경로"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;mapping</span> <span class="na">path=</span><span class="s">"적용될 class경로"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;exclude-mapping</span> <span class="na">path=</span><span class="s">"적용될 class경로"</span><span class="nt">/&gt;</span><span class="c">&lt;!--적용하지 않을 클래스 지정. 주로 범위로 지정한 곳에서 특정 클래스를 제외할 때 사용--&gt;</span>
+    <span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">"패키지/interceptor클래스"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/interceptor&gt;</span>
+<span class="nt">&lt;/interceptors&gt;</span>
+</code></pre></div></div>
+:ET

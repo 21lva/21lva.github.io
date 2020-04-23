@@ -1,0 +1,327 @@
+I".j<h1 id="웹컨테이너-구조">웹컨테이너 구조</h1>
+
+<ul>
+  <li>xxx.jsp -(request)-&gt; <strong>xxx.jsp.java -&gt; xxx_jsp.class -&gt; xxx_jsp.obj</strong> -(reponse)-&gt; HTML</li>
+  <li>웹 컨테이너 : WAS의 구성요소. 개발자가 만든 jsp파일을 위의 과정을 통해서 작업해서 response한다</li>
+</ul>
+
+<h1 id="servlet">Servlet</h1>
+
+<ul>
+  <li>순수한 자바파일로 웹페이지를 구성하는 것</li>
+</ul>
+
+<h2 id="servlet-mapping">servlet mapping</h2>
+
+<ul>
+  <li>URL mapping : 어떤 url을 통해서 해당 servlet을 실행해줘야 하는지를 알려줌</li>
+  <li>full path : url/port/contextPath/servelt폴더이름/servlet이름
+    <ul>
+      <li>보안에 취약</li>
+    </ul>
+  </li>
+  <li>mapping path : url/port/contextPath/servletMapping이름</li>
+</ul>
+
+<h4 id="1-webxml-파일을-이용">1. web.xml 파일을 이용</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--
+Code
+--&gt;</span>
+<span class="nt">&lt;servlet&gt;</span>
+  <span class="nt">&lt;servlet-name&gt;</span>servletEx<span class="nt">&lt;/servlet-name&gt;</span>
+  <span class="nt">&lt;servlet-class&gt;</span>패키지네임을 포함한 클래스<span class="nt">&lt;/servlet-class&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+<span class="nt">&lt;servlet-mapping&gt;</span>
+  <span class="nt">&lt;servlet-name&gt;</span>servletEx<span class="nt">&lt;/servlet-name&gt;</span>
+  <span class="nt">&lt;url-pattern&gt;</span>매핑 주소<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+<span class="c">&lt;!--
+Code
+--&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.hello</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"serial"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">hello</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf8"</span><span class="o">);</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf8"</span><span class="o">);</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;h1&gt;Hello, world&lt;/h1&gt;&lt;p&gt;this is sample servlet.&lt;/p&gt;"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;&lt;/html&gt;"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="2-annotation-사용">2) Annotation 사용</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.hello</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"serial"</span><span class="o">)</span>
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/hl"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">hello</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf8"</span><span class="o">);</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf8"</span><span class="o">);</span>
+        <span class="nc">PrintWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;h1&gt;Hello, world&lt;/h1&gt;&lt;p&gt;this is sample servlet.&lt;/p&gt;"</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;/body&gt;&lt;/html&gt;"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="servlet-request-response">Servlet Request, Response</h1>
+
+<h2 id="httpservlet">HttpServlet</h2>
+
+<ul>
+  <li>개발자가 servlet 객체를 만들기 위해서 상속 받는 <strong>추상 클래스</strong></li>
+</ul>
+
+<h2 id="httpservletrequest">HttpServletRequest</h2>
+
+<ul>
+  <li>client로부터 오는 요청을 담은 클레스</li>
+  <li>메서드
+    <ul>
+      <li>getCookies()</li>
+      <li>getSession()</li>
+      <li>getAttribute()</li>
+      <li>setAttribute()</li>
+      <li>getParameter()</li>
+      <li>getParameterName()</li>
+      <li>getParameterValues()</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="httpservletresponse">HttpServletResponse</h2>
+
+<ul>
+  <li>서버로부터 보내는 응답을 담은 클레스</li>
+  <li>메서드
+    <ul>
+      <li>addCookies()</li>
+      <li>getStatus()</li>
+      <li>sendRedirect()</li>
+      <li>getWriter()</li>
+      <li>getOutputStream()</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="servlet-lifecycle">Servlet Lifecycle</h1>
+
+<ul>
+  <li>PostConstruct -&gt; init -&gt; service -&gt; destroy -&gt; PreDestroy
+    <ul>
+      <li>PostConstruct : servlet 객체 생성 직후 호출되는 함수</li>
+      <li>init : 최초 한번 호출되는 함수.</li>
+      <li>service : 잘 안쓰임. doGet, doPost 등을 많이 씀</li>
+      <li>destroy : 서블릿 마무리 단계에 한번 웹컨테이너에 의해 자동으로 호출됨</li>
+      <li>PreDestroy : destroy()이후 호출</li>
+    </ul>
+  </li>
+  <li>최초 요청시 객체를 생성. 이 후에는 객체는 컨테이너에서 대기</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.annotation.PostConstruct</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.annotation.PreDestroy</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/LifeCycleServlet"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LifeCycleServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">LifeCycleServlet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@PostConstruct</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">postConstructMethod</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"PostConstruct 호출"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@PreDestroy</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">preDestroyMethod</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"PreDestroy 호출"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">ServletException</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"init() 호출"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">destroy</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="servletconfig">ServletConfig</h2>
+
+<ul>
+  <li>DD(deployment descriptor) : WEB-INF 아래 web.xml로 존재. 서버 시작시 메모리에 로딩됨. 다양한 환경 정보를 보유</li>
+  <li>web.xml에 config값을 적고, ServletConfig 객체를 만들어서 사용(한 servlet당 하나씩)</li>
+  <li>
+    <p>read only</p>
+  </li>
+  <li>web.xml의 모습</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;servlet&gt;</span>
+  <span class="nt">&lt;servlet-name&gt;</span> 서블릿 객체 이름 <span class="nt">&lt;/servlet-name&gt;</span>
+  <span class="nt">&lt;servlet-class&gt;</span> 서블릿 클래스 이름(패키지 명을 포함한 풀 네임) <span class="nt">&lt;/servlet-class&gt;</span>
+  <span class="nt">&lt;init-param&gt;</span>
+    <span class="nt">&lt;param-name&gt;</span> 초기파라미터 이름 <span class="nt">&lt;/param-name&gt;</span>
+    <span class="nt">&lt;param-value&gt;</span> 초기 파라미터 값 <span class="nt">&lt;/param-value&gt;</span>
+  <span class="nt">&lt;/init-param&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>servlet의 모습</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/myServlet"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span><span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">ServletConfig</span> <span class="n">config</span> <span class="o">=</span> <span class="n">getServletConfig</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="na">getInitParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">passwd</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="na">getInitParameter</span><span class="o">(</span><span class="s">"passwd"</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">passwd</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="servletcontext">ServletContext</h2>
+
+<ul>
+  <li>서블릿끼리 자원을 공유</li>
+  <li>read, write 가능</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;context-param&gt;</span>
+  <span class="nt">&lt;param-name&gt;</span> 초기파라미터 이름 <span class="nt">&lt;/param-name&gt;</span>
+  <span class="nt">&lt;param-value&gt;</span> 초기파라미터 값 <span class="nt">&lt;/param-value&gt;</span>
+<span class="nt">&lt;/context-param&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ServletContext</span> <span class="n">context</span> <span class="o">=</span> <span class="n">getServletContext</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getInitParamter</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="form">form</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Enumeration</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/FormEx"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FormEx</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+    <span class="c1">//생성자</span>
+    <span class="kd">public</span> <span class="nf">FormEx</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"doGet"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">pw</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pw"</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"doPost"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+        <span class="c1">//return타입은 String</span>
+        <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">pw</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"pw"</span><span class="o">);</span>
+
+        <span class="c1">//array 형태(ex. checkbox)</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">hobbys</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterValues</span><span class="o">(</span><span class="s">"hobby"</span><span class="o">);</span>
+
+        <span class="c1">// request.getParameterNames() : 넘긴 name값을 Enumeration 타입으로 반환함</span>
+        <span class="nc">Enumeration</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterNames</span><span class="o">();</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">values</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">()){</span>
+            <span class="nc">String</span> <span class="n">param</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="na">nextElement</span><span class="o">();</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="n">param</span><span class="o">));</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 응답 문서 인코딩 타입 지정</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span>
+
+        <span class="c1">// 문서 출력 스트림 객체 얻기</span>
+        <span class="nc">PrintWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+
+        <span class="n">writer</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&lt;head&gt;&lt;/head&gt;"</span><span class="o">);</span>
+        <span class="n">writer</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"아이디 : "</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">"&lt;br/&gt;"</span><span class="o">);</span>
+        <span class="n">writer</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"비밀번호 : "</span> <span class="o">+</span> <span class="n">pw</span> <span class="o">+</span> <span class="s">"&lt;br/&gt;"</span><span class="o">);</span>
+        <span class="n">writer</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"취미 : "</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">hobbys</span><span class="o">)</span> <span class="o">+</span> <span class="s">"&lt;br/&gt;"</span><span class="o">);</span>
+        <span class="n">writer</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="c1">// 자원 해제</span>
+        <span class="n">writer</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="참고자료">참고자료</h1>
+
+<ul>
+  <li><a href="https://rongscodinghistory.tistory.com/58?category=705081">https://rongscodinghistory.tistory.com/58?category=705081</a></li>
+</ul>
+:ET

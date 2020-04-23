@@ -1,0 +1,647 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>기본구조 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="django0.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../web/web1.html">
+            
+                <a href="../web/web1.html">
+            
+                    
+                    HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../web/web3.html">
+            
+                <a href="../web/web3.html">
+            
+                    
+                    CSS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../web/web4.html">
+            
+                <a href="../web/web4.html">
+            
+                    
+                    Flexible Box, 가변 그리드 레이아웃
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../web/web6.html">
+            
+                <a href="../web/web6.html">
+            
+                    
+                    반응형 웹 && 미디어 쿼리
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="django0.html">
+            
+                <a href="django0.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="django1.html">
+            
+                <a href="django1.html">
+            
+                    
+                    기본구조
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >기본구조</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#xAE30;&#xBCF8;&#xC801;&#xC778;-&#xD504;&#xB85C;&#xC81D;&#xD2B8;-&#xAD6C;&#xC870;">&#xAE30;&#xBCF8;&#xC801;&#xC778; &#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xAD6C;&#xC870;</h1>
+<h2 id="&#xAE30;&#xBCF8;-&#xD504;&#xB85C;&#xC81D;&#xD2B8;-&#xC0DD;&#xC131;">&#xAE30;&#xBCF8; &#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xC0DD;&#xC131;</h2>
+<ul>
+<li>&#xC7A5;&#xACE0;&#xB97C; &#xC124;&#xCE58;&#xD588;&#xC73C;&#xBA74; &#xC7A5;&#xACE0; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xB97C; &#xB9CC;&#xB4E4;&#xC5B4;&#xBCF4;&#xC790;.</li>
+</ul>
+<pre><code class="lang-console">django-admin startproject mysite
+</code></pre>
+<ul>
+<li>&#xC774;&#xB984;&#xC774; <em>polls</em> &#xC778; &#xC0C8; &#xC5B4;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xC744; &#xB9CC;&#xB4E4;&#xC5B4;&#xBCF4;&#xC790;</li>
+</ul>
+<pre><code class="lang-console">cd mysite
+python3 manage.py startapp polls
+</code></pre>
+<ul>
+<li>&#xC544;&#xB798;&#xC640; &#xAC19;&#xC740; &#xAD6C;&#xC870;&#xAC00; &#xB41C;&#xB2E4;.</li>
+</ul>
+<pre><code>mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+    polls/
+        __init__.py
+        admin.py
+        apps.py
+        migrations/
+        models.py
+        tests.py
+        views.py
+</code></pre><ul>
+<li>mysite/ : &#xAC00;&#xC7A5; &#xBC14;&#xAE65; &#xB514;&#xB809;&#xD1A0;&#xB9AC;, &#xC774;&#xB984;&#xC744; &#xBCC0;&#xACBD;&#xD558;&#xC5EC;&#xB3C4; &#xBB34;&#xBC29;&#xD558;&#xB2E4;</li>
+<li>manage.py : &#xB2E4;&#xC591;&#xD55C; &#xCEE4;&#xB9E8;&#xB4DC;&#xB77C;&#xC778; &#xC720;&#xD2F8;&#xB9AC;&#xD2F0;</li>
+<li>mysite : &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; &#xC4F0;&#xC774;&#xB294; &#xC9C8;&#xD398; &#xB0B4;&#xC6A9;&#xB4E4;&#xC774; &#xC800;&#xC7A5;&#xB41C; &#xACF3;</li>
+<li><strong>init</strong>.py : &#xD328;&#xD0A4;&#xC9C0;&#xC784;&#xC744; &#xC54C;&#xB824;&#xC8FC;&#xB294; &#xC6A9;&#xB3C4;</li>
+<li>settings.py : django&#xC758; &#xD658;&#xACBD;&#xC744; &#xC800;&#xC7A5;</li>
+<li>urls.py : &#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xB808;&#xBCA8;&#xC758; url &#xD328;&#xD134;&#xC744; &#xC815;&#xC758;&#xD558;&#xB294; &#xCD5C;&#xC0C1;&#xC704; URLconf. &#xAC01; &#xC5B4;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xB9C8;&#xB2E4; urls.py&#xAC00; &#xB530;&#xB85C; &#xC874;&#xC7AC;</li>
+<li>wsgi.py : Apache&#xC640; &#xAC19;&#xC740; &#xC6F9; &#xC11C;&#xBC84;&#xC640;&#xC73C; WSGI &#xADDC;&#xAC71;&#xC744; &#xC5F0;&#xB3D9;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xD30C;&#xC77C;</li>
+<li>admin.py : Admin&#xC0AC;&#xC774;&#xD2B8;&#xC5D0; &#xBAA8;&#xB378; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xB4F1;&#xB85D;&#xD574;&#xC8FC;&#xB294; &#xD30C;&#xC77C;</li>
+<li>apps,py : &#xC5B4;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xC758; &#xC124;&#xC815; &#xD074;&#xB798;&#xC2A4; &#xC815;&#xC758;&#xD558;&#xB294; &#xD30C;&#xC77C;</li>
+<li>migrations : DB&#xC758; &#xBCC0;&#xACBD;&#xC0AC;&#xD56D;&#xC744; &#xAD00;&#xB9AC;.</li>
+<li>models.py : &#xBAA8;&#xB378; &#xD074;&#xB798;&#xC2A4; &#xC800;&#xC73C;&#xC774;</li>
+<li>test.py : &#xB2E8;&#xC704; &#xD14C;&#xC2A4;&#xD2B8;&#xC6A9; &#xD30C;&#xC77C;</li>
+<li>views.py : &#xBDF0; &#xD568;&#xC218; &#xC815;&#xC758;</li>
+</ul>
+<h2 id="&#xC124;&#xC815;-&#xD30C;&#xC77C;-&#xBCC0;&#xACBD;">&#xC124;&#xC815; &#xD30C;&#xC77C; &#xBCC0;&#xACBD;</h2>
+<h4 id="settingspy">settings.py</h4>
+<ul>
+<li>&#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC758; &#xC804;&#xBC18;&#xC801;&#xC778; &#xC0AC;&#xD56D;&#xC744; &#xC800;&#xC7A5;&#xD55C; &#xACF3;</li>
+<li>DEBUG : &#xAC1C;&#xBC1C; &#xBAA8;&#xB4DC;(True), &#xC6B4;&#xC601;&#xBAA8;&#xB4DC;(False)</li>
+<li>ALLOWED_HOSTS : &#xC11C;&#xBC84;&#xC758; ip&#xB098; &#xB3C4;&#xBA54;&#xC778;. &#xAC1C;&#xBC1C; &#xBAA8;&#xB4DC;&#xC758; &#xACBD;&#xC6B0; &#xC544;&#xBB34;&#xAC83;&#xB3C4; &#xC4F0;&#xC9C0; &#xC54A;&#xC544;&#xB3C4; <em>&apos;localhost&apos;, &apos;127.0.0.1&apos;</em> &#xB85C; &#xC778;&#xC2DD;</li>
+<li>&#xC5B4;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xC740; &#xBAA8;&#xB450; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC5D0; &#xB4F1;&#xB85D;&#xB418;&#xC5B4;&#xC57C; &#xD55C;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-py">INSTALLED_APPS = [
+    <span class="hljs-string">&apos;django.contrib.admin&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.auth&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.contenttypes&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.sessions&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.messages&apos;</span>,
+    <span class="hljs-string">&apos;django.contrib.staticfiles&apos;</span>,
+    <span class="hljs-string">&apos;polls&apos;</span>,
+]
+</code></pre>
+<ul>
+<li>&#xC0AC;&#xC6A9;&#xD560; DB&#xB3C4; &#xB4F1;&#xB85D;&#xD574;&#xC57C; &#xD55C;&#xB2E4;. &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; SQLite3&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0;&#xB9CC; &#xB2E4;&#xB978; DB&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xACBD;&#xC6B0; &#xB4F1;&#xB85D;&#xC744; &#xD574;&#xC8FC;&#xB3C4;&#xB85D; &#xD55C;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-py">DATABASES = {
+  <span class="hljs-string">&apos;default&apos;</span> : {
+    <span class="hljs-string">&apos;ENGINE&apos;</span> : <span class="hljs-string">&apos;django.db.backends.sqlite3&apos;</span>,
+    <span class="hljs-string">&apos;NAME&apos;</span> : os.path.join(BASE_DIR,<span class="hljs-string">&apos;db.sqlite3&apos;</span>)
+  }
+}
+</code></pre>
+<h2 id="&#xAE30;&#xBCF8;-&#xD14C;&#xC774;&#xBE14;-&#xC124;&#xC815;">&#xAE30;&#xBCF8; &#xD14C;&#xC774;&#xBE14; &#xC124;&#xC815;</h2>
+<pre><code class="lang-console">python3 manage.py migrate
+</code></pre>
+<ul>
+<li>migrate : db&#xC758; &#xBCC0;&#xACBD;&#xC0AC;&#xD56D;&#xC774; &#xC788;&#xC744; &#xB54C; &#xC774;&#xB97C; &#xBC18;&#xC601;&#xD574;&#xC8FC;&#xB294; &#xBA85;&#xB839;&#xC5B4;</li>
+<li>db &#xD14C;&#xC774;&#xBE14;&#xC744; &#xB9CC;&#xB4E4;&#xC774; &#xC54A;&#xC558;&#xC5B4;&#xB3C4; &#xC774; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xC0AC;&#xC6A9;&#xC790;, &#xADF8;&#xB8F9; &#xB4F1;&#xC744; &#xB9CC;&#xB4E4;&#xC5B4; &#xC900;&#xB2E4;.</li>
+</ul>
+<h2 id="&#xC9C0;&#xAE08;&#xAE4C;&#xC9C0;-&#xC791;&#xC5C5;-&#xD655;&#xC778;">&#xC9C0;&#xAE08;&#xAE4C;&#xC9C0; &#xC791;&#xC5C5; &#xD655;&#xC778;</h2>
+<ul>
+<li>&#xD655;&#xC778;&#xC744; &#xC704;&#xD574; &#xC6F9;&#xC11C;&#xBC84;&#xB97C; &#xB3D9;&#xC791;&#xD574;&#xBCF4;&#xC790;</li>
+</ul>
+<pre><code class="lang-console">python3 manage.py runserver 0.0.0.0:8000
+</code></pre>
+<ul>
+<li>runserver : &#xD14C;&#xC2A4;&#xD2B8;&#xC6A9; &#xC6F9; &#xC11C;&#xBC84; &#xC81C;&#xACF5;</li>
+<li>0.0.0.0 : &#xD604;&#xC7AC; &#xBA85;&#xB839;&#xC744; &#xC2E4;&#xD589; &#xC911;&#xC778; &#xC11C;&#xBC84;&#xC758; ip&#xC8FC;&#xC18C;&#xAC00; &#xBB34;&#xC5C7;&#xC73C;&#xB85C; &#xC124;&#xC815;&#xB418;&#xC5B4; &#xC788;&#xB354;&#xB77C;&#xACE0; &#xC6F9; &#xC811;&#xC18D; &#xC694;&#xCCAD;&#xC744; &#xBC1B;&#xACA0;&#xB2E4;&#xB294; &#xC758;&#xBBF8;</li>
+<li><em>python3 manage.py runserver</em> : &#xB514;&#xD3F4;&#xD2B8;&#xB85C; 127.0.0.1:8000 &#xC744; &#xC0AC;&#xC6A9;</li>
+<li><em>python3 manage.py runserver 8888</em> : &#xB514;&#xD3F4;&#xD2B8;&#xB85C; 127.0.0.1 &#xC5D0; &#xD3EC;&#xD2B8; 8888&#xC0AC;&#xC6A9;</li>
+<li><p><em>python3 manage.py runserver &amp;</em> : &amp; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xBA74; &#xC6F9;&#xC11C;&#xBC84;&#xB97C; &#xBC31;&#xADF8;&#xB77C;&#xC6B4;&#xB4DC;&#xB85C; &#xC2E4;&#xD589;</p>
+</li>
+<li><p>&#xC6F9;&#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xC5D0; 127.0.0.1:8000/adim &#xB97C; &#xC785;&#xB825;&#xD558;&#xC790;</p>
+</li>
+<li>admin &#xD398;&#xC774;&#xC9C0;&#xAC00; &#xB098;&#xC640;&#xC11C; &#xB85C;&#xADF8;&#xC778; &#xD574;&#xC57C;&#xD558;&#xC9C0;&#xB9CC;, &#xC544;&#xC9C1; &#xAD00;&#xB9AC;&#xC790;(super user)&#xB97C; &#xB9CC;&#xB4E4;&#xC9C0; &#xC54A;&#xC558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xB85C;&#xADF8;&#xC778;&#xC774; &#xBD88;&#xAC00;&#xB2A5;&#xD558;&#xB2E4;.</li>
+<li>&#xB2E4;&#xC74C; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xD1B5;&#xD574; &#xAD00;&#xB9AC;&#xC790;&#xB97C; &#xC0DD;&#xC131;&#xD558;&#xC790;</li>
+</ul>
+<pre><code class="lang-console">python3 manage.py createsuperuser
+</code></pre>
+<ul>
+<li>&#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; ip,password&#xB97C; &#xAC00;&#xC9C0;&#xACE0; admin &#xC6F9;&#xC0AC;&#xC774;&#xD2B8;&#xC5D0; &#xC811;&#xC18D;&#xD558;&#xBA74; <em>Group, User</em> &#xD14C;&#xC774;&#xBE14;&#xC774; &#xB9CC;&#xB4E4;&#xC5B4;&#xC838; &#xC788;&#xB294; &#xAC83;&#xC744; &#xBCFC; &#xC218; &#xC788;&#xB2E4;.</li>
+<li>&#xB450; &#xD14C;&#xC774;&#xBE14;&#xC740; settings.py&#xC758; django.contrib.auth &#xC5B4;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xC5D0; &#xC774;&#xBBF8; &#xB4F1;&#xB85D;&#xC774; &#xB418;&#xC5B4; &#xC788;&#xB2E4;.</li>
+</ul>
+<hr>
+<h1 id="model-&#xB9CC;&#xB4E4;&#xAE30;">Model &#xB9CC;&#xB4E4;&#xAE30;</h1>
+<ul>
+<li>&#xBAA8;&#xB378;&#xC744; &#xB9CC;&#xB4DC;&#xB294; &#xAC83;&#xC740; &#xB2E4;&#xC74C; &#xC21C;&#xC11C;&#xB864; &#xC815;&#xC758;&#xB41C;&#xB2E4;</li>
+<li>models.py&#xC5D0; &#xD14C;&#xC774;&#xBE14;(&#xD074;&#xB798;&#xC2A4;)&#xB97C; &#xC815;&#xC758;&#xD55C;&#xB2E4;</li>
+<li>admins.py&#xB97C; &#xD1B5;&#xD574; models.py&#xC5D0; &#xC815;&#xC758;&#xB41C; &#xD074;&#xB798;&#xC2A4;&#xB97C; admin &#xD654;&#xBA74;&#xC5D0; &#xBCF4;&#xC774;&#xAC8C; &#xD55C;&#xB2E4;</li>
+<li><em>python manage.py makemigrations</em> : &#xBCC0;&#xACBD;&#xC774; &#xD544;&#xC694;&#xD55C; &#xC0AC;&#xD56D;&#xC744; &#xCD94;&#xCD9C;</li>
+<li><em>python manage.py migrate</em> : &#xBCC0;&#xACBD;&#xC0AC;&#xD56D;&#xC744; &#xBC18;&#xC601;</li>
+<li><em>python manage.py runserver</em> : &#xC804;&#xCCB4; &#xC0AC;&#xD56D;&#xC744; &#xC6F9;&#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xD655;&#xC778;</li>
+</ul>
+<h2 id="1-table-&#xC0DD;&#xC131;">1) Table &#xC0DD;&#xC131;</h2>
+<ul>
+<li><strong>polls</strong> &#xC5B4;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xC5D0; <strong>Question</strong> &#xACFC; <strong>Choice</strong> &#xD14C;&#xC774;&#xBE14;&#xC744; &#xC815;&#xC758;&#xD558;&#xC790;</li>
+<li>&#xD14C;&#xC774;&#xBE14; &#xD558;&#xB098;&#xB97C; &#xD074;&#xB798;&#xC2A4;&#xB85C; &#xC815;&#xC758;&#xD558;&#xACE0;, &#xAC01; &#xD14C;&#xC774;&#xBE14;&#xC758; column&#xC740; &#xD074;&#xB798;&#xC2A4;&#xC758; &#xBA64;&#xBC84;&#xBCC0;&#xC218;&#xB85C; &#xC815;&#xC758;&#xD55C;&#xB2E4;.</li>
+<li>PK(primary key)&#xB294; &#xD074;&#xB798;&#xC2A4;&#xC5D0; &#xC9C0;&#xC815;&#xD574;&#xC8FC;&#xC9C0; &#xC54A;&#xC544;&#xB3C4; &#xD56D;&#xC0C1; PK&#xB97C; NotNull + Autoincrement&#xB85C; &#xD14C;&#xC774;&#xBE14;&#xBA85;(&#xC18C;&#xBB38;&#xC790;)&#xB97C; &#xC811;&#xB450;&#xC5B4;&#xB85C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xB9CC;&#xB4E0;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-comment">#models.py</span>
+
+<span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Question</span><span class="hljs-params">(models.Model)</span>:</span>
+  question_text = models.CharField(max_length=<span class="hljs-number">200</span>)
+  pub_data = models.DateTimeField(<span class="hljs-string">&quot;data published&quot;</span>)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.question_text
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Choice</span><span class="hljs-params">(models.Model)</span>:</span>
+  question = models.ForeignKey(Question,on_delete=models.CASCADE)<span class="hljs-comment">#FK&#xB294; &#xB2E4;&#xB978; &#xD14C;&#xC774;&#xBE14;&#xC758; PK&#xC640; &#xC5F0;&#xACB0;&#xB41C;&#xB2E4;.</span>
+  choice_text = models.CharField(max_length=<span class="hljs-number">200</span>)
+  votes = models.IntegerField(default=<span class="hljs-number">0</span>)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.choice_text
+</code></pre>
+<h2 id="2-admin&#xC5D0;-&#xD14C;&#xC774;&#xBE14;-&#xBC18;&#xC601;">2) Admin&#xC5D0; &#xD14C;&#xC774;&#xBE14; &#xBC18;&#xC601;</h2>
+<ul>
+<li>models.py&#xC5D0; &#xC815;&#xC758;&#xB41C; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xBC18;&#xC601;&#xD558;&#xB824;&#xBA74; admin.py&#xB97C; &#xC218;&#xC815;&#xD574;&#xC57C; &#xD55C;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-comment">#admin.py</span>
+
+<span class="hljs-keyword">from</span> polls.models <span class="hljs-keyword">import</span> Question,Choice
+<span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+
+admin.site.register(Question)
+admin.site.register(Choice)
+</code></pre>
+<h2 id="3-db&#xC5D0;-&#xBCC0;&#xACBD;&#xC0AC;&#xD56D;-&#xBC18;&#xC601;">3) DB&#xC5D0; &#xBCC0;&#xACBD;&#xC0AC;&#xD56D; &#xBC18;&#xC601;</h2>
+<ul>
+<li>&#xD14C;&#xC774;&#xBE14; &#xC0DD;&#xC131;, &#xC815;&#xC758; &#xBCC0;&#xACBD; &#xB4F1; DB&#xC5D0; &#xBCC0;&#xACBD;&#xC774; &#xD544;&#xC694;&#xD55C; &#xC0AC;&#xD56D;&#xC740; DB&#xC5D0; &#xC2E4;&#xC81C;&#xB85C; &#xBC18;&#xC601;&#xD574;&#xC8FC;&#xB294; &#xC791;&#xC5C5;&#xC744; &#xD574;&#xC57C;&#xD55C;&#xB2E4;.</li>
+<li><em>makemigrations</em> : <em>migrations</em> &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xC5D0; migration &#xD30C;&#xC77C;&#xB4E4;&#xC774; &#xC0DD;&#xAE34;&#xB2E4;.</li>
+<li><em>migrate</em> : migraion &#xD30C;&#xC77C;&#xB4E4;&#xC744; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xD14C;&#xC774;&#xBE14;&#xC744; &#xC0DD;&#xC131;</li>
+</ul>
+<hr>
+<h1 id="urlconf">URLconf</h1>
+<ul>
+<li>url&#xC5D0; &#xB9DE;&#xAC8C; view&#xB97C; &#xC2E4;&#xD589;&#xC2DC;&#xCF1C;&#xC57C; &#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-comment">#urls.py</span>
+
+<span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
+<span class="hljs-keyword">from</span> polls <span class="hljs-keyword">import</span> views
+
+urlpatterns =[
+    path(<span class="hljs-string">&apos;admin/&apos;</span>,admin.site.urls),
+    path(<span class="hljs-string">&apos;polls/&apos;</span>,views.index,name=<span class="hljs-string">&apos;index&apos;</span>),
+    path(<span class="hljs-string">&apos;polls/&lt;int:question_id&gt;/&apos;</span>,views.detail,name=<span class="hljs-string">&apos;detail&apos;</span>),
+    path(<span class="hljs-string">&apos;polls/&lt;int:question_id&gt;/result/&apos;</span>,views.result,name=<span class="hljs-string">&apos;result&apos;</span>),
+    path(<span class="hljs-string">&apos;polls/&lt;int:question_id&gt;/vote/&apos;</span>,views.vote,name=<span class="hljs-string">&apos;vote&apos;</span>),
+]
+</code></pre>
+<ul>
+<li>path(route,view,kwargs,name)</li>
+<li>route : url &#xD328;&#xD134; &#xBB38;&#xC790;&#xC5F4;</li>
+<li>view : &#xD638;&#xCD9C;&#xB418;&#xB294; view &#xD568;&#xC218;. view&#xD568;&#xC218;(httpRequest &#xAC1D;&#xCCB4;, &#xCD94;&#xCD9C;&#xB41C; &#xC0AC;&#xD56D;&#xB4E4;)</li>
+<li>kwargs : url &#xD328;&#xD134;&#xC678;&#xC5D0;&#xB3C4; &#xCD94;&#xAC00;&#xC801;&#xC73C;&#xB85C; &#xC804;&#xB2EC;&#xD558;&#xACE0; &#xC2F6;&#xC740; &#xC0AC;&#xD56D;&#xC744; &#xB515;&#xC154;&#xB108;&#xB9AC; &#xD615;&#xD0DC;&#xB85C; &#xC804;&#xB2EC;</li>
+<li><p>name : &#xAC01; &#xD328;&#xD134;&#xBCC4; &#xC774;&#xB984;&#xC744; &#xBD99;&#xC778;&#xB2E4;.</p>
+</li>
+<li><p><strong>Django</strong> &#xC5D0;&#xB294; <strong>ROOT_URLCONF</strong> &#xB77C;&#xB294; &#xBCC0;&#xC218;&#xAC00; &#xC815;&#xC758; &#xB41C;&#xB2E4;. &#xC7A5;&#xACE0;&#xB294; url&#xC744; &#xBD84;&#xC11D;&#xD560; &#xB54C;, &#xC774; &#xBCC0;&#xC218;&#xC758; &#xD30C;&#xC77C;(urls.py)&#xC744; &#xAC00;&#xC7A5; &#xBA3C;&#xC800; &#xBD84;&#xC11D;.</p>
+</li>
+<li><p>&#xC7A5;&#xACE0;&#xC5D0;&#xC11C;&#xB294; &#xAC01; app&#xB9C8;&#xB2E4; &#xD558;&#xB098;&#xC758; urls.py&#xB97C; &#xC791;&#xC131;&#xD560; &#xC218; &#xC788;&#xB2E4;(&#xB354; &#xC120;&#xD638;&#xB418;&#xB294; &#xBC29;&#xC2DD;)</p>
+</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-comment">#urls.py</span>
+
+<span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path,include
+
+urlpatterns =[
+    path(<span class="hljs-string">&apos;admin/&apos;</span>,admin.site.urls),
+    path(<span class="hljs-string">&apos;polls/&apos;</span>,include(<span class="hljs-string">&apos;polls.urls&apos;</span>)),
+]
+</code></pre>
+<pre><code class="lang-py"><span class="hljs-comment">#polls.urls.py</span>
+
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> views
+
+app_name = <span class="hljs-string">&quot;polls&quot;</span>
+urlpatterns =[
+    path(<span class="hljs-string">&apos;&apos;</span>,views.index,name=<span class="hljs-string">&apos;index&apos;</span>),
+    path(<span class="hljs-string">&apos;&lt;int:question_id&gt;/&apos;</span>,views.detail,name=<span class="hljs-string">&apos;detail&apos;</span>),
+    path(<span class="hljs-string">&apos;&lt;int:question_id&gt;/results/&apos;</span>,views.results,name=<span class="hljs-string">&apos;results&apos;</span>),
+    path(<span class="hljs-string">&apos;&lt;int:question_id&gt;/vote/&apos;</span>,views.vote,name=<span class="hljs-string">&apos;vote&apos;</span>),
+]
+</code></pre>
+<ul>
+<li>&#xC7A5;&#xACE0;&#xC5D0;&#xC11C;&#xB294; namespace&#xB85C; app&#xB9C8;&#xB2E4; view&#xB4E4;&#xC744; &#xAD00;&#xB9AC;&#xD55C;&#xB2E4;.</li>
+<li>polls&#xC758; detail&#xC740; polls:detail&#xB85C; &#xD45C;&#xAE30;&#xD55C;&#xB2E4;(app&#xC758; namespace&#xB97C; &#xC9C0;&#xC815;&#xD574;&#xC57C;&#xD55C;&#xB2E4;)</li>
+<li>Regular expression&#xC744; &#xC0AC;&#xC6A9;&#xD560; &#xAC70;&#xBA74; path&#xB300;&#xC2E0; url&#xD568;&#xC218;&#xB97C; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;</li>
+</ul>
+<hr>
+<h1 id="template--view">Template &amp; View</h1>
+<ul>
+<li>Template&#xC640; View&#xB97C; &#xB9CC;&#xB4E4;&#xAE30; &#xC804;&#xC5D0; settings.py&#xC758; <strong>Template</strong> &#xC758; <strong>DIR</strong> &#xB97C; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xC218;&#xC815;&#xD574;&#xC57C; &#xD55C;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-string">&apos;DIR&apos;</span> =[os.path.join(BASE_DIR,<span class="hljs-string">&apos;templates&apos;</span>)]
+</code></pre>
+<ul>
+<li>&#xC5B4;&#xB5A4; app&#xC758; template&#xD568;&#xC218;&#xB294; <em>polls/templates/polls/</em> &#xC5D0; &#xC800;&#xC7A5;&#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- polls/templates/polls/index.html--&gt;</span>
+
+
+{% if latest_question_list%}
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  {% for question in latest_question %}
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{% url &apos;polls:detail&apos; question.id%}&quot;</span>&gt;</span>{{question.question_text}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  {% endfor %}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  {% else %}
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>No polls<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+{% endif %}
+</code></pre>
+<pre><code class="lang-py"><span class="hljs-comment"># views.py</span>
+<span class="hljs-keyword">from</span> django.shorcuts <span class="hljs-keyword">import</span> render
+<span class="hljs-keyword">from</span> polls.models <span class="hljs-keyword">import</span> Question
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span><span class="hljs-params">(request)</span>:</span>
+  latest_question_list = Question.objects.all().order_by(<span class="hljs-string">&apos;-pub_date&apos;</span>)[:<span class="hljs-number">5</span>]
+  context = [<span class="hljs-string">&quot;latest_question_list&quot;</span>:latest_question_list]
+  <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&apos;polls/index.html&apos;</span>,context)
+</code></pre>
+<ul>
+<li>detail &#xAD00;&#xB828; &#xB0B4;&#xC6A9;&#xB3C4; &#xB9CC;&#xB4E4;&#xC5B4; &#xBCF4;&#xC790;</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- polls/templates/polls/detail.html--&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{question.question_text}}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span> = &quot;{% <span class="hljs-attr">url</span> &apos;<span class="hljs-attr">polls:vote</span>&apos; <span class="hljs-attr">question.id</span> %}&quot; <span class="hljs-attr">method</span> = &apos;<span class="hljs-attr">post</span>&apos;&gt;</span>
+{% csrf_token %} #Cross Site Request Forgery &#xACF5;&#xB825;&#xC744; &#xB300;&#xBE44;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xAE30;&#xB2A5;
+{% for choice in question_choice_set.all %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">tyupe</span> = &quot;<span class="hljs-attr">radio</span>&quot; <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;choice&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;{{choice.id}}&quot;</span>/&gt;</span>{{choice.choice_text}}
+{% endfor %}
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Vote&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-py"><span class="hljs-comment">#views.py</span>
+<span class="hljs-keyword">from</span> django.shortcuts <span class="hljs-keyword">import</span> render, get_object_or_404
+<span class="hljs-keyword">from</span> polls.models <span class="hljs-keyword">import</span> Question
+<span class="hljs-keyword">from</span> django.http <span class="hljs-keyword">import</span> HttpResponseRedirect
+<span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> reverse
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span><span class="hljs-params">(request)</span>:</span>
+    latest_question_list = Question.objects.all().order_by(<span class="hljs-string">&apos;-pub_date&apos;</span>)[:<span class="hljs-number">5</span>]
+    context = {<span class="hljs-string">&apos;latest_question_list&apos;</span>: latest_question_list}
+    <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">&apos;polls/index.html&apos;</span>, context)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">detail</span><span class="hljs-params">(request,question_id)</span>:</span>
+    question=get_object_or_404(Question,pk=question_id)
+    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&apos;polls/detail.html&apos;</span>,{<span class="hljs-string">&apos;question&apos;</span>:question})
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">vote</span><span class="hljs-params">(request, question_id)</span>:</span>
+    question = get_object_or_404(Question, pk=question_id)
+    <span class="hljs-keyword">try</span> :
+        selected_choice = question.choice_set.get(pk=request.POST[<span class="hljs-string">&apos;choice&apos;</span>])
+    <span class="hljs-keyword">except</span> (KeyError, Choice.DoesNotExit):
+        <span class="hljs-keyword">return</span> render(request, <span class="hljs-string">&apos;polls/detail.html&apos;</span>, {<span class="hljs-string">&apos;question&apos;</span>:question})
+    <span class="hljs-keyword">else</span> :
+        selected_choice.votes += <span class="hljs-number">1</span>
+        selected_choice.save()
+        <span class="hljs-keyword">return</span> HttpResponseRedirect(reverse(<span class="hljs-string">&apos;polls:results&apos;</span>, args=(question.id ,)))
+</code></pre>
+<ul>
+<li>HttpResponseRedirect : redirect&#xD55C;&#xB2E4;. &#xD0C0;&#xAC9F; url&#xC740; reverse&#xB85C; &#xC0DD;&#xC131;&#xD55C;&#xB2E4;.</li>
+<li>request.POST[&apos;choice&apos;] : name&#xC774; choice&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xAC12;</li>
+<li>selected_choice.save() : db&#xC5D0; &#xAC12;&#xC744; &#xC800;&#xC7A5;&#xD55C;&#xB2E4;</li>
+<li><p>reverse : url&#xD328;&#xD134;&#xC73C;&#xB85C; url&#xC2A4;&#xD2B8;&#xB9C1;&#xC744; &#xAD6C;&#xD55C;&#xB2E4;.</p>
+</li>
+<li><p>result view&#xC640; result template&#xB3C4; &#xB9CC;&#xB4E4;&#xC5B4;&#xBCF4;&#xC790;.</p>
+</li>
+<li>&#xB2E4;&#xC74C;&#xC758; &#xB0B4;&#xC6A9;&#xC744; views.py&#xC5D0; &#xCD94;&#xAC00;&#xD558;&#xC790;</li>
+</ul>
+<pre><code class="lang-py"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">results</span><span class="hljs-params">(request,question_id)</span>:</span>
+    question = get_object_or_404(Question,pk=question_id)
+    <span class="hljs-keyword">return</span> render(request,<span class="hljs-string">&apos;polls/result.html&apos;</span>,{<span class="hljs-string">&apos;question&apos;</span>:question})
+</code></pre>
+<ul>
+<li>result.html&#xB3C4; &#xB9CC;&#xB4E4;&#xC5B4;&#xBCF4;&#xC790;</li>
+</ul>
+<pre><code class="lang-html">
+<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{{ question.question_text }}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      {% for choice in question.choice_set.all %}
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{{ choice.choice_text }} - {{ choice.votes }} vote<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      {% endfor %}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{% url &apos;polls:detail&apos; question.id %}&quot;</span>&gt;</span>Vote again?<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="django0.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Django">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"기본구조","date":"2019-11-23T01:02:59.000Z","author":"Inhyuk","categories":"Django","tags":"django","cover":"/assets/instacode.png","name":"2019-11-23-django1.md","level":"1.4.1","depth":2,"previous":{"title":"Django","level":"1.4","depth":1,"path":"posts/django/django0.md","ref":"posts/django/django0.md","articles":[{"title":"기본구조","level":"1.4.1","depth":2,"path":"posts/django/django1.md","ref":"posts/django/django1.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/django/django1.md","mtime":"2020-04-20T13:50:56.815Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T11:58:56.876Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

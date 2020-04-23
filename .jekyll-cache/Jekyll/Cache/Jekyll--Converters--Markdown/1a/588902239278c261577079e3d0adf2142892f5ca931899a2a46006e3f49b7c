@@ -1,0 +1,166 @@
+I"�<<ul>
+  <li>HTTP는 응답이 끊나고 바로 연결 해제(stateless)</li>
+  <li>클라이언트에 연결에 대한 정보를 남김 : cookie</li>
+  <li>서버에 연결에 대한 정보를 남김 : session</li>
+</ul>
+
+<h1 id="cookie">Cookie</h1>
+
+<ul>
+  <li>JSP에서 쿠키를 사용하려면 <strong>javax.servlet.http</strong> 의 <strong>Cookie</strong> 클래스의 객체를 생성해야 함</li>
+  <li>
+    <p>클라이언트의 쿠키는 사용자가 웹에 요청을 보낼때 <strong>request</strong> 객체에 실려서 보내짐</p>
+  </li>
+  <li>메서드
+    <ul>
+      <li>String getCommnet(): 쿠키에 대한 설명 반환</li>
+      <li>String getDomain(): 쿠키 유효한 도메인 정보 반환</li>
+      <li>int getMaxAge(): 쿠키의 유효 기간 반환</li>
+      <li>String getName(): 쿠키의 이름 반환</li>
+      <li>String getPath(): 쿠키의 유효한 디렉토리 정보 반환</li>
+      <li>boolean getSecure(): 쿠키의 보안이 설정 여부 반환</li>
+      <li>String getValue(): 쿠키에 설정된 값 반환</li>
+      <li>int getVersion(): 쿠키의 버전을 반환</li>
+      <li>void setComment(String): 쿠키에 대한 설명을 설정</li>
+      <li>void setDomain(String): 쿠키에 유효한 도메인을 설정</li>
+      <li>void setMaxAge(int): 쿠키의 유효한 기간을 설정</li>
+      <li>void setPath(Striong): 쿠키의 유효한 디렉토리를 설정</li>
+      <li>void setSecure(boolean): 쿠키의 보안을 설</li>
+      <li>void setValue(String): 쿠키의 값을 설정</li>
+      <li>void setVersion(int): 쿠키의 버전을 설정</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="생성">생성</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Cookie</span> <span class="n">info</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cookie</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span><span class="s">"value"</span><span class="o">);</span>
+<span class="n">info</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="mi">365</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">);</span> <span class="c1">//유효기간 설정. 초단위</span>
+<span class="n">info</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"/"</span><span class="o">)</span> <span class="c1">//유효 경로 설정</span>
+
+<span class="n">response</span><span class="o">.</span><span class="na">addCookie</span><span class="o">(</span><span class="n">info</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="사용">사용</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//쿠키는 여러개가 될 수 있으므로</span>
+<span class="c1">//배열의 형태로 얻어짐</span>
+<span class="nc">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">();</span>
+
+<span class="k">for</span><span class="o">(</span><span class="nc">Cookie</span> <span class="n">cookie</span> <span class="o">:</span> <span class="n">cookies</span><span class="o">){</span>
+  <span class="k">if</span><span class="o">(!</span><span class="n">cookie</span><span class="o">)</span><span class="k">continue</span><span class="o">;</span>
+  <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이름 : "</span><span class="o">+</span><span class="n">cookie</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+  <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"값 : "</span><span class="o">+</span><span class="n">cookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="삭제">삭제</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">();</span>
+
+<span class="k">for</span><span class="o">(</span><span class="nc">Cookie</span> <span class="n">cookie</span> <span class="o">:</span> <span class="n">cookies</span><span class="o">){</span>
+  <span class="n">cookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span><span class="c1">//유효시간을 0으로 만들어서 만료 시킨다</span>
+  <span class="n">response</span><span class="o">.</span><span class="na">addCookie</span><span class="o">(</span><span class="n">cookie</span><span class="o">);</span><span class="c1">//쿠키를 응답에 추가(=수정)한다</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="로그인-예제">로그인 예제</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"login"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    ID: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>  
+    PASSWORD : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"passwd"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//login.java</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.Cookie</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/login"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">login</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span><span class="o">{</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span><span class="nc">HttpServletResponse</span> <span class="n">res</span><span class="o">){</span>
+    <span class="n">doGet</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">res</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span><span class="nc">HttpServletResponse</span> <span class="n">res</span><span class="o">){</span>
+    <span class="nc">PrintWrite</span> <span class="n">out</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">passwd</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"passwd"</span><span class="o">);</span>
+    <span class="nc">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">();</span>
+    <span class="nc">Cookie</span> <span class="n">idCookie</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="nc">Cookie</span> <span class="n">cookie</span> <span class="o">:</span> <span class="n">cookies</span><span class="o">){</span>
+      <span class="k">if</span><span class="o">(!</span><span class="n">cookie</span><span class="o">)</span><span class="k">continue</span><span class="o">;</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">cookie</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"id"</span><span class="o">)){</span>
+        <span class="n">idCookie</span><span class="o">=</span><span class="n">cookie</span><span class="o">;</span>
+        <span class="k">break</span><span class="o">;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">if</span><span class="o">(!</span><span class="n">idCookie</span><span class="o">)</span><span class="n">idCookie</span><span class="o">=</span><span class="k">new</span> <span class="nc">Cookie</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="n">idCookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">);</span>
+
+    <span class="n">res</span><span class="o">.</span><span class="na">addCookie</span><span class="o">(</span><span class="n">idCookie</span><span class="o">);</span>
+
+    <span class="n">res</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"loginOk.jsp"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="session">Session</h1>
+
+<ul>
+  <li>서버에 저장되는 사용자 별로 관리되는 정보. 일정 시간 후 삭제된다.</li>
+  <li>웹브라우저 마다 하나씩 생성되서 웹컨테이너에 저장됨</li>
+  <li>메서드
+    <ul>
+      <li>getId(): 각 접속에 대한 세션 고유의 ID를 반환(문자열)</li>
+      <li>getCreatingTime():</li>
+      <li>getLastAccessedTime():</li>
+      <li>getMaxInactiveInterval(): 세션의 유효시간을 초로 반환</li>
+      <li>setMaxInactiveInterval(t): 세션의 유효시간을 t에 설정된 초 값으로 설정</li>
+      <li>invalidate(): 현재 세션을 종료한다. 세션과 관련된 값들을 모두 지워진다.</li>
+      <li>getAttribute(name): attr로 설정된 세션값을 객체로 반환. Object로 return하기 때문에 형변환 필요</li>
+      <li>setAttribute(name,value): name을 key로 하고 값으로 value을 가지는 세션 설정</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="예제">예제</h4>
+
+<ul>
+  <li>쓰레기 예제</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"login"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+    ID: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>  
+    PASSWORD : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"passwd"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//login.java</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/login"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">login</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span><span class="o">{</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span><span class="nc">HttpServletResponse</span> <span class="n">res</span><span class="o">){</span>
+    <span class="n">doGet</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">res</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span><span class="nc">HttpServletResponse</span> <span class="n">res</span><span class="o">){</span>
+    <span class="nc">PrintWrite</span> <span class="n">out</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+
+    <span class="nc">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">passwd</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"passwd"</span><span class="o">);</span>
+    <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(!</span><span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">)){</span>
+      <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span><span class="n">id</span><span class="o">);</span>
+      <span class="n">session</span><span class="o">.</span><span class="na">setMaxInactiveInterval</span><span class="o">(</span><span class="mi">30</span><span class="o">*</span><span class="mi">60</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">res</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"loginOk.jsp"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,910 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>DI · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="spring_lifecycle.html" />
+    
+    
+    <link rel="prev" href="spring_ioc.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../book/java0.html">
+            
+                <a href="../book/java0.html">
+            
+                    
+                    JAVA 요약
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../book/java_jvm.html">
+            
+                <a href="../book/java_jvm.html">
+            
+                    
+                    JVM,JDK,JRE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../book/java_variable.html">
+            
+                <a href="../book/java_variable.html">
+            
+                    
+                    변수, 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../book/java_class0.html">
+            
+                <a href="../book/java_class0.html">
+            
+                    
+                    클래스, 상속
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../book/java_abstract.html">
+            
+                <a href="../book/java_abstract.html">
+            
+                    
+                    추상클래스, 인터페이스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../book/java_package.html">
+            
+                <a href="../book/java_package.html">
+            
+                    
+                    패키지
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../book/java_exception.html">
+            
+                <a href="../book/java_exception.html">
+            
+                    
+                    예외 처리
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../book/java_lang.html">
+            
+                <a href="../book/java_lang.html">
+            
+                    
+                    java.lang, 여러 클래스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../book/java_collection.html">
+            
+                <a href="../book/java_collection.html">
+            
+                    
+                    Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../book/java_generics.html">
+            
+                <a href="../book/java_generics.html">
+            
+                    
+                    Generics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../book/java_lambda.html">
+            
+                <a href="../book/java_lambda.html">
+            
+                    
+                    Lambda expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../book/java_stream.html">
+            
+                <a href="../book/java_stream.html">
+            
+                    
+                    Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../book/java_io.html">
+            
+                <a href="../book/java_io.html">
+            
+                    
+                    입출력
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../book/java_serialization.html">
+            
+                <a href="../book/java_serialization.html">
+            
+                    
+                    Serialization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../jsp/java_server0.html">
+            
+                <a href="../jsp/java_server0.html">
+            
+                    
+                    JSP,Servlet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../jsp/java_servlet.html">
+            
+                <a href="../jsp/java_servlet.html">
+            
+                    
+                    Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../jsp/jsp_object.html">
+            
+                <a href="../jsp/jsp_object.html">
+            
+                    
+                    JSP 객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../jsp/jsp_actionTag.html">
+            
+                <a href="../jsp/jsp_actionTag.html">
+            
+                    
+                    action tag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../jsp/jsp_cs.html">
+            
+                <a href="../jsp/jsp_cs.html">
+            
+                    
+                    cookie, session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../jsp/jsp_db.html">
+            
+                <a href="../jsp/jsp_db.html">
+            
+                    
+                    JDBC, DAO, DTO
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="spring0.html">
+            
+                <a href="spring0.html">
+            
+                    
+                    Spring MVC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="spring_ioc.html">
+            
+                <a href="spring_ioc.html">
+            
+                    
+                    IoC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="spring_di.html">
+            
+                <a href="spring_di.html">
+            
+                    
+                    DI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="spring_lifecycle.html">
+            
+                <a href="spring_lifecycle.html">
+            
+                    
+                    Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="spring_annotation.html">
+            
+                <a href="spring_annotation.html">
+            
+                    
+                    Annotation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="spring_structure.html">
+            
+                <a href="spring_structure.html">
+            
+                    
+                    디렉토리 구조, 동작과정
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="spring_sc.html">
+            
+                <a href="spring_sc.html">
+            
+                    
+                    Session, Cookie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="spring_ri.html">
+            
+                <a href="spring_ri.html">
+            
+                    
+                    Redirect, Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="spring_db.html">
+            
+                <a href="spring_db.html">
+            
+                    
+                    JDBC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../spring-boot/sb_structure.html">
+            
+                <a href="../spring-boot/sb_structure.html">
+            
+                    
+                    Spring Boot
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../spring-boot/sb_cs.html">
+            
+                <a href="../spring-boot/sb_cs.html">
+            
+                    
+                    @SpringBootApplication, @Component
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../spring-boot/sb_property.html">
+            
+                <a href="../spring-boot/sb_property.html">
+            
+                    
+                    환경설정, @Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../spring-boot/sb_controller.html">
+            
+                <a href="../spring-boot/sb_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../spring-boot/sb_interceptor.html">
+            
+                <a href="../spring-boot/sb_interceptor.html">
+            
+                    
+                    Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../spring-boot/sb_lombok.html">
+            
+                <a href="../spring-boot/sb_lombok.html">
+            
+                    
+                    Lombok
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../spring-boot/sb_test.html">
+            
+                <a href="../spring-boot/sb_test.html">
+            
+                    
+                    Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >DI</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="didependency-injection">DI(Dependency Injection)</h1>
+<ul>
+<li><a href="https://expert0226.tistory.com/189" target="_blank">&#xCC38;&#xACE0;&#xAC00; &#xB9CE;&#xC774; &#xB41C; &#xC790;&#xB8CC;</a></li>
+</ul>
+<h2 id="dependency">Dependency</h2>
+<ul>
+<li>A&#xB77C;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xAC00; B&#xB77C;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xB0B4;&#xBD80;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; A&#xB294; B&#xC5D0; <strong>&#xC758;&#xC874;&#xC801;</strong> &#xC774;&#xB2E4;</li>
+<li>Aggregation(&#xC9D1;&#xD569;&#xAD00;&#xACC4;) : &#xBD80;&#xBD84;&#xC774; &#xC804;&#xCCB4;&#xC640; &#xB2E4;&#xB978; lifecycle&#xC744; &#xAC00;&#xC9D0; ex) &#xC9D1;&#xACFC; &#xCEF4;&#xD4E8;&#xD130;</li>
+<li>Composition(&#xAD6C;&#xC131;&#xAD00;&#xACC4;) : &#xBD80;&#xBD84;&#xC774; &#xC804;&#xCCB4;&#xC640; &#xAC19;&#xC740; lifecycle&#xC744; &#xAC00;&#xC9D0; ex) &#xB178;&#xD2B8;&#xBD81;, CPU</li>
+</ul>
+<h2 id="di">DI</h2>
+<ul>
+<li>&#xC758;&#xC874; &#xAD00;&#xACC4;&#xB97C; &#xC124;&#xC815;&#xD574;&#xC8FC;&#xB294; &#xC77C;(&#xC0DD;&#xC131;&#xC790;&#xB85C; &#xC124;&#xC815;&#xD558;&#xACE0; setter&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xBCC0;&#xACBD;)</li>
+<li>&#xC2A4;&#xD504;&#xB9C1;&#xC5D0;&#xC11C; DI : &#xC758;&#xC874;&#xAD00;&#xACC4;&#xB97C; A&#xAC00; B&#xC758; interface&#xC5D0; &#xC758;&#xC874;&#xD558;&#xAC8C; &#xD55C; &#xD6C4;&#xC5D0; &#xC2E4;&#xC81C; &#xD074;&#xB798;&#xC2A4; &#xD560;&#xB2F9;&#xC740; &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xC5D0; &#xC758;&#xD574; &#xC218;&#xD589;&#xB428;</li>
+<li>&#xC758;&#xC874;&#xD558;&#xACE0; &#xC788;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xAC00; &#xBCC0;&#xACBD;&#xB418;&#xC5B4;&#xB3C4; &#xD074;&#xB798;&#xC2A4;&#xAC00; &#xC544;&#xB2CC; &#xC778;&#xD130;&#xD398;&#xC774;&#xC2A4;&#xC5D0; &#xC758;&#xC874;&#xD558;&#xACE0; &#xC788;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xC27D;&#xAC8C; &#xC218;&#xC815;&#xC0AC;&#xD56D;&#xC744; &#xBC18;&#xC601;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<h2 id="di-&#xBC29;&#xBC95;">DI &#xBC29;&#xBC95;</h2>
+<ul>
+<li>getter&#xC640; setter&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xBC29;&#xBC95; &#xC678;&#xC5D0;&#xB3C4; 3&#xAC00;&#xC9C0;&#xC758; &#xBC29;&#xBC95;&#xC744; spring&#xC5D0;&#xC11C; &#xC81C;&#xACF5;&#xD55C;&#xB2E4;</li>
+</ul>
+<h4 id="1-xml-&#xC0AC;&#xC6A9;">1) XML &#xC0AC;&#xC6A9;</h4>
+<ul>
+<li>resource &#xB514;&#xB809;&#xD1A0;&#xB9AC; &#xBC11;&#xC5D0; xml&#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;</li>
+<li>property&#xB97C; &#xC774;&#xC6A9;&#xD574;&#xC11C; &#xBA64;&#xBC84;&#xBCC0;&#xC218;&#xC758; setter&#xC5D0; default &#xAC12;&#xC744; &#xC81C;&#xACF5;&#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span>
+ <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+ <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--
+FILENAME : applicationContext.xml
+--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Apple&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.Apple&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Melon&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.Melon&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ShopList&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.ShopList&quot;</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;fruit&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;Melon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+</code></pre>
+<ul>
+<li>java &#xD30C;&#xC77C;&#xC5D0; &#xC758;&#xC874;&#xC131; &#xBD80;&#xBD84;&#xC744; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xC791;&#xC131;&#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> pkg1;
+
+<span class="hljs-keyword">import</span> org.springframework.context.ApplicationContext;
+<span class="hljs-keyword">import</span> org.springframework.context.support.FileSystemXmlApplicationContext;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shopper</span></span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+  ApplicationContext context = <span class="hljs-keyword">new</span> FileSystemXmlApplicationContext(<span class="hljs-string">&quot;/src/main/java/pkg1/applicationContext.xml&quot;</span>);
+  ShopList shopList= (ShopList)context.getBean(<span class="hljs-string">&quot;ShopList&quot;</span>);
+
+  Fruit fruit = (Fruit)context.getBean(<span class="hljs-string">&quot;Apple&quot;</span>);
+  shopList.setFruit(fruit);
+
+  System.out.println(car.getTireBrand());
+ }
+}
+</code></pre>
+<h4 id="2-autowired">2) Autowired</h4>
+<ul>
+<li>xml&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0;&#xB9CC; property, contructor-org &#xB4F1;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC758;&#xC874; &#xB300;&#xC0C1;&#xC744; &#xCC3E;&#xC544;&#xC11C; &#xC8FC;&#xC785;</li>
+<li>xml&#xC5D0; &#xC0C1;&#xB2E8; &#xBD80;&#xBD84;&#xC774; &#xCD94;&#xAC00;&#xB41C; &#xC124;&#xC815;&#xC774; &#xC788;&#xB2E4;(<strong>&#xC911;&#xC694;</strong>)</li>
+</ul>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span>
+ <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+ <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span>
+ <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-3.1.xsd&quot;</span>&gt;</span>
+
+
+<span class="hljs-comment">&lt;!--
+FILENAME : applicationContext.xml
+--&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Apple&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.Apple&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Melon&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.Melon&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ShopList&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.ShopList&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+</code></pre>
+<ul>
+<li>Shopper&#xAC00; &#xC544;&#xB2CC; <strong>ShopList&#xD074;&#xB798;&#xC2A4;</strong> &#xB97C; &#xC218;&#xC815;&#xD55C;&#xB2E4;<ul>
+<li>Autowired&#xB41C; Fruit &#xBD80;&#xBD84;&#xC774; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC124;&#xC815;&#xB41C;&#xB2E4;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> pkg1;
+
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShopList</span></span>{
+  <span class="hljs-meta">@Autowired</span>
+  Fruit fruit;
+}
+</code></pre>
+<ul>
+<li><p>Autowired&#xC54C;&#xACE0;&#xB9AC;&#xC998;</p>
+<ol>
+<li>&#xD574;&#xB2F9; type&#xB97C; &#xAD6C;&#xD604;(implement)&#xD55C; bean&#xC774; &#xC5C6;&#xC73C;&#xBA74;, <strong>No Matchting bean Error</strong>. &#xC788;&#xC73C;&#xBA74; 2&#xB85C;</li>
+<li>Bean&#xC774; &#xB458; &#xC774;&#xC0C1;&#xC774;&#xACE0; name(&#xBA64;&#xBC84;&#xBCC0;&#xC218;&#xC758; &#xC774;&#xB984;)&#xACFC; &#xC77C;&#xCE58;&#xD558;&#xB294; id&#xAC00; &#xD558;&#xB098;&#xAC00; &#xC544;&#xB2C8;&#xBA74;, <strong>No Unique bean Error</strong>.</li>
+<li>&#xB2E4; &#xD1B5;&#xACFC;&#xD558;&#xBA74; &#xD574;&#xB2F9; bean&#xC744; &#xBCC0;&#xC218;&#xC5D0; &#xD560;&#xB2F9;</li>
+</ol>
+</li>
+<li><p>Bean&#xC774; &#xC5EC;&#xB7EC;&#xAC1C;&#xC774;&#xBA74; <strong>@Qualifier(&#xAC12;)</strong> &#xC744; &#xD1B5;&#xD574;&#xC11C; &#xC9C0;&#xC815;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;asdcsa.ascac&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">qualifier</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;cosmetics&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+</code></pre>
+</li>
+<li><p><a href="https://zorba91.tistory.com/238" target="_blank">Field injection, Constructor injection</a></p>
+</li>
+<li><a href="https://leejisoo860911.tistory.com/2" target="_blank">Field injection, setter injection, constructor injection</a></li>
+</ul>
+<h4 id="3-resource-&#xC774;&#xC6A9;">3) @Resource &#xC774;&#xC6A9;</h4>
+<ul>
+<li>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; <strong>@Autowired</strong> &#xC640; &#xBE44;&#xC2B7;</li>
+<li>&#xCC28;&#xC774;&#xC810;&#xC740; <strong>@Autowired</strong> (Spring&#xB9CC;&#xC758; &#xC0AC;&#xC6A9;&#xBC95;) &#xC640; &#xB2EC;&#xB9AC; JAVA &#xD45C;&#xC900;&#xC774;&#xB2E4;.</li>
+<li>&#xB610;&#xD55C;, &#xC54C;&#xACE0;&#xB9AC;&#xC998; &#xC21C;&#xC11C;&#xB3C4; type -&gt; name &#xC774; &#xC544;&#xB2CC; name-&gt;type&#xC774;&#xB2E4;</li>
+</ul>
+<h4 id="4-inject">4) @Inject</h4>
+<ul>
+<li>@Autowired &#xC640; &#xBE44;&#xC2B7;&#xD558;&#xAC8C; &#xC0AC;&#xC6A9;</li>
+<li>&#xCC28;&#xC774;&#xC810; : &#xD574;&#xB2F9; &#xAC1D;&#xCCB4;&#xAC00; &#xB9CC;&#xB4E4;&#xC5B4; &#xC788;&#xC9C0; &#xC54A;&#xC544;&#xB3C4; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xD574;&#xC8FC;&#xB294; <strong>@Autowired(required=false)</strong> &#xB97C; &#xC9C0;&#xC6D0;&#xD558;&#xC9C0; &#xC54A;&#xC74C;</li>
+<li><strong>@Named(value=&quot;bean&#xAC1D;&#xCCB4;&#xC758; id&quot;)</strong> &#xC640; &#xAC19;&#xC774; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xD2B9;&#xC815; bean &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;(@Qualifier&#xC640; &#xBE44;&#xC2B7;)</li>
+</ul>
+<h4 id="5-&#xB2E4;&#xC591;&#xD55C;-&#xC758;&#xC874;-&#xC8FC;&#xC785;-&#xBC29;&#xBC95;">5) <a href="https://engkimbs.tistory.com/683" target="_blank">&#xB2E4;&#xC591;&#xD55C; &#xC758;&#xC874; &#xC8FC;&#xC785; &#xBC29;&#xBC95;</a></h4>
+<hr>
+<h1 id="&#xC124;&#xC815;&#xD30C;&#xC77C;-&#xBD84;&#xB9AC;">&#xC124;&#xC815;&#xD30C;&#xC77C; &#xBD84;&#xB9AC;</h1>
+<ul>
+<li>&#xC124;&#xC815;&#xD30C;&#xC77C;&#xC774; &#xCEE4;&#xC84C;&#xC744;&#xB54C;&#xB97C; &#xB098;&#xB204;&#xB294; &#xAC83;</li>
+<li>&#xAE30;&#xB2A5;&#xBCC4;&#xB85C; xml &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xBD84;&#xB9AC;&#xD574;&#xC11C; &#xC0AC;&#xC6A9;</li>
+</ul>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span>
+ <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+ <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--
+FILENAME : applicationContext.xml
+--&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">&quot;/src/main/resource/app1.xml&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">&quot;/src/main/resource/app2.xml&quot;</span>/&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Apple&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.Apple&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Melon&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.Melon&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ShopList&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pkg1.ShopList&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+</code></pre>
+<ul>
+<li>&#xB610;&#xB294; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC774; &#xC5EC;&#xB7EC; xml&#xC744; java&#xC5D0;&#xC11C; &#xBC30;&#xC5F4;&#xB85C; &#xC124;&#xC815;&#xD574;&#xC11C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> pkg1;
+
+<span class="hljs-keyword">import</span> org.springframework.context.ApplicationContext;
+<span class="hljs-keyword">import</span> org.springframework.context.support.FileSystemXmlApplicationContext;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shopper</span></span>{
+ <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+   String ctxFiles = [<span class="hljs-string">&quot;/src/main/java/resources/app1.xml&quot;</span>,<span class="hljs-string">&quot;/src/main/java/resources/app2.xml&quot;</span>];
+  ApplicationContext context = <span class="hljs-keyword">new</span> FileSystemXmlApplicationContext(ctxFiles);
+  ShopList shopList= (ShopList)context.getBean(<span class="hljs-string">&quot;ShopList&quot;</span>);
+
+  Fruit fruit = (Fruit)context.getBean(<span class="hljs-string">&quot;Apple&quot;</span>);
+  shopList.setFruit(fruit);
+
+  System.out.println(car.getTireBrand());
+ }
+}
+</code></pre>
+<h1 id="&#xCC38;&#xACE0;&#xC790;&#xB8CC;">&#xCC38;&#xACE0;&#xC790;&#xB8CC;</h1>
+<ul>
+<li><a href="https://jjunii486.tistory.com/84" target="_blank">https://jjunii486.tistory.com/84</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="spring_ioc.html" class="navigation navigation-prev " aria-label="Previous page: IoC">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="spring_lifecycle.html" class="navigation navigation-next " aria-label="Next page: Life Cycle">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"DI","cover":"/assets/instacode.png","name":"spring_di.md","level":"1.4.2","depth":2,"next":{"title":"Life Cycle","level":"1.4.3","depth":2,"path":"posts/spring/spring_lifecycle.md","ref":"posts/spring/spring_lifecycle.md","articles":[]},"previous":{"title":"IoC","level":"1.4.1","depth":2,"path":"posts/spring/spring_ioc.md","ref":"posts/spring/spring_ioc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/spring/spring_di.md","mtime":"2020-04-22T12:10:22.005Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T13:07:30.938Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

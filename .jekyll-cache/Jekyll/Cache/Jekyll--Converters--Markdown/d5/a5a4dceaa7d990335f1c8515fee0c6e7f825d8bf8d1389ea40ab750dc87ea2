@@ -1,0 +1,92 @@
+I"�&<h1 id="직렬화serialization">직렬화(serialization)</h1>
+
+<ul>
+  <li>객체를 데이터 스트림으로 만드는 것</li>
+  <li>객체에 저장된 데이터를 스트림에 쓰기 위해 연속적인 데이터로 변환하는 것</li>
+  <li>역직렬화 : 스트림으로부터 데이터를 읽어서 객체를 만드는 것</li>
+</ul>
+
+<h2 id="objectinputstream-objectoutputstream">ObjectInputStream, ObjectOutputStream</h2>
+
+<ul>
+  <li>직렬화와 역직렬화에 쓰이는 스트림</li>
+  <li>InputStream, OutputStream을 상속. But 보조스트림(다른 스트림 필요)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//간단한 방법</span>
+<span class="c1">//쓰기</span>
+<span class="nc">FileOutputStream</span> <span class="n">fos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="s">"objectfile.ser"</span><span class="o">);</span>
+<span class="nc">ObjectOutputStream</span> <span class="n">oos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectOutputStream</span><span class="o">(</span><span class="n">fos</span><span class="o">);</span>
+
+<span class="n">oos</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="k">new</span> <span class="nc">String</span><span class="o">());</span>
+
+<span class="c1">//읽기. Object로 저장하기 때문에 형변환 필요</span>
+<span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"objectfile.ser"</span><span class="o">);</span>
+<span class="nc">ObjectInputStream</span> <span class="n">ois</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectInputStream</span><span class="o">(</span><span class="n">fis</span><span class="o">);</span>
+
+<span class="nc">String</span> <span class="n">tmp</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">ois</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h2 id="직렬화-가능한-클래스-만들기">직렬화 가능한 클래스 만들기</h2>
+
+<ul>
+  <li>직렬화가 가능한 클래스를 만들려면 <strong>java.io.Serializable</strong> interface를 구현해야 한다</li>
+  <li>이 interface는 아무런 내용이 없는 빈 interface</li>
+  <li>
+    <p><strong>Serializable</strong> inteface를 구현한 클래스를 상속 받으면 다시 구현할 필요 없음</p>
+  </li>
+  <li>클래스안에 직렬화할 수 없는 멤버변수(Object등)을 포함하면 직렬화할 수 없다(변수의 참조타입이 아닌 실제 변수의 타입)</li>
+  <li>이 경우에는 해당 변수에 <strong>transient</strong> 키워드를 붙여서 직렬화에서 제외할 수 있음. 역직렬화시에는 기본값(null등)으로 값이 정해진다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">iii</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ClassNotFoundException</span> <span class="o">{</span>
+        <span class="nc">FileOutputStream</span> <span class="n">fos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="s">"objectfile.ser"</span><span class="o">);</span>
+        <span class="nc">ObjectOutputStream</span> <span class="n">oos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectOutputStream</span><span class="o">(</span><span class="n">fos</span><span class="o">);</span>
+
+        <span class="nc">MyObject</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyObject</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="nc">MyObject</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyObject</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">x</span><span class="o">);</span><span class="c1">//result : java.lang.Object@6e8cf4c6</span>
+        <span class="n">oos</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+        <span class="n">oos</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">d</span><span class="o">);</span>
+        <span class="n">oos</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+<span class="c1">//읽기. Object로 저장하기 때문에 형변환 필요</span>
+        <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="s">"objectfile.ser"</span><span class="o">);</span>
+        <span class="nc">ObjectInputStream</span> <span class="n">ois</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObjectInputStream</span><span class="o">(</span><span class="n">fis</span><span class="o">);</span>
+        <span class="nc">MyObject</span> <span class="n">tmp3</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MyObject</span><span class="o">)</span><span class="n">ois</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+        <span class="nc">MyObject</span> <span class="n">tmp4</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MyObject</span><span class="o">)</span><span class="n">ois</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tmp3</span><span class="o">.</span><span class="na">val</span><span class="o">);</span><span class="c1">//result : 1</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tmp4</span><span class="o">.</span><span class="na">val</span><span class="o">);</span><span class="c1">//result : 2</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tmp4</span><span class="o">.</span><span class="na">x</span><span class="o">);</span><span class="c1">//result : null</span>
+
+        <span class="n">ois</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyObject</span> <span class="kd">implements</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">Serializable</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">val</span><span class="o">;</span>
+    <span class="kd">transient</span> <span class="nc">Object</span> <span class="n">x</span><span class="o">=</span><span class="k">new</span> <span class="nc">Object</span><span class="o">();</span>
+    <span class="nc">MyObject</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">val</span><span class="o">=</span><span class="n">val</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="클래스의-버전관리">클래스의 버전관리</h2>
+
+<ul>
+  <li>직렬화된 객체를 직렬화한 후에 역직렬화 하더라도 그 사이에 클래스가 변했으면 역직렬화가 실패하며 예외가 발생(InvalidClassException)</li>
+  <li>static변수, 상수, transient가 붙은 인스턴스 변수가 추가되면 상관 없음</li>
+  <li>수동으로 클래스의 버전을 관리하고 싶으면 <strong>serialVersionUID</strong> 를 정의한다</li>
+  <li>serialVersionUID는 중첩을 막기위해 <strong>serialver 클래스</strong> 를 콘솔에서 실행해서 생성된 값을 사용하는 것이 일반적</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyObject</span> <span class="kd">implements</span> <span class="nc">Serializable</span><span class="o">{</span>
+  <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">351873167521231L</span><span class="o">;</span>
+  <span class="c1">//코드</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

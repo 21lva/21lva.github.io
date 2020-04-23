@@ -1,0 +1,732 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>DOM · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="jquery_select.html" />
+    
+    
+    <link rel="prev" href="js_wd.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="js_basic.html">
+            
+                <a href="js_basic.html">
+            
+                    
+                    Javascript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="js_object.html">
+            
+                <a href="js_object.html">
+            
+                    
+                    객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="js_array.html">
+            
+                <a href="js_array.html">
+            
+                    
+                    배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="js_event.html">
+            
+                <a href="js_event.html">
+            
+                    
+                    이벤트
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="js_promise.html">
+            
+                <a href="js_promise.html">
+            
+                    
+                    Promise, async & await
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="js_module.html">
+            
+                <a href="js_module.html">
+            
+                    
+                    모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="js_wd.html">
+            
+                <a href="js_wd.html">
+            
+                    
+                    Window & BOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.7" data-path="js_dom.html">
+            
+                <a href="js_dom.html">
+            
+                    
+                    DOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="jquery_select.html">
+            
+                <a href="jquery_select.html">
+            
+                    
+                    JQuery : 선택 & 객체 & 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="jquery_event.html">
+            
+                <a href="jquery_event.html">
+            
+                    
+                    JQuery : 이벤트 & 애니메이션
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="jquery_async.html">
+            
+                <a href="jquery_async.html">
+            
+                    
+                    JQuery : 비동기 처리 & 플러그인
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../nodejs/nodejs_basic.html">
+            
+                <a href="../nodejs/nodejs_basic.html">
+            
+                    
+                    Nodejs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../nodejs/nodejs_http.html">
+            
+                <a href="../nodejs/nodejs_http.html">
+            
+                    
+                    http
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../nodejs/nodejs_external.html">
+            
+                <a href="../nodejs/nodejs_external.html">
+            
+                    
+                    외부 모듈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../nodejs/nodejs_express.html">
+            
+                <a href="../nodejs/nodejs_express.html">
+            
+                    
+                    ExpressJS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../nodejs/nodejs_mysql.html">
+            
+                <a href="../nodejs/nodejs_mysql.html">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../nodejs/nodejs_socket.html">
+            
+                <a href="../nodejs/nodejs_socket.html">
+            
+                    
+                    Socket.io
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../nodejs/nodejs_restful.html">
+            
+                <a href="../nodejs/nodejs_restful.html">
+            
+                    
+                    RESTful
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../nodejs/nodejs_redis.html">
+            
+                <a href="../nodejs/nodejs_redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../nodejs/nodejs_auth.html">
+            
+                <a href="../nodejs/nodejs_auth.html">
+            
+                    
+                    JWT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >DOM</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <ul>
+<li><strong>DOM</strong> &#xC740; <strong>Document object model</strong> &#xC758; &#xC57D;&#xC790;&#xC774;&#xB2E4;. &#xC708;&#xB3C4;&#xC6B0;&#xC5D0; &#xB85C;&#xB4DC;&#xB41C; &#xBB38;&#xC11C;&#xB97C; &#xC758;&#xBBF8;</li>
+<li><strong>window</strong> &#xAC1D;&#xCCB4;&#xC758; <strong>document</strong> &#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;</li>
+</ul>
+<hr>
+<h1 id="dom-&#xAC1D;&#xCCB4;&#xC758;-&#xAD6C;&#xC870;">DOM &#xAC1D;&#xCCB4;&#xC758; &#xAD6C;&#xC870;</h1>
+<ul>
+<li>DOM &#xAC1D;&#xCCB4;&#xC758; &#xAD6C;&#xC870;&#xC5D0;&#xB294; 3&#xAC00;&#xC9C0;&#xAC00; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;.</li>
+</ul>
+<h2 id="&#xAC1D;&#xCCB4;-&#xC0DD;&#xC131;&#xACFC;-&#xAD00;&#xB828;&#xB41C;-&#xC0C1;&#xC18D;-&#xAD00;&#xACC4;">&#xAC1D;&#xCCB4; &#xC0DD;&#xC131;&#xACFC; &#xAD00;&#xB828;&#xB41C; &#xC0C1;&#xC18D; &#xAD00;&#xACC4;</h2>
+<p><img src="../../post_img/js_dom.md/node.png" alt="node &#xACC4;&#xCE35;&#xB3C4;"></p>
+<ul>
+<li>Node &#xAC1D;&#xCCB4;&#xB97C; &#xCD5C;&#xC0C1;&#xC704;&#xB85C; &#xC2DC;&#xC791;&#xB418;&#xB294; &#xC0C1;&#xC18D;&#xAD00;&#xACC4; &#xACC4;&#xCE35;</li>
+<li>&#xAC1D;&#xCCB4;&#xC758; &#xC131;&#xC9C8;&#xACFC; &#xD2B9;&#xC9D5;&#xACFC; &#xAD00;&#xB828;&#xB41C; &#xBD80;&#xBD84;</li>
+</ul>
+<h2 id="&#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xC640;-&#xAD00;&#xB828;&#xB41C;-&#xAD00;&#xACC4;">&#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xC640; &#xAD00;&#xB828;&#xB41C; &#xAD00;&#xACC4;</h2>
+<p><img src="../../post_img/js_dom.md/window.png" alt="Window &#xACC4;&#xCE35;&#xB3C4;"></p>
+<ul>
+<li>&#xC5B4;&#xB290; &#xAC1D;&#xCCB4;&#xC758; &#xB9F4;&#xBC84; &#xB610;&#xB294; &#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xB85C; &#xC874;&#xC7AC;&#xD558;&#xB294;&#xAC00;&#xC640; &#xAD00;&#xB828;&#xB41C; &#xACC4;&#xCE35;&#xB3C4;&#xC774;&#xB2E4;.</li>
+<li>&#xC804;&#xC5ED;&#xAC1D;&#xCCB4;(window)&#xB85C; &#xC2DC;&#xC791;&#xD558;&#xC5EC; &#xB0B4;&#xB824;&#xC628;&#xB2E4;.</li>
+<li>&#xC0AC;&#xC9C4;&#xC758; &#xC704; 2&#xCE35;&#xC740; <strong>BOM</strong>, &#xADF8; &#xC678;&#xB294; <strong>DOM</strong> &#xAC1D;&#xCCB4;&#xB4E4;&#xC774;&#xB2E4;.</li>
+</ul>
+<h2 id="html&#xC5D0;&#xC11C;&#xC758;-&#xAD00;&#xACC4;">HTML&#xC5D0;&#xC11C;&#xC758; &#xAD00;&#xACC4;</h2>
+<p><img src="../../post_img/js_dom.md/html.jpeg" alt="HTML &#xACC4;&#xCE35;&#xB3C4;"></p>
+<ul>
+<li>&#xBB38;&#xC11C;&#xC5D0; &#xD45C;&#xC2DC;&#xB418;&#xB294; &#xAD00;&#xACC4;&#xC774;&#xB2E4;.</li>
+<li>html&#xB0B4;&#xC5D0;&#xC11C; &#xD0DC;&#xADF8;&#xB4E4;&#xC758; &#xAD00;&#xACC4;&#xB77C;&#xACE0; &#xBCF4;&#xBA74; &#xB41C;&#xB2E4;.</li>
+</ul>
+<hr>
+<h1 id="&#xAC01;&#xC885;-&#xAC1D;&#xCCB4;">&#xAC01;&#xC885; &#xAC1D;&#xCCB4;</h1>
+<h2 id="1-node-&#xAC1D;&#xCCB4;">1) Node &#xAC1D;&#xCCB4;</h2>
+<ul>
+<li>DOM&#xC758; &#xCD5C;&#xC0C1;&#xC704; &#xAC1D;&#xCCB4;</li>
+<li>&#xBAA8;&#xB4E0; DOM&#xAC1D;&#xCCB4;&#xB294; Node&#xB97C; &#xC0C1;&#xC18D;&#xBC1B;&#xB294;&#xB2E4;.</li>
+<li>&#xAC1D;&#xCCB4;&#xB07C;&#xB9AC;&#xC758; &#xAD00;&#xACC4;, &#xAC1D;&#xCCB4;&#xAC00; &#xC18D;&#xD558;&#xB294; &#xCE74;&#xD14C;&#xACE0;&#xB9AC;, &#xAC12;&#xC744; &#xAD00;&#xB9AC;&#xD558;&#xACE0;, &#xC790;&#xC2DD;&#xC744; &#xCD94;&#xAC00;/&#xC218;&#xC815;&#xD558;&#xB294; &#xAE30;&#xB2A5;&#xC774; &#xC874;&#xC7AC;</li>
+<li>&#xBE48; &#xACF5;&#xAC04;&#xB3C4; Node&#xAC1D;&#xCCB4;&#xB85C; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;(&#xC904;&#xBC14;&#xAFC8; &#xAC19;&#xC740; &#xACBD;&#xC6B0;&#xB3C4; &#xC790;&#xC2DD; Node&#xB85C; &#xC0DD;&#xAC01;&#xD55C;&#xB2E4;)</li>
+<li>&#xB178;&#xB4DC; &#xAC1D;&#xCCB4;&#xC758; &#xD0C0;&#xC785;&#xB4E4;(nodeType&#xC73C;&#xB85C; &#xD655;&#xC778;&#xAC00;&#xB2A5;)</li>
+<li>Node.ELEMENT_NODE (1)</li>
+<li>Node.ATTRIBUTE_NODE (2)</li>
+<li>Node.TEXT_NODE (3)</li>
+<li>Node.CDATA_SECTION_NODE (4)</li>
+<li>Node.ENTITY_REFERENCE_NODE (5)</li>
+<li>Node.ENTITY_NODE (6)</li>
+<li>Node.PROCESSING_INSTRUCTION_NODE (7)</li>
+<li>Node.COMMENT_NODE (8)</li>
+<li>Node.DOCUMENT_NODE (9)</li>
+<li>Node.DOCUMENT_TYPE_NODE (10)</li>
+<li>Node.DOCUMENT_FRAGMENT_NODE (11)</li>
+<li><p>Node.NOTATION_NODE (12)</p>
+</li>
+<li><p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xC640; &#xBA54;&#xC11C;&#xB4DC;</p>
+</li>
+<li>nodeType : &#xB178;&#xB4DC;&#xC758; &#xD0C0;&#xC785;&#xC744; &#xC758;&#xBBF8;. &#xAC01; &#xD0C0;&#xC785;&#xB9C8;&#xB2E4; &#xACE0;&#xC720;&#xC758; &#xC22B;&#xC790;&#xAC00; &#xC874;&#xC7AC;(&#xC774;&#xB984;&#xC73C;&#xB85C;&#xB3C4; &#xB9E4;&#xCE6D; &#xAC00;&#xB2A5;).</li>
+<li>nodeName : &#xB178;&#xB4DC;&#xC758; &#xD0DC;&#xADF8; &#xC774;&#xB984;</li>
+<li>childNodes: NodeList(&#xC720;&#xC0AC;&#xBC30;&#xC5F4;)&#xAC00; &#xC800;&#xC7A5;&#xB428;. &#xACC4;&#xC18D;&#xD574;&#xC11C; &#xBC14;&#xB014; &#xC218; &#xC788;&#xC74C; /ParentNodes, firstChild/ lastChild</li>
+<li>hasChildNodes() : &#xC790;&#xC2DD;&#xC774; &#xC788;&#xC73C;&#xBA74; true / ownerDocument : &#xBB38;&#xC11C;&#xC758; document &#xAC1D;&#xCCB4;&#xC5D0; &#xC811;&#xADFC;.</li>
+<li>appendChild() / removeChild()</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&apos;ol1&apos;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>First<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Second<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Third<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">var</span> x = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;ol1&apos;</span>);
+<span class="hljs-built_in">document</span>.write(x.firstChild.nodeName+<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>);<span class="hljs-comment">//firstChild&#xB294; &#xC904;&#xBC14;&#xAFC8; &#xBB38;&#xC790; &#xC758;&#xBBF8;</span>
+<span class="hljs-built_in">document</span>.write(x.firstChild.nextSibling+<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="2-document-&#xAC1D;&#xCCB4;">2) Document &#xAC1D;&#xCCB4;</h2>
+<ul>
+<li>DOM&#xC758; &#xC2DC;&#xC791;&#xC810;&#xC774;&#xC790; &#xBB38;&#xC11C; &#xC804;&#xCCB4;&#xB97C; &#xC758;&#xBBF8;&#xD558;&#xB294; &#xAC1D;&#xCCB4;</li>
+<li><strong>Document</strong> &#xAC1D;&#xCCB4; &#xB300;&#xC2E0; <strong>HTMLDocument</strong> &#xAC1D;&#xCCB4;&#xB97C; &#xC0AC;&#xC6A9;.</li>
+<li><strong>document</strong> &#xAC1D;&#xCCB4;&#xB294; &#xC804;&#xC5ED;&#xAC1D;&#xCCB4;&#xC758; &#xD504;&#xB85C;&#xD37C;&#xD2F0;</li>
+<li>&#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xC640; &#xBA54;&#xC11C;&#xB4DC;</li>
+<li>&#xBB38;&#xC11C; &#xC815;&#xBCF4; : document.title : title &#xC694;&#xC18C;&#xC758; &#xD14D;&#xC2A4;&#xD2B8;&#xAC00; &#xB4E4;&#xC5B4;&#xAC00; &#xC788;&#xC74C; / document.URL / document.domain</li>
+<li>&#xC694;&#xC18C; &#xCC3E;&#xAE30; : getElementById() / getElementsByTagName() / getElementsByClassName()</li>
+<li>&#xBB38;&#xC11C; &#xC870;&#xC791; : write() / writeln() / open() / close()</li>
+</ul>
+<ul>
+<li>tag &#xC548;&#xC758; tag&#xB97C; &#xCC3E;&#xACE0; &#xC2F6;&#xC73C;&#xBA74; &#xC911;&#xCCA9;&#xD574;&#xC11C; &#xC4F0;&#xBA74; &#xB41C;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;exec&quot;</span>&gt;</span>hi<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;exec&quot;</span>&gt;</span>hello<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;exec&quot;</span>&gt;</span>bye<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">var</span> lis = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">&apos;exec&apos;</span>);
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i =<span class="hljs-number">0</span>;i&lt;lis.length;++i){
+  <span class="hljs-built_in">document</span>.write(lis[i].innerText+<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>);
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<ul>
+<li><strong>querySelector</strong> : &#xC120;&#xD0DD;&#xC790;&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xAC1D;&#xCCB4;&#xB97C; &#xBC18;&#xD658;. &#xD558;&#xB098;&#xB9CC;&#xC744; &#xBC18;&#xD658;, &#xBAA8;&#xB4E0; element&#xB97C; &#xC6D0;&#xD558;&#xBA74; <strong>querySelectorAll</strong> &#xC744; &#xC0AC;&#xC6A9;</li>
+<li>&#xC704; &#xBC29;&#xBC95;&#xC740; name, id &#xB4F1;&#xC744; &#xC81C;&#xD55C;&#xD558;&#xC9C0; &#xC54A;&#xACE0; css&#xC120;&#xD0DD;&#xC790;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC694;&#xC18C;&#xB97C; &#xCC3E;&#xB294;&#xB2E4;.</li>
+<li><strong>jQuery</strong> &#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACE0;&#xC790; &#xD558;&#xBA74; html&#xB85C; &#xB85C;&#xB4DC;&#xD574;&#xC57C; &#xD568;.(&#xB2E4;&#xC6B4;&#xB85C;&#xB4DC; &#xD558;&#xB294; &#xBC29;&#xBC95;&#xB3C4; &#xC788;&#xC74C;)</li>
+<li>CDN : &#xC628;&#xB77C;&#xC778; &#xC0C1;&#xC758; &#xB300;&#xC6A9;&#xB7C9; &#xCEE8;&#xD150;&#xCE20;&#xB97C; &#xBE60;&#xB974;&#xAC8C; &#xC804;&#xC1A1;&#xD558;&#xB294; &#xAE30;&#xC220;. jquery&#xB97C; &#xD2B9;&#xC815; &#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xC804;&#xC1A1; &#xBC1B;&#xC544; &#xC0AC;&#xC6A9;&#xD558;&#xB3C4;&#xB85D; &#xD55C;&#xB2E4;.</li>
+<li><a href="https://code.jquery.com/jquery/" target="_blank">jQuery CDN</a></li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://code.jquery.com/jquery-3.4.1.js&quot;</span>
+              <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=&quot;</span>
+              <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<ul>
+<li>jQuery &#xD568;&#xC218;&#xB294; <em>$</em> &#xB97C; &#xC774;&#xC6A9;&#xD55C;&#xB2E4;.</li>
+<li><strong>$(css&#xC120;&#xD0DD;&#xC790;)</strong> &#xB294; jQuery &#xAC1D;&#xCCB4;&#xB97C; &#xB9AC;&#xD134;</li>
+</ul>
+<pre><code class="lang-js">$(<span class="hljs-string">&apos;li&apos;</span>).css(<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>);
+</code></pre>
+<ul>
+<li>&#xC704;&#xC758; &#xC791;&#xC5C5;&#xC740; DOM&#xC744; &#xC774;&#xC6A9;&#xD558;&#xBA74; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> lis = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">&apos;li&apos;</span>);
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i =<span class="hljs-number">0</span>;i&lt;lis.length;++i){
+  lis[i].style.color=<span class="hljs-string">&apos;red&apos;</span>;
+}
+</code></pre>
+<ul>
+<li>&#xD0DC;&#xADF8;, &#xD074;&#xB798;&#xC2A4;, id &#xAC12;&#xC73C;&#xB85C; &#xC774;&#xC6A9;&#xD560; &#xC218;&#xB3C4; &#xC788;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-js">$(<span class="hljs-string">&apos;tag_name&apos;</span>).css(<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>);
+$(<span class="hljs-string">&apos;.class_name&apos;</span>).css(<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>);
+$(<span class="hljs-string">&apos;#id_name&apos;</span>).css(<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>);
+</code></pre>
+<ul>
+<li>jQuery&#xC791;&#xC5C5;&#xC774; &#xB05D;&#xB098;&#xBA74; jQuery &#xAC1D;&#xCCB4;&#xB97C; &#xB9AC;&#xD134;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xC5F0;&#xC18D;&#xD574;&#xC11C; &#xC791;&#xC5C5;&#xC744; &#xD558;&#xACE0; &#xC2F6;&#xC73C;&#xBA74; &#xC5F0;&#xC18D;&#xD574;&#xC11C; &#xBA54;&#xC18C;&#xB4DC;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xBA74; &#xB41C;&#xB2E4;.(&#xCCB4;&#xC774;&#xB2DD;&#xC774;&#xB77C;&#xACE0; &#xBD80;&#xB978;&#xB2E4;)</li>
+</ul>
+<pre><code class="lang-js">$(<span class="hljs-string">&apos;.class_name&apos;</span>).css(<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>).css(<span class="hljs-string">&apos;textDecoration&apos;</span>,<span class="hljs-string">&apos;underline&apos;</span>);
+</code></pre>
+<ul>
+<li>&#xB2E4;&#xC218;&#xC758; element&#xB97C; &#xAC00;&#xC9C0;&#xB294; jQuery&#xAC1D;&#xCCB4;&#xC5D0;&#xB294; <em>[&#xC778;&#xB371;&#xC2A4;]</em> &#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC811;&#xADFC; &#xAC00;&#xB2A5;&#xD558;&#xB2E4;.</li>
+<li>map&#xC744; &#xD1B5;&#xD574;&#xC11C; &#xBAA8;&#xB4E0; element&#xC5D0; &#xC791;&#xC5C5;&#xC744; &#xD560; &#xC218; &#xC788;&#xB2E4;.</li>
+<li>&#xC5BB;&#xC5B4;&#xB0B8; jQuery&#xAC1D;&#xCCB4;&#xC758; element&#xB4E4;&#xC740; DOM element&#xC774;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;e1&quot;</span>&gt;</span>Number 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;e1&quot;</span>&gt;</span>Number 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;e1&quot;</span>&gt;</span>Number 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">var</span> li = $(<span class="hljs-string">&quot;.e1&quot;</span>);
+li.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index,element</span>)</span>{
+  <span class="hljs-built_in">document</span>.write(index+<span class="hljs-string">&quot; &quot;</span>+element+<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>);
+  $(element).css(<span class="hljs-string">&quot;color&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>);
+  })
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="3-text-&#xAC1D;&#xCCB4;">3) Text &#xAC1D;&#xCCB4;</h2>
+<ul>
+<li>Node&#xB97C; &#xC0C1;&#xC18D; &#xBC1B;&#xB294; &#xAC1D;&#xCCB4;</li>
+<li>&#xD0DC;&#xADF8; &#xC0AC;&#xC774;&#xC5D0; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xAE00;&#xC740; Text &#xAC1D;&#xCCB4;&#xC774;&#xB2E4;. &#xD0DC;&#xADF8;&#xB294; Element &#xAC1D;&#xCCB4;&#xC774;&#xB2E4;. ex) <p> &#xD14D;&#xC2A4;&#xD2B8; &#xAC1D;&#xCCB4; </p></li>
+<li>&#xACF5;&#xBC31;&#xB4E4;&#xB3C4;(&#xD55C;&#xC904; &#xB744;&#xAE30; &#xAC19;&#xC740; &#xAC83;&#xB4E4;) Text &#xAC1D;&#xCCB4;&#xC774;&#xB2E4;.(childNodes&#xC758; &#xBC30;&#xC5F4;&#xC744; &#xCC28;&#xC9C0;&#xD55C;&#xB2E4;.)</li>
+<li>&#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xC640; &#xBA54;&#xC11C;&#xB4DC;</li>
+<li>&#xAC12; : nodeValue / data</li>
+<li>&#xC870;&#xC791; : appendData(String) / deleteData(start,end) / insertData(start,String) / replaceData(start,end,String)</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">dir</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&apos;p1&apos;</span>&gt;</span>Text Object1<span class="hljs-tag">&lt;/<span class="hljs-name">dir</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dir</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&apos;p2&apos;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dir</span>&gt;</span>Text Object2<span class="hljs-tag">&lt;/<span class="hljs-name">dir</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dir</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">var</span> pt1 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;p1&apos;</span>);
+<span class="hljs-keyword">var</span> pt2 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;p2&apos;</span>);
+<span class="hljs-built_in">document</span>.write((pt1.nodeType===Node.ELEMENT_NODE)+<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>);
+<span class="hljs-built_in">document</span>.write(pt1.childNodes[<span class="hljs-number">0</span>].nodeType===Node.TEXT_NODE);
+<span class="hljs-built_in">document</span>.write(<span class="hljs-string">&apos;&lt;br/&gt;&apos;</span>+pt2.childNodes.length);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="4-element-&#xAC1D;&#xCCB4;">4) Element &#xAC1D;&#xCCB4;</h2>
+<ul>
+<li>HTMLElement : &#xBAA8;&#xB4E0; HTML(X)Element&#xC758; &#xBD80;&#xBAA8;, style &#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xB97C; &#xAC00;&#xC9C4;&#xB2E4;.</li>
+<li>&#xC694;&#xC18C;&#xB4E4;&#xC744; &#xCD94;&#xC0C1;&#xD654;&#xD55C; &#xAC1D;&#xCCB4;&#xC774;&#xB2E4;.</li>
+<li>Element : HTMLElment&#xC758; &#xBD80;&#xBAA8;. Html&#xC744; &#xD3EC;&#xD568;&#xD55C; &#xB2E4;&#xC591;&#xD55C; mark up &#xC5B8;&#xC5B4;&#xC5D0; &#xC0AC;&#xC6A9;&#xB41C;&#xB2E4;.</li>
+<li><em>Element.tagName</em> : tag&#xC758; &#xBA85;&#xCE6D;&#xC744; &#xD45C;&#xC2DC;, &#xC77D;&#xAE30; &#xC804;&#xC6A9;</li>
+<li><em>Element.id</em> : id &#xD45C;&#xC2DC;</li>
+<li><em>Element.className</em> : class&#xB97C; &#xD45C;&#xC2DC;.</li>
+<li><p><em>Element.classList</em> : class&#xAC00; &#xC5EC;&#xB7EC; &#xAC1C;&#xC77C; &#xACBD;&#xC6B0; &#xC0AC;&#xC6A9;.(&#xB744;&#xC5B4;&#xC4F0;&#xAE30;&#xB97C; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xC5EC;&#xB7EC; &#xAC1C;&#xB85C; &#xAD6C;&#xBCC4;)</p>
+</li>
+<li><p>&#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xC640; &#xBA54;&#xC11C;&#xB4DC;</p>
+</li>
+<li>element&#xC758; &#xC815;&#xBCF4; : id, title, lang, dir, className</li>
+<li><p>&#xC18D;&#xC131; &#xAD00;&#xB828; : getAttribute(), setAttribute(), removeAttribute()</p>
+</li>
+<li><p>element&#xB294; DOM &#xC911; &#xC720;&#xC77C;&#xD558;&#xAC8C; attribute &#xD504;&#xB85C;&#xD37C;&#xD2F0;&#xB97C; &#xAC00;&#xC9C4;&#xB2E4;.</p>
+</li>
+</ul>
+<hr>
+<h1 id="html-element&#xC640;-collection">HTML element&#xC640; collection</h1>
+<ul>
+<li><em>getElementByID</em> &#xC640; &#xAC19;&#xC740; &#xBA54;&#xC18C;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; <strong>HTMLElement</strong> &#xAC1D;&#xCCB4;&#xB97C; &#xC5BB;&#xB294;&#xB2E4;.</li>
+<li>&#xD558;&#xB098;&#xC758; element&#xC758; &#xACBD;&#xC6B0; : <em>HTML(X)Element</em></li>
+<li>&#xBCF5;&#xC218;&#xC758; element&#xC758; &#xACBD;&#xC6B0; : <em>HTMLCollection</em></li>
+<li><strong>jQuery</strong> &#xC640; &#xAC19;&#xC740; &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC; &#xC0AC;&#xC6A9; &#xC2DC;&#xC5D0;&#xB294; &#xC774; &#xB0B4;&#xC6A9;&#xB4E4;&#xC744; &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC;&#xAC00; &#xC54C;&#xC544;&#xC11C; &#xCC98;&#xB9AC;&#xD574;&#xC900;&#xB2E4;.</li>
+<li>&#xAC01;&#xAC01;&#xC758; &#xAC1D;&#xCCB4;&#xC758; &#xD615;&#xD0DC;&#xC5D0; &#xB530;&#xB77C; &#xD504;&#xB85C;&#xD37C;&#xD2F0;, &#xBA54;&#xC18C;&#xB4DC;&#xC5D0; &#xCC28;&#xC774;&#xAC00; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;.</li>
+<li>HTMLLIElement &#xC640; HTMLAnchorElement &#xB4F1;&#xC740; &#xBAA8;&#xB450; HTMLElement&#xC758; &#xC790;&#xC2DD;&#xC774;&#xB2E4;(&#xC0C1;&#xC18D;&#xB418;&#xC5C8;&#xB2E4;)</li>
+<li><a href="https://web.stanford.edu/class/cs98si/slides/the-document-object-model.html" target="_blank">DOM &#xAD6C;&#xC870;</a></li>
+<li>HTMLCollection &#xAC1D;&#xCCB4;&#xB294; &#xBC30;&#xC5F4;&#xACFC; &#xBE44;&#xC2B7;&#xD558;&#xB2E4;. &#xBCC0;&#xD654;&#xC5D0; &#xB530;&#xB77C; &#xC2E4;&#xC2DC;&#xAC04;&#xC73C;&#xB85C; &#xADF8; &#xD615;&#xD0DC;&#xC640; &#xAC12;&#xC774; &#xBCC0;&#xD55C;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span> =<span class="hljs-string">&quot;anchor&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;google.com&quot;</span>&gt;</span>Google<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;lis&quot;</span>&gt;</span>hi<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Button&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">var</span> t1= <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;lis&quot;</span>);
+<span class="hljs-keyword">var</span> t2= <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;anchor&quot;</span>);
+<span class="hljs-keyword">var</span> t3= <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;button&quot;</span>);
+
+<span class="hljs-built_in">document</span>.write(t1.constructor.name+<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>);
+<span class="hljs-built_in">document</span>.write(t2.constructor.name+<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>);
+<span class="hljs-built_in">document</span>.write(t3.constructor.name+<span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<hr>
+<h1 id="&#xCC38;&#xACE0;-&#xC790;&#xB8CC;">&#xCC38;&#xACE0; &#xC790;&#xB8CC;</h1>
+<ul>
+<li><a href="https://debugjung.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-DOM-%EA%B5%AC%EC%A1%B0" target="_blank">&#xACC4;&#xCE35;&#xB3C4; &#xAD00;&#xB828; &#xC790;&#xB8CC;</a></li>
+<li><a href="https://feel5ny.github.io/2017/12/26/JS_08_1/" target="_blank">&#xACC4;&#xCE35; &#xC790;&#xB8CC;</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="js_wd.html" class="navigation navigation-prev " aria-label="Previous page: Window & BOM">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="jquery_select.html" class="navigation navigation-next " aria-label="Next page: JQuery : 선택 & 객체 & 배열">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"DOM","date":"2019-06-10T02:02:59.000Z","author":"Inhyuk","categories":"Javascript","tags":"js","cover":"/assets/instacode.png","name":"js_dom.md","level":"1.2.7","depth":2,"next":{"title":"JQuery : 선택 & 객체 & 배열","level":"1.2.8","depth":2,"path":"posts/js/jquery_select.md","ref":"posts/js/jquery_select.md","articles":[]},"previous":{"title":"Window & BOM","level":"1.2.6","depth":2,"path":"posts/js/js_wd.md","ref":"posts/js/js_wd.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/js/js_dom.md","mtime":"2020-04-20T13:50:57.082Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T11:56:43.597Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

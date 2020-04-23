@@ -1,0 +1,59 @@
+I"X
+<h1 id="lombok">Lombok</h1>
+
+<ul>
+  <li><a href="https://projectlombok.org/">공식 홈페이지</a></li>
+  <li>vo,dao 등의 클래스에 getter, setter ,toString 등의 메서드를 자동으로 정의해주는 라이브러리</li>
+</ul>
+
+<h2 id="tostring">ToString</h2>
+
+<ul>
+  <li>필드 이름과 값이 출력됨</li>
+  <li><strong>exclude</strong> 를 통해서 특정 변수(필드)는 제외하기 가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@ToString</span><span class="o">(</span><span class="n">exclude</span> <span class="o">=</span> <span class="s">"password"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">scores</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span><span class="c1">//클래스이름(필드1=값1,필드2=값2)</span>
+</code></pre></div></div>
+
+<h2 id="equalsandhashcode">EqualsAndHashCode</h2>
+
+<ul>
+  <li><strong>equals, hashCode</strong> 메서드를 생성
+    <ul>
+      <li>equals : 부모클래스를 포함한 필드 값이 동일한지 확인. callSuper=false를 통해서 현재 클래스의 필드값만 비교</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="getter-setter">Getter, Setter</h2>
+
+<h2 id="requiredargsconstructor">RequiredArgsConstructor</h2>
+
+<ul>
+  <li>모든 멤버 변수를 초기화하는 생성자 만듬</li>
+</ul>
+
+<h2 id="data">Data</h2>
+
+<ul>
+  <li>Getter, Setter, EqualsAndHashCode, ToString, RequiredArgsConstructor 의 내용을 모두 포함하는 annotation</li>
+</ul>
+
+<hr />
+
+<h1 id="참고자료">참고자료</h1>
+
+<ul>
+  <li><a href="https://www.daleseo.com/lombok-popular-annotations/">https://www.daleseo.com/lombok-popular-annotations/</a></li>
+</ul>
+:ET

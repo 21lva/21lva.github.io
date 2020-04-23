@@ -1,0 +1,473 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Service · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="k8s_ingress.html" />
+    
+    
+    <link rel="prev" href="k8s_controller.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../docker/docker0.html">
+            
+                <a href="../docker/docker0.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../docker/docker1.html">
+            
+                <a href="../docker/docker1.html">
+            
+                    
+                    Docker1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="k8s_basic.html">
+            
+                <a href="k8s_basic.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="k8s_pod.html">
+            
+                <a href="k8s_pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="k8s_controller.html">
+            
+                <a href="k8s_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="k8s_service.html">
+            
+                <a href="k8s_service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="k8s_ingress.html">
+            
+                <a href="k8s_ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="k8s_configMap.html">
+            
+                <a href="k8s_configMap.html">
+            
+                    
+                    configMap, secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="k8s_cdtt.html">
+            
+                <a href="k8s_cdtt.html">
+            
+                    
+                    cordon, drain, taint, toleration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="k8s_log.html">
+            
+                <a href="k8s_log.html">
+            
+                    
+                    Logging : ElasticSearch, Kibana, fluentd
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Service</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="service">Service</h1>
+<ul>
+<li>Pod&#xC740; IP&#xAC00; &#xB79C;&#xB364;&#xD558;&#xAC8C; &#xC9C0;&#xC815;&#xB418;&#xACE0; &#xC7AC;&#xC2DC;&#xC791;&#xB54C;&#xB9C8;&#xB2E4; IP&#xAC00; &#xBCC0;&#xD568;. -&gt; &#xACE0;&#xC815;&#xB41C; endpoint &#xC0AC;&#xC6A9; &#xC5B4;&#xB824;&#xC6C0;</li>
+<li>service&#xAC00; pod&#xC5D0; &#xB300;&#xD55C; &#xC811;&#xADFC; &#xBC29;&#xBC95;&#xACFC;, &#xB85C;&#xB4DC; &#xBC38;&#xB7F0;&#xC11C; &#xC5ED;&#xD560;&#xC744; &#xC218;&#xD589;</li>
+<li>label selector&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xAD00;&#xB9AC;&#xD558;&#xACE0;&#xC790; &#xD558;&#xB294; Pod&#xC744; &#xC9C0;&#xC815;</li>
+<li>&#xC5EC;&#xB7EC; port&#xB97C; &#xC5EC;&#xB7EC; protocol&#xB85C; &#xC624;&#xD508; &#xAC00;&#xB2A5;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> hello-node-svc
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> hello-node
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - name:</span> http
+<span class="hljs-attr">      port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">      protocol:</span> TCP
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">    - name:</span> https
+<span class="hljs-attr">      port:</span> <span class="hljs-number">443</span>
+<span class="hljs-attr">      protocol:</span> TCP
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">8082</span>
+<span class="hljs-attr">  type:</span> LoadBalancer
+</code></pre>
+<h2 id="&#xD15C;&#xD50C;&#xB9BF;">&#xD15C;&#xD50C;&#xB9BF;</h2>
+<pre><code class="lang-yml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service <span class="hljs-comment">#&#xC11C;&#xBE44;&#xC2A4; &#xC774;&#xB984;</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> ClusterIP <span class="hljs-comment">#&#xC11C;&#xBE44;&#xC2A4; &#xC885;&#xB958;(&#xAE30;&#xBCF8;&#xAC12; = ClusterIP</span>
+<span class="hljs-attr">  clusterIP:</span> <span class="hljs-number">10.0</span><span class="hljs-number">.10</span><span class="hljs-number">.10</span> <span class="hljs-comment">#&#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xB0B4;&#xBD80;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#x3151;&#x3156;</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> MyApp <span class="hljs-comment">#&#xAD00;&#xB9AC;&#xD560; pod&#xC758; label</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">  - protocol:</span> TCP
+<span class="hljs-attr">    port:</span> <span class="hljs-number">80</span> <span class="hljs-comment">#&#xB0B4;&#xBD80;&#xC5D0;&#xC11C; &#xC811;&#xADFC;&#xD558;&#xB294;&#xB370;&#xC5D0; &#xC0AC;&#xC6A9;&#xB418;&#xB294; port</span>
+<span class="hljs-attr">    targetPort:</span> <span class="hljs-number">9376</span> <span class="hljs-comment">#&#xC2E4;&#xC81C;&#xB85C; &#xD2B8;&#xB798;&#xD53D;&#xC744; &#xC804;&#xB2EC;&#xBC1B;&#xB294; port</span>
+</code></pre>
+<h2 id="&#xC885;&#xB958;">&#xC885;&#xB958;</h2>
+<h4 id="1-clusterip">1) ClusterIP</h4>
+<ul>
+<li>&#xAC00;&#xC7A5; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xD0C0;&#xC785;, &#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xB0B4;&#xBD80;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xAC00;&#xB2A5;</li>
+<li>&#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xB0B4;&#xBD80;&#xC758; node&#xC640; pod&#xC5D0;&#xC11C; &#xC774; clusterIP&#xB97C; &#xC774;&#xC6A9;&#xD574;&#xC11C; &#xC11C;&#xBE44;&#xC2A4;&#xC5D0; &#xC5F0;&#xACB0;&#xB41C; pod&#xC5D0; &#xC811;&#xC18D;</li>
+<li>&#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xC678;&#xBD80;&#xC5D0;&#xC11C;&#xB294; &#xC0AC;&#xC6A9; &#xBD88;&#xAC00;</li>
+</ul>
+<h4 id="2-loadbalancer">2) LoadBalancer</h4>
+<ul>
+<li>AWS&#xAC19;&#xC740; cloud&#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xB54C; &#xAC00;&#xB2A5;&#xD55C; &#xC635;&#xC158;.</li>
+<li>pod&#xB97C; cloud&#xC5D0;&#xC11C; &#xC81C;&#xACF5;&#xD574;&#xC8FC;&#xB294; load balancer&#xC640; &#xC5F0;&#xB3D9;. &#xADF8; load balancer&#xC758; IP&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xC678;&#xBD80;&#xC5D0;&#xC11C; &#xC811;&#xADFC;</li>
+</ul>
+<h4 id="3-nodeport">3) NodePort</h4>
+<ul>
+<li>&#xAC01; node&#xC5D0; port&#xB97C; &#xD560;&#xB2F9;&#xD558;&#xB294; &#xBC29;&#xC2DD;.</li>
+<li>node&#xC790;&#xCCB4;&#xC5D0; port&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xAE30;&#xB54C;&#xBB38;&#xC5D0; &#xC678;&#xBD80;&#xC5D0;&#xC11C; &#xB0B4;&#xBD80; pod&#xC73C;&#xB85C; &#xC9C1;&#xC811; &#xC811;&#xADFC;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> hello-node
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> hello-node
+<span class="hljs-attr">  type:</span> NodePort
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - name:</span> http
+<span class="hljs-attr">      port:</span> <span class="hljs-number">80</span>
+<span class="hljs-attr">      protocol:</span> TCP
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">8080</span>
+<span class="hljs-attr">      nodePort:</span> <span class="hljs-number">30036</span> <span class="hljs-comment">#&#xC678;&#xBD80;&#xC5D0;&#xC11C; 30036 port &#xB85C; &#xC9C1;&#xC811; node&#xC5D0; &#xC811;&#xADFC; &#xAC00;&#xB2A5;</span>
+</code></pre>
+<ul>
+<li>port : &#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xB0B4;&#xBD80;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; port. &#xC5EC;&#xAE30;&#xB85C; &#xC804;&#xB2EC;&#xB41C; &#xC694;&#xCCAD;&#xC740; targetPort&#xB85C; &#xC804;&#xB2EC;&#xB41C;</li>
+<li>targetPort : &#xC2E4;&#xC81C;&#xB85C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; port. &#xD2B8;&#xB798;&#xD53D;&#xC744; &#xC218;&#xC2E0;&#xD558;&#xB294; port</li>
+</ul>
+<h4 id="4-externalname">4) ExternalName</h4>
+<ul>
+<li>&#xC678;&#xBD80; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; k8s &#xB0B4;&#xBD80;&#xC5D0;&#xC11C; &#xD638;&#xCD9C;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">kind:</span> Service
+<span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> my-service
+<span class="hljs-attr">  namespace:</span> prod
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  type:</span> ExternalName
+<span class="hljs-attr">  externalName:</span> my.database.example.com
+</code></pre>
+<p>&#xB4E4;&#xC5B4;&#xC628; &#xC694;&#xCCAD;&#xC744; my.database.example.com&#xC73C;&#xB85C; &#xD3EC;&#xC6CC;&#xB529; &#xD574;&#xC900;&#xB2E4;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="k8s_controller.html" class="navigation navigation-prev " aria-label="Previous page: Controller">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="k8s_ingress.html" class="navigation navigation-next " aria-label="Next page: Ingress">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Service","date":"2019-12-18T01:02:59.000Z","name":"k8s_service.md","level":"1.3.3","depth":2,"next":{"title":"Ingress","level":"1.3.4","depth":2,"path":"posts/k8s/k8s_ingress.md","ref":"posts/k8s/k8s_ingress.md","articles":[]},"previous":{"title":"Controller","level":"1.3.2","depth":2,"path":"posts/k8s/k8s_controller.md","ref":"posts/k8s/k8s_controller.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex-plus","toggle-chapters"],"pluginsConfig":{"katex-plus":{},"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/k8s/k8s_service.md","mtime":"2020-03-17T15:03:09.611Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T15:05:57.250Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

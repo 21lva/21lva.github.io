@@ -1,0 +1,810 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Serialization · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../jsp/java_server0.html" />
+    
+    
+    <link rel="prev" href="java_io.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="java0.html">
+            
+                <a href="java0.html">
+            
+                    
+                    JAVA 요약
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="java_jvm.html">
+            
+                <a href="java_jvm.html">
+            
+                    
+                    JVM,JDK,JRE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="java_variable.html">
+            
+                <a href="java_variable.html">
+            
+                    
+                    변수, 배열
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="java_class0.html">
+            
+                <a href="java_class0.html">
+            
+                    
+                    클래스, 상속
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="java_abstract.html">
+            
+                <a href="java_abstract.html">
+            
+                    
+                    추상클래스, 인터페이스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="java_package.html">
+            
+                <a href="java_package.html">
+            
+                    
+                    패키지
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="java_exception.html">
+            
+                <a href="java_exception.html">
+            
+                    
+                    예외 처리
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="java_lang.html">
+            
+                <a href="java_lang.html">
+            
+                    
+                    java.lang, 여러 클래스
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="java_collection.html">
+            
+                <a href="java_collection.html">
+            
+                    
+                    Collection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="java_generics.html">
+            
+                <a href="java_generics.html">
+            
+                    
+                    Generics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="java_lambda.html">
+            
+                <a href="java_lambda.html">
+            
+                    
+                    Lambda expression
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="java_stream.html">
+            
+                <a href="java_stream.html">
+            
+                    
+                    Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="java_io.html">
+            
+                <a href="java_io.html">
+            
+                    
+                    입출력
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.13" data-path="java_serialization.html">
+            
+                <a href="java_serialization.html">
+            
+                    
+                    Serialization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../jsp/java_server0.html">
+            
+                <a href="../jsp/java_server0.html">
+            
+                    
+                    JSP,Servlet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../jsp/java_servlet.html">
+            
+                <a href="../jsp/java_servlet.html">
+            
+                    
+                    Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../jsp/jsp_object.html">
+            
+                <a href="../jsp/jsp_object.html">
+            
+                    
+                    JSP 객체
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../jsp/jsp_actionTag.html">
+            
+                <a href="../jsp/jsp_actionTag.html">
+            
+                    
+                    action tag
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../jsp/jsp_cs.html">
+            
+                <a href="../jsp/jsp_cs.html">
+            
+                    
+                    cookie, session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../jsp/jsp_db.html">
+            
+                <a href="../jsp/jsp_db.html">
+            
+                    
+                    JDBC, DAO, DTO
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../spring/spring0.html">
+            
+                <a href="../spring/spring0.html">
+            
+                    
+                    Spring MVC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../spring/spring_ioc.html">
+            
+                <a href="../spring/spring_ioc.html">
+            
+                    
+                    IoC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../spring/spring_di.html">
+            
+                <a href="../spring/spring_di.html">
+            
+                    
+                    DI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../spring/spring_lifecycle.html">
+            
+                <a href="../spring/spring_lifecycle.html">
+            
+                    
+                    Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../spring/spring_annotation.html">
+            
+                <a href="../spring/spring_annotation.html">
+            
+                    
+                    Annotation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../spring/spring_structure.html">
+            
+                <a href="../spring/spring_structure.html">
+            
+                    
+                    디렉토리 구조, 동작과정
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../spring/spring_sc.html">
+            
+                <a href="../spring/spring_sc.html">
+            
+                    
+                    Session, Cookie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../spring/spring_ri.html">
+            
+                <a href="../spring/spring_ri.html">
+            
+                    
+                    Redirect, Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../spring/spring_db.html">
+            
+                <a href="../spring/spring_db.html">
+            
+                    
+                    JDBC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../spring-boot/sb_structure.html">
+            
+                <a href="../spring-boot/sb_structure.html">
+            
+                    
+                    Spring Boot
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../spring-boot/sb_cs.html">
+            
+                <a href="../spring-boot/sb_cs.html">
+            
+                    
+                    @SpringBootApplication, @Component
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../spring-boot/sb_property.html">
+            
+                <a href="../spring-boot/sb_property.html">
+            
+                    
+                    환경설정, @Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../spring-boot/sb_controller.html">
+            
+                <a href="../spring-boot/sb_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../spring-boot/sb_interceptor.html">
+            
+                <a href="../spring-boot/sb_interceptor.html">
+            
+                    
+                    Interceptor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../spring-boot/sb_lombok.html">
+            
+                <a href="../spring-boot/sb_lombok.html">
+            
+                    
+                    Lombok
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../spring-boot/sb_test.html">
+            
+                <a href="../spring-boot/sb_test.html">
+            
+                    
+                    Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Serialization</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#xC9C1;&#xB82C;&#xD654;serialization">&#xC9C1;&#xB82C;&#xD654;(serialization)</h1>
+<ul>
+<li>&#xAC1D;&#xCCB4;&#xB97C; &#xB370;&#xC774;&#xD130; &#xC2A4;&#xD2B8;&#xB9BC;&#xC73C;&#xB85C; &#xB9CC;&#xB4DC;&#xB294; &#xAC83;</li>
+<li>&#xAC1D;&#xCCB4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC2A4;&#xD2B8;&#xB9BC;&#xC5D0; &#xC4F0;&#xAE30; &#xC704;&#xD574; &#xC5F0;&#xC18D;&#xC801;&#xC778; &#xB370;&#xC774;&#xD130;&#xB85C; &#xBCC0;&#xD658;&#xD558;&#xB294; &#xAC83;</li>
+<li>&#xC5ED;&#xC9C1;&#xB82C;&#xD654; : &#xC2A4;&#xD2B8;&#xB9BC;&#xC73C;&#xB85C;&#xBD80;&#xD130; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC77D;&#xC5B4;&#xC11C; &#xAC1D;&#xCCB4;&#xB97C; &#xB9CC;&#xB4DC;&#xB294; &#xAC83;</li>
+</ul>
+<h2 id="objectinputstream-objectoutputstream">ObjectInputStream, ObjectOutputStream</h2>
+<ul>
+<li>&#xC9C1;&#xB82C;&#xD654;&#xC640; &#xC5ED;&#xC9C1;&#xB82C;&#xD654;&#xC5D0; &#xC4F0;&#xC774;&#xB294; &#xC2A4;&#xD2B8;&#xB9BC;</li>
+<li>InputStream, OutputStream&#xC744; &#xC0C1;&#xC18D;. But &#xBCF4;&#xC870;&#xC2A4;&#xD2B8;&#xB9BC;(&#xB2E4;&#xB978; &#xC2A4;&#xD2B8;&#xB9BC; &#xD544;&#xC694;)</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#xAC04;&#xB2E8;&#xD55C; &#xBC29;&#xBC95;</span>
+<span class="hljs-comment">//&#xC4F0;&#xAE30;</span>
+FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;objectfile.ser&quot;</span>);
+ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(fos);
+
+oos.writeObject(<span class="hljs-keyword">new</span> String());
+
+<span class="hljs-comment">//&#xC77D;&#xAE30;. Object&#xB85C; &#xC800;&#xC7A5;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xD615;&#xBCC0;&#xD658; &#xD544;&#xC694;</span>
+FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;objectfile.ser&quot;</span>);
+ObjectInputStream ois = <span class="hljs-keyword">new</span> ObjectInputStream(fis);
+
+String tmp = (String)ois.readObject();
+</code></pre>
+<h2 id="&#xC9C1;&#xB82C;&#xD654;-&#xAC00;&#xB2A5;&#xD55C;-&#xD074;&#xB798;&#xC2A4;-&#xB9CC;&#xB4E4;&#xAE30;">&#xC9C1;&#xB82C;&#xD654; &#xAC00;&#xB2A5;&#xD55C; &#xD074;&#xB798;&#xC2A4; &#xB9CC;&#xB4E4;&#xAE30;</h2>
+<ul>
+<li>&#xC9C1;&#xB82C;&#xD654;&#xAC00; &#xAC00;&#xB2A5;&#xD55C; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xB9CC;&#xB4E4;&#xB824;&#xBA74; <strong>java.io.Serializable</strong> interface&#xB97C; &#xAD6C;&#xD604;&#xD574;&#xC57C; &#xD55C;&#xB2E4;</li>
+<li>&#xC774; interface&#xB294; &#xC544;&#xBB34;&#xB7F0; &#xB0B4;&#xC6A9;&#xC774; &#xC5C6;&#xB294; &#xBE48; interface</li>
+<li><p><strong>Serializable</strong> inteface&#xB97C; &#xAD6C;&#xD604;&#xD55C; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xC0C1;&#xC18D; &#xBC1B;&#xC73C;&#xBA74; &#xB2E4;&#xC2DC; &#xAD6C;&#xD604;&#xD560; &#xD544;&#xC694; &#xC5C6;&#xC74C;</p>
+</li>
+<li><p>&#xD074;&#xB798;&#xC2A4;&#xC548;&#xC5D0; &#xC9C1;&#xB82C;&#xD654;&#xD560; &#xC218; &#xC5C6;&#xB294; &#xBA64;&#xBC84;&#xBCC0;&#xC218;(Object&#xB4F1;)&#xC744; &#xD3EC;&#xD568;&#xD558;&#xBA74; &#xC9C1;&#xB82C;&#xD654;&#xD560; &#xC218; &#xC5C6;&#xB2E4;(&#xBCC0;&#xC218;&#xC758; &#xCC38;&#xC870;&#xD0C0;&#xC785;&#xC774; &#xC544;&#xB2CC; &#xC2E4;&#xC81C; &#xBCC0;&#xC218;&#xC758; &#xD0C0;&#xC785;)</p>
+</li>
+<li>&#xC774; &#xACBD;&#xC6B0;&#xC5D0;&#xB294; &#xD574;&#xB2F9; &#xBCC0;&#xC218;&#xC5D0; <strong>transient</strong> &#xD0A4;&#xC6CC;&#xB4DC;&#xB97C; &#xBD99;&#xC5EC;&#xC11C; &#xC9C1;&#xB82C;&#xD654;&#xC5D0;&#xC11C; &#xC81C;&#xC678;&#xD560; &#xC218; &#xC788;&#xC74C;. &#xC5ED;&#xC9C1;&#xB82C;&#xD654;&#xC2DC;&#xC5D0;&#xB294; &#xAE30;&#xBCF8;&#xAC12;(null&#xB4F1;)&#xC73C;&#xB85C; &#xAC12;&#xC774; &#xC815;&#xD574;&#xC9C4;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">iii</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException </span>{
+        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;objectfile.ser&quot;</span>);
+        ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(fos);
+
+        MyObject c = <span class="hljs-keyword">new</span> MyObject(<span class="hljs-number">1</span>);
+        MyObject d = <span class="hljs-keyword">new</span> MyObject(<span class="hljs-number">2</span>);
+
+        System.out.println(c.x);<span class="hljs-comment">//result : java.lang.Object@6e8cf4c6</span>
+        oos.writeObject(c);
+        oos.writeObject(d);
+        oos.close();
+
+<span class="hljs-comment">//&#xC77D;&#xAE30;. Object&#xB85C; &#xC800;&#xC7A5;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xD615;&#xBCC0;&#xD658; &#xD544;&#xC694;</span>
+        FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;objectfile.ser&quot;</span>);
+        ObjectInputStream ois = <span class="hljs-keyword">new</span> ObjectInputStream(fis);
+        MyObject tmp3 = (MyObject)ois.readObject();
+        MyObject tmp4 = (MyObject)ois.readObject();
+
+        System.out.println(tmp3.val);<span class="hljs-comment">//result : 1</span>
+        System.out.println(tmp4.val);<span class="hljs-comment">//result : 2</span>
+        System.out.println(tmp4.x);<span class="hljs-comment">//result : null</span>
+
+        ois.close();
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span></span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> val;
+    <span class="hljs-keyword">transient</span> Object x=<span class="hljs-keyword">new</span> Object();
+    MyObject(<span class="hljs-keyword">int</span> val){
+        <span class="hljs-keyword">this</span>.val=val;
+    }
+}
+</code></pre>
+<h2 id="&#xD074;&#xB798;&#xC2A4;&#xC758;-&#xBC84;&#xC804;&#xAD00;&#xB9AC;">&#xD074;&#xB798;&#xC2A4;&#xC758; &#xBC84;&#xC804;&#xAD00;&#xB9AC;</h2>
+<ul>
+<li>&#xC9C1;&#xB82C;&#xD654;&#xB41C; &#xAC1D;&#xCCB4;&#xB97C; &#xC9C1;&#xB82C;&#xD654;&#xD55C; &#xD6C4;&#xC5D0; &#xC5ED;&#xC9C1;&#xB82C;&#xD654; &#xD558;&#xB354;&#xB77C;&#xB3C4; &#xADF8; &#xC0AC;&#xC774;&#xC5D0; &#xD074;&#xB798;&#xC2A4;&#xAC00; &#xBCC0;&#xD588;&#xC73C;&#xBA74; &#xC5ED;&#xC9C1;&#xB82C;&#xD654;&#xAC00; &#xC2E4;&#xD328;&#xD558;&#xBA70; &#xC608;&#xC678;&#xAC00; &#xBC1C;&#xC0DD;(InvalidClassException)</li>
+<li>static&#xBCC0;&#xC218;, &#xC0C1;&#xC218;, transient&#xAC00; &#xBD99;&#xC740; &#xC778;&#xC2A4;&#xD134;&#xC2A4; &#xBCC0;&#xC218;&#xAC00; &#xCD94;&#xAC00;&#xB418;&#xBA74; &#xC0C1;&#xAD00; &#xC5C6;&#xC74C;</li>
+<li>&#xC218;&#xB3D9;&#xC73C;&#xB85C; &#xD074;&#xB798;&#xC2A4;&#xC758; &#xBC84;&#xC804;&#xC744; &#xAD00;&#xB9AC;&#xD558;&#xACE0; &#xC2F6;&#xC73C;&#xBA74; <strong>serialVersionUID</strong> &#xB97C; &#xC815;&#xC758;&#xD55C;&#xB2E4;</li>
+<li>serialVersionUID&#xB294; &#xC911;&#xCCA9;&#xC744; &#xB9C9;&#xAE30;&#xC704;&#xD574; <strong>serialver &#xD074;&#xB798;&#xC2A4;</strong> &#xB97C; &#xCF58;&#xC194;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xD574;&#xC11C; &#xC0DD;&#xC131;&#xB41C; &#xAC12;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xC77C;&#xBC18;&#xC801;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyObject</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span></span>{
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">351873167521231L</span>;
+  <span class="hljs-comment">//&#xCF54;&#xB4DC;</span>
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="java_io.html" class="navigation navigation-prev " aria-label="Previous page: 입출력">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../jsp/java_server0.html" class="navigation navigation-next " aria-label="Next page: JSP,Servlet">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Serialization","date":"2019-12-18T01:02:59.000Z","author":"Inhyuk","name":"java_serialization.md","level":"1.2.13","depth":2,"next":{"title":"JSP,Servlet","level":"1.3","depth":1,"path":"posts/jsp/java_server0.md","ref":"posts/jsp/java_server0.md","articles":[{"title":"Servlet","level":"1.3.1","depth":2,"path":"posts/jsp/java_servlet.md","ref":"posts/jsp/java_servlet.md","articles":[]},{"title":"JSP 객체","level":"1.3.2","depth":2,"path":"posts/jsp/jsp_object.md","ref":"posts/jsp/jsp_object.md","articles":[]},{"title":"action tag","level":"1.3.3","depth":2,"path":"posts/jsp/jsp_actionTag.md","ref":"posts/jsp/jsp_actionTag.md","articles":[]},{"title":"cookie, session","level":"1.3.4","depth":2,"path":"posts/jsp/jsp_cs.md","ref":"posts/jsp/jsp_cs.md","articles":[]},{"title":"JDBC, DAO, DTO","level":"1.3.5","depth":2,"path":"posts/jsp/jsp_db.md","ref":"posts/jsp/jsp_db.md","articles":[]}]},"previous":{"title":"입출력","level":"1.2.12","depth":2,"path":"posts/book/java_io.md","ref":"posts/book/java_io.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/book/java_serialization.md","mtime":"2020-04-22T12:10:22.368Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-22T13:07:30.938Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,560 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Docker1 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../k8s/k8s_basic.html" />
+    
+    
+    <link rel="prev" href="docker0.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docker0.html">
+            
+                <a href="docker0.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="docker1.html">
+            
+                <a href="docker1.html">
+            
+                    
+                    Docker1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../k8s/k8s_basic.html">
+            
+                <a href="../k8s/k8s_basic.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../k8s/k8s_pod.html">
+            
+                <a href="../k8s/k8s_pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../k8s/k8s_controller.html">
+            
+                <a href="../k8s/k8s_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../k8s/k8s_service.html">
+            
+                <a href="../k8s/k8s_service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../k8s/k8s_ingress.html">
+            
+                <a href="../k8s/k8s_ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../k8s/k8s_configMap.html">
+            
+                <a href="../k8s/k8s_configMap.html">
+            
+                    
+                    configMap, secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../k8s/k8s_cdtt.html">
+            
+                <a href="../k8s/k8s_cdtt.html">
+            
+                    
+                    cordon, drain, taint, toleration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../k8s/k8s_log.html">
+            
+                <a href="../k8s/k8s_log.html">
+            
+                    
+                    Logging : ElasticSearch, Kibana, fluentd
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Docker1</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="docker-compose&#xB97C;-&#xC774;&#xC6A9;&#xD558;&#xC5EC;-&#xAC04;&#xB2E8;&#xD55C;-apache-&#xC11C;&#xBC84;-&#xC0DD;&#xC131;">Docker-compose&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xAC04;&#xB2E8;&#xD55C; Apache &#xC11C;&#xBC84; &#xC0DD;&#xC131;</h1>
+<ul>
+<li>&#xBA3C;&#xC800; &#xB3C4;&#xCEE4;&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xC544;&#xD30C;&#xCE58; &#xC774;&#xBBF8;&#xC9C0;&#xB97C; &#xAC16;&#xB294; &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xB97C; &#xC0DD;&#xC131;&#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-console">$ sudo docker run -d --name apacheExercise -p 8080:80 httpd
+</code></pre>
+<ul>
+<li>-d : background&#xB85C; &#xC2E4;&#xD589;</li>
+<li>--name : &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xC774;&#xB984; &#xC9C0;&#xC815;</li>
+<li><p>-p []&#xD638;&#xC2A4;&#xD2B8; &#xD3EC;&#xD2B8;:&#xCEE8;&#xD14C;&#xC774;&#xB108; &#xD3EC;&#xD2B8;] : &#xD638;&#xC2A4;&#xD2B8; &#xD3EC;&#xD2B8;&#xC640; &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xD3EC;&#xD2B8;&#xB97C; &#xC5F0;&#xACB0;&#xD55C;&#xB2E4;.</p>
+</li>
+<li><p>&#xD638;&#xC2A4;&#xD2B8; &#xD3EC;&#xD2B8;(8080)&#xC5D0; &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xD3EC;&#xD2B8;(80) &#xC5F0;&#xACB0;&#xB418;&#xC5B4; &#xC788;&#xC73C;&#xB2C8; &#xC11C;&#xBC84;&#xAC00; &#xC798; &#xB3CC;&#xC544;&#xAC00;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD574;&#xBCF4;&#xC790;.</p>
+</li>
+<li>&#xC6F9;&#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xC5D0;&#xC11C; <strong>localhost:8080</strong> &#xB97C; &#xC785;&#xD55C;&#xB2E4;.</li>
+</ul>
+<hr>
+<h1 id="docker-composeyml&#xC744;-&#xC774;&#xC6A9;&#xD55C;-nginx--nodejs--mariadb-&#xC11C;&#xBC84;-&#xC0DD;&#xC131;">Docker-compose.yml&#xC744; &#xC774;&#xC6A9;&#xD55C; nginx + nodejs + mariaDB &#xC11C;&#xBC84; &#xC0DD;&#xC131;</h1>
+<h2 id="1-docker-composeyml-&#xC791;&#xC131;">1) docker-compose.yml &#xC791;&#xC131;</h2>
+<ul>
+<li><strong>docker-compose.yml</strong> &#xC740; &#xC5EC;&#xB7EC; &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xD639;&#xC740; &#xD558;&#xB098;&#xC758; &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xB97C; &#xC791;&#xC131;&#xD558;&#xB294; &#xBC29;&#xC2DD;&#xC744; &#xC801;&#xC5B4;&#xB193;&#xC740; &#xD30C;&#xC77C;&#xC774;&#xB2E4;.</li>
+<li><p>&#xD30C;&#xC774;&#xC36C; &#xAE30;&#xBC18;&#xC73C;&#xB85C; &#xC791;&#xC131;&#xB418;&#xC5B4; &#xC788;&#xB2E4;.</p>
+</li>
+<li><p>links : &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xB07C;&#xB9AC; &#xC5F0;&#xACB0;. &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xC774;&#xB984;:&#xBCC4;&#xBA85;(alias)</p>
+</li>
+<li>ports : &#xC678;&#xBD80;&#xC5D0; &#xB178;&#xCD9C;&#xD560; &#xD3EC;&#xD2B8; &#xC124;&#xC815;. &quot;&#xD638;&#xC2A4;&#xD2B8; &#xD3EC;&#xD2B8;:&#xC678;&#xBD80;&#xC5D0; &#xB178;&#xCD9C;&#xD560; &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xD3EC;&#xD2B8;&quot; or &quot;&#xC678;&#xBD80;&#xC5D0; &#xB178;&#xCD9C;&#xD560; &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xD3EC;&#xD2B8;&quot;</li>
+<li>expose : &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xB07C;&#xB9AC; &#xD1B5;&#xC2E0;&#xD558;&#xAE30; &#xC704;&#xD574; &#xC5F4;&#xC5B4;&#xC904; &#xD3EC;&#xD2B8;</li>
+<li>depends_on : &#xD574;&#xB2F9; &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xAC00; &#xC2E4;&#xD589;&#xB418;&#xAE30; &#xC704;&#xD574;&#xC11C; &#xC120;&#xD589;&#xB418;&#xC5B4;&#xC57C;&#xD560; &#xCEE8;&#xD14C;&#xC774;&#xB108;</li>
+<li>volumes : &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xC5D0; &#xB9C8;&#xC6B4;&#xD2B8;&#xD560; Volume. ro(read only), rw(read &amp; write)</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-comment"># docker-compose&#xC758; &#xBC84;&#xC804;&#xC744; &#xBA85;&#xC2DC;. &#xBC84;&#xC804;&#xBCC4;&#xB85C; &#xBA85;&#xB839;&#xC5B4;&#xB4F1;&#xC758; &#xC57D;&#xAC04;&#xC758; &#xCC28;&#xC774;&#xAC00; &#xC788;&#xB2E4;.</span>
+<span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span>
+
+<span class="hljs-attr">services:</span>
+<span class="hljs-attr">    nginx:</span>
+        <span class="hljs-comment"># &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C8; container &#xC774;&#xB984;</span>
+<span class="hljs-attr">        container_name:</span> nginx
+
+        <span class="hljs-comment"># Dockerfile&#xC758; &#xC704;&#xCE58;</span>
+<span class="hljs-attr">        build:</span> ./nginx
+
+        <span class="hljs-comment"># &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xB07C;&#xB9AC; &#xB0B4;&#xBD80;&#xC801;&#xC73C;&#xB85C; &#xC5F0;&#xACB0;&#xD560; &#xB54C;&#xC758; alias</span>
+        <span class="hljs-comment"># &#xC608;&#xB97C; &#xB4E4;&#xC5B4; A:B &#xC758; &#xACBD;&#xC6B0; &#xC774; &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xB0B4;&#xC5D0;&#xC11C; B&#xB77C;&#xB294; &#xC774;&#xB984;&#xC73C;&#xB85C; A&#xC5D0; &#xC5F0;&#xACB0; &#xD560; &#xC218; &#xC788;&#xB2E4;.</span>
+        <span class="hljs-comment"># &#xC5EC;&#xAE30;&#xC11C;&#xB294; nginx&#xC5D0;&#xC11C; app&#xC774;&#xB77C;&#xB294; &#xB3C4;&#xBA54;&#xC778;&#xC744; &#xD1B5;&#xD574;&#xC11C; app &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xC5D0; &#xC811;&#xADFC;&#xD560; &#xC218; &#xC788;&#xB2E4;.</span>
+<span class="hljs-attr">        links:</span>
+<span class="hljs-attr">            - app:</span>app
+
+        <span class="hljs-comment"># &#xD638;&#xC2A4;&#xD2B8;&#xC640; &#xC5F0;&#xACB0;&#xD560; &#xD3EC;&#xD2B8;:&#xC678;&#xBD80;&#xC5D0; &#xB178;&#xCD9C;&#xD560; &#xD3EC;&#xD2B8;(&#xB458;&#xB2E4; &#xC4F8; &#xACBD;&#xC6B0; &quot; &quot;&#xC548;&#xC5D0; &#xB123;&#xC5B4;&#xC57C;&#xD568;)</span>
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-bullet">            -</span> <span class="hljs-string">&quot;80:80&quot;</span>
+<span class="hljs-attr">        depends_on:</span>
+<span class="hljs-bullet">            -</span> app
+
+<span class="hljs-attr">    app:</span>
+<span class="hljs-attr">        container_name:</span> app
+
+        <span class="hljs-comment">#Dockfile&#xC758; &#xC704;&#xCE58;</span>
+<span class="hljs-attr">        build:</span> ./app/
+
+        <span class="hljs-comment"># &#xD658;&#xACBD;&#xBCC0;&#xC218;&#xB97C; &#xC9C0;&#xC815;&#xD560; &#xC218; &#xC788;&#xC74C;.</span>
+<span class="hljs-attr">        environment:</span>
+<span class="hljs-attr">            NODE_ENV:</span> localhost
+<span class="hljs-attr">        expose:</span>
+<span class="hljs-bullet">            -</span> <span class="hljs-number">3000</span>
+<span class="hljs-attr">        links:</span>
+<span class="hljs-attr">            - db:</span>app_db
+<span class="hljs-attr">    db:</span>
+        image : mariadb:<span class="hljs-number">5.5</span>
+<span class="hljs-attr">        volumes:</span>
+<span class="hljs-bullet">          -</span> <span class="hljs-string">&quot;./data:/var/lib/mysql:rw&quot;</span>
+<span class="hljs-attr">        environment:</span>
+<span class="hljs-bullet">          -</span> <span class="hljs-string">&quot;MYSQL_DATABASE=hello&quot;</span>
+<span class="hljs-bullet">          -</span> <span class="hljs-string">&quot;MYSQL_USER=hello&quot;</span>
+<span class="hljs-bullet">          -</span> <span class="hljs-string">&quot;MYSQL_PASSWORD=hello&quot;</span>
+<span class="hljs-bullet">          -</span> <span class="hljs-string">&quot;MYSQL_ROOT_PASSWORD=root&quot;</span>
+<span class="hljs-attr">        expose:</span>
+<span class="hljs-bullet">            -</span> <span class="hljs-number">3306</span>
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-bullet">          -</span> <span class="hljs-string">&quot;3306:3306&quot;</span>
+</code></pre>
+<h2 id="2-dockerfile-&#xC791;&#xC131;-&#xBC0F;-conf-&#xD30C;&#xC77C;-&#xC791;&#xC131;">2) dockerfile &#xC791;&#xC131; &#xBC0F; conf &#xD30C;&#xC77C; &#xC791;&#xC131;</h2>
+<ul>
+<li>&#xC704;&#xC758; nginx&#xC640; app&#xC758; build&#xC5D0; &#xC0AC;&#xC6A9;&#xB420; dockerfile&#xC744; &#xC791;&#xC131;&#xD574;&#xBCF4;&#xB2E4;</li>
+</ul>
+<h4 id="1-nginx&#xC758;-dockerfile">(1) nginx&#xC758; dockerfile</h4>
+<pre><code class="lang-Dockerfile"><span class="hljs-comment"># nginx/Dockerfile</span>
+<span class="hljs-keyword">FROM</span> nginx
+<span class="hljs-keyword">ADD</span> <span class="bash">nginx.conf /etc/nginx/nginx.conf
+</span></code></pre>
+<h4 id="3-nginxconf-&#xC791;&#xC131;">(3) nginx.conf &#xC791;&#xC131;</h4>
+<pre><code class="lang-conf"># nginx/nginx.conf
+worker_processes 4;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    upstream app {
+        server app:3000;
+        #app&#xC758; 3000 port&#xC640; &#xC5F0;&#xACB0;&#xD55C;&#xB2E4;
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://app;
+        }
+    }
+}
+</code></pre>
+<h4 id="3-app&#xC758;-dockerfile">(3) app&#xC758; dockerfile</h4>
+<pre><code class="lang-Dockerfile"><span class="hljs-comment"># Dockerfile</span>
+<span class="hljs-keyword">FROM</span> node
+<span class="hljs-keyword">MAINTAINER</span> <span class="hljs-number">21</span>lva
+
+<span class="hljs-keyword">RUN</span> <span class="bash">mkdir /app
+</span><span class="hljs-keyword">ADD</span> <span class="bash">. /app
+</span><span class="hljs-keyword">WORKDIR</span> <span class="bash">/app
+</span>
+<span class="hljs-keyword">CMD</span> <span class="bash">[<span class="hljs-string">&quot;node&quot;</span>, <span class="hljs-string">&quot;index.js&quot;</span>]
+</span></code></pre>
+<h4 id="4-indexjs&#xC758;-mysql&#xBAA8;&#xB4C8;-&#xBD80;&#xBD84;">(4) index.js&#xC758; mysql&#xBAA8;&#xB4C8; &#xBD80;&#xBD84;</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> connection = mysql.createConnection({ 
+    host: <span class="hljs-string">&apos;app_db&apos;</span>,<span class="hljs-comment">//alias &#xC774;&#xB984; &#xC124;&#xC815; </span>
+    user: <span class="hljs-string">&apos;hello&apos;</span>, <span class="hljs-comment">//root&#xB294; local&#xC5D0;&#xC11C;&#xB9CC; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;</span>
+    port: <span class="hljs-number">3306</span>, 
+    password: <span class="hljs-string">&apos;hello&apos;</span>, 
+    database: <span class="hljs-string">&apos;engineer&apos;</span> 
+    });
+
+&#xCD9C;&#xCC98;: https:<span class="hljs-comment">//donochi.tistory.com/208 [&#xB274;&#xC9C8;&#xB79C;&#xB4DC; &#xB2E4;&#xC774;&#xC5B4;&#xB9AC;(NZ Diary) &#xB77C;&#xBE60;]</span>
+</code></pre>
+<h2 id="3-&#xD3F4;&#xB354;-&#xAD6C;&#xC870;-&#xBC0F;-&#xBE4C;&#xB4DC;--&#xC2E4;&#xD589;">3) &#xD3F4;&#xB354; &#xAD6C;&#xC870; &#xBC0F; &#xBE4C;&#xB4DC; &amp; &#xC2E4;&#xD589;</h2>
+<ul>
+<li>&#xD604;&#xC7AC; &#xD3F4;&#xB354; &#xAD6C;&#xC870;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xB2E4;</li>
+</ul>
+<pre><code>dockerExercise
+&#x251C;&#x2500;nginx
+&#x2502; &#x251C;&#x2500;&#x2500;Dockerfile
+&#x2502; &#x2514;&#x2500;&#x2500;nginx.conf
+&#x251C;&#x2500;app
+&#x2502; &#x251C;&#x2500;&#x2500;Dockerfile
+&#x2502; &#x251C;&#x2500;&#x2500;app.js
+&#x2502; &#x251C;&#x2500;&#x2500;bin
+&#x2502; &#x251C;&#x2500;&#x2500;routes
+&#x2502; &#x251C;&#x2500;&#x2500;public
+&#x2502; &#x251C;&#x2500;&#x2500;views
+&#x2502; &#x251C;&#x2500;&#x2500;package.json
+&#x251C;&#x2500;docker-compsoe.yml
+&#x2514;&#x2500;data
+</code></pre><ul>
+<li>docker-compose.yml&#xC774; &#xC788;&#xB294; &#xD3F4;&#xB354;&#xB85C; &#xAC00;&#xC11C; &#xBE4C;&#xB4DC; &#xD6C4; &#xC0AC;&#xC6A9;&#xD558;&#xC790;</li>
+</ul>
+<pre><code class="lang-console">docker-compose build
+docker-compose up
+</code></pre>
+<ul>
+<li>localhost:80&#xC5D0; &#xC811;&#xC18D;&#xD558;&#xC5EC; &#xC798; &#xC791;&#xB3D9;&#xD558;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD558;&#xC790;.</li>
+</ul>
+<p><img src="../../post_img/docker1.md/docker_compose_up.png" alt="docker_compose"></p>
+<hr>
+<h2 id="docker-image-&#xC9C0;&#xC6B0;&#xAE30;">Docker image &#xC9C0;&#xC6B0;&#xAE30;</h2>
+<ul>
+<li>docker&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB2E4; &#xBCF4;&#xBA74; <strong><none></none></strong> &#xC774;&#xB77C;&#xACE0; &#xC4F0;&#xC5EC;&#xC788;&#xB294; image&#xB4E4;&#xC774; &#xB9CE;&#xC774; &#xC0DD;&#xC131;&#xB41C;&#xB2E4;.</li>
+<li>&#xB2E4;&#xC74C; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC4F0;&#xBA74; &#xC27D;&#xAC8C; &#xC81C;&#xAC70;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-console">docker image prune --filter=&quot;dangling=true&quot;
+</code></pre>
+<hr>
+<h1 id="&#xCC38;&#xACE0;&#xC790;&#xB8CC;">&#xCC38;&#xACE0;&#xC790;&#xB8CC;</h1>
+<ul>
+<li><a href="https://conservative-vector.tistory.com/m/99" target="_blank">https://conservative-vector.tistory.com/m/99</a></li>
+<li><a href="https://ho1234c.github.io/2017/01/31/2017-01-31-docker-nodejs/index.html" target="_blank">https://ho1234c.github.io/2017/01/31/2017-01-31-docker-nodejs/index.html</a></li>
+<li><a href="https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html" target="_blank">https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html</a></li>
+<li><a href="https://blog.nacyot.com/articles/2014-01-27-easy-deploy-with-docker/" target="_blank">https://blog.nacyot.com/articles/2014-01-27-easy-deploy-with-docker/</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="docker0.html" class="navigation navigation-prev " aria-label="Previous page: Docker">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../k8s/k8s_basic.html" class="navigation navigation-next " aria-label="Next page: Kubernetes">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Docker1","date":"2019-12-18T01:02:59.000Z","author":"Inhyuk","categories":"Docker","tags":"docker","cover":"/assets/instacode.png","name":"docker1.md","level":"1.2.1","depth":2,"next":{"title":"Kubernetes","level":"1.3","depth":1,"path":"posts/k8s/k8s_basic.md","ref":"posts/k8s/k8s_basic.md","articles":[{"title":"Pod","level":"1.3.1","depth":2,"path":"posts/k8s/k8s_pod.md","ref":"posts/k8s/k8s_pod.md","articles":[]},{"title":"Controller","level":"1.3.2","depth":2,"path":"posts/k8s/k8s_controller.md","ref":"posts/k8s/k8s_controller.md","articles":[]},{"title":"Service","level":"1.3.3","depth":2,"path":"posts/k8s/k8s_service.md","ref":"posts/k8s/k8s_service.md","articles":[]},{"title":"Ingress","level":"1.3.4","depth":2,"path":"posts/k8s/k8s_ingress.md","ref":"posts/k8s/k8s_ingress.md","articles":[]},{"title":"configMap, secret","level":"1.3.5","depth":2,"path":"posts/k8s/k8s_configMap.md","ref":"posts/k8s/k8s_configMap.md","articles":[]},{"title":"cordon, drain, taint, toleration","level":"1.3.6","depth":2,"path":"posts/k8s/k8s_cdtt.md","ref":"posts/k8s/k8s_cdtt.md","articles":[]},{"title":"Logging : ElasticSearch, Kibana, fluentd","level":"1.3.7","depth":2,"path":"posts/k8s/k8s_log.md","ref":"posts/k8s/k8s_log.md","articles":[]}]},"previous":{"title":"Docker","level":"1.2","depth":1,"path":"posts/docker/docker0.md","ref":"posts/docker/docker0.md","articles":[{"title":"Docker1","level":"1.2.1","depth":2,"path":"posts/docker/docker1.md","ref":"posts/docker/docker1.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex-plus","toggle-chapters"],"pluginsConfig":{"katex-plus":{},"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/docker/docker1.md","mtime":"2020-03-17T15:03:09.367Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T15:05:57.250Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

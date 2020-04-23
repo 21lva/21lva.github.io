@@ -1,0 +1,564 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Controller · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="k8s_service.html" />
+    
+    
+    <link rel="prev" href="k8s_pod.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../docker/docker0.html">
+            
+                <a href="../docker/docker0.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../docker/docker1.html">
+            
+                <a href="../docker/docker1.html">
+            
+                    
+                    Docker1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="k8s_basic.html">
+            
+                <a href="k8s_basic.html">
+            
+                    
+                    Kubernetes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="k8s_pod.html">
+            
+                <a href="k8s_pod.html">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="k8s_controller.html">
+            
+                <a href="k8s_controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="k8s_service.html">
+            
+                <a href="k8s_service.html">
+            
+                    
+                    Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="k8s_ingress.html">
+            
+                <a href="k8s_ingress.html">
+            
+                    
+                    Ingress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="k8s_configMap.html">
+            
+                <a href="k8s_configMap.html">
+            
+                    
+                    configMap, secret
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="k8s_cdtt.html">
+            
+                <a href="k8s_cdtt.html">
+            
+                    
+                    cordon, drain, taint, toleration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="k8s_log.html">
+            
+                <a href="k8s_log.html">
+            
+                    
+                    Logging : ElasticSearch, Kibana, fluentd
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Controller</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="replication-controller">Replication controller</h1>
+<ul>
+<li>&#xAC00;&#xC7A5; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xCEE8;&#xD2B8;&#xB864;&#xB7EC;</li>
+<li>&#xC9C0;&#xC815;&#xB41C; &#xC22B;&#xC790;&#xB9CC;&#xD07C; &#xD56D;&#xC0C1; pod&#xB4E4;&#xC774; &#xC720;&#xC9C0;&#xB418;&#xB3C4;&#xB85D; &#xD55C;&#xB2E4;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> v1
+<span class="hljs-attr">kind:</span> ReplicationController
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> nginx
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> nginx
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      name:</span> nginx
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        app:</span> nginx
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> nginx
+<span class="hljs-attr">        image:</span> nginx
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">80</span>
+</code></pre>
+<ul>
+<li><p><em>kubectl get pods</em> &#xB85C; &#xD655;&#xC778;&#xD558;&#xBA74; 3&#xAC1C;&#xC758; pod&#xC774; &#xC2E4;&#xD589;&#xB418;&#xACE0; &#xC788;&#xB294; &#xAC83;&#xC744; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xB2E4;</p>
+</li>
+<li><p>Selector : &#xAC00;&#xC838;&#xC62C; pod&#xB4E4;&#xC758; label &#xAE30;&#xC220;</p>
+</li>
+<li>Replicas : &#xC720;&#xC9C0;&#xB418;&#xC5B4;&#xC57C; &#xD558;&#xB294; Pod&#xC758; &#xC218;</li>
+<li><p>template : Pod&#xC5D0; &#xB300;&#xD55C; &#xC815;&#xBCF4;&#xAC00; &#xB4E4;&#xC5B4; &#xC788;&#xC74C;. template&#xC758; &#xC815;&#xBCF4;&#xAC00; &#xB2E4;&#xB974;&#xBA74; RC&#xAC00; &#xB098;&#xC911;&#xC5D0; &#xB3D9;&#xC791;&#xD558;&#xB354;&#xB77C;&#xB3C4; &#xC774;&#xC804;&#xC758; pod&#xC740; &#xC0AD;&#xC81C;&#xD558;&#xC9C0; &#xC54A;&#xC74C;(template&#xC5D0; &#xB9DE;&#xB294; pod&#xB4E4;&#xB9CC; &#xB2E4;&#xB8EC;&#xB2E4;&#xB294; &#xC598;&#xAE30;)</p>
+</li>
+<li><p>RC&#xC0AD;&#xC81C;&#xB97C; &#xD558;&#xAC8C;&#xB418;&#xBA74; pod&#xB4E4;&#xB3C4; &#xAC19;&#xC774; &#xC0AD;&#xC81C;&#xB428;. <strong>--cascade=false</strong> &#xC635;&#xC158;&#xC744; &#xC8FC;&#xBA74; pod&#xB294; &#xB0A8;&#xAE30;&#xACE0; RC&#xB9CC; &#xC0AD;&#xC81C; &#xAC00;&#xB2A5;(<strong>kubectl delete rc <rc이름> --cascade=false</rc이름></strong> )</p>
+</li>
+<li><p>&#xD2B9;&#xC815; pod&#xB97C; RC&#xC5D0;&#xC11C; &#xB5BC;&#xC5B4; &#xB193;&#xC73C;&#xB824;&#xBA74; edit&#xC744;&#xD558;&#xC790;(<strong>kubectl edit pod <pod이름></pod이름></strong> ). label&#xC758; &#xC774;&#xB984;&#xC744; &#xBC14;&#xAFB8;&#xBA74; &#xB41C;&#xB2E4;</p>
+</li>
+</ul>
+<h2 id="rolling-update">rolling update</h2>
+<ul>
+<li>&#xC0C8;&#xB85C;&#xC6B4; &#xBC84;&#xC804;&#xC758; &#xBC30;&#xD3EC;&#xAC00; &#xD544;&#xC694;&#xD558;&#xBA74;, &#xC0C8; &#xBC84;&#xC804;&#xC758; pod&#xB97C; &#xBAA8;&#xB450; &#xBC14;&#xAFB8;&#xB294; &#xAC83;&#xC774; &#xC544;&#xB2CC;, &#xD558;&#xB098;&#xC529; &#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xBC14;&#xAFB8;&#xB294; &#xACFC;&#xC815;</li>
+<li><strong>kubectl rolling-update <pod이름> -f <rc이름> [--image=&#xC6D0;&#xD558;&#xB294; &#xC774;&#xBBF8;&#xC9C0;]</rc이름></pod이름></strong></li>
+</ul>
+<hr>
+<h1 id="replicaset">ReplicaSet</h1>
+<ul>
+<li>RC&#xC640; &#xB2EC;&#xB9AC; <strong>set based selector</strong> &#xB97C; &#xC774;&#xC6A9; &#xAC00;&#xB2A5;<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement" target="_blank">&#xACF5;&#xC2DD; &#xBB38;&#xC11C;</a></li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">selector:</span>
+<span class="hljs-attr">  matchLabels:</span>
+<span class="hljs-attr">    component:</span> redis
+<span class="hljs-attr">  matchExpressions:</span>
+<span class="hljs-bullet">    -</span> {key: tier, operator: In, values: [cache]}
+<span class="hljs-bullet">    -</span> {key: environment, operator: NotIn, values: [dev]}
+<span class="hljs-bullet">    -</span> {key: service, operator: Exists, values: [user]}
+<span class="hljs-bullet">    -</span> {key: service, operator: DoesNotExist, values: [db]}
+</code></pre>
+<hr>
+<h1 id="daemonset">DaemonSet</h1>
+<ul>
+<li>&#xD074;&#xB7EC;&#xC2A4;&#xD130; &#xC804;&#xCCB4;&#xC758; node&#xC5D0; pod&#xB97C; &#xD558;&#xB098;&#xC529; &#xC62C;&#xB9B4; &#xB54C; &#xC0AC;&#xC6A9;</li>
+<li>&#xD2B9;&#xC815; node&#xC5D0;&#xB9CC; &#xBC30;&#xD3EC;&#xB3C4; &#xAC00;&#xB2A5;. taint, toleration &#xC635;&#xC158; &#xC0AC;&#xC6A9;. taint&#xAC00; &#xC9C0;&#xC815;&#xB41C; &#xB178;&#xB4DC;&#xC5D0;&#xB294; pod&#xAC00; &#xBC30;&#xCE58;&#xB418;&#xC9C0; &#xC54A;&#xACE0;, toleration&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xADF8; node&#xC5D0; pod&#xB97C; &#xBC30;&#xCE58;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+<li>&#xBCF4;&#xD1B5; &#xBAA8;&#xB2C8;&#xD130;&#xB9C1;, &#xB85C;&#xADF8; &#xC218;&#xC9D1; &#xC6A9;&#xB3C4;&#xB85C; &#xC0AC;&#xC6A9;</li>
+</ul>
+<hr>
+<h1 id="job">Job</h1>
+<ul>
+<li>&#xD55C; &#xBC88; &#xC2DC;&#xD589;&#xB418;&#xACE0; &#xB05D;&#xB098;&#xB294; &#xD615;&#xD0DC;&#xC758; &#xC791;&#xC5C5;&#xC5D0; &#xC0AC;&#xC6A9;</li>
+<li>&#xD2B9;&#xC815; &#xAC1C;&#xC218;&#xC758; pod&#xAC00; &#xC131;&#xACF5;&#xC801;&#xC73C;&#xB85C; &#xC644;&#xB8CC;&#xB418;&#xB294; &#xAC83;&#xC744; &#xBCF4;&#xC7A5;</li>
+<li>Job&#xC744; &#xC815;&#xC758;&#xD560;&#xB54C;&#xB294; &#xBCF4;&#xD1B5; image&#xBFD0;&#xB9CC; &#xC544;&#xB2C8;&#xB77C; &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xC5D0;&#xC11C; Job&#xC744; &#xC218;&#xD589;&#xD558;&#xAE30; &#xC704;&#xD55C; <strong>command</strong> &#xB3C4; &#xD544;&#xC694;</li>
+</ul>
+<h2 id="&#xC885;&#xB958;">&#xC885;&#xB958;</h2>
+<ul>
+<li>&#xB2E8;&#xC77C; : pod &#xD558;&#xB098;&#xB9CC; &#xC2E4;&#xD589;. <strong>spec.completions</strong> &#xC640; <strong>spec.parallelism</strong> &#xC744; &#xC124;&#xC815;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;(&#xAE30;&#xBCF8; 1)</li>
+<li>&#xC644;&#xB8CC; &#xAC1C;&#xC218;&#xAC00; &#xC788;&#xB294; parallel job : <strong>spec.completions</strong> &#xC5D0; &#xC591;&#xC218;&#xB97C; &#xC124;&#xC815;.</li>
+<li>work queue&#xB97C; &#xAC00;&#xC9C4; parallel job<ul>
+<li><strong>spec.completions</strong> &#xC740; &#xC124;&#xC815;&#xD558;&#xC9C0; &#xC54A;&#xACE0;, <strong>spec.parallelism</strong> &#xC740; &#xC591;&#xC218;&#xB85C; &#xC124;&#xC815;</li>
+<li><strong>spec.completions</strong> &#xC744; &#xC124;&#xC815;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74;, <strong>spec.parallelism</strong> &#xACFC; &#xAC19;&#xC740; &#xC218;&#xB85C; &#xC124;&#xC815;&#xB428;</li>
+<li>&#xAC01; pod&#xB4E4;&#xC740; &#xC885;&#xB8CC;&#xB410;&#xB294;&#xC9C0;&#xB97C; &#xBAA8;&#xB450; &#xB3C5;&#xB9BD;&#xC801;&#xC73C;&#xB85C; &#xACB0;&#xC815;&#xD560; &#xC218; &#xC788;&#xACE0;, &#xBAA8;&#xB4E0; job&#xC774; &#xC2E4;&#xD589;</li>
+<li>&#xCD5C;&#xC18C;&#xD55C; 1&#xAC1C;&#xC758; pod&#xAC00; &#xC131;&#xACF5;&#xC801;&#xC73C;&#xB85C; &#xC885;&#xB8CC;&#xB418;&#xACE0; &#xBAA8;&#xB4E0; pod&#xAC00; &#xC885;&#xB8CC;&#xB418;&#xBA74; job&#xC774; &#xC131;&#xACF5;&#xC801;&#xC73C;&#xB85C; &#xC885;&#xB8CC;&#xB428;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="cron-job">cron job</h1>
+<ul>
+<li>job&#xC744; &#xC2DC;&#xAC04; &#xAE30;&#xC900;&#xC73C;&#xB85C; &#xAD00;&#xB9AC;</li>
+<li>&#xC9C0;&#xC815;&#xB41C; &#xC2DC;&#xAC04;&#xC5D0; &#xD55C;&#xBC88;&#xB9CC; job&#xC744; &#xC2E4;&#xD589;&#xD558;&#xAC70;&#xB098; &#xC8FC;&#xAE30;&#xC801;&#xC73C;&#xB85C; &#xC9C0;&#xC815;&#xB41C; &#xC2DC;&#xAC04;&#xB3D9;&#xC548; &#xBC18;&#xBCF5;&#xD558;&#xBA74;&#xC11C; job&#xC744; &#xC2E4;&#xD589;</li>
+</ul>
+<hr>
+<h1 id="statefulset">StatefulSet</h1>
+<ul>
+<li>stateless app&#xC774; &#xC544;&#xB2CC; state&#xAC00; &#xC788;&#xB294; app&#xC744; &#xAD00;&#xB9AC;&#xD558;&#xAE30; &#xC704;&#xD568;</li>
+<li>volume&#xC744; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xD2B9;&#xC815; &#xB370;&#xC774;&#xD130;&#xB97C; &#xAE30;&#xB85D;&#xD574;&#xB450;&#xACE0; &#xD3EC;&#xB4DC;&#xAC00; &#xC7AC;&#xC2DC;&#xC791;&#xD588;&#xC744;&#xB54C;&#xACE0; &#xC720;&#xC9C0;&#xD560; &#xC218; &#xC788;&#xC74C;</li>
+</ul>
+<hr>
+<h1 id="deployment">Deployment</h1>
+<ul>
+<li>stateless app&#xC744; &#xBC30;&#xD3EC;&#xD560; &#xB54C; &#xC77C;&#xBC18;&#xC801;&#xC73C;&#xB85C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xCEE8;&#xD2B8;&#xB864;&#xB7EC;</li>
+</ul>
+<pre><code class="lang-yml"><span class="hljs-attr">apiVersion:</span> apps/v1
+<span class="hljs-attr">kind:</span> Deployment
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> nginx-deployment
+<span class="hljs-attr">  labels:</span>
+<span class="hljs-attr">    app:</span> nginx
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  replicas:</span> <span class="hljs-number">3</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    matchLabels:</span>
+<span class="hljs-attr">      app:</span> nginx
+<span class="hljs-attr">  template:</span>
+<span class="hljs-attr">    metadata:</span>
+<span class="hljs-attr">      labels:</span>
+<span class="hljs-attr">        app:</span> nginx
+<span class="hljs-attr">    spec:</span>
+<span class="hljs-attr">      containers:</span>
+<span class="hljs-attr">      - name:</span> nginx
+<span class="hljs-attr">        image:</span> nginx
+<span class="hljs-attr">        ports:</span>
+<span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">80</span>
+</code></pre>
+<h2 id="&#xBC30;&#xD3EC;-&#xBC29;&#xC2DD;">&#xBC30;&#xD3EC; &#xBC29;&#xC2DD;</h2>
+<ul>
+<li>&#xBC30;&#xD3EC; &#xBC29;&#xC2DD;&#xC5D0;&#xB294; &#xBE14;&#xB8E8;&#xADF8;&#xB9B0;, &#xB864;&#xB9C1;&#xC5C5;&#xB370;&#xC774;&#xD2B8;, canary &#xB4F1;&#xC774; &#xC874;&#xC7AC;</li>
+</ul>
+<h4 id="1-&#xB864;&#xB9C1;-&#xC5C5;&#xB370;&#xC774;&#xD2B8;">1) &#xB864;&#xB9C1; &#xC5C5;&#xB370;&#xC774;&#xD2B8;</h4>
+<ul>
+<li><p>ReplicationController&#xB97C; &#xC9C1;&#xC811; &#xC774;&#xC6A9;&#xD558;&#xB294; &#xBC29;&#xBC95;</p>
+<ol>
+<li>&#xAE30;&#xC874; RC1(replica controller)&#xC758; replicas&#xC744; -1 &#xD55C;&#xB2E4;</li>
+<li>&#xC0C8;&#xB85C;&#xC6B4; RC2&#xC758; replicas&#xB97C; +1 &#xD55C;&#xB2E4;</li>
+<li>&#xBC18;&#xBCF5;&#xD55C;&#xB2E4;</li>
+<li>&#xBC30;&#xD3EC; &#xC911;&#xAC04;&#xC5D0; &#xC798;&#xBABB;&#xB41C; &#xACBD;&#xC6B0; &#xC704;&#xC758; &#xBC29;&#xBC95;&#xC744; &#xBC18;&#xB300;&#xB85C; &#xD55C;&#xB2E4;</li>
+</ol>
+</li>
+<li><p>RC&#xB97C; &#xC9C1;&#xC811; &#xC774;&#xC6A9;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC740; &#xADC0;&#xCC2E;&#xACE0; &#xBCF5;&#xC7A1;&#xD558;&#xB2E4;</p>
+</li>
+<li>Deployment&#xC740; &#xB0B4;&#xBD80;&#xC801;&#xC73C;&#xB85C; replicaSet&#xC744; &#xC6B4;&#xC601;&#xD558;&#xAE30;&#xB54C;&#xBB38;&#xC5D0; 2&#xAC1C;&#xC758; RS&#xB97C; &#xB9CC;&#xB4DC;&#xB294; &#xBC29;&#xC2DD;&#xC73C;&#xB85C; &#xB864;&#xB9C1; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xB97C; &#xC9C4;&#xD589;&#xD560; &#xC218; &#xC788;&#xB2E4;</li>
+<li>&#xBC29;&#xBC95;&#xC740; &#xC5EC;&#xB7EC;&#xAC00;&#xC9C0;&#xAC00; &#xC788;&#xB2E4;<ol>
+<li><strong>kubectl set image deployment <deploy이름> app-label=&lt;&#xC0C8;&#xB85C;&#xC6B4; &#xC774;&#xBBF8;&#xC9C0;&gt;</deploy이름></strong> &#xB85C; &#xC0C8; &#xC774;&#xBBF8;&#xC9C0;&#xB97C; &#xC801;&#xC6A9;</li>
+<li><strong>kubectl edit deploy <deploy이름></deploy이름></strong> &#xC744; &#xD1B5;&#xD574;&#xC11C; &#xC124;&#xC815; &#xC815;&#xBCF4;&#xB97C; &#xC5F4;&#xACE0; &#xC218;&#xC815;</li>
+<li>&#xC0C8;&#xB85C;&#xC6B4; yaml &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E4;&#xAC70;&#xB098; &#xC218;&#xC815;&#xD558;&#xACE0; <strong>kubectl replace -f [yaml,yml&#xD30C;&#xC77C;]</strong> &#xC744; &#xD1B5;&#xD574;&#xC11C; &#xC5C5;&#xB370;&#xC774;&#xD2B8;</li>
+</ol>
+</li>
+</ul>
+<h2 id="&#xBC30;&#xD3EC;-&#xB864;&#xBC31;">&#xBC30;&#xD3EC; &#xB864;&#xBC31;</h2>
+<ul>
+<li>&#xBCC0;&#xACBD; &#xB0B4;&#xC5ED;&#xC740; <strong>kubectl rollout history deploy nginx-deployment</strong></li>
+<li><strong>--revision=&lt;&#xBC88;&#xD638;&gt;</strong> &#xB97C; &#xC801;&#xC73C;&#xBA74; &#xC790;&#xC138;&#xD55C; &#xB0B4;&#xC6A9;&#xC744; &#xBCFC; &#xC218; &#xC788;&#xB2E4;</li>
+</ul>
+<p><img src="../../post_img/k8s_controller.md/deploy.png" alt="deploy"></p>
+<ul>
+<li><p>&#xC9C1;&#xC804; &#xBC84;&#xC804;&#xC73C;&#xB85C; &#xB3CC;&#xC544;&#xAC00;&#xACE0; &#xC2F6;&#xC73C;&#xBA74; <strong>kubectl rollout undo deploy <deploy이름> --to-revision=&lt;&#xBC88;&#xD638;&gt;</deploy이름></strong></p>
+</li>
+<li><p><strong>kubectl scale deploy &lt;&#xC774;&#xB984;&gt; --replicas=&lt;&#xC22B;&#xC790;&gt;</strong> : pod&#xAC1C;&#xC218; &#xC870;&#xC815;</p>
+</li>
+<li><strong>kubectl rollout pause deploy <deploy이름></deploy이름></strong> : &#xBC30;&#xD3EC; &#xC8FC;&#xC774;</li>
+<li><strong>kubectl set image deploy &lt;&#xC774;&#xB984;&gt; <app이름>=<image이름></image이름></app이름></strong> : &#xC774;&#xBBF8;&#xC9C0; &#xBCC0;&#xACBD;</li>
+<li><strong>kubectl rollout resume deploy &lt;&#xC774;&#xB984;&gt;</strong> : &#xC7AC;&#xBC30;&#xD3EC;</li>
+</ul>
+<h2 id="&#xBC30;&#xD3EC;-&#xC0C1;&#xD0DC;">&#xBC30;&#xD3EC; &#xC0C1;&#xD0DC;</h2>
+<ul>
+<li>&#xBC30;&#xD3EC;&#xB97C; &#xD558;&#xAC8C;&#xB418;&#xBA74; status&#xC758; &#xBCC0;&#xD654;&#xAC00; &#xBC1C;&#xC0DD;</li>
+<li><p><strong>kubectl rollout status deploy &lt;&#xC774;&#xB984;&gt;</strong> &#xC73C;&#xB85C; &#xC0C1;&#xD0DC; &#xD655;&#xC778;</p>
+</li>
+<li><p>Progressing</p>
+<ul>
+<li>&#xC0C8;&#xB85C;&#xC6B4; replicaSet&#xC744; &#xB9CC;&#xB4E4;&#xACE0; &#xC788;&#xC744; &#xB54C;</li>
+<li>&#xC0C8;&#xB85C;&#xC6B4; replicaSet&#xC758; pod&#xAC1C;&#xC218;&#xB97C; &#xB298;&#xB9AC;&#xACE0; &#xC904;&#xC774;&#xACE0; &#xC788;&#xC744; &#xB54C;</li>
+<li>&#xC0C8;&#xB85C;&#xC6B4; pod&#xAC00; &#xC900;&#xBE44;&#xC0C1;&#xD0DC;&#xAC00; &#xB418;&#xAC70;&#xB098; &#xC774;&#xC6A9;&#xAC00;&#xB2A5;&#xD55C; &#xC0C1;&#xD0DC;&#xC77C; &#xB54C;</li>
+</ul>
+</li>
+<li><p>complete : &#xB2E4;&#xC74C; &#xC870;&#xAC74;&#xB4E4;&#xC744; &#xD655;&#xC778;&#xD558;&#xC5EC; &#xBC30;&#xD3EC; &#xC0C1;&#xD0DC;&#xB97C; &#xD655;&#xC778;.</p>
+<ul>
+<li>deployment&#xAC00; &#xAD00;&#xB9AC;&#xD558;&#xB294; &#xBAA8;&#xB4E0; replicaSet&#xC758; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xAC00; &#xC644;&#xB8CC;&#xB418;&#xC5C8;&#xC744; &#xB54C;</li>
+<li>&#xBAA8;&#xB4E0; replicaSet&#xAC00; &#xC0AC;&#xC6A9;&#xAC00;&#xB2A5;&#xD560; &#xB54C;</li>
+<li>&#xC774;&#xC804; replicaSet&#xAC00; &#xC885;&#xB8CC;&#xB418;&#xC5C8;&#xC744; &#xB54C;</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="k8s_pod.html" class="navigation navigation-prev " aria-label="Previous page: Pod">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="k8s_service.html" class="navigation navigation-next " aria-label="Next page: Service">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"layout":"post","title":"Controller","date":"2019-12-18T01:02:59.000Z","name":"k8s_controller.md","level":"1.3.2","depth":2,"next":{"title":"Service","level":"1.3.3","depth":2,"path":"posts/k8s/k8s_service.md","ref":"posts/k8s/k8s_service.md","articles":[]},"previous":{"title":"Pod","level":"1.3.1","depth":2,"path":"posts/k8s/k8s_pod.md","ref":"posts/k8s/k8s_pod.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex-plus","toggle-chapters"],"pluginsConfig":{"katex-plus":{},"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/k8s/k8s_controller.md","mtime":"2020-03-17T15:05:16.985Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T15:05:57.250Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
