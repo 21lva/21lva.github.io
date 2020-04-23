@@ -3,7 +3,7 @@ layout: post
 title:  "Redis"
 date:   2019-08-10 02:02:59
 author: Inhyuk
-categories: NodeJS
+category: NodeJS
 tags: NodeJS
 cover:  "/assets/instacode.png"
 name: nodejs_redis.md

@@ -3,6 +3,7 @@ layout: post
 title:  "JSP"
 cover:  "/assets/instacode.png"
 name: java_object.md
+category: JSP
 ---
 
 

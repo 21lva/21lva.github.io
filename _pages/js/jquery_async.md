@@ -3,7 +3,7 @@ layout: post
 title:  "jQuery 3 - 비동기 처리 & 플러그인"
 date:   2019-06-13 02:02:59
 author: Inhyuk
-categories: Javascript
+category: Javascript
 tags: js
 cover:  "/assets/instacode.png"
 name: jquery_async.md

@@ -3,6 +3,7 @@ layout: post
 title:  "Controller, 배포"
 date:   2019-12-18 01:02:59
 name: k8s_controller.md
+category: kubernetes
 ---
 
 

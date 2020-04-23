@@ -1,0 +1,447 @@
+I"��<h1 id="socketio">socket.io</h1>
+
+<ul>
+  <li>socket.io : 웹소켓, 롱풀링 통신을 가능하게 해줌</li>
+  <li>웹소켓 : 서버와 클라이언틔의 양방향 연결 채널을 구성하는 HTML5 프로토콜. 특정 주기를 가지고 <strong>polling</strong> 하지 않아도 변경 사항을 전달.</li>
+  <li>http는 양방향이 불가. 클라이언트가 <strong>REQUEST</strong> 를 보낼 때만 서버에서 <strong>RESPONSE</strong> 를 보낼 수 있음.</li>
+  <li>Polling : 일정 시간 주기로 계속해서 물어(request)보는 것. 실시간이 불가능. 네트워크 부하가 올 수도 있음(setInterval 이용)</li>
+  <li>
+    <p>Long Polling : 서버에서는 요청(request)를 받으면 일정 시간 동안 답변 보류 -&gt; 업데이트 시에는 응답(response)를 보낸다 -&gt; 대답을 받으면 다시 새로운 요청을 보낸다. 빈번한 데이터의 업데이트가 있으면 별 효과가 없다.</p>
+  </li>
+  <li>설치하자</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>npm <span class="nb">install </span>socket.io@1
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>연습이기 때문에 간단하게 두 가지 파일(index.html, socket.io.server.js)을 준비하자</p>
+  </li>
+  <li>
+    <p>socket.io.server.js</p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">socketio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">socket.io</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span>
+            <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span>
+        <span class="p">});</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Sever running at http://127.0.0.1:52273</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//socket 서버 생성, 실행</span>
+<span class="kd">var</span> <span class="nx">io</span> <span class="o">=</span> <span class="nx">socketio</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">server</span><span class="p">);</span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>index.html의 모습.</li>
+  <li>웹서버에 socket.io.js 파일이 없는 데도 사용가능하다(socket.io 모듈을 사용하면 자동으로 socket.io.js파일이 등록됨)</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">html</span> <span class="nx">lang</span><span class="o">=</span><span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">UTF-8</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Socket</span><span class="p">.</span><span class="nx">io</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">'</span><span class="s1">/socket.io/socket.io.js</span><span class="dl">'</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">socket</span><span class="o">=</span><span class="nx">io</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+    <span class="p">};</span>
+    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<ul>
+  <li>디버그 모드로 실행하고 브라우저로 접속하자</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">export </span><span class="nv">DEBUT</span><span class="o">=</span>socket.io<span class="k">*</span>
+<span class="gp">$</span><span class="w"> </span>node socket.io.server.js
+</code></pre></div></div>
+
+<ul>
+  <li>다음과 같이 접속되었음을 알 수 있다</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">socket.io:server initializing namespace / +0ms
+socket.io-parser encoding packet {"type":0,"nsp":"/"} +0ms
+socket.io-parser encoded {"type":0,"nsp":"/"} as 0 +1ms
+socket.io:server creating engine.io instance with opts {"path":"/socket.io","initialPacket":["0"]} +6ms
+socket.io:server attaching client serving req handler +19ms
+Sever running at http://127.0.0.1:52273
+socket.io:server serve client source +6s
+socket.io:server incoming connection with id GFK0N5ZqfrI84Y9VAAAA +40ms
+socket.io:client connecting to namespace / +0ms
+socket.io:namespace adding socket to nsp / +0ms
+socket.io:socket socket connected - writing packet +0ms
+socket.io:socket joining room GFK0N5ZqfrI84Y9VAAAA +0ms
+socket.io:socket packet already sent in initial handshake +1ms
+socket.io:socket joined room GFK0N5ZqfrI84Y9VAAAA +2ms
+</span></code></pre></div></div>
+
+<h2 id="1-이벤트">1) 이벤트</h2>
+
+<ul>
+  <li>socket.io도 이벤트 리스너 등록, 실행을 <strong>on(), emit()</strong> 메서드로 진행한다.</li>
+  <li>연결 이벤트
+    <ol>
+      <li>connection : 클라이언트가 연결할 때 발생</li>
+      <li>disconnect : 클라이언트가 연결을 끊을 때 발생</li>
+    </ol>
+  </li>
+  <li>이벤트를 다음과 같이 만들어보자.
+    <ol>
+      <li>클라이언트에서 rint이벤트가 발생하면 캐치해서 콘솔에 정보를 띄운다</li>
+      <li>smart이벤트를 발생시키고 클라이언트에 전달한다.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">io</span> <span class="o">=</span> <span class="nx">socketio</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">server</span><span class="p">);</span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">rint</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Client Send : </span><span class="dl">"</span><span class="p">,</span><span class="nx">data</span><span class="p">);</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">smart</span><span class="dl">"</span><span class="p">,</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>  
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>html 파일도 수정하자
+    <ol>
+      <li>서버에서 보내는 smart 이벤트를 받을 이벤트 리스너를 등록한다</li>
+      <li>버튼을 눌렀을 때, 값을 입력 받아서 서버에 전달(rint이벤트)할 리스너를 등록한다.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Socket.io<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'/socket.io/socket.io.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">socket</span><span class="o">=</span><span class="nx">io</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+        <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">smart</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+          <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+          <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+          <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">rint</span><span class="dl">"</span><span class="p">,</span><span class="nx">text</span><span class="p">);</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"button"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h2 id="2-소켓-통신-종류">2) 소켓 통신 종류</h2>
+
+<ul>
+  <li>public : 자신(클라이언트)을 포함한 모든 클라이언트에 데이터 전달</li>
+  <li>broadcast : 자신(클라이언트)을 제외한 모든 클라이언트에 데이터 전달</li>
+  <li>private : 특정 클라이언트에 데이터를 전달</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//public</span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">rint</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">smart</span><span class="dl">"</span><span class="p">,</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>  
+<span class="p">});</span>
+
+<span class="c1">//broadcast</span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">rint</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">broadcase</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">smart</span><span class="dl">"</span><span class="p">,</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>  
+<span class="p">});</span>
+
+<span class="c1">//private</span>
+<span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="c1">//특정 id설정. 가장 최근에 접속한 사람에게 보낸다</span>
+  <span class="nx">id</span> <span class="o">=</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">rint</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">smart</span><span class="dl">"</span><span class="p">,</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">//to() 대신 in() 사용 가능</span>
+    <span class="p">});</span>  
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="3-방-생성">3) 방 생성</h2>
+
+<ul>
+  <li>socket.io는 방(room,group)을 생성하는 기능이 존재
+    <ol>
+      <li>socket.join() : 클라이언트를 방에 추가</li>
+      <li>io.sockets.in() /io.sockets.to() : 특정 방에 있는 클라이언트 추출</li>
+    </ol>
+  </li>
+  <li>index.html과 socket.room.js 파일을 준비하자</li>
+  <li>js파일의 모습</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">socketio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">socket.io</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span>
+            <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span>
+        <span class="p">});</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Sever running at http://127.0.0.1:52273</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//socket 서버 생성, 실행</span>
+<span class="kd">var</span> <span class="nx">io</span> <span class="o">=</span> <span class="nx">socketio</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">server</span><span class="p">);</span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">roomName</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="c1">//join event</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">join</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">roomName</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+
+  <span class="c1">//message event</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="c1">//public</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="k">in</span><span class="p">(</span><span class="nx">roomName</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>index.html 의 모습</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">html</span> <span class="nx">lang</span><span class="o">=</span><span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="dl">"</span><span class="s2">UTF-8</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">Socket</span><span class="p">.</span><span class="nx">io</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">script</span>
+			  <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://code.jquery.com/jquery-3.4.1.js</span><span class="dl">"</span>
+			  <span class="nx">integrity</span><span class="o">=</span><span class="dl">"</span><span class="s2">sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=</span><span class="dl">"</span>
+			  <span class="nx">crossorigin</span><span class="o">=</span><span class="dl">"</span><span class="s2">anonymous</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">'</span><span class="s1">/socket.io/socket.io.js</span><span class="dl">'</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="dl">'</span><span class="s1">Please type Room name</span><span class="dl">'</span><span class="p">.</span><span class="dl">''</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">socket</span><span class="o">=</span><span class="nx">io</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+
+        <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">join</span><span class="dl">'</span><span class="p">,</span><span class="nx">room</span><span class="p">);</span>
+        <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+          <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;p&gt;</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="o">+</span><span class="dl">'</span><span class="s1">&lt;/p&gt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="dl">'</span><span class="s1">body</span><span class="dl">'</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#button</span><span class="dl">'</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+          <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">socket.io room message</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<h2 id="4-웹-채팅-프로그램">4) 웹 채팅 프로그램</h2>
+
+<ul>
+  <li>사용하는 모듈 : socket.io, http, fs</li>
+  <li>
+    <p>구성 : app.js, index,html</p>
+  </li>
+  <li>웹 채팅 서버 : 2가지 이벤트
+    <ol>
+      <li>클라이언트에서 메세지를 입력하면 서버로 데이터(이름, 메세지, 시간) 전달.</li>
+      <li>서버에서 받은 정보를 가지고 다른 클라이언트(public 방식)에 데이터 전달</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">socketio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">socket.io</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span>
+            <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span>
+        <span class="p">});</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Sever running at http://127.0.0.1:52273</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//socket 서버 생성, 실행</span>
+<span class="kd">var</span> <span class="nx">io</span> <span class="o">=</span> <span class="nx">socketio</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">server</span><span class="p">);</span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connection</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="c1">//message event</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="c1">//public</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="k">in</span><span class="p">(</span><span class="nx">roomName</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>웹 채팅 클라이언트</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Socket.io<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script
+			  </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.4.1.js"</span>
+			  <span class="na">integrity=</span><span class="s">"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="</span>
+			  <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">'/socket.io/socket.io.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="dl">'</span><span class="s1">Please type Room name</span><span class="dl">'</span><span class="p">.</span><span class="dl">''</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">socket</span><span class="o">=</span><span class="nx">io</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+        <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+          <span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span><span class="dl">''</span><span class="p">;</span>
+          <span class="nx">output</span><span class="o">+=</span><span class="dl">'</span><span class="s1">&lt;li&gt;</span><span class="dl">'</span><span class="p">;</span>
+          <span class="nx">output</span><span class="o">+=</span><span class="dl">'</span><span class="s1">&lt;h3&gt;</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="o">+&lt;</span><span class="sr">/h3&gt;</span><span class="err">;
+</span>          <span class="nx">output</span><span class="o">+=</span><span class="dl">'</span><span class="s1">&lt;p&gt;</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">.</span><span class="nx">message</span><span class="o">+&lt;</span><span class="sr">/p&gt;</span><span class="err">;
+</span>          <span class="nx">output</span><span class="o">+=</span><span class="dl">'</span><span class="s1">&lt;p&gt;</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">.</span><span class="nx">date</span><span class="o">+&lt;</span><span class="sr">/p&gt;</span><span class="err">;
+</span>          <span class="nx">output</span><span class="o">+=</span><span class="dl">'</span><span class="s1">&lt;/ li&gt;</span><span class="dl">'</span><span class="p">;</span>
+          <span class="nx">$</span><span class="p">(</span><span class="nx">output</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="dl">'</span><span class="s1">#content</span><span class="dl">'</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+          <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,{</span>
+            <span class="na">name</span><span class="p">:</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#name</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
+            <span class="na">message</span><span class="p">:</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#message</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span>
+            <span class="na">date</span><span class="p">:</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toUTCString</span><span class="p">()</span>
+            <span class="p">});</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Socket.io Chatting<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Chat With Node.js<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;hr/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"name"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type = </span><span class="s">"text"</span> <span class="na">id =</span><span class="s">"message"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;button&gt;</span>Send!<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">id= </span><span class="s">"content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<hr />
+
+<h1 id="expressjs와-함께-사용하기">ExpressJS와 함께 사용하기</h1>
+
+<ul>
+  <li>express-generator를 이용하여 프레임을 만든 서버에서는 <strong>www</strong> 와 <strong>app.js</strong> 를 수정해줘야 한다</li>
+  <li>여기서는 socket.io관련 js파일은 <strong>routes/chat/chat.js</strong> 에 설정</li>
+</ul>
+
+<h4 id="routeschatchatjs">routes/chat/chat.js</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">//socket io  setup</span>
+<span class="kd">var</span> <span class="nx">io</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">socket.io</span><span class="dl">"</span><span class="p">)();</span>
+
+<span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">connection</span><span class="dl">"</span><span class="p">,(</span><span class="nx">socket</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="c1">//login handler</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,(</span><span class="nx">data</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Client logged in. name:</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">name</span><span class="o">=</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="c1">//chat handler</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message from %s: %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">from</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">msg</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">msg</span>
+    <span class="p">};</span>
+
+    <span class="c1">// 메시지를 전송한 클라이언트를 제외한 모든 클라이언트에게 메시지를 전송한다</span>
+    <span class="c1">//socket.broadcast.emit('chat', msg);</span>
+
+    <span class="c1">// 메시지를 전송한 클라이언트에게만 메시지를 전송한다</span>
+    <span class="c1">// socket.emit('chat', msg);</span>
+
+    <span class="c1">// 접속된 모든 클라이언트에게 메시지를 전송한다</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat</span><span class="dl">'</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+
+    <span class="c1">// 특정 클라이언트에게만 메시지를 전송한다</span>
+    <span class="c1">// io.to(id).emit('chat', data);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">io</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="appjs">app.js</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//생략</span>
+
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="c1">//socket.io router</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">io</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./routes/chat/chat</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//생략</span>
+</code></pre></div></div>
+
+<h4 id="binwww">bin/www</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//생략</span>
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+
+<span class="c1">// app.io에 server를 추가한다</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">server</span><span class="p">);</span>
+
+<span class="c1">//생략</span>
+</code></pre></div></div>
+<hr />
+
+<h1 id="참고자료">참고자료</h1>
+
+<ul>
+  <li><a href="https://poiemaweb.com/nodejs-socketio">https://poiemaweb.com/nodejs-socketio</a></li>
+</ul>
+:ET

@@ -3,6 +3,7 @@ layout: post
 title:  "추상클래스 & 인터페이스"
 date:   2019-12-18 01:02:59
 author: Inhyuk
+category: java
 name: java_abstract.md
 ---
 

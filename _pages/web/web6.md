@@ -3,7 +3,7 @@ layout: post
 title:  "웹 - 반응형 웹 && 미디어 쿼리"
 date:   2019-06-20 02:02:59
 author: Inhyuk
-categories: Web
+category: Web
 tags: web
 cover:  "/assets/instacode.png"
 name: 2019-06-22-web6.md

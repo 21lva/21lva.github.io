@@ -1,0 +1,276 @@
+I"L[<ul>
+  <li><strong>DOM</strong> 은 <strong>Document object model</strong> 의 약자이다. 윈도우에 로드된 문서를 의미</li>
+  <li><strong>window</strong> 객체의 <strong>document</strong> 프로퍼티를 통해서 사용 가능</li>
+</ul>
+
+<hr />
+
+<h1 id="dom-객체의-구조">DOM 객체의 구조</h1>
+
+<ul>
+  <li>DOM 객체의 구조에는 3가지가 존재한다.</li>
+</ul>
+
+<h2 id="객체-생성과-관련된-상속-관계">객체 생성과 관련된 상속 관계</h2>
+
+<p><img src="/post_img/js_dom.md/node.png" alt="node 계층도" /></p>
+
+<ul>
+  <li>Node 객체를 최상위로 시작되는 상속관계 계층</li>
+  <li>객체의 성질과 특징과 관련된 부분</li>
+</ul>
+
+<h2 id="프로퍼티와-관련된-관계">프로퍼티와 관련된 관계</h2>
+
+<p><img src="/post_img/js_dom.md/window.png" alt="Window 계층도" /></p>
+
+<ul>
+  <li>어느 객체의 맴버 또는 프로퍼티로 존재하는가와 관련된 계층도이다.</li>
+  <li>전역객체(window)로 시작하여 내려온다.</li>
+  <li>사진의 위 2층은 <strong>BOM</strong>, 그 외는 <strong>DOM</strong> 객체들이다.</li>
+</ul>
+
+<h2 id="html에서의-관계">HTML에서의 관계</h2>
+
+<p><img src="/post_img/js_dom.md/html.jpeg" alt="HTML 계층도" /></p>
+<ul>
+  <li>문서에 표시되는 관계이다.</li>
+  <li>html내에서 태그들의 관계라고 보면 된다.</li>
+</ul>
+
+<hr />
+
+<h1 id="각종-객체">각종 객체</h1>
+
+<h2 id="1-node-객체">1) Node 객체</h2>
+
+<ul>
+  <li>DOM의 최상위 객체</li>
+  <li>모든 DOM객체는 Node를 상속받는다.</li>
+  <li>객체끼리의 관계, 객체가 속하는 카테고리, 값을 관리하고, 자식을 추가/수정하는 기능이 존재</li>
+  <li>빈 공간도 Node객체로 사용한다(줄바꿈 같은 경우도 자식 Node로 생각한다)</li>
+  <li>노드 객체의 타입들(nodeType으로 확인가능)
+    <ol>
+      <li>Node.ELEMENT_NODE (1)</li>
+      <li>Node.ATTRIBUTE_NODE (2)</li>
+      <li>Node.TEXT_NODE (3)</li>
+      <li>Node.CDATA_SECTION_NODE (4)</li>
+      <li>Node.ENTITY_REFERENCE_NODE (5)</li>
+      <li>Node.ENTITY_NODE (6)</li>
+      <li>Node.PROCESSING_INSTRUCTION_NODE (7)</li>
+      <li>Node.COMMENT_NODE (8)</li>
+      <li>Node.DOCUMENT_NODE (9)</li>
+      <li>Node.DOCUMENT_TYPE_NODE (10)</li>
+      <li>Node.DOCUMENT_FRAGMENT_NODE (11)</li>
+      <li>Node.NOTATION_NODE (12)</li>
+    </ol>
+  </li>
+  <li>프로퍼티와 메서드
+    <ol>
+      <li>nodeType : 노드의 타입을 의미. 각 타입마다 고유의 숫자가 존재(이름으로도 매칭 가능).</li>
+      <li>nodeName : 노드의 태그 이름</li>
+      <li>childNodes: NodeList(유사배열)가 저장됨. 계속해서 바뀔 수 있음 /ParentNodes, firstChild/ lastChild</li>
+      <li>hasChildNodes() : 자식이 있으면 true / ownerDocument : 문서의 document 객체에 접근.</li>
+      <li>appendChild() / removeChild()</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol</span> <span class="na">id=</span><span class="s">'ol1'</span><span class="nt">&gt;</span>
+<span class="nt">&lt;li&gt;</span>First<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>Second<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>Third<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">ol1</span><span class="dl">'</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">nodeName</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span><span class="p">);</span><span class="c1">//firstChild는 줄바꿈 문자 의미</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">nextSibling</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="2-document-객체">2) Document 객체</h2>
+
+<ul>
+  <li>DOM의 시작점이자 문서 전체를 의미하는 객체</li>
+  <li><strong>Document</strong> 객체 대신 <strong>HTMLDocument</strong> 객체를 사용.</li>
+  <li><strong>document</strong> 객체는 전역객체의 프로퍼티</li>
+  <li>프로퍼티와 메서드
+    <ol>
+      <li>문서 정보 : document.title : title 요소의 텍스트가 들어가 있음 / document.URL / document.domain</li>
+      <li>요소 찾기 : getElementById() / getElementsByTagName() / getElementsByClassName()</li>
+      <li>문서 조작 : write() / writeln() / open() / close()</li>
+    </ol>
+  </li>
+  <li>tag 안의 tag를 찾고 싶으면 중첩해서 쓰면 된다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"exec"</span><span class="nt">&gt;</span>hi<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"exec"</span><span class="nt">&gt;</span>hello<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"exec"</span><span class="nt">&gt;</span>bye<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">lis</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">'</span><span class="s1">exec</span><span class="dl">'</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">lis</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="o">++</span><span class="nx">i</span><span class="p">){</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">lis</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">innerText</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>querySelector</strong> : 선택자에 해당하는 객체를 반환. 하나만을 반환, 모든 element를 원하면 <strong>querySelectorAll</strong> 을 사용</li>
+  <li>위 방법은 name, id 등을 제한하지 않고 css선택자를 사용하여 요소를 찾는다.</li>
+  <li><strong>jQuery</strong> 를 사용하고자 하면 html로 로드해야 함.(다운로드 하는 방법도 있음)</li>
+  <li>CDN : 온라인 상의 대용량 컨텐츠를 빠르게 전송하는 기술. jquery를 특정 서버에서 전송 받아 사용하도록 한다.</li>
+  <li><a href="https://code.jquery.com/jquery/">jQuery CDN</a></li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.4.1.js"</span>
+			  <span class="na">integrity=</span><span class="s">"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="</span>
+			  <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>jQuery 함수는 <em>$</em> 를 이용한다.</li>
+  <li><strong>$(css선택자)</strong> 는 jQuery 객체를 리턴</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 작업은 DOM을 이용하면 다음과 같다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">lis</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">lis</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="o">++</span><span class="nx">i</span><span class="p">){</span>
+  <span class="nx">lis</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span><span class="o">=</span><span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>태그, 클래스, id 값으로 이용할 수도 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">tag_name</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.class_name</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#id_name</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>jQuery작업이 끝나면 jQuery 객체를 리턴하기 때문에 연속해서 작업을 하고 싶으면 연속해서 메소드를 호출하면 된다.(체이닝이라고 부른다)</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.class_name</span><span class="dl">'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">textDecoration</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">underline</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다수의 element를 가지는 jQuery객체에는 <em>[인덱스]</em> 를 통해서 접근 가능하다.</li>
+  <li>map을 통해서 모든 element에 작업을 할 수 있다.</li>
+  <li>얻어낸 jQuery객체의 element들은 DOM element이다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"e1"</span><span class="nt">&gt;</span>Number 1<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"e1"</span><span class="nt">&gt;</span>Number 2<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"e1"</span><span class="nt">&gt;</span>Number 3<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.e1</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">li</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="nx">element</span><span class="p">){</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">index</span><span class="o">+</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="o">+</span><span class="nx">element</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="3-text-객체">3) Text 객체</h2>
+
+<ul>
+  <li>Node를 상속 받는 객체</li>
+  <li>태그 사이에 존재하는 글은 Text 객체이다. 태그는 Element 객체이다. ex) &lt;p&gt; 텍스트 객체 &lt;/p&gt;</li>
+  <li>공백들도(한줄 띄기 같은 것들) Text 객체이다.(childNodes의 배열을 차지한다.)</li>
+  <li>프로퍼티와 메서드
+    <ol>
+      <li>값 : nodeValue / data</li>
+      <li>조작 : appendData(String) / deleteData(start,end) / insertData(start,String) / replaceData(start,end,String)</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dir</span> <span class="na">id=</span><span class="s">'p1'</span><span class="nt">&gt;</span>Text Object1<span class="nt">&lt;/dir&gt;</span>
+<span class="nt">&lt;dir</span> <span class="na">id=</span><span class="s">'p2'</span><span class="nt">&gt;</span>
+<span class="nt">&lt;dir&gt;</span>Text Object2<span class="nt">&lt;/dir&gt;</span>
+<span class="nt">&lt;/dir&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">pt1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">p1</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pt2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">p2</span><span class="dl">'</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">((</span><span class="nx">pt1</span><span class="p">.</span><span class="nx">nodeType</span><span class="o">===</span><span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">pt1</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeType</span><span class="o">===</span><span class="nx">Node</span><span class="p">.</span><span class="nx">TEXT_NODE</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;br/&gt;</span><span class="dl">'</span><span class="o">+</span><span class="nx">pt2</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="4-element-객체">4) Element 객체</h2>
+
+<ul>
+  <li>HTMLElement : 모든 HTML(X)Element의 부모, style 프로퍼티를 가진다.</li>
+  <li>요소들을 추상화한 객체이다.</li>
+  <li>Element : HTMLElment의 부모. Html을 포함한 다양한 mark up 언어에 사용된다.</li>
+  <li><em>Element.tagName</em> : tag의 명칭을 표시, 읽기 전용</li>
+  <li><em>Element.id</em> : id 표시</li>
+  <li><em>Element.className</em> : class를 표시.</li>
+  <li>
+    <p><em>Element.classList</em> : class가 여러 개일 경우 사용.(띄어쓰기를 기준으로 여러 개로 구별)</p>
+  </li>
+  <li>프로퍼티와 메서드
+    <ol>
+      <li>element의 정보 : id, title, lang, dir, className</li>
+      <li>속성 관련 : getAttribute(), setAttribute(), removeAttribute()</li>
+    </ol>
+  </li>
+  <li>element는 DOM 중 유일하게 attribute 프로퍼티를 가진다.</li>
+</ul>
+
+<hr />
+
+<h1 id="html-element와-collection">HTML element와 collection</h1>
+
+<ul>
+  <li><em>getElementByID</em> 와 같은 메소드를 사용하면 <strong>HTMLElement</strong> 객체를 얻는다.</li>
+  <li>하나의 element의 경우 : <em>HTML(X)Element</em></li>
+  <li>복수의 element의 경우 : <em>HTMLCollection</em></li>
+  <li><strong>jQuery</strong> 와 같은 라이브러리 사용 시에는 이 내용들을 라이브러리가 알아서 처리해준다.</li>
+  <li>각각의 객체의 형태에 따라 프로퍼티, 메소드에 차이가 존재한다.</li>
+  <li>HTMLLIElement 와 HTMLAnchorElement 등은 모두 HTMLElement의 자식이다(상속되었다)</li>
+  <li><a href="https://web.stanford.edu/class/cs98si/slides/the-document-object-model.html">DOM 구조</a></li>
+  <li>HTMLCollection 객체는 배열과 비슷하다. 변화에 따라 실시간으로 그 형태와 값이 변한다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">id =</span><span class="s">"anchor"</span> <span class="na">href=</span><span class="s">"google.com"</span><span class="nt">&gt;</span>Google<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li</span> <span class="na">id=</span><span class="s">"lis"</span><span class="nt">&gt;</span>hi<span class="nt">&lt;li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;br/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"Button"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;br/&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">t1</span><span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">lis</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">t2</span><span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">anchor</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">t3</span><span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">t1</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">t2</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">t3</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br/&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="참고-자료">참고 자료</h1>
+
+<ul>
+  <li><a href="https://debugjung.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-DOM-%EA%B5%AC%EC%A1%B0">계층도 관련 자료</a></li>
+  <li><a href="https://feel5ny.github.io/2017/12/26/JS_08_1/">계층 자료</a></li>
+</ul>
+:ET

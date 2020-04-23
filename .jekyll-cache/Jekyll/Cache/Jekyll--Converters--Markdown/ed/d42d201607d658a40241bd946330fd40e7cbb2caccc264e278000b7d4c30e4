@@ -1,0 +1,143 @@
+I"<h2 id="ifconfig">ifconfig</h2>
+
+<ul>
+  <li>리눅스에서는 네트워크 장치 이름을 ens32 or ens33으로 설정</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//정보 출력
+ifconfig [ens32|ens33]
+//네트워크 장치 정지
+ifdown [ens32|ens33]
+//네트워크 장치 시작
+ifup [ens32|ens33]
+</code></pre></div></div>
+
+<h2 id="nslookup">nslookup</h2>
+
+<ul>
+  <li>DNS 서버의 작동을 테스트</li>
+</ul>
+
+<h2 id="ping">ping</h2>
+
+<ul>
+  <li>해당 컴퓨터가 응답하는지를 테스트하는 명령어</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>ping &lt;ip주소</td>
+          <td>URL&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="nm-connection-editor">nm-connection-editor</h2>
+
+<ul>
+  <li>네트워크와 관련된 대부분의 작업을 수행</li>
+  <li>ip주소, 서브넷마스크, 게이트웨이 정보 입력</li>
+  <li>DNS 정보 입력</li>
+  <li>네트워크 카드 드라이버 설정</li>
+  <li>네트워크 장치 설정</li>
+  <li>GUI 기반</li>
+  <li>
+    <p>CLI는 nmcli 사용, text기반은 nmtui 사용</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>systemctl &lt;start</td>
+          <td>stop</td>
+          <td>restart</td>
+          <td>status&gt; network : 네트워크 설정 변경 후 시작, 정지, 재시작, 상태 확인</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="nmcli">nmcli</h2>
+
+<ul>
+  <li><a href="https://mansoo-sw.blogspot.com/2016/10/linux-networkmanager-console-nmcli.html">참고자료1</a></li>
+  <li><a href="https://haker.tistory.com/55">참고자료2</a></li>
+  <li>device : 물리적인 장치. 한개 이상의 연결을 가질 수 있음.</li>
+  <li>connection : device에 연결하여 유무선 네트워크 관리. ip4, 암호, 연결 등등을 관리</li>
+  <li>새로 생성된 connection의 정보는 /etc/NetworkManager/system-connections/연결이름 파일에 적혀있다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//설치
+sudo apt install network-manager
+
+//시작
+systemctl start network-manager
+</code></pre></div></div>
+
+<ul>
+  <li>설치 후 시작을 하면 /etc/network/interfaces를 바로 관리하는 것이 아니다.</li>
+  <li>/etc/NetworkManager/NetworkManager.conf의 [ifupdown]를 managed=true로 설정하자</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//재시작
+systemctl start network-manager
+
+//확인
+nmcli con show
+
+//장치 상태 확인
+nmcli dev show
+
+//활성화된 연결 확인
+nmcli con show --active
+
+//연결 생성
+nmcli con add [타입, 이름, ifname]
+
+//설정 활성화
+nmcli con up 이름
+
+//설정 비활성화
+nmcli con down 이름
+
+//설정 리로드
+nmcli con reload
+
+//연결 삭제
+nmcli con delete
+
+//연결 수정
+nmcli con mod 이름 수정내용
+
+</code></pre></div></div>
+
+<h3 id="예제">예제</h3>
+
+<p>현재의 상태를 확인해보자</p>
+
+<p><img src="/post_img/linux_network.md/nmcli_con.png" alt="상태확인" /></p>
+
+<p>ens33에 연결되어 있다.</p>
+
+<p>새로운 정적 연결을 생성하자</p>
+
+<p><img src="/post_img/linux_network.md/nmcli_static.png" alt="추가" /></p>
+
+<p>연결이 만들어졌지만 활성화는 되지 않은 상태다</p>
+
+<p><img src="/post_img/linux_network.md/nmcli_up.png" alt="활성화" /></p>
+
+<h2 id="설정-파일">설정 파일</h2>
+
+<ul>
+  <li>nmtui, nm-connection-editor, nmcli : /etc/NetworkManager/system-connections 밑에 연결 설정 저장</li>
+  <li>
+    <p>/etc/network/interfaces에 설정파일이 존재. network-manager로 관리하자.</p>
+  </li>
+  <li>DNS 설정파일은 /etc/resolv.conf에 임시로 저장.</li>
+  <li>/etc/hosts에 호스트이름, FQDN 등이 들어 있음</li>
+</ul>
+:ET

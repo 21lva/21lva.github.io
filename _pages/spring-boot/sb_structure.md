@@ -2,6 +2,7 @@
 layout: post
 title:  "vs spring mvc : 구조 차이"
 name: sb_structure.md
+category: spring-boot
 ---
 
 spring boot와 spring MVC의 구조 차이

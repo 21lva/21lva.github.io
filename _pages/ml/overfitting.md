@@ -3,7 +3,7 @@ layout: post
 title:  "Overfitting 피하기 & Batch Normalization"
 date:   2018-12-29 02:00:00
 author: Inhyuk
-categories: Machine_Learning
+category: Machine_Learning
 tags:	ml
 cover:  "/assets/instacode.png"
 name: overfitting.md
@@ -40,7 +40,7 @@ $$
 Regularization은 loss function에 regularization term이라는 항을 추가한다.
 
 $$
-L(x)=\sum_{k=1}^{N}Error(Target,Prediction) + \gamma L_p 
+L(x)=\sum_{k=1}^{N}Error(Target,Prediction) + \gamma L_p
 
 L_p = (\sum_{j=1}{M}|w_j|^p)
 

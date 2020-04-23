@@ -3,6 +3,7 @@ layout: post
 title:  "logging: ElasticSeach, kibana, fluentd"
 date:   2019-12-18 01:02:59
 name: k8s_log.md
+category: kubernetes
 ---
 
 - k8s같은 오케스트레이션 환경에서 로그를 수집할 때는 로그가 로컬 디스크에 쌓이지 않도록 해야한다(지정된 node로 들어가서 로그를 확인하기 힘들다)

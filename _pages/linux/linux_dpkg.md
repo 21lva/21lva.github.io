@@ -4,6 +4,7 @@ title:  "dpkg, apt"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: linux_dpkg.md
+category: linux
 ---
 
 dpkg

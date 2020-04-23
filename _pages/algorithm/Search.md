@@ -3,7 +3,6 @@ layout: post
 title:  "Search"
 date:   2019-01-02 02:00:00
 author: Inhyuk
-categories: Algorithms
 category: Algorithms
 tags:	Algorithms
 cover:  "/assets/instacode.png"

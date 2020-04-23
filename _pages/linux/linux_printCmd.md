@@ -4,6 +4,7 @@ title:  "출력 명령어"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: linux_printCmd.md
+category: linux
 ---
 
 

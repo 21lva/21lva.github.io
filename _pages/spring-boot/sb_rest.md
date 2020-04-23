@@ -2,6 +2,7 @@
 layout: post
 title:  "REST"
 name: sb_rest.md
+category: spring-boot
 ---
 
 - REST(Reprenstational State Transfer) : REST

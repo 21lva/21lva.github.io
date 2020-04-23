@@ -4,6 +4,7 @@ title:  "Serialization"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: java_serialization.md
+category: java
 ---
 
 직렬화(serialization)

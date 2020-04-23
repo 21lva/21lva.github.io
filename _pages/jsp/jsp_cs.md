@@ -3,6 +3,7 @@ layout: post
 title:  "Cookie, Session"
 cover:  "/assets/instacode.png"
 name: jsp_cs.md
+category: JSP
 ---
 
 - HTTP는 응답이 끊나고 바로 연결 해제(stateless)

@@ -2,6 +2,7 @@
 layout: post
 title:  "Session & Cookie"
 name: spring_sc.md
+category: spring
 ---
 
 Session & Cookie

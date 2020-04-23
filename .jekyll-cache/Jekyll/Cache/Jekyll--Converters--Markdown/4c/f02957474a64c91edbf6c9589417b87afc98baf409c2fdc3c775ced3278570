@@ -1,0 +1,92 @@
+I"�<h1 id="모듈">모듈</h1>
+
+<ul>
+  <li>자바스크립트 자체에 모듈은 존재하지 않음</li>
+  <li>호스트 환경에 따라 서로 다른 모듈화 방법 제공</li>
+  <li>자주 사용하는 코드를 별도의 파일로 만들거나 비슷한 기능을 하는 코드들을 묶어서 만듬</li>
+  <li>필요한 로직만 로드해서 메모리 낭비 방지</li>
+  <li>코드 수정이 용이</li>
+  <li>한 번 다운로드 된 모듈은 웹브라우저 자체에 저장해서 로드 시간과 트래픽을 절약함</li>
+  <li>호스트 환경 : 자바스크립트가 구동되는 환경</li>
+</ul>
+
+<h2 id="생성">생성</h2>
+
+<ul>
+  <li><em>[파일이름].js</em> 로 생성</li>
+</ul>
+
+<h2 id="export-exports-export-default">export, exports, export default</h2>
+
+<ul>
+  <li>export : 모듈에서 함수, 객체, 원시값을 내보낼 때 사용</li>
+  <li>exports : 모듈에서 객체의 형태로 내보낼 때 사용</li>
+  <li>exports default : 하나의 고정된 값만 내보낼 때 사용. <a href="https://dydals5678.tistory.com/97">exports vs module.exports</a></li>
+</ul>
+
+<h4 id="export">export</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//모듈 파일</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">a</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">HI</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//require 로 이용</span>
+<span class="kd">var</span> <span class="nx">moduleA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">moduleFile</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="nx">moduleFile</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>
+
+<span class="c1">//import로 이용</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">a</span><span class="p">,</span><span class="nx">hello</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<span class="nx">hello</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h4 id="exports">exports</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//모듈 파일</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">a</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">hello</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">HI</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//require 로 이용</span>
+<span class="kd">var</span> <span class="nx">moduleA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">moduleFile</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="nx">moduleFile</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>
+
+<span class="c1">//import로 이용</span>
+<span class="k">import</span> <span class="nx">moduleA</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">moduleFile</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+<span class="nx">moduleFile</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h4 id="export-default">export default</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//모듈 파일</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+
+<span class="c1">//require 로 이용</span>
+<span class="kd">var</span> <span class="nx">moduleA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">moduleA</span><span class="p">();</span>
+
+<span class="c1">//import로 이용</span>
+<span class="k">import</span> <span class="nx">moduleA</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./a.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">moduleA</span><span class="p">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://velog.io/@jch9537/Javascript-export-default">설명1</a></li>
+  <li><a href="https://medium.com/@enro2414_40667/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-export-import%EC%A0%95%EB%A6%AC-137ac9e327d9">설명2</a></li>
+</ul>
+
+<hr />
+
+<h1 id="라이브러리">라이브러리</h1>
+
+<ul>
+  <li>모듈들의 집합이라고 보면 됨.</li>
+  <li><em>jQuery</em> : 가장 많이 사용되는 라이브러리.</li>
+</ul>
+:ET

@@ -3,7 +3,7 @@ layout: post
 title:  "Docker 1 - 기본 서버 올리기"
 date:   2019-12-18 01:02:59
 author: Inhyuk
-categories: Docker
+category: Docker
 tags: docker
 cover:  "/assets/instacode.png"
 name: docker1.md
@@ -152,12 +152,12 @@ CMD ["node", "index.js"]
 #### (4) index.js의 mysql모듈 부분
 
 ```js
-const connection = mysql.createConnection({ 
-    host: 'app_db',//alias 이름 설정 
+const connection = mysql.createConnection({
+    host: 'app_db',//alias 이름 설정
     user: 'hello', //root는 local에서만 사용 가능
-    port: 3306, 
-    password: 'hello', 
-    database: 'engineer' 
+    port: 3306,
+    password: 'hello',
+    database: 'engineer'
     });
 
 출처: https://donochi.tistory.com/208 [뉴질랜드 다이어리(NZ Diary) 라빠]

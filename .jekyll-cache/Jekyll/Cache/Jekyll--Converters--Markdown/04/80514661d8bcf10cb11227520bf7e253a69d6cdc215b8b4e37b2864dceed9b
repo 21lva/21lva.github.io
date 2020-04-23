@@ -1,0 +1,73 @@
+I"v<h1 id="dpkg">dpkg</h1>
+
+<ul>
+  <li>debian package</li>
+  <li>
+    <p>redhat의  rpm과 유사</p>
+  </li>
+  <li>option
+    <ul>
+      <li>–info(-I) <deb 파일="">: 패키지 정보 확인</deb></li>
+      <li>–contents(-c) <deb 파일="">: 구성 파일 리스트</deb></li>
+      <li>-i <deb 파일=""> : 설치</deb></li>
+      <li>–unpack <deb 파일=""> : 압축 해제(설치는 하지 않음)</deb></li>
+      <li>–remove <패키지> : 패키지를 설정파일은 유지하고 제거</패키지></li>
+      <li>–purge(-P) <패키지> : 패키지를 설정파일까지 제거</패키지></li>
+      <li>-l : 설치된 패키지 리스트 확인</li>
+      <li>-L <패키지> : 설치된 패키지에 포함된 파일 보기</패키지></li>
+      <li>-S <deb 파일=""> : 파일의 패키지명 알아내기</deb></li>
+      <li>-s <패키지> : 패키지에 대한 상태 확인</패키지></li>
+      <li>-p <패키지> : 패키지에 대한 정보 확인</패키지></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="apt">apt</h1>
+
+<ul>
+  <li>advanced packaging tool</li>
+  <li>
+    <p>dpkg의 설치 기능 + 검색, 다운로드, 업그레이드, 검사 등을 진행</p>
+  </li>
+  <li>apt update : /etc/apt/sources.list 를 참조하여 사용할 수 있는 패키지 DB를 업데이트. /var/lib/apt/lists에 업데이트</li>
+  <li>apt search 키워드 : 키워드를 대소문자 구분 없이 검색하여 키워드를 포함하고 있는 패키지를 검색</li>
+  <li>apt purge 패키지: 패키지와 관련 설정 삭제</li>
+  <li>apt remove 패키지: 설정파일을 제외한 패키지 삭제</li>
+  <li>apt install 패키지: 패키지 설치
+    <ul>
+      <li>-y : 설치 여부 질문에 긍정응답</li>
+      <li>–reinstall : 재설치</li>
+    </ul>
+  </li>
+  <li>apt upgrade : 업그레이드 가능한 모든 패키지 업그레이드</li>
+  <li>apt full-upgrade : 의존성 고려한 패키지 업그레이드</li>
+  <li>apt show 패키지 : 패키지 상제 정보 출력</li>
+  <li>apt autormove : 사용하지 않는 패키지 제거</li>
+  <li>apt list : 레포에 등록된 패키지 목록 조회
+    <ul>
+      <li>–installed : 설치된 패키지 목록 조회</li>
+      <li>–upgradable : 설치된 패키지 중 업그레이드 대상 패키지 조회</li>
+      <li>–all-versions : 패키지 모든 버전 목록 조회</li>
+    </ul>
+  </li>
+  <li>apt content 패키지 : 설치된 위치 확인</li>
+  <li>apt depends 패키지 : 의존성 확인</li>
+  <li>저장소 추가
+    <ul>
+      <li>apt-add-repository ppa:<저장소 주소=""></저장소></li>
+      <li>apt-add-repository <저장소 주소=""></저장소></li>
+    </ul>
+  </li>
+  <li>
+    <p>기본으로 제공되는 저장소를 변경하려면 /etc/apt/sources.list를 vim으로 열고 <em>%s/기존저장소/변경저장소</em> 를 한다.</p>
+  </li>
+  <li><a href="https://askubuntu.com/questions/481241/what-is-the-difference-between-sudo-apt-get-install-and-sudo-apt-install">apt와 apt-get의 차이</a></li>
+  <li>
+    <p>요약하면 <strong>apt</strong> 는 <strong>apt-get</strong> 와 <strong>apt-cache</strong> 의 명령어를 포함한다고 한다(wrapper)</p>
+  </li>
+  <li><a href="https://www.tecmint.com/difference-between-apt-and-aptitude/">apt vs aptitude</a></li>
+  <li>aptitude가 더 high-level 이라고 한다. 삭제를 할때 –auto-remove 기능을 포함한다고 하나?</li>
+</ul>
+:ET

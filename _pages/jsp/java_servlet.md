@@ -3,6 +3,7 @@ layout: post
 title:  "Servlet"
 cover:  "/assets/instacode.png"
 name: java_servlet.md
+category: JSP
 ---
 
 웹컨테이너 구조

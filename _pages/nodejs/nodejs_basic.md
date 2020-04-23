@@ -3,7 +3,7 @@ layout: post
 title:  "기본 기능"
 date:   2019-07-28 02:02:59
 author: Inhyuk
-categories: NodeJS
+category: NodeJS
 tags: NodeJS
 cover:  "/assets/instacode.png"
 name: nodejs_basic.md

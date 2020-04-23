@@ -1,0 +1,544 @@
+I"j<p><strong>자바스크립트</strong> 를 공부하다보니 웹에 대해 관심을 가지게 되었고, 이전에 공부했던 <strong>HTML, CSS</strong> 등을 다시 공부해지고 싶어졌다.</p>
+
+<hr />
+
+<h1 id="html이란">HTML이란</h1>
+
+<ul>
+  <li>HyperText Markup Language 의 약자</li>
+  <li>Tag를 이용하는 Markup + 링크를 이용하는 hyper text</li>
+  <li>웹 표준 : 모든 브라우저들이 사용하기 쉽게 웹에 이용하는 언어들의 표준을 정한 것. 여기서는 HTML5와 CSS3을 사용한다.</li>
+  <li>HTML5 + CSS3를 이용하면 <strong>반응형</strong> + <strong>interactive</strong>(웹이 사용자의 동작에 바로 반응하는 사이트) 한 사이트를 만들 수 있다.</li>
+</ul>
+
+<hr />
+
+<h1 id="html-태그">HTML 태그</h1>
+
+<h2 id="1-기본-태그">1) 기본 태그</h2>
+
+<h5 id="doctype">&lt;!doctype&gt;</h5>
+
+<ul>
+  <li>문서 유형을 지정</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+</code></pre></div></div>
+
+<h5 id="html-html">&lt;html&gt; &lt;/html&gt;</h5>
+
+<ul>
+  <li>웹 문서의 시작과 끝을 알림</li>
+  <li><em>lang</em> 속성을 추가하여 문서에서 사용하는 언어를 지정하기도 함</li>
+  <li>지정된 언어를 이용하여 검색에 사용하기도 함</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<h5 id="head-head">&lt;head&gt; &lt;/head&gt;</h5>
+
+<ul>
+  <li>화면에 보이지 않지만 웹브라우저가 알아야 할 정보를 저장하는 부분</li>
+  <li>문서에서 사용하는 외부 파일, 문서 제목(<title> 제목 </title>), 문서 인코딩 정보(meta) 등을 포함</li>
+</ul>
+
+<h5 id="body-body">&lt;body&gt; &lt;/body&gt;</h5>
+
+<ul>
+  <li>문서의 내용을 저장하는 부분</li>
+</ul>
+
+<h2 id="2-문서-관련-태그">2) 문서 관련 태그</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>단락을 만드는 태그</li>
+  <li>앞뒤에 줄바꿈이 있음</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;br&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>줄 바꾸기 태그</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;hr&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>수평 줄 넣기</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span> <span class="nt">&lt;/blockquote&gt;</span>
+```html
+
+- 인용문을 넣는다
+- 다른 텍스트보다 안에 들여 써짐
+- cite 속성을 이용하여 인용한 사이트 주소를 표기할 수 있음
+
+```html
+\<span class="nt">&lt;strong&gt;</span> \<span class="nt">&lt;/strong&gt;</span> / \<span class="nt">&lt;b&gt;</span> \<span class="nt">&lt;/b&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>굵게 표시</li>
+  <li><em>b</em> 태그는 단순히 굵게 표시하는 기능</li>
+  <li><em>strong</em> 태그는 중요한 부분을 표시하는 기능. 웹 접근성에 기여</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="nt">&lt;em&gt;</span> \<span class="nt">&lt;/em&gt;</span> / \<span class="nt">&lt;i&gt;</span> \<span class="nt">&lt;/i&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이탤릭체로 표시</li>
+  <li><em>i</em> 는 <em>b</em> 와,  <em>em</em> 는 <em>strong</em> 과 대응된다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="nt">&lt;q&gt;</span> \<span class="nt">&lt;/q&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>인용한 내용을 표시</li>
+  <li><em>blockquote</em> 와 달리 줄을 바꾸지 않고 인라인으로 만듬</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="nt">&lt;mark&gt;</span> \<span class="nt">&lt;/mark&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>형광표시</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="nt">&lt;span&gt;</span> \<span class="nt">&lt;/span&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>줄 바꿈 없이 텍스트를 묶어주는 역할</li>
+  <li>혼자가 아닌 여러 다른 기능과 섞어 씀</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕 <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">"color:red;"</span><span class="nt">&gt;</span>나는<span class="nt">&lt;/span&gt;</span> 사람이야.
+</code></pre></div></div>
+
+<p>안녕 <span style="color:red;">나는</span> 사람이야.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>박스 형태(한 줄을 차지)로 내용을 묶어준다.</li>
+  <li>div는 p 태그를 포함할 수 있다. 하지만 그 반대는 성립하지 않는다. p태그는 주로 문장을 담는데에 사용된다.</li>
+</ul>
+
+<h5 id="기타">기타</h5>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;s&gt;</span>취소선<span class="nt">&lt;/s&gt;</span>
+<span class="nt">&lt;u&gt;</span>밑줄<span class="nt">&lt;/u&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+대상<span class="nt">&lt;sub&gt;</span>아래첨자<span class="nt">&lt;/sub&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+대상<span class="nt">&lt;sup&gt;</span>위첨자<span class="nt">&lt;/sup&gt;</span>
+</code></pre></div></div>
+
+<s>취소선</s>
+<p><u>밑줄</u>
+<br />
+대상<sub>아래첨자</sub>
+<br />
+대상<sup>위첨자</sup></p>
+
+<h2 id="3-목록을-만드는-태그">3) 목록을 만드는 태그</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>이것은<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>순서가 없는<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>목록이다.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>이것은<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>순서가 있는<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>목록이다.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이것은</li>
+  <li>순서가 없는</li>
+  <li>목록이다.</li>
+</ul>
+<ol>
+  <li>이것은</li>
+  <li>순서가 있는</li>
+  <li>목록이다.</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dl&gt;</span>
+  <span class="nt">&lt;dt&gt;</span>제목1<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>내용1<span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>내용2<span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;dt&gt;</span>제목2<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>내용1<span class="nt">&lt;/dd&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>내용2<span class="nt">&lt;/dd&gt;</span>
+<span class="nt">&lt;/dl&gt;</span>
+</code></pre></div></div>
+
+<dl>
+  <dt>제목1</dt>
+  <dd>내용1</dd>
+  <dd>내용2</dd>
+  <dt>제목2</dt>
+  <dd>내용1</dd>
+  <dd>내용2</dd>
+</dl>
+
+<h2 id="4-표-만들기">4) 표 만들기</h2>
+
+<ul>
+  <li>table : 표 시작</li>
+  <li>각 행은 tr로, 각 행에서 한 칸은 td로 만든다</li>
+  <li>각 행의 가장 왼쪽을 제목을 붙이고 싶으면 그 칸에서는 td 대신 th를 쓴다.</li>
+  <li>colspan, rowspan을 써서 열을 합치거나 줄을 합친다.</li>
+  <li>caption : table 태그 바로 밑에 사용. 표의 제목을 만들고 가장 위 중앙 정렬</li>
+  <li>figcaption : 제목을 만들고 왼쪽 정렬 밑 그 자리에 만듬(위로 올리지 않음)</li>
+  <li>thead, tbody, tfoot : 좀더 명확하게 보여주기 위해 사용하는 태그</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;caption&gt;</span> 연습용 표 <span class="nt">&lt;/caption&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>  
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span> 제목 행<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 제목행 1열<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 제목행 2열<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span> foot은<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 어디에 놔도<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 가장 아래에 보인다<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span> 1행 제목<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 1행 1열<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 1행 2열<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span> 2행 제목<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 2행 1열<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 2행 2열<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span> 3행 제목<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 3행 1열<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span> 3행 2열<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span> 4행 제목<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span> <span class="na">align=</span><span class="s">"center"</span><span class="nt">&gt;</span> 3행 1열<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+
+<table>
+  <caption> 연습용 표 </caption>
+  <thead>  
+    <tr>
+      <th> 제목 행</th>
+      <td> 제목행 1열</td>
+      <td> 제목행 2열</td>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th> foot은</th>
+      <td> 어디에 놔도</td>
+      <td> 가장 아래에 보인다</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <th> 1행 제목</th>
+      <td> 1행 1열</td>
+      <td> 1행 2열</td>
+    </tr>
+    <tr>
+      <th> 2행 제목</th>
+      <td> 2행 1열</td>
+      <td> 2행 2열</td>
+    </tr>
+    <tr>
+      <th> 3행 제목</th>
+      <td> 3행 1열</td>
+      <td> 3행 2열</td>
+    </tr>
+    <tr>
+      <th> 4행 제목</th>
+      <td colspan="2" align="center"> 3행 1열</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="5-이미지-삽입">5) 이미지 삽입</h2>
+
+<ul>
+  <li>img : 이미지를 삽입하는 태그</li>
+  <li>figure : 설명을 붙일 대상을 지정</li>
+  <li>figurecaption : 설명 글 붙이기</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;figure&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"welsh"</span> <span class="na">src=</span><span class="s">"welsh.jpg"</span> <span class="na">alt=</span><span class="s">"Welsh Corgi"</span> <span class="na">width=</span><span class="s">"50%"</span> <span class="na">height=</span><span class="s">"50%"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;figurecaption&gt;</span>웰시코기<span class="nt">&lt;/figurecaption&gt;</span>
+<span class="nt">&lt;/figure&gt;</span>
+
+//외부 이미지 삽입
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://commons.wikimedia.org/wiki/File:Pembroke_Welsh_Corgi.jpg"</span> <span class="na">alt=</span><span class="s">"웰시코기 / 출처: 나무위키"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<figure>
+  <img src="./welsh.jpg" alt="Welsh Corgi" width="50%" height="50%" />
+  <figurecaption>웰시코기</figurecaption>
+</figure>
+
+<p><img id="welsh" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Pembroke_Welsh_Corgi.jpg/800px-Pembroke_Welsh_Corgi.jpg" alt="웰시코기  출처: 위키백과" /></p>
+
+<h2 id="6-링크">6) 링크</h2>
+
+<ul>
+  <li>href : 링크할 주소 입력. 같은 페이지의 태그로도 건너띄기 가능</li>
+  <li>target : 링크한 대상이 열릴 위치(새 창, 현재 화면)</li>
+  <li>download : 링크 내용을 보여주는 것이 아니라 다운로드 함</li>
+  <li>rel : 현재 문서와의 관계를 표시</li>
+  <li>type : 링크한 문서의 파일 유형을 알려줌</li>
+  <li>iframe : 현재 페이지에 다른 웹문서를 넣는 것. 동영상 같은것을 넣을 수도 있음</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.google.com/"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>구글 새 창<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.google.com/"</span> <span class="na">target=</span><span class="s">"_self"</span><span class="nt">&gt;</span>구글 현재 창<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#welsh"</span><span class="nt">&gt;</span>웰시코기 사진으로 이동<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;iframe</span> <span class="na">href=</span><span class="s">"https://youtu.be/d9RqiaILIh0"</span><span class="nt">&gt;</span>동영상 삽입<span class="nt">&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<p><a href="https://www.google.com/" target="_blank">구글 새 창_</a>
+<br />
+<a href="https://www.google.com/" target="_self">구글 현재 창_ </a>
+<br />
+<a href="#welsh">웰시코기 사진으로 이동</a></p>
+<p align="middle">
+<iframe src="https://www.youtube.com/embed/jNAK7QL5JjI" frameborder="0">동영상 삽입</iframe>
+</p>
+
+<hr />
+
+<h1 id="form">Form</h1>
+
+<h2 id="1-input">1) Input</h2>
+
+<ul>
+  <li>form : 웹사이트로 정보를 보낼 수 있는 요소들</li>
+  <li>form 태그 : 정보를 넘겨주는 방식, 주소등을 정의하는 것.</li>
+  <li>fieldset 태그: 태그 사이의 폼들을 하나의 영역으로 묶는 윤관석을 그림</li>
+  <li>legend 태그: 그룹의 제목을 보여줌</li>
+  <li>placeholder 속성: 힌트를 표시</li>
+  <li>require 속성 : 필수적으로 입력해야 하는 태그 지정</li>
+  <li>submit : 폼에 입력한 정보를 서버로 전송하는 버튼</li>
+  <li>reset : 적어놓은 모든 것들을 지운다.</li>
+  <li>type=”button” : 스크립트 함수를 이용하여 버튼을 클릭했을 시 이루어지는 동작을 정의하여 이용한다</li>
+  <li>type=”file” : 파일을 첨부. 찾아보기 등의 기능이 표시됨</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"insert.php"</span> <span class="na">method=</span><span class="s">"get"</span> <span class="na">name=</span><span class="s">"first form"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+  <span class="nt">&lt;legend&gt;</span>폼 연습<span class="nt">&lt;/legend&gt;</span>
+  <span class="nt">&lt;label&gt;</span>이름 : <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">autocomplete=</span><span class="s">"on"</span> <span class="na">placeholder=</span><span class="s">"이름"</span><span class="nt">&gt;&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pwd"</span> <span class="na">required</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"c1"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>체크박스 1번
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"c2"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>체크박스 2번
+  <span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"r1"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>라디오 1번
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"r2"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>라디오 2번
+  <span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">id=</span><span class="s">"hid"</span> <span class="na">name=</span><span class="s">"hid"</span> <span class="na">value=</span><span class="s">"yes"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value = </span><span class="s">"ALERT"</span> <span class="na">onclick=</span><span class="s">"alert('Hello!');"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">value =</span><span class="s">"파일 첨부"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"reset"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value =</span><span class="s">"제출"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+<form action="insert.php" method="get" name="first form">
+  <fieldset>
+  <legend>폼 연습</legend>
+  <label>이름 : <input type="text" name="name" autocomplete="on" placeholder="이름을 입력하세요" /></label>
+  <input type="password" name="pwd" required="" />
+  <p>
+  <input type="checkbox" name="c1" value="1" />체크박스 1번
+  <input type="checkbox" name="c2" value="2" />체크박스 2번
+  </p>
+  <p>
+  <input type="checkbox" name="r1" value="1" />라디오 1번
+  <input type="checkbox" name="r2" value="2" />라디오 2번
+  </p>
+  <input type="hidden" id="hid" name="hid" value="yes" />
+  <input type="button" value="ALERT" onclick="alert('Hello!');" />
+  <input type="file" value="파일 첨부" />
+  <input type="reset" />
+  <input type="submit" value="제출" />
+  </fieldset>
+</form>
+
+<ul>
+  <li>이 외에도 number, url, email, color, date, month, week, time 등의 input type 속성들이 있다.</li>
+</ul>
+
+<h2 id="2-나열">2) 나열</h2>
+
+<ul>
+  <li>입력이 아닌 여러 개 중에 선택을 하게 하는 기능</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"select.php"</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+  <span class="nt">&lt;legend&gt;</span>나열 연습<span class="nt">&lt;/legend&gt;</span>
+  <span class="nt">&lt;label&gt;</span>음식<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"음식"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">"일식"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"ramen"</span><span class="nt">&gt;</span>라멘<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"sushi"</span><span class="nt">&gt;</span>스시<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"pork"</span><span class="nt">&gt;</span>돈까스<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/optgroup&gt;</span>
+    <span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">"중식"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"jj"</span><span class="nt">&gt;</span>자장면<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"JJ"</span><span class="nt">&gt;</span>짬뽕<span class="nt">&lt;/option&gt;</span>
+      <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"tang"</span><span class="nt">&gt;</span>탕수육<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;/optgroup&gt;</span>
+  <span class="nt">&lt;/select&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"제출"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<form action="select.php" method="get">
+  <fieldset>
+  <legend>나열 연습</legend>
+  <label>음식</label>
+  <select name="음식">
+    <optgroup label="일식">
+      <option value="ramen">라멘</option>
+      <option value="sushi">스시</option>
+      <option value="pork">돈까스</option>
+    </optgroup>
+    <optgroup label="중식">
+      <option value="jj">자장면</option>
+      <option value="JJ">짬뽕</option>
+      <option value="tang">탕수육</option>
+    </optgroup>
+  </select>
+  <input type="submit" value="제출" />
+  </fieldset>
+</form>
+
+<h2 id="3-output">3) Output</h2>
+
+<ul>
+  <li>입력한 값을 이용하여 결과를 알려줌</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">oninput=</span><span class="s">"result.value=parseInt(num1.value)-parseInt(num2.value)"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">name=</span><span class="s">"num1"</span> <span class="na">value=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+  -<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"number"</span> <span class="na">name=</span><span class="s">"num2"</span> <span class="na">value=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+  = <span class="nt">&lt;output</span> <span class="na">name=</span><span class="s">"result"</span><span class="nt">&gt;&lt;/output&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<form oninput="result.value=parseInt(num1.value)-parseInt(num2.value)">
+  <input type="number" name="num1" value="0" />
+  -<input type="number" name="num2" value="0" />
+  = <output name="result"></output>
+</form>
+
+<h2 id="4-progress">4) Progress</h2>
+
+<ul>
+  <li>진행 상태를 보여줌</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;progress</span> <span class="na">value=</span><span class="s">"20"</span> <span class="na">max=</span><span class="s">"100"</span><span class="nt">&gt;&lt;/progress&gt;</span>
+</code></pre></div></div>
+
+<progress value="20" max="100"></progress>
+
+<hr />
+
+<h1 id="semantic-tags">Semantic tags</h1>
+
+<ul>
+  <li>HTML5 부터는 <strong>시멘틱 태그(semantic tags)</strong> 가 추가되었다.</li>
+  <li>시멘틱 태그를 이용하면 어디가 본문이고, 어디가 제목인지 쉽게 알 수 있다.</li>
+</ul>
+
+<h4 id="header">header</h4>
+
+<ul>
+  <li>머릿말에 해당</li>
+  <li>주로 검색(<em>form</em> 이용), 목록(<em>nav</em> 이용) 등을 보여주는 부분</li>
+</ul>
+
+<h4 id="nav">nav</h4>
+
+<ul>
+  <li>사이트 안의 다른 사이트나 문서로 이동할 수 있도록 목록을 보여주는 태그</li>
+</ul>
+
+<h4 id="section">section</h4>
+
+<ul>
+  <li>주제별로 내용을 감싸는 태그</li>
+  <li><em>section</em> 안에 또 다른 <em>section</em>을 넣기도 하고, <em>artical</em> 태그를 사용하기도 한다.</li>
+</ul>
+
+<h4 id="article">article</h4>
+
+<ul>
+  <li><em>section</em> 안의 글이 많이 들어간 부분을 의미</li>
+</ul>
+
+<h4 id="aside">aside</h4>
+
+<ul>
+  <li>좌우 사이드바를 의미</li>
+  <li>css를 이용하여 이 부분을 좌우에 배치한다.</li>
+</ul>
+
+<h4 id="footer">footer</h4>
+
+<ul>
+  <li>꼬릿말에 해당</li>
+  <li>주로 제작자 정보, 저작권, 날짜 등의 내용을 담는다</li>
+</ul>
+
+<h4 id="address">address</h4>
+
+<ul>
+  <li><em>footer</em> 안에 주로 사용한다. 웹페이지의 제작자 정보등을 표시하는 데에 이용된다.</li>
+</ul>
+
+<hr />
+
+<h1 id="참고자료">참고자료</h1>
+
+<ul>
+  <li><a href="https://aboooks.tistory.com/205">iframe</a></li>
+</ul>
+:ET

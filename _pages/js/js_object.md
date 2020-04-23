@@ -4,6 +4,7 @@ title:  "객체"
 date:   2019-05-15 01:02:59
 author: Inhyuk
 categories: Javascript
+category: Javascript
 tags: js
 cover:  "/assets/instacode.png"
 name: js_object.md

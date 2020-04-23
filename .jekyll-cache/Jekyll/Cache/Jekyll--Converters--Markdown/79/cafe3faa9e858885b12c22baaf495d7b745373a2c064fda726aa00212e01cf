@@ -1,0 +1,258 @@
+I"k<h1 id="http-모듈">http 모듈</h1>
+
+<ul>
+  <li>요청 메세지 : 클라이언트가 서버에 보내는 요청</li>
+  <li>응답 메세지 : 서버가 클라이언트에 보내는 응답</li>
+</ul>
+
+<h2 id="1-server">1) server</h2>
+
+<ul>
+  <li>server 객체 : server를 다루는 객체. EventEmitter를 상속받음</li>
+  <li>createServer() : server 객체를 만드는 http모듈의 메서드</li>
+  <li>server.listen(port[,callback]) : server 실행</li>
+  <li>server.close([callback]) : serve 종료</li>
+  <li>port : 네트워크의 연결되는 포트 번허. 0~65535개 존재.</li>
+  <li>server의 이벤트 :
+    <ul>
+      <li>request : 클라이언트의 요청시 발생하는 이벤트. 별도로 지정하지 않고 createServer 의 callback으로 이벤트 리스너 등록 가능.</li>
+      <li>connection : 클라이언트가 접속할 때</li>
+      <li>close : 서버가 종료될 때</li>
+      <li>checkContinue : 클라이언트가 지속적으로 연결을 하고 있을 때</li>
+      <li>upgrade : 클라이언트가 http 업그레이드를 요청할 때</li>
+      <li>clientError : 클라이언트가 오류가 발생할 때</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//http 모듈</span>
+<span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//server 객체 생성</span>
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">();</span>
+
+<span class="c1">//server 실행. port 번호 = 52273</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Sever Running at 127.0.0.1:52273</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">request</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Request occured</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">});</span>
+
+
+<span class="c1">//serve 종료</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Sever is closed</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="2-response">2) response</h2>
+
+<ul>
+  <li>클라이언트에 웹페이지를 제공하려면 응답 메세지가 필요</li>
+  <li>response 객체 : 응답 메세지에 관여하는 객체</li>
+  <li>writeHead(statusCode[,statusMessage,headers]) : 응답 헤더를 작성</li>
+  <li>end([data],[enconding],[callback]) : 응답 본문을 작성</li>
+  <li>status code : 웹페이지에서 오류 혹은 페이지를 제공할 수 있도록 상태를 알려주는 코드.
+    <ul>
+      <li>1xx : 처리 중</li>
+      <li>2xx : 성공</li>
+      <li>3xx : 리다이렉트(다른 곳으로 연결)</li>
+      <li>4xx : 클라이언트 오류. 404(page not found)</li>
+      <li>5xx : 서버 오류</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">});</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;h1&gt;Hi&lt;/h1&gt;</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52773</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server Running at 127.0.0.1:52773</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>파일 시스템을 이용하여 html 페이지를 제공하려면 다음과 같이 한다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">HTMLPage.html</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">});</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52773</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server Running at 127.0.0.1:52773</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Content-Type으로 제공하는 값은 여러가지이다.
+    <ul>
+      <li>text/plain : 기본 텍스트</li>
+      <li>text/html : html 문서</li>
+      <li>text/css : css 문서</li>
+      <li>text/xml : xml 문서</li>
+      <li>image/jpeg : jpg/jpeg 그림</li>
+      <li>image/png : png 그림</li>
+      <li>video/mpeg : mpeg 비디오</li>
+      <li>audio/mp3 : mp3 음악파일</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">StarWars.jpeg</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">image/jpeg</span><span class="dl">"</span><span class="p">});</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52773</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server Running at 127.0.0.1:52773</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<h4 id="쿠키">쿠키</h4>
+
+<ul>
+  <li>쿠키 : 키와 값이 들어있는 작은 데이터 조각. 서버와 클라이언트에 모두 저장 가능. 일정 기간 동안 저장. response 데이터를 이용하여 클라이언트에 저장.</li>
+  <li>헤더의 Set-Cookie 속성에 등록</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span>
+    <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Set-Cookie</span><span class="dl">"</span><span class="p">:[</span>
+    <span class="dl">"</span><span class="s2">id = 21lva;Expires = </span><span class="dl">"</span><span class="o">+</span><span class="nx">date</span><span class="p">.</span><span class="nx">toUTCString</span><span class="p">(),</span>
+    <span class="dl">"</span><span class="s2">Value = 12</span><span class="dl">"</span>
+    <span class="p">]</span>
+    <span class="p">});</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;h1&gt;Hi&lt;/h1&gt;</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52773</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server Running at 127.0.0.1:52773</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Expires : 쿠키의 만료 시간을 표준시간으로 작성</li>
+  <li>maxAge : 쿠키의 만료 시간을 밀리 초로 작성</li>
+</ul>
+
+<h4 id="강제-이동">강제 이동</h4>
+
+<ul>
+  <li>서버에서 특정 페이지로 강제로 이동시킬 수 있다. location 속성을 사용</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">302</span><span class="p">,{</span>
+    <span class="dl">"</span><span class="s2">Location</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">www.google.co.kr</span><span class="dl">"</span>
+    <span class="p">});</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+  <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52773</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server Running at 127.0.0.1:52773</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="3-request">3) request</h2>
+
+<ul>
+  <li>request 객체 : 사용자가 요청한 내용에 반응하는 객체. server 객체의 request 이벤트 발생 시 리스너에 첫 매개변수로 들어간다.</li>
+  <li>프로퍼티
+    <ul>
+      <li>method : 요청 방식</li>
+      <li>url : 요청한 url</li>
+      <li>headers : 요청 메시지 헤더</li>
+      <li>trailers : 요청 메시지 트레일러</li>
+      <li>httpVersion : http 프로토콜 버전</li>
+    </ul>
+  </li>
+  <li>url을 이용한 page 구분</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">pathname</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">pathname</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">pathname</span><span class="o">===</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">){</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">index.html</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+      <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">});</span>  
+      <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">pathname</span><span class="o">===</span><span class="dl">"</span><span class="s2">/OtherPage</span><span class="dl">"</span><span class="p">){</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">other.html</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+      <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">});</span>  
+      <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>또는, method 유형에 따라 분류할 수 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="o">===</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">){</span>
+
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="o">===</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">){</span>
+
+  <span class="p">}</span>
+  <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>GET과 POST의 매개변수를 추출하는 방법이다(POST 방식은 request 이벤트 발생 후 data 이벤트로 값을 전달한다)</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// GET</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="kc">true</span><span class="p">).</span><span class="nx">query</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>
+
+  <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">});</span>  
+  <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">query</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">);</span>
+
+<span class="c1">//POST</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">});</span>  
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>클라이언트이 cookie를 추출할 수도 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">cookie</span><span class="p">){</span><span class="c1">//쿠키가 있는지 확인</span>
+    <span class="kd">var</span> <span class="nx">cookie</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">:</span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">key_val</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">=</span><span class="dl">"</span><span class="p">);</span>
+      <span class="k">return</span> <span class="p">{</span><span class="na">key</span><span class="p">:</span><span class="nx">key_val</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="na">value</span><span class="p">:</span><span class="nx">key_val</span><span class="p">[</span><span class="mi">1</span><span class="p">]};</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">cookie</span><span class="p">));</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">);</span>
+</code></pre></div></div>
+:ET

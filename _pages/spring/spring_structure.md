@@ -2,6 +2,7 @@
 layout: post
 title:  "디렉토리 구조 & 동작 과정"
 name: spring_structure.md
+category: spring
 ---
 
 구조

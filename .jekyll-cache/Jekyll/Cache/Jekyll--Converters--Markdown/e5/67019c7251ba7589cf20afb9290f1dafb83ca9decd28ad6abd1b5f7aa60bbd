@@ -1,0 +1,194 @@
+I"u;<h1 id="ajax">Ajax</h1>
+
+<ul>
+  <li>Ajax : 비동기 방식의 javascript와 XML. 서버에 자료를 요청할 때 화면 전환 없이 요청한 자료를 전송 받을 수 있음. (ex. 로그인할 시에 페이지 전체 로드 없이 로그인 여부만 확인)</li>
+  <li>동기 방식 : 서버에 신호를 보내고 응답이 돌아와야 다음 동작을 수행</li>
+  <li>Action page : 서버 측에 저장되어 있어서 전송된 데이터를 확인한 후 요청한 응답을 전송해줄 페이지. 서버 측 스크립트(PHP,JSP,ASP 등)사용.</li>
+</ul>
+
+<hr />
+
+<h1 id="xmlhttprequest">XMLHttpRequest</h1>
+
+<ul>
+  <li>XMLHttpRequest(XHR) : 서버측과 ajax를 하기 위해 사용되는 객체</li>
+  <li>open(방식, url, 동기=false or 비동기=true) : 초기화, get/post 선택. url 입력</li>
+  <li>send() : 서버에 요청 전송. GET일 경우 null을 넣어준다. POSt의 경우에는 서버로 보내고 싶은 데이터를 입력한다.</li>
+  <li>onreadychange : 서버로부터 응답이 도착하면 호출될 함수를 가지는 XHR객체의 프로퍼티</li>
+  <li>readyState : 현재의 XHR상태이다. 콜백함수는 실제로 응답을 받을때가 아닌 readyState가 4가 될 때 호출된다.
+    <ol>
+      <li>0 : uninitialized. 객체만 생성되고 초기화되지 않은 상태(open 실행 전)</li>
+      <li>1 : loading. open과 send사이</li>
+      <li>2 : loaded. send를 한 후 데이터를 받지 않은 상태(status와 헤더가 도착하지 않음)</li>
+      <li>3 : interactive. 데이터의 일부를 받은 상태</li>
+      <li>4 : completed. 데이터를 전부 받은 상태</li>
+    </ol>
+  </li>
+  <li>status(statusText): 서버로부터의 응답의 상태
+    <ol>
+      <li>200(OK) : 요청 성공</li>
+      <li>403(Forbidden) : 접근 거부</li>
+      <li>404(Not Found) : 페이지 없음</li>
+      <li>500(Internal Server Error) : 서버 오류</li>
+    </ol>
+  </li>
+  <li>reponseText : 서버로부터 받은 텍스트. readyState가 4이고 status가 200일 때 사용.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="c1">//XHR 객체 생성</span>
+  <span class="kd">var</span> <span class="nx">httpRequest</span><span class="o">=</span><span class="kc">null</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">getXHR</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">)</span> <span class="k">return</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">httpRequest</span> <span class="o">=</span> <span class="nx">getXHR</span><span class="p">();</span>
+
+  <span class="c1">//get 방식으로 전송</span>
+  <span class="nx">httpRequest</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">/test.jsp?id=inhyuk&amp;pw=1111</span><span class="dl">"</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+  <span class="nx">httpRequest</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="c1">//post 방식으로 전송</span>
+  <span class="nx">httpRequest</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">/test.jsp</span><span class="dl">"</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+  <span class="nx">httpRequest</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">"</span><span class="s2">id=inhyuk&amp;pw=1111</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="c1">//응답시 호출된 callback 함수 정의</span>
+  <span class="kd">var</span> <span class="nx">callbackFunction</span><span class="o">=</span><span class="nx">funtion</span><span class="p">(){}</span>
+
+  <span class="c1">//서버로부터 응답이 도착하면 호출될 callback 함수를 XHR의 프로퍼티로 지정</span>
+  <span class="nx">httpRequest</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="nx">callbackFunction</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="jquery--ajax">jQuery + Ajax</h1>
+
+<h2 id="1-load">1) load()</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">load</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">data</span><span class="p">,</span><span class="err">콜백함수</span><span class="p">)</span>
+<span class="c1">//데이터, 콜백함수 생략 가능</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사용자가 지정한 URL 주소에 데이터를 전송하고, 외부 콘텐츠를 요청한다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--ajax.html 일부--&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"P1"</span><span class="nt">&gt;</span>hello<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="c">&lt;!--index.html 일부--&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"Push"</span> <span class="na">onclick=</span><span class="s">"
+$('#pa1').load('ajax.html #P1');
+"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"pa1"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="2-ajax">2) ajax()</h2>
+
+<ul>
+  <li>지정한 URL 경로에 파일의 데이터를 전송하고 입력한 URL 경로 파일로부터 요청한 데이터를 불러온다(text,html,xml,json 등의 형식)</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span><span class="dl">"</span><span class="s2">전송 페이지</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span><span class="dl">"</span><span class="s2">전송방식(get,post)</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">전송데이터</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">dataType</span><span class="p">:</span><span class="dl">"</span><span class="s2">요청한 데이터 형식(html,xml,json,text)</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">success</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="err">전송에</span> <span class="err">성공하면</span> <span class="err">실행될</span> <span class="err">코드</span>
+  <span class="p">},</span>
+  <span class="na">error</span><span class="p">:</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="err">전송에</span> <span class="err">실패하면</span> <span class="err">실행될</span> <span class="err">코드</span>
+  <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+
+<ul>
+  <li>다음과 같은 옵션도 적용할 수 있다.
+    <ol>
+      <li>async : 비동기(true,기본), 동기(false) 방식으로 설정</li>
+      <li>beforeSend : 요청하기 전에 함수를 실행하는 이벤트 핸들러</li>
+      <li>cache : 요청한 페이지를 인터넷의 캐시에 저장할지 여부. 기본값은 true</li>
+      <li>complete : Ajax가 완료되었을 때 함수를 실행하는 이벤트 핸들러</li>
+      <li>timeout : 통신시간을 제한한다. 밀리 second단위</li>
+      <li>username : HTTP 엑세스를 할 때 인증이 필요한 경우에 쓰이는 사용자 이름</li>
+    </ol>
+  </li>
+  <li>비동기 방식으로 데이터를 전송하려면 데이터를 가공해야 한다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//serialize() : 데이터의 전송방식을 쿼리 스트링 형식의 데이터로 변환</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">from</span><span class="dl">"</span><span class="p">).</span><span class="nx">serialize</span><span class="p">()</span>
+
+<span class="c1">//serializeArray() : 배열 객체로 변환해 반환</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">from</span><span class="dl">"</span><span class="p">).</span><span class="nx">serializeArray</span><span class="p">()</span>
+
+<span class="c1">//param() : {name1:value1 , name2:value2} -&gt; "name1=value1 &amp; name2=value2"</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="nb">Object</span><span class="p">);</span>
+</code></pre></div></div>
+<ul>
+  <li>ajax 예제. 버튼을 누르면 아래의 숫자만 바뀐다</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">id = </span><span class="s">"counter"</span><span class="nt">&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"cl()"</span><span class="nt">&gt;&lt;/button&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">id = </span><span class="s">"log"</span><span class="nt">&gt;</span>123<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#counter</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">start</span><span class="p">);</span>
+    <span class="kd">function</span> <span class="nx">cl</span><span class="p">(){</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="na">url</span><span class="p">:</span><span class="dl">'</span><span class="s1">/board/ajax</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">dataType</span><span class="p">:</span><span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">type</span><span class="p">:</span><span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">success</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">){</span>
+                <span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+                <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#log</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">start</span><span class="p">);</span>
+            <span class="p">},</span>
+            <span class="na">error</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">){</span>
+                <span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+                <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#log</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">start</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+   <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<h2 id="3-ajax로-json-binding">3) Ajax로 json binding</h2>
+
+<ul>
+  <li>binding : 비동기 통신 기술을 이용하여 서버 DB에 데이터를 요청하고 그 데이터를 받아서 HTML 태그에 결합하는 것</li>
+</ul>
+
+<h2 id="4-동일-출처-정책same-origin-policy">4) 동일 출처 정책(same-origin policy)</h2>
+
+<ul>
+  <li>자바스크립트는 스크립트를 포함하는 문서와 같은 <strong>출처</strong>(불러온 URL의 프로토콜, 호스트, 포트로 정의) 의 문서에 있는 window와 Document 객체만을 이용할 수 있다.</li>
+  <li>즉, 다른 서버에서 불러온 문서의 내용은 이용할 수 없다.</li>
+  <li>서로 다른 사이트(서버)에 데이터를 주고 받으려면 서버 언어를 이용해야한다.</li>
+  <li>RSS : 초간편 배포. 자주 갱신되는 뉴스 등에 사용되는 XML 기반의 포맷. PHP를 이용하여 서버에서 데이터를 불러와서 사용하기도 한다.</li>
+</ul>
+
+<hr />
+
+<h1 id="플러그인">플러그인</h1>
+
+<ul>
+  <li>jQuery Plug-in : 다른 개발자가 구현해 놓은 프로그램을 자바스크립트 파일로 제공하는 라이브러리(저작권 잘 살펴보자.)</li>
+</ul>
+
+<p>추후 추가 예정</p>
+
+<hr />
+
+<h1 id="참고-자료">참고 자료</h1>
+
+<p><a href="https://myeonguni.tistory.com/1526">XHR 관련 자료</a></p>
+:ET

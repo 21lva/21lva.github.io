@@ -3,7 +3,7 @@ layout: post
 title:  "Collaborative Filtering"
 date:   2019-01-15 02:00:00
 author: Inhyuk
-categories: Machine_Learning
+category: Machine_Learning
 tags:	ml
 cover:  "/assets/instacode.png"
 name: CollaborativeFiltering.md

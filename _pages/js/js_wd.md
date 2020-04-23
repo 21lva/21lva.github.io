@@ -4,6 +4,7 @@ title:  "javascript 4 - Window & BOM"
 date:   2019-05-17 02:02:59
 author: Inhyuk
 categories: Javascript
+category: Javascript
 tags: js
 cover:  "/assets/instacode.png"
 name: js_wd.md

@@ -2,6 +2,7 @@
 layout: post
 title:  "Life Cycle"
 name: spring_lifecycle.md
+category: spring
 ---
 
 Life Cycle

@@ -1,0 +1,17 @@
+---
+layout: default
+title: Archives
+---
+
+<div id="blog-archives">
+</div>
+<script>
+	var url = window.location.href.split('/');
+	var pageCategory = url[url.length-2];
+	{% for post in site.pages %}
+	if("{{ post.category }}" == pageCategory){
+		var postHTML = '<article class="post"><h1><a href="{{ post.url }}">{{ post.title }}</a></h1></article>';
+		document.getElementById("blog-archives").innerHTML+=postHTML;
+	}
+	{% endfor %}
+	</script>

@@ -3,7 +3,7 @@ layout: post
 title:  "Multi armed bandit"
 date:   2018-12-26 01:02:59
 author: Inhyuk
-categories: Machine_Learning
+category: Machine_Learning
 tags:	ml
 cover:  "/assets/instacode.png"
 name: MAB.md
@@ -109,7 +109,7 @@ Thompson Sampling
 
 우리의 목표는 reward의 합(cumulative reward)를 최대로 하는 것이다.
 
-Reward $r$이 어떤 action과 알지 못하는 parameter에 의한 probability distribution이기 때문에 원하는 것은 $E[r|a,{\theta}^{optimal}]$을 최대화 하는 ${\theta}^{\text{optimal} }$을 찾는 것이다. 
+Reward $r$이 어떤 action과 알지 못하는 parameter에 의한 probability distribution이기 때문에 원하는 것은 $E[r|a,{\theta}^{optimal}]$을 최대화 하는 ${\theta}^{\text{optimal} }$을 찾는 것이다.
 
 이를 위하여 Thompson sampling도 위의 2 방법처럼 Exploration과 Exploitation 둘을 적절히 이용한다.
 

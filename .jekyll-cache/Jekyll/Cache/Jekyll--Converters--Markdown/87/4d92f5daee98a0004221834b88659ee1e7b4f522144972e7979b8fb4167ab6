@@ -1,0 +1,118 @@
+I"y;<h1 id="mysql-모듈">mysql 모듈</h1>
+
+<ul>
+  <li>설치하자</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>npm <span class="nb">install </span>mysql
+</code></pre></div></div>
+
+<h2 id="1-connection-객체">1) connection 객체</h2>
+
+<ul>
+  <li>createConnection(options) : 데이터베이스에 접속. connection 객체 생성
+    <ol>
+      <li>host : 연결 호스트</li>
+      <li>port : 연결할 포트</li>
+      <li>user : 사용자 이름(필수)</li>
+      <li>password : 사용자 비밀번호(필수)</li>
+      <li>database : 연결할 데이터베이스</li>
+      <li>debug : 디버그 모드를 할지 말지</li>
+    </ol>
+  </li>
+  <li>query(sql[,callback]) : connection 객체의 메서드. 쿼리 문장을 실행. 결과는 콜백 함수의 두 번째 매개변수로 들어간다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mysql</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+  <span class="na">user</span><span class="p">:</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">password</span><span class="p">:</span><span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">port</span> <span class="p">:</span><span class="dl">"</span><span class="s2">3310</span><span class="dl">"</span>
+  <span class="p">});</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">USE company</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">SELECT * FROM products</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">result</span><span class="p">,</span><span class="nx">fields</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Query error</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">else</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="2-crud-구현">2) CRUD 구현</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ejs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">ejs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mysql</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">body-parser</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">//DB와 연결</span>
+<span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+  <span class="na">user</span><span class="p">:</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">password</span><span class="p">:</span><span class="dl">"</span><span class="s2">1234</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">port</span> <span class="p">:</span><span class="dl">"</span><span class="s2">3310</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">database</span><span class="p">:</span><span class="dl">"</span><span class="s2">company</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="c1">//서버 생성</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span><span class="na">extended</span><span class="p">:</span><span class="kc">false</span><span class="p">}));</span>
+
+<span class="c1">//서버 실행</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">52273</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Server Running at http://127.0.0.1:52273</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+
+<span class="c1">//조회</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">list.ejs</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf8</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+    <span class="c1">//select를 시행하고 이 데이터를 ejs 파일에 넣어 출력한다.</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">select * from products</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">result</span><span class="p">){</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">ejs</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">data</span><span class="p">,{</span>
+        <span class="na">data</span><span class="p">:</span><span class="nx">results</span>
+        <span class="p">}));</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">//삭제</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/delete/:id</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+
+<span class="p">});</span>
+
+<span class="c1">//삽입</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/insert</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">insert.html</span><span class="dl">'</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf8</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/insert</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+
+  <span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">insert into products (name,modelnumber,series) values (?,?,?)</span><span class="dl">"</span><span class="p">,[</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="nx">body</span><span class="p">.</span><span class="nx">modelnumber</span><span class="p">,</span><span class="nx">body</span><span class="p">.</span><span class="nx">series</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">//수정</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/edit/:id</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+  <span class="c1">//숫자를 입력하면(or 누르면) 미리 입력된 정보로 페이지 작성</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">edit.ejs</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf8</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">'</span><span class="s1">select * from products where id = ?</span><span class="dl">'</span><span class="p">,[</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">result</span><span class="p">){</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">ejs</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">data</span><span class="p">,{</span><span class="na">data</span><span class="p">:</span><span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]}));</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/edit/:id</span><span class="dl">"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">){</span>
+  <span class="c1">//보여준 값을 수정하고 제출 하면 DB를 수정한다</span>
+  <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="dl">"</span><span class="s2">update products set name=?, modelnumber=?, series=? where id=?</span><span class="dl">"</span><span class="p">,[</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="nx">body</span><span class="p">.</span><span class="nx">modelnumber</span><span class="p">,</span><span class="nx">body</span><span class="p">.</span><span class="nx">series</span><span class="p">,</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>(왜 put, delete를 안쓰는 것일까..)</p>
+:ET

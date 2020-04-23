@@ -3,6 +3,7 @@ layout: post
 title:  "소개"
 date:   2019-12-18 01:02:59
 name: k8s_basic.md
+category: kubernetes
 ---
 
 - 컨테이너 오케스트레이션 : 여러 개의 서버에서 컨테이너를 배포하고 운영

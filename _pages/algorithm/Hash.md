@@ -3,7 +3,6 @@ layout: post
 title:  "Hash"
 date:   2019-01-12 02:00:00
 author: Inhyuk
-categories: Data_Structure
 category: Algorithms
 tags:	Data Structure
 cover:  "/assets/instacode.png"

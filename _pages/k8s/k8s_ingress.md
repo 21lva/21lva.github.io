@@ -3,6 +3,7 @@ layout: post
 title:  "Ingress"
 date:   2019-12-18 01:02:59
 name: k8s_ingress.md
+category: kubernetes
 ---
 
 

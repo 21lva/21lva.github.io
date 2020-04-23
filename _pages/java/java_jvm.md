@@ -3,6 +3,7 @@ layout: post
 title:  "JVM, JRE, JDK"
 date:   2019-12-18 01:02:59
 author: Inhyuk
+category: java
 name: java_jvm.md
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title:  "collection framework"
 date:   2019-12-18 01:02:59
 author: Inhyuk
+category: java
 name: java_collection.md
 ---
 

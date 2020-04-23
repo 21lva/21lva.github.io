@@ -3,7 +3,7 @@ layout: post
 title:  "Django 1 - 기본구조"
 date:   2019-11-23 01:02:59
 author: Inhyuk
-categories: Django
+category: Django
 tags: django
 cover:  "/assets/instacode.png"
 name: 2019-11-23-django1.md

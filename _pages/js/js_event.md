@@ -4,6 +4,7 @@ title:  "이벤트"
 date:   2019-05-17 01:02:59
 author: Inhyuk
 categories: Javascript
+category: Javascript
 tags: js
 cover:  "/assets/instacode.png"
 name: js_event.md

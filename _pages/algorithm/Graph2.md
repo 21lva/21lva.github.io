@@ -3,7 +3,6 @@ layout: post
 title:  "Graph part 2"
 date:   2019-01-25 02:00:00
 author: Inhyuk
-categories: Algorithms
 category: Algorithms
 tags:	Algorithms
 cover:  "/assets/instacode.png"

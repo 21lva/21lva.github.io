@@ -3,6 +3,7 @@ layout: post
 title:  "IoC"
 cover:  "/assets/instacode.png"
 name: spring_ioc.md
+category: spring
 ---
 
 IoC

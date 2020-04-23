@@ -1,0 +1,229 @@
+I"m<h1 id="redis">redis</h1>
+
+<ul>
+  <li>메모리에 저장하는 key-value 형태의 NoSQL</li>
+  <li>
+    <p>nodejs에서 사용하는 redis 모듈 <a href="https://www.npmjs.com/package/redis">관련문서</a></p>
+  </li>
+  <li>설치
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo npm install JSON redis -g
+</code></pre></div>    </div>
+  </li>
+  <li>기능
+    <ul>
+      <li>set key value: key-value 저장</li>
+      <li>get key : key-value의 value 읽기</li>
+      <li>publish : 특정 사안을 subscribe하는 client에게 메시지 전달</li>
+      <li>subscribe : 특정 사안을 구독</li>
+    </ul>
+  </li>
+  <li>자주 사용되는 구조
+    <ul>
+      <li>String : key에 대해서 문자열을 저장. 최대 512MB의 바이너리도 저장가능</li>
+      <li>List : key에대해서 linked list 자료 구조를 매칭. lpush(처음에 저장), rpush(마지막에 저장), lpop(처음 뽑기), rpop(마지막 뽑기) 가능</li>
+      <li>Set : List와 달리 value의 중복 불가능</li>
+      <li>Sorted Set : set과 비슷. value와 함께 score 저장. score를 기준으로 정렬</li>
+      <li>Hash : value에 객체 형식을 저장(field-value의 여러쌍이 value에 들어간다)</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//client 생성</span>
+<span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">redis</span><span class="dl">'</span><span class="p">).</span><span class="nx">createClient</span><span class="p">();</span>
+
+<span class="c1">//String</span>
+<span class="nx">client</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">'</span><span class="s1">key1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value1</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">key1</span><span class="dl">'</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">value</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//List</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">rpush</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value2</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value3</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">lpush</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value2</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value3</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">lrange</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">arr</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>  
+<span class="p">});</span>
+
+<span class="c1">//Set</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">sadd</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value2</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value3</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">srange</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">s</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//Sorted Set</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">zadd</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,</span><span class="nx">score1</span><span class="p">,</span><span class="dl">'</span><span class="s1">value1</span><span class="dl">'</span><span class="p">,</span><span class="nx">score2</span><span class="p">,</span><span class="dl">'</span><span class="s1">value2</span><span class="dl">'</span><span class="p">,</span><span class="nx">score3</span><span class="p">,</span><span class="dl">'</span><span class="s1">value3</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">zrange</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">s</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//Hash</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">hmset</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">field1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">field2</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">value2</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">hgetall</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">obj</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//Delete</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">//exist</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="dl">'</span><span class="s1">key</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">//rename</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">rename</span><span class="p">(</span><span class="dl">'</span><span class="s1">old_key</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">new_key</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+<hr />
+
+<h1 id="socketio--redis-로-채팅서버-구현">Socket.io + Redis 로 채팅서버 구현</h1>
+
+<ul>
+  <li>이전 장인 Socket.io를 바탕으로 진행</li>
+</ul>
+
+<h4 id="chatjs">chat.js</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">redis</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">JSON</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">JSON</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="c1">//create socket.io</span>
+<span class="kd">var</span> <span class="nx">io</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">socket.io</span><span class="dl">"</span><span class="p">)();</span>
+
+<span class="c1">//create redis client</span>
+<span class="kd">var</span> <span class="nx">rclient</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span><span class="mi">6379</span><span class="p">,</span><span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">);</span>
+
+
+<span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">connection</span><span class="dl">"</span><span class="p">,(</span><span class="nx">socket</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+  <span class="c1">//login handler</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,(</span><span class="nx">data</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Client logged in. name:</span><span class="dl">'</span><span class="o">+</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">name</span><span class="o">=</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="c1">//chat handler</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message from %s: %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">from</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">msg</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">msg</span>
+    <span class="p">};</span>
+
+    <span class="c1">//push msg to list</span>
+    <span class="nx">rclient</span><span class="p">.</span><span class="nx">rpush</span><span class="p">(</span><span class="dl">'</span><span class="s1">chatLogs</span><span class="dl">'</span><span class="p">,</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">msg</span><span class="p">));</span>
+
+    <span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">chat</span><span class="dl">'</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">io</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="indexjs">index.js</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">redis</span><span class="dl">'</span><span class="p">);</span>
+
+
+<span class="kd">var</span> <span class="nx">rclient</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span><span class="mi">6379</span><span class="p">,</span><span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="cm">/* GET home page. */</span>
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//load chat logs</span>
+  <span class="nx">rclient</span><span class="p">.</span><span class="nx">lrange</span><span class="p">(</span><span class="dl">'</span><span class="s1">chatLogs</span><span class="dl">'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">charArr</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span><span class="c1">//0 ~ -1(last element)</span>
+    <span class="kd">let</span> <span class="nx">chatLogs</span><span class="o">=</span><span class="nx">charArr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">char</span><span class="o">=&gt;</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">char</span><span class="p">));</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+     <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Express</span><span class="dl">'</span><span class="p">,</span>
+     <span class="na">chatLogs</span><span class="p">:</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">chatLogs</span><span class="p">)</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="indexejs">index.ejs</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Socket.io Chat Example<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Socket.io Chat Example<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"msgForm"</span><span class="nt">&gt;</span>Message: <span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"msgForm"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Send<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"chatLogs"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/socket.io/socket.io.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="c1">// socket.io 서버에 접속한다</span>
+    <span class="kd">var</span> <span class="nx">socket</span> <span class="o">=</span> <span class="nx">io</span><span class="p">();</span>
+
+    <span class="c1">// 서버로 자신의 정보를 전송한다.</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">login</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="c1">// name: "ungmo2",</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">abc</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">});</span>
+
+    <span class="c1">// 서버로부터의 메시지가 수신되면</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">login</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chatLogs</span><span class="dl">"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;div&gt;&lt;strong&gt;</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;/strong&gt; has joined&lt;/div&gt;</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">// 서버로부터의 메시지가 수신되면</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">chat</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chatLogs</span><span class="dl">"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;div&gt;</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">msg</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> : from &lt;strong&gt;</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="k">from</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;/strong&gt;&lt;/div&gt;</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Send 버튼이 클릭되면</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">form</span><span class="dl">"</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="kd">var</span> <span class="nx">$msgForm</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#msgForm</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="c1">// 서버로 메시지를 전송한다.</span>
+      <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">chat</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">msg</span><span class="p">:</span> <span class="nx">$msgForm</span><span class="p">.</span><span class="nx">val</span><span class="p">()</span> <span class="p">});</span>
+      <span class="nx">$msgForm</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="kd">var</span> <span class="nx">chatLogs</span> <span class="o">=</span> <span class="o">&lt;%-</span> <span class="nx">chatLogs</span> <span class="o">%&gt;</span><span class="p">;</span>
+    <span class="nx">chatLogs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">chatLog</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+      <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chatLogs</span><span class="dl">"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;div&gt;</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">chatLog</span><span class="p">.</span><span class="nx">msg</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> : from &lt;strong&gt;</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">chatLog</span><span class="p">.</span><span class="k">from</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;/strong&gt;&lt;/div&gt;</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>view 페이지에 JSON을 넘길 때 조심할 점
+    <ul>
+      <li>서버에서 JSON을 넘길때는 stringify로 문자열화 하자</li>
+      <li>ejs의 경우 view 페이지에서 <strong>&lt;%=</strong> 대신 <strong>&lt;%-</strong> 를 사용하자</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="참고자료">참고자료</h1>
+
+<ul>
+  <li><a href="https://bcho.tistory.com/1098">https://bcho.tistory.com/1098</a></li>
+  <li><a href="http://library.gabia.com/contents/infrahosting/8018">http://library.gabia.com/contents/infrahosting/8018</a></li>
+  <li><a href="https://wi-fi.tistory.com/entry/%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85%EB%B0%A9-%EB%A7%8C%EB%93%A4%EA%B8%B0-NodeJS-Express-Redis-Socketio-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0">https://wi-fi.tistory.com/entry/%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85%EB%B0%A9-%EB%A7%8C%EB%93%A4%EA%B8%B0-NodeJS-Express-Redis-Socketio-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0</a></li>
+  <li><a href="https://www.zerocho.com/category/NodeJS/post/5a3238b714c5f9001b16c430">https://www.zerocho.com/category/NodeJS/post/5a3238b714c5f9001b16c430</a></li>
+</ul>
+:ET

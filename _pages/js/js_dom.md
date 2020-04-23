@@ -4,6 +4,7 @@ title:  "DOM"
 date:   2019-06-10 02:02:59
 author: Inhyuk
 categories: Javascript
+category: Javascript
 tags: js
 cover:  "/assets/instacode.png"
 name: js_dom.md

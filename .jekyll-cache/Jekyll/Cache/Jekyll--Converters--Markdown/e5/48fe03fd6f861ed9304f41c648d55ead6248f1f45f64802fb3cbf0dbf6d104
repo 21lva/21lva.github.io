@@ -1,0 +1,57 @@
+I"O<p><a href="https://www.acmicpc.net/problem/1837">백준 1837번 문제</a></p>
+
+<p>이번 문제는 임의의 수가 주어지고 한계가 주어질 때, 한계보다 작은 소수중에서 임의의 수를 나눌 수 있는 수가 존재하는지 안하는지를 찾는 문제이다.</p>
+
+<p>전형적인 소수문제로 에라토네스의 체를 이용하여 풀면 된다.</p>
+
+<h4 id="에라토네스의-체">에라토네스의 체</h4>
+
+<p>중학교 수학시간에 배운 방식으로 가장 작은 소수를 찾고 그 수의 배수를 모두 제거하고 다시 가장 작은 소수를 찾는 방식으로 진행된다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="n">is_prime</span><span class="p">[</span><span class="mi">1000001</span><span class="p">];</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="n">k</span><span class="p">;</span>
+<span class="n">string</span> <span class="n">p</span><span class="p">;</span>
+
+<span class="kt">long</span> <span class="kt">long</span> <span class="nf">mod</span><span class="p">(</span><span class="n">string</span> <span class="n">x</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">long</span> <span class="kt">long</span> <span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">res</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="sc">'0'</span><span class="p">)</span> <span class="p">)</span><span class="o">%</span> <span class="n">y</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">erato</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">is_prime</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">2</span><span class="p">)</span><span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">)</span><span class="k">continue</span><span class="p">;</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="n">is_prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">p</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
+	<span class="n">erato</span><span class="p">();</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">mod</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span><span class="n">printf</span><span class="p">(</span><span class="s">"BAD 2"</span><span class="p">);</span>
+	<span class="k">else</span> <span class="p">{</span>
+		<span class="kt">bool</span> <span class="n">is_good</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_prime</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="k">continue</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">mod</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+				<span class="n">printf</span><span class="p">(</span><span class="s">"BAD %d"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+				<span class="n">is_good</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+				<span class="k">break</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">is_good</span><span class="p">)</span><span class="n">printf</span><span class="p">(</span><span class="s">"GOOD"</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

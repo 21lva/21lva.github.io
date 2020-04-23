@@ -4,6 +4,7 @@ title:  "tar, zip"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: linux_tar.md
+category: linux
 ---
 
 tar

@@ -1,0 +1,150 @@
+I"0(<h1 id="pod">Pod</h1>
+
+<ul>
+  <li>k8s에서는 보통 단일 컨테이너가 아닌 컨테이너 여러개(보통은 1개)를 포함하고 있는 Pod를 이용</li>
+  <li>k8s안의 컨테이너들은 Pod안의 IP를 공유하기 때문에 서로 포트를 가지고 통신이 가능하다</li>
+</ul>
+
+<hr />
+
+<h1 id="lifecycle-of-pod">LifeCycle of Pod</h1>
+
+<ul>
+  <li>pod는 생성에서 삭제까지 lifecycle을 가지고 있음</li>
+  <li>**kubectl describe pods <pod이름>** 으로 확인하면 Status가 존재</pod이름></li>
+  <li>Status의 값
+    <ul>
+      <li>Pending : pod를 생성한 상태. 내부의 컨테이너가 실행되는 중</li>
+      <li>Running : pod가 돌아가는 상태. 실행중인 pod의 갯수를 확인</li>
+      <li>Succeeded : 컨테이너가 성공적으로 종료된 상태</li>
+      <li>Failed : 종료가 실패한 컨테이너가 있는 상태</li>
+      <li>Unknown</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="health-check">Health check</h1>
+
+<ul>
+  <li>k8s에서는 각 <strong>container</strong>(pod이 아니다)의 상태를 주기적으로 확인하여 문제가 있는 pod을 재시작하거나 서비스에서 제외</li>
+  <li>livenessProbe : 컨테이너가 살아있는지 확인. 상태확인이 실패하면 kubelet은 컨테이너를 재시작.</li>
+  <li>readinessProbe : 컨테이너가 실행된 후 실제로 서비스 요청에 응답을 할 수 있는지 확인. 실패하면 endpoing controller가 해당 pod가 연결된 모든 service에서 이 pod의 endpoint 정보를 제거(서비스에서 제외된다고 보면된다). pod생성 후 바로 서비스 하는 것이 아닌 별도의 probe를 통해 서비스 전 확인을 한다</li>
+</ul>
+
+<h2 id="prob-방법">prob 방법</h2>
+
+<h4 id="1-command-probe">1) command probe</h4>
+
+<ul>
+  <li>상태 체크를 shell 명령어를 통해서 수행</li>
+  <li>shell 명령어의 결과가 0이면 성공 아니면 실패로 간주</li>
+</ul>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">test-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">test-app</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">test-image</span>
+    <span class="na">imagePullPolicy</span><span class="pi">:</span> <span class="s">Always</span>
+    <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">8080</span>
+    <span class="na">livenessProbe</span><span class="pi">:</span>
+      <span class="na">exec</span><span class="pi">:</span>
+        <span class="na">command</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">cat</span>
+        <span class="pi">-</span> <span class="s">/tmp/healthy</span>
+</code></pre></div></div>
+
+<p><em>/tmp/headlthy</em> 가 존재하는지 확인하는 cmd가 있다.</p>
+
+<h4 id="2-http-probe">2) HTTP probe</h4>
+
+<ul>
+  <li>가장 많이 사용하는 방식.</li>
+  <li>HTTP GET을 이용하여 컨테이너의 상태를 체크</li>
+</ul>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">readiness-rc</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">test-app</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">metadata</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">test-pod</span>
+      <span class="na">labels</span><span class="pi">:</span>
+        <span class="na">app</span><span class="pi">:</span> <span class="s">test-app</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">test-container</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">test-image</span>
+        <span class="na">imagePullPolicy</span><span class="pi">:</span> <span class="s">Always</span>
+        <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">8080</span>
+        <span class="na">readinessProbe</span><span class="pi">:</span>
+          <span class="na">httpGet</span><span class="pi">:</span>
+            <span class="na">path</span><span class="pi">:</span> <span class="s">/ppp</span>
+            <span class="na">port</span><span class="pi">:</span> <span class="m">8080</span>
+</code></pre></div></div>
+
+<p>path에 Http Get을 보낼 url을 적고, port에는 보낼 port를 적는다</p>
+
+<h4 id="3-tcp-probe">3) TCP probe</h4>
+
+<ul>
+  <li>지정된 port에 TCP 연결을 해서 연결되면 성공 아니면 실패</li>
+</ul>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">test-app</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">test-container</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">test-image</span>
+    <span class="na">imagePullPolicy</span><span class="pi">:</span> <span class="s">Always</span>
+    <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">8080</span>
+    <span class="na">livenessProbe</span><span class="pi">:</span>
+      <span class="na">tcpSocket</span><span class="pi">:</span>
+        <span class="na">port</span><span class="pi">:</span> <span class="m">8080</span>
+      <span class="na">initialDelaySeconds</span><span class="pi">:</span> <span class="m">5</span>
+      <span class="na">periodSeconds</span><span class="pi">:</span> <span class="m">5</span>
+
+</code></pre></div></div>
+
+<p><strong>tcpSocket.port</strong> 에 TCP 연결을 시도. <strong>initialDelaySeconds</strong> 만큼 기다렸다가(pod의 컨테이너가 가동되는 등의 작업에 필요한 시간을 기다려야함) <strong>periodSeconds</strong> 마다 주기적으로 시도</p>
+
+<hr />
+
+<h1 id="init-container">init container</h1>
+
+<ul>
+  <li>app container가 실행되기 전에 pod를 초기화하는 역할</li>
+  <li>여러개의 init container가 존재하면, 차례대로 실행. 중간에 실패를 하면 성공할 때까지 재실행</li>
+  <li>pod가 준비되기 전에 실행하는 container라 readinessProbe가 존재하지 않음</li>
+</ul>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">initContainers</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">init-myservice</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">busybox</span>
+  <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">sh'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">-c'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">until</span><span class="nv"> </span><span class="s">nslookup</span><span class="nv"> </span><span class="s">myservice;</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">waiting</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">myservice;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">2;</span><span class="nv"> </span><span class="s">done;'</span><span class="pi">]</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">init-mydb</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">busybox</span>
+  <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">sh'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">-c'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">until</span><span class="nv"> </span><span class="s">nslookup</span><span class="nv"> </span><span class="s">mydb;</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">waiting</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">mydb;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">2;</span><span class="nv"> </span><span class="s">done;'</span><span class="pi">]</span>
+</code></pre></div></div>
+<hr />
+
+<h1 id="참고자료">참고자료</h1>
+
+<ul>
+  <li><a href="https://arisu1000.tistory.com/27829?category=787056">https://arisu1000.tistory.com/27829?category=787056</a></li>
+</ul>
+:ET

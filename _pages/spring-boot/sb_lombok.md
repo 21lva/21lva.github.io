@@ -2,6 +2,7 @@
 layout: post
 title:  "lombok"
 name: sb_lombok.md
+category: spring-boot
 ---
 
 Lombok

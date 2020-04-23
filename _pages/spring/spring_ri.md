@@ -2,6 +2,7 @@
 layout: post
 title:  "Redirect & Interceptor"
 name: spring_ri.md
+category: spring
 ---
 
 Redirect & Interceptor

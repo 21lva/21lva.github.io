@@ -4,6 +4,7 @@ title:  "daemon, cron, at, 서비스, 소켓"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: linux_daemon.md
+category: linux
 ---
 
 

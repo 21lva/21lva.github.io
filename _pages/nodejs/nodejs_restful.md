@@ -3,7 +3,7 @@ layout: post
 title:  "RESTful"
 date:   2019-07-31 02:02:59
 author: Inhyuk
-categories: NodeJS
+category: NodeJS
 tags: NodeJS
 cover:  "/assets/instacode.png"
 name: nodejs_restful.md

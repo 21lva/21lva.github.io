@@ -3,7 +3,7 @@ layout: post
 title:  "Docker 0 - 설치"
 date:   2019-12-18 01:02:59
 author: Inhyuk
-categories: Docker
+category: Docker
 tags: docker
 cover:  "/assets/instacode.png"
 name: docker0.md
@@ -42,4 +42,3 @@ Windows
 --------
 
 - [docker for Windows](https://docs.docker.com/docker-for-windows/)를 설치하자.
-

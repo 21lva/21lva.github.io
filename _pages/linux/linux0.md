@@ -4,6 +4,7 @@ title:  "우분투 기본"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: linux0.md
+category: linux
 ---
 
 시작& 종료

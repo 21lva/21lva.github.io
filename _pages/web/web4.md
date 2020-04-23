@@ -3,7 +3,7 @@ layout: post
 title:  "CSS - Flexible Box, 가변 그리드 레이아웃"
 date:   2019-06-20 02:02:59
 author: Inhyuk
-categories: Web
+category: Web
 tags: web
 cover:  "/assets/instacode.png"
 name: 2019-06-22-web6.md

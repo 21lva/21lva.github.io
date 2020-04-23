@@ -3,6 +3,7 @@ layout: post
 title:  "ConfigMap, Secret"
 date:   2019-12-18 01:02:59
 name: k8s_configMap.md
+category: kubernetes
 ---
 
 ConfigMap

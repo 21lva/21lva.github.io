@@ -4,6 +4,7 @@ title:  "Stream"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: java_stream.md
+category: java
 ---
 
 스트림

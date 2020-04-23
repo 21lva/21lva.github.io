@@ -3,7 +3,7 @@ layout: post
 title:  "Activation function(활성함수)"
 date:   2018-12-26 01:02:59
 author: Inhyuk
-categories: Machine_Learning
+category: Machine_Learning
 tags:	ml
 cover:  "/assets/instacode.png"
 name: activation.md

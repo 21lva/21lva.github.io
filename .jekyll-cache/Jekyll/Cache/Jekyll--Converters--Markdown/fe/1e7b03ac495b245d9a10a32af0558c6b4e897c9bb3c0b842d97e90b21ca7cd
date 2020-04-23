@@ -1,0 +1,49 @@
+I"�<p><a href="https://www.acmicpc.net/problem/1717">백준 1717번 문제</a></p>
+
+<p>처음에 n개의 원소가 각각 다른 집합인 상태에서 합집합 연산을 연속적으로 진행을 한다. 중간중간에 두 원소가 같은 집합인지를 물어보고 맞으면 <strong>YES</strong> 를 틀리면 <strong>NO</strong> 를 출력하는 간단한 문제이다.</p>
+
+<p>이 문제는 <strong>Union-find</strong> 라는 자료구조를 이용하면 된다. 이 자료구조는 <a href="/_posts/2019-01-12-Graph.md">Graph</a>에서 <strong>Kruskal</strong> 을 다룰 때에 살짝 다룬 부분이다. 하지만 Grpah 포스트에서 다룬 방식으로 하면 시간초과가 난다.</p>
+
+<p>예를 들어,  $ 1,2,3,4,5 $ 가 순서대로 합집합을 진행하면, 1차원 list같이 붙어 있게 된다. 그럼 새로 들어온 6과 두 집합이 같은 집합인지를 비교하게 되면  $ O(N) $ 이 걸리게 되는 것이다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+</span>
+<span class="kt">int</span> <span class="n">mother</span><span class="p">[</span><span class="mi">1000001</span><span class="p">];</span>
+<span class="kt">int</span> <span class="nf">find_mother</span><span class="p">(</span><span class="kt">int</span> <span class="n">child</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">mother</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">==</span> <span class="n">child</span><span class="p">)</span><span class="k">return</span> <span class="n">child</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">mother</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="n">find_mother</span><span class="p">(</span><span class="n">mother</span><span class="p">[</span><span class="n">child</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">union_set</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">mx</span> <span class="o">=</span> <span class="n">find_mother</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">my</span> <span class="o">=</span> <span class="n">find_mother</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+	<span class="n">mother</span><span class="p">[</span><span class="n">mx</span><span class="p">]</span> <span class="o">=</span> <span class="n">my</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">is_same_set</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">find_mother</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">find_mother</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="n">mother</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">m</span><span class="o">--</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">type</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d %d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">type</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="c1">//union</span>
+			<span class="n">union_set</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">else</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">is_same_set</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span><span class="n">printf</span><span class="p">(</span><span class="s">"YES</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+			<span class="k">else</span> <span class="n">printf</span><span class="p">(</span><span class="s">"NO</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>find_mother</em> 함수를 보면, 현재의 node의 부모가 root가 아니면 그 부모의 부모를 현재 node의 부모로 바꾼다. 이렇게 하면 find_mother함수를 불러오는 경우에 tree의 depth를 줄일 수가 있다.</p>
+
+<p>한 가지 더 추가를 하자면 두 set을 합할 때에 depth가 큰 쪽으로 작은 쪽이 들어오게 만들 수 있다. 이 두 방법을 사용하면 depth가 선형적으로 길어져서 시간초과가 생기는 문제를 방지할 수 있다. 물론 여기서는 한가지만 사용하여도 문제없이 통과를 하였다.</p>
+:ET

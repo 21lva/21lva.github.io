@@ -3,6 +3,7 @@ layout: post
 title:  "Lambda expression"
 date:   2019-12-18 01:02:59
 author: Inhyuk
+category: java
 name: java_lambda.md
 ---
 
@@ -50,7 +51,7 @@ Collection.sort(list,new Comparator<String>(){
     return s2.compareTo(s1);
   }
 });
-  
+
 //람다식을 사용
 Collection.sort(list,(s1,s2)->{
   s2.compareTo(s1)

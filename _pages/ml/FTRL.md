@@ -3,7 +3,7 @@ layout: post
 title:  "FTRL"
 date:   2019-01-15 02:00:00
 author: Inhyuk
-categories: Machine_Learning
+category: Machine_Learning
 tags:	ml
 cover:  "/assets/instacode.png"
 name: FTRL.md
@@ -26,7 +26,7 @@ Search advertising, contextual advertising, display advertising과 같은 광고
 Brief System Overview
 ======================
 
-User가 search q(query)를 시행하면, 학습되어있는 모델에서 광고들이 얼마나 적합한지, 어떤 순서로 보여주어야 하는지등을 결정한다. 그러기 위해서 가장 중요한 것은 $P(click|q,a)$(어떤 광고 $a$가 query $q$에서 주어졌을 때 그 광고가 $click$될 확률)를 estimate하는 것이다. 
+User가 search q(query)를 시행하면, 학습되어있는 모델에서 광고들이 얼마나 적합한지, 어떤 순서로 보여주어야 하는지등을 결정한다. 그러기 위해서 가장 중요한 것은 $P(click|q,a)$(어떤 광고 $a$가 query $q$에서 주어졌을 때 그 광고가 $click$될 확률)를 estimate하는 것이다.
 
 이 estimation을 위하여 다양한 방법들(including regularized logistic regression)이 사용된다. (여기서는 FTRL에 대한 부분은 적다.)
 
@@ -69,7 +69,7 @@ $$
 
 **OGD** 의 경우 sparse model을 생성하는 것에 좋은 방식이 아니기 때문에 **FOBOS** 나 **RDA** 와 같은 방법들이 제안되었다. **RDA** 의 경우 **FOBOS** 보다 accuracy vs sparsity tradeoffs에서는 좋은 성능을 보였지만, **SGD** 에 비해서 정확도에서는 좋은 성능을 보여주지는 못했다.
 
-이렇게 **OGD** 의 accuracy에서의 성능과 **RDA** 의 sparsity를 제공하는 부분을 모두 얻기 위하여 논문에서는 **FTRL-proximal** 이라는 방법을 제안한다. 
+이렇게 **OGD** 의 accuracy에서의 성능과 **RDA** 의 sparsity를 제공하는 부분을 모두 얻기 위하여 논문에서는 **FTRL-proximal** 이라는 방법을 제안한다.
 
 (사실, 다른 [논문](https://static.googleusercontent.com/media/research.google.com/ko//pubs/archive/37013.pdf)에서 **FOBOS** 와 **RDA** 도 FTRL이라고 한다.)
 
@@ -126,7 +126,7 @@ $$
 
 $$
 \mathbf{w_{t+1,i} } = \begin{cases}
-0 & \text{ if } |z_{t,i}|\leq {\lambda}_1 
+0 & \text{ if } |z_{t,i}|\leq {\lambda}_1
 
 -{\eta}_t(z_{t,i}-sgn(z_{t,i}){\lambda}_1) & \text{ otherwise}  
 \end{cases}
@@ -171,7 +171,7 @@ Per-Coordinate Learning Rates
 
 10개의 coin을 던지고, logisitic regression을 이용하여 10개의 coin들에 대하여 $P(\text{heads}|{\text{coin}}_i)$를 estimate한다고 해보자. 각 round마다 한 개의 coin이 던져지고 확인하는 형식을 할 것이다. 이 경우에 round마다 coin이 한 개만 던져지므로 10개의 독립적인 regression을 행해야 하지만, 한 개의 model을 사용하여 이를 해결하려고 하는 것이 문제이다.
 
-만약에 각 feature(이 경우에는 각 coin들)을 학습할 때 같은 learning rate를 학습한다면, 많이 변한 feature들(많이 던져진 coin들)때문에 적게 변한 feature들(적게 던져진 coin들)은 학습이 제대로 이루어지지 않을 것이다. 
+만약에 각 feature(이 경우에는 각 coin들)을 학습할 때 같은 learning rate를 학습한다면, 많이 변한 feature들(많이 던져진 coin들)때문에 적게 변한 feature들(적게 던져진 coin들)은 학습이 제대로 이루어지지 않을 것이다.
 
 그러므로 이 논문에서는 다음과 같은 learning rate를 정의한다.(각 feature들 마다 각각의 learning rate들을 정의하였다.)
 
@@ -206,7 +206,7 @@ Regret과 per-coordinate learning rate
 
 Data set의 크기가 과거에 비해 비대해지면서, 사용자들은 한 번에 모든 data들을 학습하는 **batch** 방식보다는 **OGD** 같이 한 번의 update에 하나의 training data만 사용하거나, **mini-batch** 처럼 한 번에 다룰 수 있는 양의 data들만 이용하는 방식을 선호하게 되었다.
 
-하지만,OGD에서의 학습속도는 batch 방식에서의 학습 속도보다 느리다. 그 이유로는 batch 방식에서는 loss를 적절히 조절하여 모든 coordinate 방향으로의 이동 단위가 비슷하게 preprocessing 할 수 있지만, 언제 무슨 데이터가 어떤 형태를 가지고 들어올지 알지 못하는 OGD의 경우에는 이 방식을 쓰기 쉽지 않다. 그렇기 때문에 후에 서술하는 regret을 사용하지 않는 OGD의 경우에는 특정 feature(coordinate)로 overfitting하고 나머지에 대해서는 underfitting하는 경향이 있다. 
+하지만,OGD에서의 학습속도는 batch 방식에서의 학습 속도보다 느리다. 그 이유로는 batch 방식에서는 loss를 적절히 조절하여 모든 coordinate 방향으로의 이동 단위가 비슷하게 preprocessing 할 수 있지만, 언제 무슨 데이터가 어떤 형태를 가지고 들어올지 알지 못하는 OGD의 경우에는 이 방식을 쓰기 쉽지 않다. 그렇기 때문에 후에 서술하는 regret을 사용하지 않는 OGD의 경우에는 특정 feature(coordinate)로 overfitting하고 나머지에 대해서는 underfitting하는 경향이 있다.
 
 저자는 이 문제를 해결하기 위하여 각각의 coordinate마다 다르게 변하는 learning rate를 이용할 것이다. 이 방식을 사용하면 regret bound(regret이 값을 가질 수 있는 범위)가 전보다 훨씬 작아진다고 한다.
 

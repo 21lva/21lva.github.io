@@ -3,7 +3,7 @@ layout: post
 title:  "HTML - 기본 태그 & 표 & 이미지 & 링크 & Form & Semantic Tag"
 date:   2019-06-17 02:02:59
 author: Inhyuk
-categories: Web
+category: Web
 tags: web
 cover:  "/assets/instacode.png"
 name: 2019-06-17-web1.md
@@ -61,7 +61,7 @@ HTML 태그
 
 ```html
 <p></p>
-``` 
+```
 
 - 단락을 만드는 태그
 - 앞뒤에 줄바꿈이 있음

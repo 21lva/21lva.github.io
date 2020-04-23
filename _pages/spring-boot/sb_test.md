@@ -2,6 +2,7 @@
 layout: post
 title:  "Test"
 name: sb_test.md
+category: spring-boot
 ---
 
 - spring boot에서는 기본적인 test 환경 제공

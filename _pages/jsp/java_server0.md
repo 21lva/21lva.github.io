@@ -3,6 +3,7 @@ layout: post
 title:  ""
 cover:  "/assets/instacode.png"
 name: java_server0.md
+category: JSP
 ---
 
 웹서버 vs 웹어플리케이션 서버

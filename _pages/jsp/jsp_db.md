@@ -3,6 +3,7 @@ layout: post
 title:  "DB"
 cover:  "/assets/instacode.png"
 name: jsp_db.md
+category: JSP
 ---
 
 JDBC

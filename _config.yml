@@ -10,7 +10,7 @@ paginate: 10
 gems: [jekyll-paginate]
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 markdown: kramdown
-Categories: [spring-boot,spring,java,jsp]
+Categories: [spring-boot,spring,java,JSP,Algorithms,BOJ,Django,Docker,Javascript,kubernetes,linux,Machine_Learning,NodeJS,Web]
 collections:
   pages:
     output: true

@@ -3,7 +3,6 @@ layout: post
 title:  "Linked List"
 date:   2019-01-02 02:00:00
 author: Inhyuk
-categories: Data_Structure
 tags:	Data Structure
 category: Algorithms
 cover:  "/assets/instacode.png"

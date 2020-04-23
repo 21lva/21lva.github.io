@@ -4,6 +4,7 @@ title:  "jQuery 2 - 이벤트 & 애니메이션"
 date:   2019-06-12 02:02:59
 author: Inhyuk
 categories: Javascript
+category: Javascript
 tags: js
 cover:  "/assets/instacode.png"
 name: jquery_event.md

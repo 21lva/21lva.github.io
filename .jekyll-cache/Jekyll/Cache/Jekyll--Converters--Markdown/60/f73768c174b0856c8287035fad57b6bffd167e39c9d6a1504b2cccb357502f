@@ -1,0 +1,330 @@
+I"$�<p><strong>jQuery</strong> 는</p>
+<ul>
+  <li>기본적인 자바스크립트 DOM과 event object에 존재하는 호환성 문제를 해결해 준다.</li>
+  <li>에니매이션 기능을 구현하기 쉽게 해준다.</li>
+</ul>
+
+<p>이 라이브러리를 연동하는 방식은 두 가지 이다.</p>
+
+<ol>
+  <li>다운로드 방식 : jQuery 라이브러리를 직접 받아 HTML파일에서 불러오는 방식</li>
+  <li>네트워크 전송 방식 : 온라인에서 제공하는 제이쿼리 라이브러리 파일을 네트워크를 통해서 HTML에서 불러오는 방식</li>
+</ol>
+
+<p>다운로드 방식은 네트워크에 상관이 없다는 장점이 있지만, 파일을 다운로드 해야하고 import하는 단점이 있다.</p>
+
+<p><a href="https://jquery.com/download/">jQuery</a>에 접속하여 다운로드 혹은 네트워크 방식을 사용하자.</p>
+
+<hr />
+
+<h1 id="선택자">선택자</h1>
+
+<ul>
+  <li>선택자 : HTML의 요소를 선택하여 가져온다.</li>
+  <li>css 선택자와 비슷하게 디자인 속성을 적용할 수 있으며, css와 달리 동적으로 스타일을 적용할 수 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//요소에 스타일링 적용</span>
+<span class="nx">$</span><span class="p">(</span><span class="nx">css</span><span class="err">선택자</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="err">속성명</span><span class="p">,</span> <span class="err">값</span><span class="p">);</span>
+
+<span class="c1">//요소에 속성을 적용</span>
+<span class="nx">$</span><span class="p">(</span><span class="nx">css</span><span class="err">선택자</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="err">속성명</span><span class="p">,</span><span class="err">값</span><span class="p">);</span>
+
+<span class="c1">//체이닝 : 메서드를 연속해서 적용하는 기법</span>
+<span class="nx">$</span><span class="p">(</span><span class="nx">css</span><span class="err">선택자</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="err">속성명</span><span class="p">,</span> <span class="err">값</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="err">속성명</span><span class="p">,</span> <span class="err">값</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="err">속성명</span><span class="p">,</span> <span class="err">값</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="err">속성명</span><span class="p">,</span> <span class="err">값</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="1-직접-선택자들">1) 직접 선택자들</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//전체 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//아이디 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#id 이름</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//클래스 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.클래스 명</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//요소 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">태그 이름</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//그룹 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">선택자1, 선택자2, ....</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//종속 선택자(요소의 id또는 class가 일치할 시 선택. 하위 선택자와 달리 공백이 없음)</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소명#</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소명</span><span class="p">.</span><span class="err">클래스명</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="2-인접-관계-선택자">2) 인접 관계 선택자</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//부모 요소 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소</span> <span class="err">선택자</span><span class="p">).</span><span class="nx">parent</span><span class="p">();</span>
+
+<span class="c1">//하위 요소 선택자(자식 선택자가 아니다)</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">상위요소</span> <span class="err">하위요소</span><span class="p">)</span>
+<span class="nx">ex</span><span class="p">)</span> <span class="nx">$</span><span class="p">(</span><span class="err">#</span><span class="nx">id</span> <span class="nx">h1</span><span class="p">);</span>
+
+<span class="c1">//자식 요소 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">부모요소</span> <span class="o">&gt;</span> <span class="err">자식요소</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">부모요소</span><span class="p">).</span><span class="nx">children</span><span class="p">(</span><span class="err">자식요소</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">부모요소</span><span class="p">).</span><span class="nx">children</span><span class="p">()</span> <span class="p">:</span> <span class="err">모든</span> <span class="err">자식</span> <span class="err">요소</span>
+
+<span class="c1">//형제 요소 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소선택자</span><span class="p">).</span><span class="nx">prev</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소선택자</span><span class="p">).</span><span class="nx">next</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소선택자</span><span class="p">).</span><span class="nx">prevAll</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소선택자</span><span class="p">).</span><span class="nx">nextAll</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소선택자</span><span class="p">).</span><span class="nx">siblings</span><span class="p">();</span>
+
+<span class="c1">//범위 제한 형제 요소 선택자</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소</span> <span class="err">선택자</span><span class="p">).</span><span class="nx">prevUntil</span><span class="p">(</span><span class="dl">"</span><span class="s2">범위 제한 요소 선택자</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소</span> <span class="err">선택자</span><span class="p">).</span><span class="nx">nextUntil</span><span class="p">(</span><span class="dl">"</span><span class="s2">제한 요소 선택자</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//상위 요소 선택자(두 번째는 선택한 요소만을 선택)</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소</span> <span class="err">선택자</span><span class="p">).</span><span class="nx">parents</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소</span> <span class="err">선택자</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="dl">"</span><span class="s2">선택 요소</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="err">요소</span> <span class="err">선택자</span><span class="p">).</span><span class="nx">closet</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 가장 가까운 상위 요소를 선택</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="탐색-선택자">탐색 선택자</h1>
+
+<ul>
+  <li>기본 선택자로 선택한 요소는 배열에 담긴다.</li>
+  <li>기본 선택자로 선택한 요소 중 원하는 요소를 한번 더 탐색한다.</li>
+</ul>
+
+<h2 id="1-위치-탐색-선택자">1) 위치 탐색 선택자</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 처음, 마지막 요소 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:first</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">first</span><span class="p">()</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:last</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">last</span><span class="p">()</span>
+
+<span class="c1">//짝수, 홀수 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:odd</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:even</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//인덱스 기반 요소 탐색(eq:같음, lt:보다 작음, gt:보다 큼)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:eq(index)</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="nx">indx</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:lt(index)</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:gt(index)</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="err">시작</span> <span class="nx">index</span><span class="p">,</span> <span class="err">끝</span> <span class="nx">index</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소선택:nth-child(index)</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="c1">//무리 중 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택:first-of-type</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택:last-of-type</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>nth-child vs eq
+    <ol>
+      <li>nth-child(n) : 요소선택에 있는 요소가 아닌 자식들도 전부 카운트 한 후에 n(1부터 카운트)번째 요소를 선택</li>
+      <li>eq(n) : 요소선택에 있는 요소 중 n-1번째(0부터 카운트)요소를 선택한다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="2-속성-탐색-선택자">2) 속성 탐색 선택자</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//요소 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소[속성]</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//속성이 포함된 요소를 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소[속성=값]</span><span class="dl">"</span><span class="p">);</span><span class="c1">//속성의 값을 확인하여 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소[속성^=값]</span><span class="dl">"</span><span class="p">);</span><span class="c1">//속성이 값으로 시작되는 경우에 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소[속성$=값]</span><span class="dl">"</span><span class="p">);</span><span class="c1">//속성이 값으로 끝나는 경우에 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:hidden</span><span class="dl">"</span><span class="p">);</span><span class="c1">//요소 중 숨겨진 요소만 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소:visible</span><span class="dl">"</span><span class="p">);</span><span class="c1">//요소 중 보이는 요소만 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">:selected</span><span class="dl">"</span><span class="p">);</span><span class="c1">//폼이나 select의 선택된 요소를 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">:checked</span><span class="dl">"</span><span class="p">);</span><span class="c1">//radio, check box등에서 체크된 요소만 선택</span>
+</code></pre></div></div>
+
+<h2 id="3-콘텐츠-탐색-선택자">3) 콘텐츠 탐색 선택자</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//텍스트를 포함하는 요소 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소선택:contains(텍스트)</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="c1">//하위 요소 중 가장 가까운 하위 요소 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">contents</span><span class="p">()</span>
+
+<span class="c1">//해당 요소 중 요소를 포함하는 것만 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">has</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="c1">//요소의 하위 요소중 해당하는 것만 선택</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="배열">배열</h1>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="err">요소</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">)</span>
+
+<span class="c1">//get([index]) : 선택한 요소들을 배열로 가져옴(index 적을 시 index만 가져옴)</span>
+
+<span class="c1">//역순으로 배열에 순차 적용</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소선택자</span><span class="dl">"</span><span class="p">).</span><span class="kd">get</span><span class="p">().</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">each</span><span class="p">()</span>
+
+<span class="c1">//map : 배열에 저장된 데이터 수 만큼 메서드 실행(오름차순). 결과는 새 배열에 저장하고 그 배열을 반환</span>
+<span class="c1">//grep : map + 인덱스 오름차순으로 배열의 데이터를 불러옴. 메서드의 반환값이 true인 경우에만 배열에 저장.</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="err">배열</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span><span class="nx">index</span><span class="p">){})</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">grep</span><span class="p">(</span><span class="err">배열</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="nx">value</span><span class="p">){})</span>
+
+<span class="c1">//filter : 배열에 filter 적. grep과 비슷하지만, html 요소에서 바로 사용</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="nx">selector</span><span class="p">){})</span>
+
+<span class="c1">//inArray : 지정된 객체의 인덱스 반환</span>
+<span class="c1">//isArray : 배열객체인지 확인</span>
+<span class="c1">//merge : 두 배열을 하나의 객체로 묶는다.</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">inArray</span><span class="p">(</span><span class="err">객체</span><span class="p">,</span> <span class="err">배열</span><span class="p">,</span> <span class="err">시작</span> <span class="nx">index</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">merge</span><span class="p">(</span><span class="err">배열</span><span class="mi">1</span><span class="p">,</span><span class="err">배열</span><span class="mi">2</span><span class="p">)</span>  
+</code></pre></div></div>
+
+<ul>
+  <li>grep vs filter(map vs each 도 비슷)
+    <ol>
+      <li>grep : 자바스크립트 배열에 사용하는 함수. 자바스크립트의 filter와 비슷하다.(<strong>$.grep(자바스크립트배열,…)</strong>)</li>
+      <li>filter : html 태그를 불러와서 바로 사용하는 함수이다(<strong>$(“p”).filter(…)</strong>)</li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="객체-조작">객체 조작</h1>
+
+<ul>
+  <li>객체를 조작하는 방법에는
+    <ol>
+      <li>생성</li>
+      <li>복제</li>
+      <li>삭제</li>
+      <li>속성 변경
+등이 있다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="1-속성-메서드">1) 속성 메서드</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//html() : 선택한 요소의 하위 요소를 가져와 문자열로 변환 or 전부 제거 후 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//text() : 선택한 요소에 포함되어 있는 전체 텍스트를 가져오기 or 전부 제거 후 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 텍스트</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//attr() : 선택한 요소의  속성값을 가져온다 or 속성값을 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">속성</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">속성</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">새 값</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="dl">"</span><span class="s2">속성1</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">새 값1</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">속성2</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">새 값2</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//removeAttr() : 속성 제거</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="dl">"</span><span class="s2">속성</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//addClass() / removeClass() / toggleClass() / hasClass() : 선택한 요소에 클래스 생성/ 제거/ 없으면 생성or있으면 제거/ 있는지 확인</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">클래스 값</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">클래스 값</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">클래스 값</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">클래스 값</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="c1">//val() : 요소의 value값을 가져오거나 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 값</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//prop() : 선택한 폼 요소의 상태 속성값을 가져오거나 새롭게 변경.</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="dl">"</span><span class="s2">checked|selected</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="2-수치-조작-메서드">2) 수치 조작 메서드</h2>
+
+<ul>
+  <li>요소의 속성을 조작할 때 사용</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//height(),width() : contents의 높이, 너비 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">height</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">width</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+
+<span class="c1">//innerHeight(), innerWidth() : padding을 포함한 높이, 너비 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerHeight</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerheight</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerWidth</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerWidth</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+
+
+<span class="c1">//outerHeight(), outerWidth() : margin을 포함한 높이, 너비 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">outerheight</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+
+<span class="c1">//position():위치값 변경.</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">position</span><span class="p">().[</span><span class="nx">left</span><span class="o">|</span><span class="nx">right</span><span class="o">|</span><span class="nx">top</span><span class="o">|</span><span class="nx">bottom</span><span class="p">]</span><span class="o">=</span><span class="err">값</span><span class="p">;</span>
+
+<span class="c1">//offset(): 문서를 기준으로 위치값 변경.</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">offset</span><span class="p">().[</span><span class="nx">left</span><span class="o">|</span><span class="nx">top</span><span class="p">];</span>
+
+<span class="c1">//scrollTop() , scrollLeft() : 스크롤 이동된 값을 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">scrollTop</span><span class="p">(</span><span class="err">새</span> <span class="err">값</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">scrollLeft</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">scrollLeft</span><span class="p">(</span><span class="err">새</span> <span class="err">값</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="3-객체-편집-메서드">3) 객체 편집 메서드</h2>
+
+<ul>
+  <li>요소를 복제, 생성하는 메서드</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//before() /insertBefore(): 선택한 요소의 위(html기준)에 요소 생성</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">before</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">insertBefore</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//after() / insertAfter(): 선택한 요소의 위(html기준)에 요소 생성</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">insertAfter</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//append() / appendTo() : 선택한 요소내의 마지막 위치에 새 요소 생성 및 추가</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//prepend() / prependTo() : 선택한 요소내의 마지막 위치에 새 요소 생성 및 추가</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">prependTo</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//clone() : 요소 복제. true이면 event까지 복제. false이면 요소만 복제(기본값)</span>
+<span class="c1">//empty() : 요소의 모든 하위 요소 삭제</span>
+<span class="c1">//remove() : 요소 삭제</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">clone</span><span class="p">([</span><span class="kc">true</span><span class="o">|</span><span class="kc">false</span><span class="p">]);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+
+<span class="c1">//replaceAll() , replaceWith() : 선택한 요소를 새 요소로 변경</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">).</span><span class="nx">replaceAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">replaceWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">//unwrap() : 부모 요소 삭제</span>
+<span class="c1">//wrap() : 새 요소로 감싸기</span>
+<span class="c1">//wrapAll() : 선택한 요소 한꺼번에 감싸기</span>
+<span class="c1">//wrapInner() : 선택한 요소의 하위 요소를 새 요소로 감싸기</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">unwrap</span><span class="p">();</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">wrapAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">요소 선택</span><span class="dl">"</span><span class="p">).</span><span class="nx">wrapInner</span><span class="p">(</span><span class="dl">"</span><span class="s2">새 요소</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="참고-자료">참고 자료</h1>
+<ul>
+  <li><a href="http://injulkarnilesh.blogspot.com/2012/10/jquery-difference-between-eq-and-nth.html">eq vs nth-child</a></li>
+  <li><a href="https://frontdev.tistory.com/entry/jQuery-grep-%EA%B3%BC-map">grep vs map</a></li>
+</ul>
+:ET

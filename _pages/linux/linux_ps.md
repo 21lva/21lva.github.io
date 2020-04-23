@@ -4,6 +4,7 @@ title:  "process"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: linux_ps.md
+category: linux
 ---
 
 프로세스

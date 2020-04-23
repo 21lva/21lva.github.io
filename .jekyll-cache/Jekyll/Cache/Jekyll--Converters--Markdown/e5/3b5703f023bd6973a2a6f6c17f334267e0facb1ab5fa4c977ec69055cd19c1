@@ -1,0 +1,115 @@
+I"<h1 id="프로세스">프로세스</h1>
+
+<ul>
+  <li>메모리에서 올라가 있는 프로그램</li>
+  <li>Background process: 실행은 되었지만 화면에 표시되지 않는 프로세스.jobs로 확인가능</li>
+  <li>Foreground process : 실행되고 화면에 나타나는 프로세스</li>
+  <li>PID(프로세스 번호) : 각 프로세스에 할당된 고유 번호. 프로그램이 프로세스가 될 때마다 달라짐</li>
+  <li>작업 번호 : 백그라운드로 실행되는 프로세스의 순서. jobs에 나오는 번호</li>
+</ul>
+
+<hr />
+
+<h1 id="ps">ps</h1>
+
+<ul>
+  <li><a href="https://m.blog.naver.com/PostView.nhn?blogId=kor_secom&amp;logNo=70186675630&amp;proxyReferer=https%3A%2F%2Fwww.google.com%2F">참고자료</a></li>
+  <li>현재 작동하는 프로세스 목록을 출력</li>
+  <li>option
+    <ul>
+      <li>-e : 모든 프로세스 정보 출력</li>
+      <li>-f : 프로세스의 다양한 정보 출력.UID,PID 포함(풀 포맷)</li>
+      <li>-a : 실행중인 전체 사용자의 모든 프로세스 출력</li>
+      <li>-u : 프로세스를 실행한 사용자 정보와 시작 시간 출력
+        <ul>
+          <li>-u 사용자 : 특정 사용자의 프로세스만 출력</li>
+        </ul>
+      </li>
+      <li>-x : 제어 터미널을 갖지 않는 프로세스 출력</li>
+      <li>-l : 긴 포맷으로 보여줌</li>
+      <li>-p PID : PID의 프로세스만 보여줌</li>
+    </ul>
+  </li>
+  <li>정보
+    <ul>
+      <li>USER : 프로세스를 실행시킨 사용자</li>
+      <li>PID : 프로세스 번호</li>
+      <li>%CPU : 최근 1분간 프로세스의 CPU 점유율 퍼센트</li>
+      <li>%MEM : 최근 1분간 프로세스가 사용한 메모리 백분율</li>
+      <li>RSS, VSZ: 현재 프로세스가 사용하는 실제 메모리 크기</li>
+      <li>TTY : 프로세스를 제어하고 있는 터미널</li>
+      <li>STAT : 프로세스 상태 코드. R(실행or대기), S(수면), D(입출력 기다리는 중), T(멈춰 있음), Z(좀비 프로세스), X(완전이 죽은 프로세스)</li>
+      <li>START : 프로세스 시작 시간</li>
+      <li>C : 프로세스 우선 순위</li>
+      <li>COMMAND(CMD) : 프로세스를 생성한 명령어</li>
+      <li>PPID : 부모 프로세스의 PID</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/post_img/linux_ps.md/ps.png" alt="ps" /></p>
+
+<ul>
+  <li>pstree : 모든 프로세스의 트리 확인</li>
+</ul>
+
+<p><img src="/post_img/linux_ps.md/pstree.png" alt="pstree" /></p>
+
+<p><img src="/post_img/linux_ps.md/ps_grep.png" alt="psgrep" /></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>자주 사용하는 방법. **ps -ef</td>
+      <td>grep 원하는 정보**</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h1 id="fg-bg-kill-jobs">fg, bg, kill, jobs</h1>
+
+<ul>
+  <li><a href="https://se.uzoogom.com/77">참고자료1</a></li>
+  <li><a href="https://studymake.tistory.com/621">참고자료2</a></li>
+  <li>jobs : 작업이 중지된 상태나 백그라운드 프로세스를 보여줌</li>
+  <li>명령어 &amp; : 작업을 백그라운드로 실행</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//백그라운드로 실행
+vim a.tx &amp;
+
+//확인
+jobs
+
+//포어그라운드로 변경
+fg %JID
+
+//백그라운도 변경
+Ctrl+z
+bg %JID|PID
+
+//백그라운드 프로세스 일사중지
+kill -STOP %JID|PID
+
+//정지된 백그라운드 프로세스 시작
+kill -CONT %JID|PID
+
+//종료
+kill %JID|PID
+
+//강제종료
+kill -KILL %JID|PID
+kill -9 %JID|PID
+</code></pre></div></div>
+
+<p><img src="/post_img/linux_ps.md/kill.png" alt="kill" /></p>
+
+<ul>
+  <li>JID을 사용할 경우 필히 <strong>%</strong> 를 사용해야 한다. 그냥 하면 PID로 인식한다</li>
+  <li>ctrl +c : 작업 취소</li>
+  <li>ctrl + d : 작업 정상 종료</li>
+  <li>ctrl + z : 작업 대기</li>
+</ul>
+:ET

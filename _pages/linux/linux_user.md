@@ -4,6 +4,7 @@ title:  "사용자, 그룹, 소유권, 허가권"
 date:   2019-12-18 01:02:59
 author: Inhyuk
 name: linux_user.md
+category: linux
 ---
 
 - 리눅스는 다중 사용자 시스템(multi-user system)

@@ -4,6 +4,7 @@ title:  "jQuery - 선택 & 객체 & 배열"
 date:   2019-06-10 02:02:59
 author: Inhyuk
 categories: Javascript
+category: Javascript
 tags: js
 cover:  "/assets/instacode.png"
 name: jquery_select.md

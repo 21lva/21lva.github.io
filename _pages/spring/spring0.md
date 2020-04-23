@@ -2,6 +2,7 @@
 layout: post
 title:  "Spring Framework"
 name: spring0.md
+category: spring
 ---
 
 Spring framework

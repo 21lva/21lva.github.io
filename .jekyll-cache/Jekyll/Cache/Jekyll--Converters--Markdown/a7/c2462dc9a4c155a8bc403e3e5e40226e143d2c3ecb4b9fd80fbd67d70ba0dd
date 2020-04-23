@@ -1,0 +1,135 @@
+I"1<p><strong>Tree</strong> 는 수학적으로 Graph의 일종이다.
+Graph는 node들의 집합과 그 node들을 연결해주는 edge들의 집합으로 이루어져있다.
+<strong>Tree</strong> 는 Graph 중에서도 cycle(어느 한 점에서 그 점으로 돌아오는 경로가 존재)과 loop(edge의 양끝이 같은 node에 이어지는 경우)가 존재하지 않는 Graph를 부른다.</p>
+
+<p>많은 사람들이 <strong>Rooted Tree</strong> 와 <strong>Tree</strong> 를 헷갈려 한다.
+<strong>Rooted Tree</strong> 는 tree의 임의의 한 점을 root라고 정해 놓고 그것들의 후손들과 subtree로 이루어진 <strong>Tree</strong> 의 일종이다.
+그러므로 모든 <strong>Tree</strong> 를 설명할 때 root가 존재한다고 하면 틀린 설명이다.</p>
+
+<h1 id="관련-단어">관련 단어</h1>
+<ol>
+  <li>leaf node : 자식이 없는 node</li>
+  <li>internal node : leaf도 아니고 root도 아닌 node</li>
+  <li>sibling : 같은 부모를 가지는 node</li>
+  <li>descendent : 자기의 자식과 그 자식들과 또 그 자식들로 leaf node까지 이어지는 모든 node들.</li>
+  <li>size : 자신 + 자신의 descendent의 수</li>
+  <li>depth : root부터 자기 자신까지의 경로의 node의 수 +1</li>
+  <li>level : 특정 depth를 가지는 node들의 집합</li>
+  <li>height: 최대 depth</li>
+</ol>
+
+<h1 id="이진트리">이진트리</h1>
+
+<p>Binary tree라고도 한다. 이는 모든 node들이 최대 2개의 node를 자식으로 가지는 tree를 의미한다.
+여기서 자식은 <strong>Rooted tree</strong> 에서 root로 부터 내려왔을 때, 자기와 직접 직접 연결된 node들 중 자기 아래에 있는 node들을 의미한다.
+모든 node들이 2개 혹은 0개의 node를 자식으로 가지면 <strong>Full binary tree</strong> 라고 부르고, 가장 왼쪽의 node들 부터 채워지는 tree를 <strong>complete binary tree</strong> 라고 부른다.
+<img src="/post_img/2019-01-03-Tree.md/full_complete.png" alt="full_complete" /></p>
+
+<h1 id="이진-트리-순회">이진 트리 순회</h1>
+
+<h2 id="전위-순회pre-order">전위 순회(pre-order)</h2>
+
+<p><img src="/post_img/2019-01-03-Tree.md/pre.jpg" alt="pre" />
+Root 에서 왼쪽 subtree -&gt; 오른쪽 subtree 순으로 순회하는 방법이다.</p>
+
+<h2 id="중위-순회in-order">중위 순회(In-order)</h2>
+
+<p><img src="/post_img/2019-01-03-Tree.md/inorder.jpg" alt="inorder" />
+왼쪽 subtree -&gt; root -&gt; 오른쪽 subtree 순으로 순회하는 방법.</p>
+
+<h2 id="후위-순회post-order">후위 순회(post-order)</h2>
+
+<p><img src="/post_img/2019-01-03-Tree.md/post.jpg" alt="post" />
+왼쪽 -&gt; 오른쪽 -&gt; root 순으로 순회.</p>
+
+<h1 id="heap">Heap</h1>
+
+<p>Complete binary tree의 일종.
+주로 priority queue에 의해 만들어진다.</p>
+
+<h3 id="priority-queue">Priority queue</h3>
+<p>보통 queue는 처음에 들어온 것을 먼저 배출하는 FIFO구조이다. 우선 순위 queue는 배출 기준이 처음 들어온 순서가 아닌 다른 어떤 기준(key 값)이 있는 것이다.</p>
+
+<p>많은 사람들이 heap과 priority queue를 혼동해 쓰기도 한다. Priority queue는 heap을 이용하는 것이 효율적이고 보편적이기 때문이다.</p>
+
+<h2 id="구조와-종류">구조와 종류</h2>
+<p>Heap에는 크게 2가지가 있다.</p>
+<ol>
+  <li>Max heap: 부모 node의 키 값이 자식 node의 키 값보다 큰 경우</li>
+  <li>Min heap : 부모 node의 키 값이 자식 node의 키 값보다 작은 경우</li>
+</ol>
+
+<p>보통 배열을 통해 만든다. 부모와 자식의 index들의 관계는 다음과 같다.
+$$
+left child = parent*2+1</p>
+
+<p>right child = parent*2+2</p>
+
+<p>parent = (child-1)/2</p>
+
+<p>(index of root =0)
+$$</p>
+
+<h2 id="연산">연산</h2>
+
+<p>heap에서 연산은 크게 삽입과 삭제(뽑기)로 이루어진다.</p>
+
+<h3 id="삽입">삽입</h3>
+<ol>
+  <li>배열의 가장 마지막에 위치시킨다.</li>
+  <li>부모와 비교하여 부모보다 key값이 크면 부모와 자리를 바꾼다(Max heap의 경우)</li>
+  <li>위로 올라가면서 부모보다 key가 작을 때 까지 반복한다.
+ $ logN $ 의 시간복잡도가 필요하다.(complete binary tree이므로 높이가 거의  $ logN $ 이다.)</li>
+</ol>
+
+<h3 id="삭제">삭제</h3>
+<ol>
+  <li>최대값(배열의 0번째 원소)을 배열의 마지막과 바꾸고 마지막(이전의 배열[0])을 삭제한다.</li>
+  <li>0번째 값을 자식들과 비교하여 자식 중 큰 값과 바꾼다.</li>
+  <li>아래로 내려가면서 반복한다.
+ $ logN $ 의 시간복잡도가 필요하다.</li>
+</ol>
+
+<h2 id="구현">구현</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MaxHeap</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">def</span> <span class="n">insert</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">idx</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">:</span>
+            <span class="n">parent_idx</span> <span class="o">=</span> <span class="kt">int</span><span class="p">((</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">parent_idx</span><span class="p">]</span><span class="o">&lt;</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">:</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">parent_idx</span><span class="p">],</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">parent_idx</span><span class="p">]</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">parent_idx</span>
+            <span class="k">else</span><span class="o">:</span>
+                <span class="k">break</span>
+    <span class="n">def</span> <span class="n">pop</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">if</span> <span class="n">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">0</span><span class="o">:</span><span class="n">raise</span> <span class="n">ValueError</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="o">:-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">idx</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span><span class="o">:</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">idx</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">idx</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+            <span class="k">if</span> <span class="n">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span><span class="o">&gt;</span><span class="n">right</span><span class="o">:</span>
+                <span class="n">bigger</span> <span class="o">=</span> <span class="n">left</span> <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">&gt;</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="k">else</span> <span class="n">right</span>
+            <span class="k">else</span><span class="o">:</span>
+                <span class="n">bigger</span> <span class="o">=</span><span class="n">left</span>
+            <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">bigger</span><span class="p">]</span><span class="o">&gt;</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">:</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">bigger</span><span class="p">],</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">[</span><span class="n">bigger</span><span class="p">]</span>
+                <span class="n">idx</span><span class="o">=</span><span class="n">bigger</span>
+            <span class="k">else</span><span class="o">:</span>
+                <span class="k">break</span>
+        <span class="n">print</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+</code></pre></div></div>
+
+<h1 id="참고-자료">참고 자료</h1>
+<ul>
+  <li><a href="http://3dmpengines.tistory.com/423">http://3dmpengines.tistory.com/423</a></li>
+  <li><a href="https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html">https://gmlwjd9405.github.io/2018/05/10/data-structure-heap.html</a></li>
+</ul>
+:ET

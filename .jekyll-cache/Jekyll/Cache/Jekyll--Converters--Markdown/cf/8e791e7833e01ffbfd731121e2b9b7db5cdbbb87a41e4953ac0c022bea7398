@@ -1,0 +1,151 @@
+I"O.<ul>
+  <li>npm(node packaged manager) : 모듈을 설치, 공유</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>npm <span class="nb">install </span>ejs jade
+</code></pre></div></div>
+
+<h1 id="외부-모듈">외부 모듈</h1>
+
+<h2 id="1-ejs">1) ejs</h2>
+
+<ul>
+  <li>ejs 모듈 : 템플릿 엔진 모듈. 특정 형식의 문자열을 HTML 형식의 문자열로 변환</li>
+  <li>render() : ejs 파일을 불러서 HTML 파일로 렌더링 하는 메서드. 두 번째 매개변수로 전달하고자 하는 값을 전달 할 수 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ejs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">ejs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+
+  <span class="c1">//ejs 파일 읽기</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readfile</span><span class="p">(</span><span class="dl">'</span><span class="s1">ejsPg.ejs</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">});</span>
+    <span class="c1">//ejs rendering</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">ejs</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">data</span><span class="p">),{</span>
+      <span class="na">val</span><span class="p">:</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>ejs 파일은 다음과 같이 작성되어 있다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="err">%</span> <span class="err">자바스크립트</span> <span class="err">코드</span> <span class="err">%</span><span class="nt">&gt;</span>
+<span class="nt">&lt;</span><span class="err">%=</span> <span class="err">값</span> <span class="err">%</span><span class="nt">&gt;</span> : 값을 출력
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;</span><span class="err">%</span> <span class="na">var</span> <span class="na">hi = </span><span class="s">"hi"</span> <span class="err">%</span><span class="nt">&gt;</span>
+<span class="nt">&lt;h1&gt;&lt;</span><span class="err">%=</span> <span class="na">hi</span> <span class="err">%</span><span class="nt">&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;&lt;</span><span class="err">%=</span> <span class="na">val</span> <span class="err">%</span><span class="nt">&gt;&lt;/h2&gt;</span><span class="c">&lt;!-- val 값은 render 메서드 호출 시 전달하였다. --&gt;</span>
+<span class="nt">&lt;</span><span class="err">%</span> <span class="na">for</span><span class="err">(</span><span class="na">let</span> <span class="na">i=</span><span class="s">0;i&lt;10;++i){</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>The square of <span class="nt">&lt;</span><span class="err">%</span> <span class="err">=</span><span class="na">i</span> <span class="err">%</span><span class="nt">&gt;</span> is <span class="nt">&lt;</span><span class="err">%</span> <span class="err">=</span><span class="na">i*i</span> <span class="err">%</span><span class="nt">&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;</span><span class="err">%</span> <span class="err">}</span> <span class="err">%</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="err">%</span> <span class="na">if</span><span class="err">(</span><span class="na">true</span><span class="err">)</span> <span class="err">{%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>hi<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;</span><span class="err">%</span> <span class="err">}</span><span class="na">else</span><span class="err">{</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>hello<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;</span><span class="err">%</span> <span class="err">}</span> <span class="err">%</span><span class="nt">&gt;</span>
+
+</code></pre></div></div>
+
+<h2 id="2-jade">2) jade</h2>
+
+<ul>
+  <li>현재는 pug 라는 모듈을 jade 대신 사용한다.</li>
+  <li>ejs 처럼 템플릿 엔진이다</li>
+  <li>compile(string,option) : jade 문자열을 HTML 문자열로 바꿀 수 있는 <strong>함수를 생성</strong></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jade</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">jade</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+
+  <span class="c1">//jade 파일 읽기</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">readfile</span><span class="p">(</span><span class="dl">'</span><span class="s1">jadePg.jade</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span><span class="nx">data</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">jadeFn</span> <span class="o">=</span> <span class="nx">jade</span><span class="p">.</span><span class="nx">compile</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">});</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fn</span><span class="p">({</span>
+      <span class="na">val1</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">this is from outside</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">val2</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">this is also from outside</span><span class="dl">"</span>
+      <span class="p">}));</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>jade 파일의 모습</li>
+  <li>div태그는 div를 쓰는 것 말고도 단순히 id나 class를 입력하면 된다.</li>
+  <li><em>- 코드</em> : 자바스크립트 코드 입력</li>
+  <li><em>#{value}</em> : 데이터 출력</li>
+  <li><em>= value</em> : 데이터 출력</li>
+</ul>
+
+<pre><code class="language-jade">html
+    head
+        title First page
+    body
+        h1 This is title.
+        h2 #{val1} ???
+        h2= val2 !!!
+        a(href="www.google.com") Go to google
+        .class1
+            this is a class div
+        #id1
+            this is a id div
+        - for(let i =0 ;i&lt;10;++i){
+              p
+                  a(href="www.google.com") Go to google
+        - }
+</code></pre>
+
+<h2 id="3-supervisor">3) supervisor</h2>
+
+<ul>
+  <li>코드의 변화가 생길 시 자동으로 서버를 재실행 시키는 모듈. 전역 모듈이기 때문에 터미널에서 직접 사용</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>npm <span class="nb">install</span> <span class="nt">-g</span> supervisor
+</code></pre></div></div>
+
+<ul>
+  <li>지속적으로 실행 시키고 싶은 모듈을 supervisor로 실행시킨다.</li>
+  <li>서버 프로그램에만 쓰도록 하자.</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>supervisor main.js
+</code></pre></div></div>
+
+<h2 id="4-forever">4) forever</h2>
+
+<ul>
+  <li>node.js는 단일 스레드 기반이이 깨문에 예외가 발생하면 웹 서비스 전체가 죽는다</li>
+  <li>forever : 예외 상황에 대처하는 모듈. 전역 모듈이기 때문에 터미널에서 직접 사용</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>npm <span class="nb">install</span> <span class="nt">-g</span> forever
+</code></pre></div></div>
+
+<ul>
+  <li>기능은 다음과 같다</li>
+</ul>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">// 자바스크립트를 forever로 실행. 예외가 발생해도 꺼지지 않는다
+</span><span class="gp">$</span><span class="w"> </span>forever a.js
+<span class="go">
+// 실행되고 있는 웹서버 확인
+</span><span class="gp">$</span><span class="w"> </span>forever list
+<span class="go">
+// 프로세스 종료
+</span><span class="gp">$</span><span class="w"> </span>forever stop 0
+</code></pre></div></div>
+:ET

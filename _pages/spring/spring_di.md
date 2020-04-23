@@ -3,6 +3,7 @@ layout: post
 title:  "DI"
 cover:  "/assets/instacode.png"
 name: spring_di.md
+category: spring
 ---
 
 DI(Dependency Injection)

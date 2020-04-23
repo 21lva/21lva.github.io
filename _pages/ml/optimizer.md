@@ -3,7 +3,7 @@ layout: post
 title:  "여러가지 optimizer"
 date:   2018-12-26 01:02:59
 author: Inhyuk
-categories: Machine_Learning
+category: Machine_Learning
 tags:	ml
 cover:  "/assets/instacode.png"
 name: optimizer.md
@@ -75,7 +75,7 @@ RMSProp
 weight을 update하는 부분은 **Adagrad** 와 같지만, $G_t$를 update하는 부분이 살짝 다르다. 수식은 다음과 같다.
 
 $$
-G_{t}=\gamma G_{t-1}+(1-\gamma)({\bigtriangledown}_{\theta }J({\theta}_{t}))^2 
+G_{t}=\gamma G_{t-1}+(1-\gamma)({\bigtriangledown}_{\theta }J({\theta}_{t}))^2
 
 {\theta}_{t+1}={\theta}_t-\frac{\eta}{\sqrt{G_t+\epsilon }}{\bigtriangledown}_{\theta}J({\theta}_{t})
 $$
@@ -88,7 +88,7 @@ AdaDelta
 **RMSProp** 처럼 **Adagrad** 방식의 문제점을 해결하기 위하여 제시되었다.
 
 $$
-G_{t}=\gamma G_{t-1}+(1-\gamma)({\bigtriangledown}_{\theta }J({\theta}_{t}))^2 
+G_{t}=\gamma G_{t-1}+(1-\gamma)({\bigtriangledown}_{\theta }J({\theta}_{t}))^2
 
 s=\gamma s+(1-\gamma)(\frac{\sqrt{s+\epsilon}}{\sqrt{G+\epsilon}}{\bigtriangledown}_{\theta}J({\theta}_t))^2
 
@@ -156,13 +156,13 @@ Adam
 이 방식은 **RMSProp** + **Momentum** 이다.
 
 $$
-m_t = {\beta}_1 m_{t-1}+(1-{\beta}_1){\bigtriangledown}_{\theta}J(\theta) 
+m_t = {\beta}_1 m_{t-1}+(1-{\beta}_1){\bigtriangledown}_{\theta}J(\theta)
 
-v_t = {\beta}_2 v_{t-1}+(1-{\beta}_2)({\bigtriangledown}_{\theta}J(\theta))^2 
+v_t = {\beta}_2 v_{t-1}+(1-{\beta}_2)({\bigtriangledown}_{\theta}J(\theta))^2
 
-\hat{m_t} = \frac{m_t}{1-{({\beta}_1)^t}} 
+\hat{m_t} = \frac{m_t}{1-{({\beta}_1)^t}}
 
-\hat{v_t} = \frac{v_t}{1-{({\beta}_2)^t}} 
+\hat{v_t} = \frac{v_t}{1-{({\beta}_2)^t}}
 
 \theta = \theta - \frac{\eta}{\sqrt{\hat{v_t}+\epsilon}}\hat{m_t}
 $$

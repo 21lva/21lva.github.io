@@ -3,6 +3,7 @@ layout: post
 title:  "Pod"
 date:   2019-12-18 01:02:59
 name: k8s_pod.md
+category: kubernetes
 ---
 
 Pod

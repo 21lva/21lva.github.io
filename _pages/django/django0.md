@@ -3,7 +3,7 @@ layout: post
 title:  "Django 0 - overview"
 date:   2019-11-23 01:02:59
 author: Inhyuk
-categories: Django
+category: Django
 tags: django
 cover:  "/assets/instacode.png"
 name: django0.md

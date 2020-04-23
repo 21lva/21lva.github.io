@@ -3,6 +3,7 @@ layout: post
 title:  "클래스, 상속"
 date:   2019-12-18 01:02:59
 author: Inhyuk
+category: java
 name: java_class0.md
 ---
 

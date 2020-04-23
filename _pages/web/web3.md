@@ -3,7 +3,7 @@ layout: post
 title:  "CSS - 기본 : 스타일, 포지셔닝, 레이아웃, 배경, 표"
 date:   2019-06-18 02:02:59
 author: Inhyuk
-categories: Web
+category: Web
 tags: web
 cover:  "/assets/instacode.png"
 name: web3.md

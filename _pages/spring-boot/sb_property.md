@@ -2,6 +2,7 @@
 layout: post
 title:  "환경설정, @Value"
 name: sb_property.md
+category: spring-boot
 ---
 
 환경 프로퍼티 파일 설정

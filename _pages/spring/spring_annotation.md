@@ -2,6 +2,7 @@
 layout: post
 title:  "Annotation을 이용한 설정"
 name: spring_annotation.md
+category: spring
 ---
 
 Annotation을 이용한 설정
