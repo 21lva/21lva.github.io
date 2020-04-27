@@ -48,6 +48,7 @@ web.xml
                            |->view -> 응답 ->client
 ```
 - 실제로 구현하는 부분은 **Controller, Model, View**
+- [자세한 동작 과정과 구조](https://javannspring.tistory.com/231)
 
 DispatcherServlet
 -------------------
