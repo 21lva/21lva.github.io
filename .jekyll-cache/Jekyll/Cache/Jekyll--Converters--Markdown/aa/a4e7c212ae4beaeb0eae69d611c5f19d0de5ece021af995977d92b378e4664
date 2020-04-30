@@ -1,0 +1,144 @@
+I"�<ul>
+  <li>REST(Reprenstational State Transfer) : REST</li>
+</ul>
+
+<h1 id="rest">REST</h1>
+
+<ul>
+  <li>Reprenstational State Transfer : 통신 네트워크 아키텍처. 통신하는 리소스끼리 복잡하지 않은 방식으로 상호작용하기 위함</li>
+  <li>HTTP를 이용하여 URI + GET, POST, PUT , DELETE
+    <ul>
+      <li>URI : 인터넷 상의 특정 자원을 나타내는 주소값</li>
+    </ul>
+  </li>
+  <li>RESTful : REST 원칙을 따르는 것</li>
+</ul>
+
+<h2 id="인터페이스-일관성">인터페이스 일관성</h2>
+
+<ul>
+  <li>자원 식별(URI) : URI을 이용한 자원 식별. <strong>정보/유일자</strong> 형식</li>
+  <li>메시지를 통한 리소스 조작 : 메타 데이터를 가지고 자원을 수정하거나 삭제하는 정보를 제공. ex) content-type</li>
+  <li>자기 서술적 메시지 : 처리 방법에 대한 서술. GET, PUT, POST 등</li>
+  <li>HATEOAS : 클라이언트에 응답할 때 단순히 결과만이 아닌 URI를 함께 제공해야한다는 원칙</li>
+</ul>
+
+<h2 id="rest-api">REST API</h2>
+
+<ul>
+  <li>구성요소
+    <ol>
+      <li>자원(URI)</li>
+      <li>행위(HTTP 메서드. CRUD)
+        <ul>
+          <li>GET : 요청. read</li>
+          <li>POST : 제공. create</li>
+          <li>PUT : 수정. update</li>
+          <li>DELTE : 삭제. delete</li>
+        </ul>
+      </li>
+      <li>표현(HTTP Message Body)</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET http://localhost:8080/api/books/1
+content-type: application/json
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="jsonignore">@JsonIgnore</h2>
+
+<ul>
+  <li>해당 필드는 <strong>GET</strong> 메서드의 반환값에 포함되지 않는다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Column</span>
+<span class="nd">@JsonIgnore</span>
+<span class="kd">private</span> <span class="n">string</span> <span class="n">password</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h2 id="projection">@Projection</h2>
+
+<ul>
+  <li>특정 상황에서만 사용</li>
+  <li>proprety
+    <ul>
+      <li>name : 해당 객체가 사용되기 위한 key</li>
+      <li>types: 어떤 domain에서 사용할지를 정의</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Projection</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"getOnlyName"</span><span class="o">,</span> <span class="n">types</span><span class="o">={</span><span class="nc">User</span><span class="o">.</span><span class="na">class</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserOnlyConatinName</span><span class="o">{</span>
+  <span class="nc">String</span> <span class="nf">getName</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사용하려면 다음과 같이 한다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RepositoryRestResource</span><span class="o">(</span><span class="n">excerptProjection</span><span class="o">=</span>  <span class="nc">UserOnlyContainName</span><span class="o">.</span><span class="na">calss</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span><span class="kt">long</span><span class="o">&gt;{</span>
+<span class="c1">//생략  </span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="메서드-권한-설정">메서드 권한 설정</h1>
+
+<ul>
+  <li>특정 메서드를 권한에 맞게 사용할 수 있게 해준다</li>
+  <li>아래의 메서드들을 사용하려면 configure class에 <strong>@EnableGlobalMethodSecurity(secruedEnable=true,prePostEnabled=true)</strong> 를 이용한다</li>
+</ul>
+
+<h2 id="secured">@Secured</h2>
+
+<ul>
+  <li>권한별로 접근 권한 설정</li>
+  <li>OR 설정만 가능. 표현식 불가능</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Secured</span><span class="o">({</span><span class="s">"role1"</span><span class="o">,</span><span class="s">"role2"</span><span class="o">})</span>
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/api/secureRole"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">secureRole</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Execption</span><span class="o">{</span>
+  <span class="k">return</span> <span class="s">"This is a secureRole function"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="preauthorize">@PreAuthorize</h2>
+
+<ul>
+  <li>권한별로 접근 권한 설정</li>
+  <li>표현식을 사용할 수 있다</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@PreAuthorize</span><span class="o">(</span><span class="s">"hasRole('ADMIN')"</span><span class="o">)</span>
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/api/preRole"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">preRole</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Execption</span><span class="o">{</span>
+  <span class="k">return</span> <span class="s">"This is a preRole function"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사용해보자</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="nd">@EnableGlobalMethodSecurity</span><span class="o">(</span><span class="n">prePostEnabled</span><span class="o">=</span><span class="kc">true</span><span class="o">)</span>
+<span class="nd">@EnableSecurity</span>
+<span class="kd">static</span> <span class="kd">class</span> <span class="nc">SecurityConfiguration</span> <span class="kd">extends</span> <span class="nc">WebSecurityConfigurerAdapter</span><span class="o">{</span>
+  <span class="nd">@Bean</span>
+  <span class="nc">InMemoryUserDetailsManager</span> <span class="nf">userDetailManager</span><span class="o">(){</span>
+    <span class="nc">User</span><span class="o">.</span><span class="na">UserBuilder</span> <span class="n">commonUser</span> <span class="o">=</span><span class="nc">User</span><span class="o">.</span><span class="na">withUsername</span><span class="o">(</span><span class="s">"commonUser"</span><span class="o">).</span><span class="na">password</span><span class="o">(</span><span class="s">"{noop}common"</span><span class="o">).</span><span class="na">roles</span><span class="o">(</span><span class="s">"USER"</span><span class="o">);</span>
+    <span class="nc">User</span><span class="o">.</span><span class="na">UserBuilder</span> <span class="n">havi</span> <span class="o">=</span><span class="nc">User</span><span class="o">.</span><span class="na">withUsername</span><span class="o">(</span><span class="s">"havi"</span><span class="o">).</span><span class="na">password</span><span class="o">(</span><span class="s">"{noop}test"</span><span class="o">).</span><span class="na">roles</span><span class="o">(</span><span class="s">"USER"</span><span class="o">,</span><span class="s">"ADMIN"</span><span class="o">);</span>
+
+    <span class="c1">//생략</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

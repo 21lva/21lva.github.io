@@ -240,7 +240,95 @@ public class BookRestTest{
 - - -
 
 @JsonTest
+==========
 
 - json의 serialize, deserialize 등을 테스트할 때 사용
 - BasicJsonTest가 bean으로 등록
 - jackson, gson등의 classpath에 존재하면 자동으로 등록
+
+- - -
+
+MockMvc
+========
+
+- controller를 테스트 하기 위해서는 요청경로, 매핑,  입력값 검사 등의 기능을 하기 때문에 단위 테스트가 아닌 spring 기능을 사용하는 통합적인 테스트를 진행해야 한다
+- MockMvc : MVC controller를 테스트 하기 위해 사용. 서버를 배포하지 않고도 controller에게 request를 보내고 response를 받는 역할을 한다
+
+- 흐름
+  - MockMvc는 DispathSevlet(TestDispatchSevlet)에 request
+  - DispatchServlet은 request을 평소처럼 해당하는 controller의 method 호출
+  - MockMvc는 controller의 결과 값(reponse)를 검사
+
+
+```java
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+public class MyControllerTest {
+
+    @Autowired
+    public MyController myController;
+    private MockMvc mockMvc;
+
+    @Before
+    public void createController() {
+        mockMvc = MockMvcBuilders.standaloneSetup(myController).build();
+    }
+
+    @Test
+    public void restTest() throws Exception {
+        RequestBuilder reqBuilder = MockMvcRequestBuilders.get("/api/hi");
+        mockMvc.perform(reqBuilder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print());
+    }
+}
+```
+
+아래는 controller의 모습이다
+
+```java
+@RestController
+@RequestMapping("api")
+public class MyController {
+    private MyService myService;
+
+    @Autowired
+    MyController(MyService myservice){
+        this.myService = myservice;
+    }
+
+    @GetMapping("hi")
+    public String pringHi(){
+        return "hi";
+    }
+
+    @GetMapping("hello")
+    public String aaa(){
+        return this.myService.getVo().getName();
+    }
+
+}
+```
+
+- 검증하는 부분은 다음과 같다
+  - status: HTTP 상태 코드를 검증
+  - header: 응답 헤더의 상태를 검증
+  - cookie: 쿠키 상태를 검증
+  - content: 응답 본문 내용을 검증
+  - view: 컨트롤러가 반환한 뷰 이름을 검증
+  - forwardedUrl: 이동 대상 경로를 검증
+  - redirectedUrl: 리다이렉트 대상의 경로 또는 URL을 검증
+  - model: 스프링 MVC model 상태를 검증
+  - request: 서블릿 3.부터 지원되는 비동기 처리의 상태나 요청 스코프의 상태, 세션 스코프의 상태를 검증한다.
+
+- 실행 결과 출력 방법
+- log: 실행 결과를 디버깅 레벨에서 로그로 출력. logger의 이름은 org.springframework.test.web.servlet.result
+- print: 결과를 출력 대상에 출력.기본값은 표준 출력
+
+- - -
+
+출처
+===
+
+- <https://ktko.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81Spring-MockMvc-%ED%85%8C%EC%8A%A4%ED%8A%B8>
+- <https://itmore.tistory.com/entry/MockMvc-%EC%83%81%EC%84%B8%EC%84%A4%EB%AA%85>
+- <https://siyoon210.tistory.com/145>
