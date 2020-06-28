@@ -183,7 +183,7 @@ ListIterator, Enumeration
 - Enmueration : Iterator의 구버전
   - boolean hasMoreElements() : 읽어올 요소가 있는지 확인. Iterator의 hashNext()와 같은 기능
   - Object nextElement() : Iterator의 next()와 같은 기능
-- ListIterator : Iterator에 양방향 조회 기능을 추가한 것
+- ListIterator : Iterator에 양방향 조회 기능을 추가한 것. List를 구현한 collection에서만 사용 가능
   - void add(Object o) : 새로운 객체 추가
   - boolean hasNext()
   - boolean hasPrevious()
@@ -193,6 +193,39 @@ ListIterator, Enumeration
   - int previousIndex()
   - void remove()
   - void set(Object o) : next() 또는 previous()로 읽어온 요소를 지정된 객체로 변경. 꼭, next또는 previous 이후에 호출되어야 한다
+
+- - -
+
+Arrays
+==========
+
+- 배열을 다룰 때 유용하게 사용할 수 있는 메서드 제공
+- copyOf, copyOfRange : 배열 전체, 배열의 일부를 복사해서 새로운 배열을 생성
+- fill: 배열의 모든 요소를 지정된 값을 채운다.
+- setAll : 배열의 모든 값을 **함수형 인터페이스** 를 이용하여 채운다
+
+```java
+int[] arr = new int[5];
+int[] arr2;
+Arrays.fill(arr,9);//arr = [9,9,9,9,9]
+Arrays.setAll(arr, () -> (int)(Math.random()*5)+1)//arr = [1,2,3,4,5]
+arr2 = Arrays.copyOf(arr);//1, 2, 3, 4, 5
+arr2 = Arrays.copyOf(arr,2,4);//3, 4
+```
+
+- sort, binarySearch : 정렬, 이진탐색
+- equals : 두 배열의 값들을 비교하여 값이 모두 같으면 true
+- toString : 모든 요소를 문자열로 출력
+
+```java
+int[] arr = {2,1,5,4,3};
+int[] arr2 = {2,1,5,4,3};
+Arrays.sort(arr);//1,2,3,4,5
+String str = Arrays.toString();//[1, 2, 3, 4, 5];
+Arrays.equals(arr,arr2);//false
+```
+
+- asList : 배열을 List에 담아서 반환. 크기를 변경할 수 없어서 추가, 삭제 불가능
 
 - - -
 
@@ -233,7 +266,7 @@ pList.add(new AbsVal(x));
 Collections.sort(pList);
 ```
 
-Comparator
+Comparator  
 ----------
 
 - 정렬 가능한 클래스(Comparable interface를 구현한 클래스)를 기존 기준이 아닌 다를 기준으로 정렬하고자 할때
@@ -266,15 +299,63 @@ Collections.sort(pList, myComparator);
 ```
 
 ```java
-//익명 클래스 이용
 Comparator<AbsVal> myComparator = new Comparator<AbsVal>(){
+//익명 클래스 이용
   @Override
   public int compare(AbsVal p1, AbsVal p2) {
       int thisX = this.x>0 ? this.x : (-1)*this.x;
       int pX = p.x>0 ? p.x : (-1)*p.x;
-      if(thisX>pX)return-1;
-      else if(thisX<pX)return 1;
-      else 0;
+      if(thisX>pX){
+        return -1;
+      } else if(thisX<pX) {
+        return 1;
+      }
+      return 0;
   }
 }
 ```
+
+- - -
+
+HashSet
+===========
+
+- Set interface를 구현한 collection
+- 중복된 요소를 저장하지 않음
+- 저장순서를 유지하지 않기 때문에 저장순서를 유지하고자 하면 **LinkedHashSet** 을 사용하자
+- add : 특정 값을 추가. 이미 있는 요소이면 false를 반환
+- addAll : 합집합 연산.
+
+- add 메서드를 할 때 같은 값이 있는지를 확인하기 위해 **equals, hashCode** 사용. 이 둘을 적절하게 오버라이딩 하여 사용하기도 한다
+
+- - -
+
+TreeSet
+==========
+
+- **Red-black Tree** 를 구현
+- 정렬, 검색, 범위 검색에 특화
+- 데이터의 중복을 허용하지 않음. 저장순서를 유지하지도 않음
+
+- - -
+
+HashMap && HashTable
+================
+
+- HashTable 보다는 HashMap 사용을 권장
+- key와 value를 이용하여 데이터를 저장한다. Hash를 사용하기 때문에 많은 양의 데이터 검색에 뛰어난 성능을 보인다
+
+Properties
+-----------
+
+- HashTable을 상속받아 구현한 것으로 (Object, Object)가 아닌 (String, String)의 형태로 저장하는 단순화된 collection
+- 주로 환경설정과 관련된 **속성** 을 저장하는 데에 사용
+
+- - -
+
+동기화 & 변경불가 & 싱글톤
+==========
+
+- 멀티쓰레드 프로그래밍에서 하나의 객체를 여러 쓰레드에서 접근하는 경우 consistency를 유지해야할 때가 있다. 이럴 때 **synchronizedCollection** 들을 사용한다
+- collection의 데이터가 멀티쓰레드 환경에서 변경되는 경우를 방지하기 위하여 **unmodifiableCollection** 들을 사용한다
+- 단 하나의 객체를 포함하는 collection을 만들기 위해서 **singletonList** 와 같은 싱글턴 collection을 사용
