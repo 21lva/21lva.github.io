@@ -11,7 +11,7 @@ name: command.md
 Command pattern
 ===============
 
-![structure]({{site.baseurl}}/post_img/{{page.name}}/structure.png)
+![structure]({{site.baseurl}}/post_img/{{page.name}}/structure.gif)
 
 - 이벤트가 발생했을 때 실행될 기능이 다양하고 변경이 필요한 경우 사용
 - 요청 자체르 캨슐화 한다.
