@@ -55,7 +55,7 @@ Collaboration
 - 객체들의 상호작용을 나타내는 다이어그램
 - 객체들 사이의 메시지 송신과 그들의 순서를 나타낸다.
 
-![순차 다이어그램]({{site.baseurl}}/post_img/{{page.name}}/diagram.png)
+![순차 다이어그램]({{site.baseurl}}/post_img/{{page.name}}/diagram.JPG)
 
 - 점선 : 생명선. 해당 객체의 존재를 나타냄
 - 사각형 박스 : 활성 구간. 연산을 실행하는 시간

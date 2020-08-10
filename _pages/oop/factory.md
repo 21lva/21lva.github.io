@@ -75,7 +75,7 @@ public class Manager2 extends ElevatorManager{
 ```
 
 
-![structure]({{site.baseurl}}/post_img/{{page.name}}/structure.png)
+![structure]({{site.baseurl}}/post_img/{{page.name}}/structure.git)
 
 - Product : 팩토리 메서드로 생성될 객체의 공통 인터페이스. 위의 경우에는 ElevatorScheduler이다.
 - ConcreteProduct : Product를 구현한 클래스. Scheduler1, Scheduler2가 해당

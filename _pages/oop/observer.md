@@ -99,7 +99,7 @@ public class MinMaxView implements Observer{
 옵저버 패턴
 ==========
 
-![structure]({{site.baseurl}}/post_img/{{page.name}}/structure.png)
+![structure]({{site.baseurl}}/post_img/{{page.name}}/structure.jpg)
 
 - 데이터의 변경이 발생했을 경우 상대에 의존하지 않으면서 데이터의 변경을 통보받는 패턴
 - 대상을 관리하는 subject 추상 클래스와 정보를 전달 받는 Observer 인터페이스로 나눠서 일반화 한다. 이렇게 하면, subject 클래스를 상속받는 클래스의 관리 대상들에 대한 의존성을 없앨 수가 있다.
