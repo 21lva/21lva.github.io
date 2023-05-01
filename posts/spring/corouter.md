@@ -18,7 +18,7 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")  
     implementation("org.springframework.boot:spring-boot-starter-log4j2")  
 }  
-  
+
 configurations {  
     all {  
         exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")  
@@ -53,24 +53,24 @@ class SampleRouter(
         }  
         filter(sampleFilter)  
     }  
-  
+
     companion object {  
         private val ROOT = "/a"  
     }  
 }  
-  
+
 @Service  
 class SampleHandler {  
     suspend fun doGet(req: ServerRequest): ServerResponse {  
         logger.info("Handler")  
         return ServerResponse.ok().bodyValueAndAwait("RES")  
     }  
-  
+
     private val logger by lazy {  
         LoggerFactory.getLogger(this::class.java)  
     }  
 }  
-  
+
 @Service  
 class SampleFilter: suspend (ServerRequest, suspend (ServerRequest) -> ServerResponse) -> ServerResponse {  
     override suspend fun invoke(req: ServerRequest, handler: suspend (ServerRequest) -> ServerResponse): ServerResponse {  
@@ -80,7 +80,7 @@ class SampleFilter: suspend (ServerRequest, suspend (ServerRequest) -> ServerRes
             handler(req)  
                 .also { logger.info("[RES]") }  
         }    }  
-  
+
     private val logger by lazy {  
         LoggerFactory.getLogger(this::class.java)  
     }  
@@ -109,7 +109,7 @@ class SampleHandler {
         logger.info("After delay")  
         return ServerResponse.ok().bodyValueAndAwait("RES")  
     }  
-  
+
     private val logger by lazy {  
         LoggerFactory.getLogger(this::class.java)  
     }  
@@ -138,19 +138,19 @@ public class MDCContext(
     /**  
      * Key of [MDCContext] in [CoroutineContext].  
      */    public companion object Key : CoroutineContext.Key<MDCContext>  
-  
+
     /** @suppress */  
     override fun updateThreadContext(context: CoroutineContext): MDCContextMap {  
         val oldState = MDC.getCopyOfContextMap()  
         setCurrent(contextMap)  
         return oldState  
     }  
-  
+
     /** @suppress */  
     override fun restoreThreadContext(context: CoroutineContext, oldState: MDCContextMap) {  
         setCurrent(oldState)  
     }  
-  
+
     private fun setCurrent(contextMap: MDCContextMap) {  
         if (contextMap == null) {  
             MDC.clear()  
@@ -198,7 +198,7 @@ private fun <T> monoInternal(
 ## 해결 방법
 
 - [힌트를 제공하는 링크](https://github.com/Kotlin/kotlinx.coroutines/issues/985#issuecomment-535075092)
-- Corouter가 핸들러를 등록할 때 MDCContext를 추가해준다. 
+- Corouter가 핸들러를 등록할 때 MDCContext를 추가해준다.
 - 첫번째 suspension하기 전에 MDCContext -> Unconfined -> MDCContext로 context가 바뀌고 최종적으로 MDCContext에서 동작하기 때문에 suspension해서 다른 thread에서 동작한다 해도 MDC 값을 제대로 복구할 수 있다.
 
 ```kotlin
@@ -214,7 +214,7 @@ class SampleRouter(
         }  
         filter(sampleFilter)  
     }  
-  
+
     companion object {  
         private val ROOT = "/a"  
     }  
@@ -225,7 +225,7 @@ class SampleRouter(
         LoggerFactory.getLogger(this::class.java)  
     }  
 }  
-  
+
 @Service  
 class SampleHandler {  
     suspend fun doGet(req: ServerRequest): ServerResponse {  
@@ -234,12 +234,12 @@ class SampleHandler {
         logger.info("After delay")  
         return ServerResponse.ok().bodyValueAndAwait("RES")  
     }  
-  
+
     private val logger by lazy {  
         LoggerFactory.getLogger(this::class.java)  
     }  
 }  
-  
+
 @Service  
 class SampleFilter: suspend (ServerRequest, suspend (ServerRequest) -> ServerResponse) -> ServerResponse {  
     override suspend fun invoke(req: ServerRequest, handler: suspend (ServerRequest) -> ServerResponse): ServerResponse {  
@@ -249,7 +249,7 @@ class SampleFilter: suspend (ServerRequest, suspend (ServerRequest) -> ServerRes
             handler(req)  
                 .also { logger.info("[RES]") }  
         }    }  
-  
+
     private val logger by lazy {  
         LoggerFactory.getLogger(this::class.java)  
     }  
@@ -276,7 +276,7 @@ class SampleFilter: suspend (ServerRequest, suspend (ServerRequest) -> ServerRes
 	- Dispatchers.Default
 	- newSingleThreadContext: 코루틴을 수행할 새로운 스레드 생성
 
-- Dispathers.Unconfined는 사실은 조금 더 복잡하다. 첫 suspension까지는 호출 스레드에서 수행한다. suspension 이후에는 다른 스레드에서 코루틴을 수행. 
+- Dispathers.Unconfined는 사실은 조금 더 복잡하다. 첫 suspension까지는 호출 스레드에서 수행한다. suspension 이후에는 다른 스레드에서 코루틴을 수행.
 - GlobalScope는 Dispatchers.Default에서 수행.
 
 - 코루틴이 내부에서 다른 코루틴을 시작하면 자식 코루틴은 부모 코루틴의 Context를 물려 받는다.
@@ -292,8 +292,8 @@ class SampleFilter: suspend (ServerRequest, suspend (ServerRequest) -> ServerRes
 ## 참고 자료
 
 - https://github.com/Kotlin/kotlinx.coroutines/issues/985#issuecomment-535075092
-- [배민광고리스팅 개발기 (feat. 코프링과 DSL 그리고 코루틴) | 우아한형제들 기술블로그 (woowahan.com)](https://techblog.woowahan.com/7349/)
+- [배민광고리스팅 개발기](https://techblog.woowahan.com/7349/)
 - [Java 로깅전략 with MDC - JH Blog (jehuipark.github.io)](https://jehuipark.github.io/java/java-logging-mdc)
-- [Coroutine context and dispatchers | Kotlin Documentation (kotlinlang.org)](https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html)
-- [Spring WebFlux 에서 coRouter filter를 이용하여 request, response 로깅하기 | by Riiid Teamblog | Riiid Teamblog KR | Medium](https://medium.com/riiid-teamblog-kr/spring-webflux-%EC%97%90%EC%84%9C-corouter-filter%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-request-response-%EB%A1%9C%EA%B9%85%ED%95%98%EA%B8%B0-df56f9d9680)
-- 
+- [Coroutine context and dispatchers ](https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html)
+- [Spring WebFlux 에서 coRouter filter를 이용하여 request, response 로깅하기](https://medium.com/riiid-teamblog-kr/spring-webflux-%EC%97%90%EC%84%9C-corouter-filter%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-request-response-%EB%A1%9C%EA%B9%85%ED%95%98%EA%B8%B0-df56f9d9680)
+-
