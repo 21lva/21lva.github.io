@@ -4,6 +4,7 @@
 - - -
 
 ### @EnableAutoConfiguration
+
 - spring boot에서 제공해주는 auto configruation 기능을 사용하겠다는 annotation
 - 주로 @SpringBootApplication을 통해서 사용한다.
 
@@ -16,13 +17,25 @@
 - @AutoConfiguration은 주로 application 개발자가 아니라 framework 개발자가 사용한다
 
 #### @CondtionalXXXX
+
 - 위에서 "생성"대신 "read"라고한 이유가 있다.
-- 추가로 @ConditaonlOnBean(XClass:class)라고 하면 해당 Bean이 없을 때 생성하기 때문에 순서에 맞출것 같지만 아니다. 해당 @Bean의 정의를 읽을 때 bean이 없으면 정의를 읽는다. 즉, 순서가 맞지 않으면 의도와 다르게 bean이 없다고 하면서 bean을 생성하지 않는다.
+- 추가로 @ConditaonlOnBean(XClass:class)라고 하면 해당 Bean이 없을 때 생성하기 때문에 순서에 맞출것 같지만 아니다. 순서가 맞지 않으면 의도와 다르게 bean이 없다고 하면서 bean을 생성하지 않는다.
+	 - 그래서 ConditionalXXX은 @AutoConfiguration을 만들때 주로 사용하라고 되어 있다.
 - @AutoConfigureXXX도 결국 Config 파일을 읽는 순서를 정의할 뿐이지 bean이 생성되는 순서에는 관련 없다([spring boot - @AutoConfigureAfter not working as desired - Stack Overflow](https://stackoverflow.com/questions/42284478/autoconfigureafter-not-working-as-desired))
-- 
+	- [java - Defining Order of AutoConfigure not working - Stack Overflow](https://stackoverflow.com/questions/48853995/defining-order-of-autoconfigure-not-working)
+
+#### Bean의 생명 주기
+
+- spring bean의 생명주기
+	1. IoC container 생성  
+	2. bean 생성
+	3. 의존 관계 주입
+	4. 초기화 콜백 메서드 호출(@PostConstruct)
+	5. 사용
+	6. 소멸 전 콜백 메서드 호출(@Predestroy)
 
 ```kt
-//오류가 발생하는 코드
+//생명주기 테스틍용 코드
 @Configuration  
 class AConfig {  
 @PostConstruct  
@@ -31,8 +44,8 @@ logger.info("AConfig")
 }  
   
 @Bean  
-@ConditionalOnBean(B::class)  
-fun a(): A {  
+@Conditional(ACondition::class)  
+fun a(b: B): A {  
 logger.info("A")  
 return A()  
 }  
@@ -42,18 +55,12 @@ LoggerFactory.getLogger(this::class.java)
 }  
 }  
   
-  
-@Configuration  
-class BConfig {  
-@PostConstruct  
-fun f() {  
-logger.info("BConfig")  
-}  
-  
-@Bean  
-fun b(): B {  
-logger.info("B")  
-return B()  
+class ACondition: Condition {  
+override fun matches(context: ConditionContext, metadata: AnnotatedTypeMetadata): Boolean {  
+// 아래의 주석을 없애고 확인해보면 B 클래스로 된 bean이 등록되어있다는 것을 알 수 있다.
+// val x = context.beanFactory!!.getBeansOfType(B::class.java)
+logger.info("ACondition")  
+return true  
 }  
   
 private val logger by lazy {  
@@ -61,16 +68,45 @@ LoggerFactory.getLogger(this::class.java)
 }  
 }  
   
-class A  
-class B  
+class A {  
+@PostConstruct  
+fun init(){  
+logger.info("in A")  
+}  
   
+private val logger by lazy {  
+LoggerFactory.getLogger(this::class.java)  
+}  
+}  
+  
+@Component  
+class B {  
+@PostConstruct  
+fun init() {  
+logger.info("B")  
+}  
+  
+  
+private val logger by lazy {  
+LoggerFactory.getLogger(this::class.java)  
+}  
+}  
   
 @Component  
 class Test {  
 @Autowired lateinit var a: A  
-@Autowired lateinit var b: B  
 }
 ```
+
+```
+2023-05-26 20:37:11.626       INFO                   13559 [           main] c.e.d.ACondition                         : ACondition
+2023-05-26 20:37:12.044       INFO                   13559 [           main] c.e.d.AConfig                            : AConfig
+2023-05-26 20:37:12.046       INFO                   13559 [           main] c.e.d.B                                  : B
+2023-05-26 20:37:12.051       INFO                   13559 [           main] c.e.d.AConfig                            : A
+2023-05-26 20:37:12.052       INFO                   13559 [           main] c.e.d.A                                  : in A
+```
+
+- @Conditional의 조건이 bean의 생성과 의존성 주입안에 이루어진다.
 
 ### @Bean, @Service, @Repository, @Component
 
@@ -170,6 +206,11 @@ LoggerFactory.getLogger(this::class.java)
 
 - Component class(주로 @Configuration)를 import하도록 지정하는 annotation
 - Configuration위에 Configuration을 Import하면서 계층화된 Configuration을 형성할 수 있다.
+
+#### @Import의 시점
+
+- [java - Spring @Import is ignoring @ConditionalOnBean defined on the same class - Stack Overflow](https://stackoverflow.com/questions/65235953/spring-import-is-ignoring-conditionalonbean-defined-on-the-same-class)
+- @ConditionalOnBean은 REGISTER_BEAN phase에 적용된다. @Import는 PARSE_CONFIGURATION phase에 동작하기 때문에 해당 @ConditionalBean을 무시한다.
 
 ### @Inherited & @Repeatble
 - @Inherited: 해당 annotation이 서브 클래스에도 상속된다.
