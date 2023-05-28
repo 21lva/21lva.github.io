@@ -82,6 +82,7 @@
 - druid system의 ingestion을 조율한다
 	- task를 전달받아서 분배하고 task 전후로 lock을 다루는 역할 수행
 - middle manager에 ingestion을 할당하고 segment 배포(publish)를 조율한다.
+	- publish: segment가 생성된 후에 deep storage에 저장하는 과정. metadata에 segment 정보가 생성되면 publish 된 것
 - task가 특정 middlemanager에서 지속적으로(threshold 이상) 실패하면 *blacklist*에 등록한다. 최대 등록할 수 있는 blacklist는 전체의 20%이다. 
 
 ### Query server
@@ -92,8 +93,18 @@
 #### Broker process
 
 - 외부 사용자로부터 query를 전달받아서 data server에 포워딩 하는 역할.
+	- 대부분의 query는 time 기간이 있음. segment는 time에 따라서 나눠져 있다. 
+	- zookeeper의 metadata를 읽어서 segment들이 어떤 historical에 존재하는지를 확인(부팅시 historical은 zookeeper에 자기가 가지고 있는 segment들에 대해서 통보)
+	- broker는 segment들의 timeline을 생성하고 각 timeline들을 어떤 segment들에 할당할지 결정
+	- segment에 맞게 query를 subquery로 나눠서 각 historical에 요청. 
 - sub query로부터 결과를 받으면 query 요청자에게 결과를 전달하기 전에 결과를 merge
 - 보통 사용자는 query를 직접 data server로 보내기보다는 broker에게 보낸다
+
+- broker는 **LRU cache**를 가지고 있음. cache는 local에 저장할 수도 있고 memcached같은 외부 cache 서비스에 저장할 수도 있다.
+- broker는 cache에 segment 단위로 query 결과를 저장. 
+- cache에 결과가 저장되어 있지 않은 경우에는 historical process에 query를 전달. historical에서 결과를 응답하면 broker는 해당 결과른 cache에 저장. 
+- real-time데이터는 cache되지 않고 historical에 질의한다.
+
 
 #### Router process
 
@@ -148,6 +159,127 @@
 
 ### 외부 의존성
 
+- druid는 3개의 외부 의존성을 갖는다: deep storage, metadata db, zookeeper
+
+#### deep storage
+
+- druid는 deep storage에 ingestion된 데이터를 저장한다.
+- deep storage는 모든 druid server로부터 접근 가능한 공유 file storage. e.g. s3, hdfs.
+- druid에서 deep storage의 용도는 데이터를 backup해놓는 것이다. 
+- druid는 데이터를 **segment** 단위로 저장. historical은 segmenet를 자신의 cache 디렉토리에 저장해놓고 사용. 일반적으로 query시에는 deep storage에 접근하지 않는다. 
+
+#### metadata db
+
+- segment usage, task 정보와 같은 다양한 shared system metadata를 저장해 놓는 db.
+- cluster 환경에서는 RDBMS(postgresql, mysql) 사용. 
+- metadata db에 저장하는 정보
+	- segment: segment관련 정보. coordinator에서 사용. used와 같은 정보 포함
+	- rule: segment가 위치해야하는 장소에 대한 규칙. coordinator에서 사용
+	- configuration
+	- task-related: overload와 middelmanager가 task 관련 정보로 사용
+	- audit
+
+#### zookeeper
+
+- 현재 cluster의 상태 관리용
+- zk를 사용하는 경우
+	- leader selection(coordinator, overload)
+	- segment를 publish하는 protocol
+	- coordinator와 historical이 segment의 load/drop을 결정
+	- overload와 middelmanager의 task 관리
+
+- - -
+
+## Storage
+
+### Datasources & Segments
+
+![](att/Pasted%20image%2020230528164533.png)
+
+- druid는 **Datasource**라는 곳에 data를 저장.
+- datasource는 RDBMS와 비슷한 table 구조. 
+- 기본적으로 time으로 paritioning되어 있고 추가로 설정된 기준으로도 파티셔닝.
+	- 각 time 범위는 **chunk**라고 부른다. 각 chunk 단위에서는 segment들은 복수개 존재 가능.
+- segment들은 하나의 file. 수백만개의 rows를 포함. 
+- segment들은 middlemanager에 의해 생성되며 이때 상태는 *mutable, uncommitted*. uncomitted segment들은 query 가능
+- segment들은 추후에 요청되는 query들의 응답성을 높이기 위해서 data파일을 *compact, index*한다.
+	- column구조로 변경
+	- bitmap index 적용
+	- 압축
+- 주기적으로 uncomitted segment들은 deep storage로 *publish*되고 이후에는 *immutable, committed* segment가 된다. 
+- *immutable, committed* segment들은 middlemanager에서 historical로 옮겨진다. 
+
+- metadata에는 segment의 크기, schema, deep storage 위치 등을 저장하는 정보가 저장되어 있다. coordinator는 해당 정보를 이용하여 data가 cluster에서 사용가능한지 확인한다. 
+
+### Indexing & handoff
+
+- indexing: 새로운 segment가 생성될때 동작
+- handoff: *publish*되고 historical process에서 사용가능할때 동작
+
+- Indexing 동작 과정:
+	- indexing task는 새로운 segment 생성을 시작. 시작 전에 segment의 *identifier*를 결정. 
+	- indexing task가 append이면, overload의 allocate api를 호출해서 이미 존재하는 segment들에 partition을 추가한다. 
+	- append 작업이 아닌 경우(overwritting)이면, interval에 lock을 걸고 segment들의 새로운 version을 만든다
+	- indexing task가 real-time인 경우에는 segment는 지금 즉시 query 가능하다. 그렇지만 publish되지 않은 상태
+	- indexing task의 작업이 끝났다면 deep storage에 데이터를 저장한다. 그후에 metadata db을 수정해서 segment를 publish 한다. 
+	- indexing task가 real-time task이면 historical process가 segment를 load할때까지 기다린다. real-time task가 아니면 해당 task는 즉시 종료된다. 
+- Coordinator/ historical side(handoff):
+	- coordinator는 주기적으로 metadata db에서 새로 publish된 데이터가 있는지 확인
+	- 새롭게 publish되었고 used인 segment가 존재하고 해당 segment가 사용 가능(historical에 load된 상태)하지 않으면, coordinator는 load 작업을 진행한 segment를 결정한다. 그후에 zk를 수정해서 historical process가 load하도록 명령한다.
+	- historical이 segment를 load한다. 만약 ingestion task가 real-time이면 이때 task가 종료된다. 
+
+### Identifier
+
+- segment의 identifier는 4개로 구성된다
+	- datasource 이름
+	- time interval
+	- version 
+	- partition number
+ 
+```
+//예시
+`clarity-cloud0_2018-05-21T16:00:00.000Z_2018-05-21T17:00:00.000Z_2018-05-21T15:56:09.909Z_1`
+```
+
+
+### segment lifecycle
+
+- segment는 3개의 영역에 걸쳐서 생명주기를 갖는다
+- 
+
+
+- - -
+
+## Segment
+
+- druid는 time을 기준으로 파티셔닝된 segment file로 데이터를 저장한다.
+- 일정 time동안 데이터가 없으면 segment가 만들어지지 않는다. 
+- 일정 time(*segmentGranularity*)동안 여러개의 ingestion job에 의해서 data가 들어온 경우에는 여러 개의 segment들을 생성한다. 
+	- Compaction: druid는 일정 time동안 만들어진 여러 segment들을 하나의 segment로 합치는 과정을 거친다. 
+- druid에서는 segment 하나의 크기로 300MB~700MB를 권장한다. 하나의 segment가 너무 크면 partitioning 된다.
+
+### structure
+
+- segment 파일은 columnar: 각 column의 data들은 다른 data structure를 가진다. 
+- column을 따로 저장하면 특정 column에 해당하는 query들의 성능을 향상시킬 수 있다. 
+- 기본적으로 column의 type은 3가지: timestamp, dimensions, metrics
+- timestamp, metric은 integer, float이고 *LZ4*로 압축된다. query가 요청되면 압출을 해제하고 해당되는 row를 획득한 후에 요청된 aggregation 작업을 수행한다. 
+- dimension column은 *filter, group by*를 지원하기 위해 약간 다른 구조를 갖는다. dimension은 3가지 구조를 갖는다: dictionary, list, bitmap
+
+### null 값
+
+- druid string dimension column은 ''와 null을 같은 취급.
+- 숫자 or metric clumn은 null을 사용할 수 없기 때문에 0을 사용. 
+- 그러나 druid는 null을 다루기 위해서 SQL 호환성을 제공. 
+	- string column에서 ''와 null을 구분
+	- 숫자 column에서 0 대신 null 사용
+
+### Sharding
+
+- 하나의 datasource와 하나의 time interval에는 여러 segment 존재 가능.
+	- block: 하나의 interval의 segment들의 오음
+- 어떤 interval에 segment가 복수개 존재할 때, 해당 interval에 query가 들어오면 이 block이 전부 load되어야 가능하다. 
+- Linear shard spec은 위 규칙에서 예외. 
 
 
 - - -
