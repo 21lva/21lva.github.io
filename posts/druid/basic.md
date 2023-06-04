@@ -1,6 +1,7 @@
 # Druid
 
 - druid에 대한 정보와 간략한 아키텍처, 구성 요소에 대해서 공부하고 정리한 글
+- 번역한 글이라고 보는게 정확하다
 
 - - -
 
@@ -244,9 +245,30 @@
 
 ### segment lifecycle
 
-- segment는 3개의 영역에 걸쳐서 생명주기를 갖는다
-- 
+- Metastore: segment가 처음 만들어지면 metadata db에 저장된다. 이 과정을 **publishing**이라고 한다. metadatastore의 segment 정보는 query 가능하다는 것을 보여주는 *used*라는 flag를 갖고 있다. real-time segment는 query 가능한 이후에(used인 상태) publish 된다
+- deep storage: segment file은 deep storage에 저장된다. 이 과정은 publish 이전에 수행된다
+- segment 상태
+	- is_published
+	- is_available: realtime task또는 historical process에서 query 가능한 상태
+	- is_realtime
+	- is_overshadowed: segment가 published되었고 다른 published segment에 의해서 overshadowed된 상태. 일시적인 상태이다.
 
+### Query processing
+
+- query는 druid cluster 전체에서 broker에 의해 조율된다
+- query 과정
+	- query는 먼저 broker에 들어온다. broker는 query에 필요한 데이터를 포함한 segment를 찾는다. 
+	- broker는 query에 필요하 데이터가 어떤 historical 혹은 어떤 middlemanager에 속하는 지를 확인한다. 
+	- 찾은 대상에게 새롭게 작성된 subquery를 전송한다.
+	- historical과 middlemanager는 query를 수행하고 결과를 broker에 전달. 
+	- broker는 결과를 합치고 query 요청자에게 결과를 전달
+- 시간과 다른 요소로 가지치기 하는 것은 druid가 각각의 query에서 스캔해야 하는 데이터의 양을 제한하는 데에 중요한 방법이다. 
+- 그러나 이 방법으로만 가지치기 할 수 있는 것은 아니다. 더 세밀한 filtering 조건을 갖고 있으면 segment 내부의 indexing을 통해서 historcial이 데이터를 보기도 전에 filtering 조건을 통과하는지를 알 수 있다.
+- historical은 어떤 query에 어떤 row가 사용되는지를 안다면 그 특정한 row와 column만 접근한다.
+- druid는 3가지 기술을 통해서 query 성능을 향상 시킨다
+	- pruning
+	- segment내에서 indexing을 이용해서 접근할 row를 식별
+	- segment내에서 필요한 row와 column만 접근
 
 - - -
 
